@@ -1,23 +1,8 @@
 [gd_scene format=3 uid="uid://dhsqflow8l2i4"]
 
-[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="1_ehhj8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkeym"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0sewf"]
-atlas = ExtResource("1_ehhj8")
-region = Rect2(0, 0, 128, 128)
+[node name="personaje_aliado" type="Node3D" unique_id=684949217]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_aw186"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0sewf")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="PersonajeAliado" type="Node2D" unique_id=1955715483]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1269054745]
-sprite_frames = SubResource("SpriteFrames_aw186")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=357864781]
+sprite_frames = SubResource("SpriteFrames_pkeym")

@@ -1,23 +1,57 @@
 [gd_scene format=3 uid="uid://ddcrbqx7q3gyc"]
 
-[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="1_nrcqd"]
+[ext_resource type="Texture2D" uid="uid://d38c1wijchq4h" path="res://assets/soldado_prueba/Melee_Attack-Sheet.png" id="1_tqm6u"]
+[ext_resource type="Texture2D" uid="uid://bbfvpctbxnb13" path="res://assets/soldado_prueba/Melee_Run-Sheet.png" id="2_e6tc2"]
 [ext_resource type="Script" uid="uid://3q4gmc58l6oy" path="res://scripts/movimiento_jugador.gd" id="2_ig48j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrcqd"]
-size = Vector2(127, 126)
+size = Vector2(109, 126)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ig48j"]
-atlas = ExtResource("1_nrcqd")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0aba"]
+atlas = ExtResource("1_tqm6u")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogw1n"]
+atlas = ExtResource("2_e6tc2")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d0nc"]
+atlas = ExtResource("2_e6tc2")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3a2h"]
+atlas = ExtResource("2_e6tc2")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ltrl"]
+atlas = ExtResource("2_e6tc2")
+region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tqm6u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ig48j")
+"texture": SubResource("AtlasTexture_k0aba")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogw1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d0nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3a2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ltrl")
+}],
+"loop": true,
+"name": &"Walk",
 "speed": 5.0
 }]
 
@@ -26,11 +60,16 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1402744092]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=222351120]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_nrcqd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1724449459]
+texture_filter = 1
+position = Vector2(0, -1.9073486e-06)
+scale = Vector2(5.2916665, 5.25)
 sprite_frames = SubResource("SpriteFrames_tqm6u")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.1443821
 
 [node name="Movimiento" type="Node" parent="CharacterBody2D" unique_id=158700056]
 script = ExtResource("2_ig48j")
