@@ -1,0 +1,18 @@
+PJ-Combate
+-Vida
+-Arma
+-Ataque esp []
+-Energia (Balas, Energia, Mana)
+-Inventario->Items (HP, ATK UP, DEF UP, DEF DOWN, ATK DOWN)
+
+Arma:
+-Nombre
+-Daño
+-Descripcion
+-TipoAtaque (Contundente, Perforante, Cortante)
+
+Enemigo:
+-Nombre
+-Vida
+-Descripcion
+-Ataque

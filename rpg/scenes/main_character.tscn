@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="1_nrcqd"]
 [ext_resource type="Script" uid="uid://3q4gmc58l6oy" path="res://scripts/movimiento_jugador.gd" id="2_ig48j"]
+[ext_resource type="Script" path="res://scripts/personaje_explorador.gd" id="3_explorador"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrcqd"]
 size = Vector2(127, 126)
@@ -22,6 +23,7 @@ animations = [{
 }]
 
 [node name="MainCharacter" type="Node2D" unique_id=1843269011]
+script = ExtResource("3_explorador")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1402744092]
 

@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://ci7biswve8xrn"]
 
+[ext_resource type="Script" uid="uid://dqmydight4vou" path="res://scripts/combate/battle_manager.gd" id="1_battlemgr"]
+[ext_resource type="PackedScene" path="res://scenes/combate/personaje_combate.tscn" id="2_d3rmf"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_kfgqx"]
 size = Vector3(50, 1, 50)
 
@@ -10,3 +13,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("BoxMesh_kfgqx")
 
 [node name="BattleManager" type="Node" parent="." unique_id=1487565887]
+script = ExtResource("1_battlemgr")
+escena_personaje = ExtResource("2_d3rmf")
+
+[node name="Equipo" type="Node3D" parent="BattleManager" unique_id=1903577391]
