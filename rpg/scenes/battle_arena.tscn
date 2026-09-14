@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ci7biswve8xrn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kfgqx"]
+size = Vector3(50, 1, 50)
+
+[node name="BattleArena" type="Node3D" unique_id=1215351448]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1308968784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_kfgqx")
+
+[node name="BattleManager" type="Node" parent="." unique_id=1487565887]
