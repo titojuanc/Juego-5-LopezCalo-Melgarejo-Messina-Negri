@@ -3,7 +3,7 @@ class_name PersonajeCombate
 
 @export var datos: RecursoPersonajeCombate
 
-@onready var visual: AnimatedSprite3D = $Visual
+@onready var visual: Sprite3D = $Visual
 @onready var salud: Salud = $Salud
 @onready var combate: Combate = $Combate
 @onready var inventario: Inventario = $Inventario
@@ -18,6 +18,5 @@ func configurar(nuevos_datos: RecursoPersonajeCombate) -> void:
 	salud.inicializar(datos.vida_max)
 	combate.inicializar(datos)
 	inventario.inicializar(datos)
-	if datos.sprite_frames:
-		visual.sprite_frames = datos.sprite_frames
-		visual.play("default")
+	if datos.textura:
+		visual.texture = datos.textura

@@ -3,9 +3,8 @@ class_name PersonajeExplorador
 
 @export var datos: RecursoPersonajeCombate
 
-@onready var visual: AnimatedSprite2D = $CharacterBody2D/AnimatedSprite2D
+@onready var visual: Sprite2D = $CharacterBody2D/Visual
 
 func _ready() -> void:
-	if datos and datos.sprite_frames:
-		visual.sprite_frames = datos.sprite_frames
-		visual.play("default")
+	if datos and datos.textura:
+		visual.texture = datos.textura

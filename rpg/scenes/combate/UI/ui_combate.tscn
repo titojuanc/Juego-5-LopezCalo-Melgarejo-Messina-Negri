@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dicy87axl3gsg"]
+
+[node name="UiCombate" type="CanvasLayer" unique_id=1715428037]
+
+[node name="Control" type="Control" parent="." unique_id=611697508]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1888852998]
+layout_mode = 0
+offset_right = 700.0
+offset_bottom = 110.0
+theme_override_constants/separation = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer" unique_id=952530340]
+layout_mode = 2
+
+[node name="Contenido" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Retrato" type="TextureRect" parent="Control/HBoxContainer/PanelContainer/Contenido"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Barras" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/Contenido"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BarraVida" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer/Contenido/Barras"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+
+[node name="BarraEnergia" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer/Contenido/Barras"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/HBoxContainer" unique_id=908566915]
+layout_mode = 2
+
+[node name="Contenido" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="Retrato" type="TextureRect" parent="Control/HBoxContainer/PanelContainer2/Contenido"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Barras" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer2/Contenido"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BarraVida" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer2/Contenido/Barras"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+
+[node name="BarraEnergia" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer2/Contenido/Barras"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+
+[node name="PanelContainer3" type="PanelContainer" parent="Control/HBoxContainer" unique_id=86873574]
+layout_mode = 2
+
+[node name="Contenido" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="Retrato" type="TextureRect" parent="Control/HBoxContainer/PanelContainer3/Contenido"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="Barras" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer3/Contenido"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BarraVida" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer3/Contenido/Barras"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0
+
+[node name="BarraEnergia" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer3/Contenido/Barras"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 3
+value = 100.0

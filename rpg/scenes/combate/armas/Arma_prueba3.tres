@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecursoArma" format=3 uid="uid://fs4a4q1muxlb"]
+
+[ext_resource type="Script" uid="uid://dlqasaecls3mv" path="res://scripts/recursos/recurso_arma.gd" id="1_jcs02"]
+
+[resource]
+script = ExtResource("1_jcs02")
+nombre = "Prueba3"
+"daño" = 30
+descripcion = "Esta es la ultima arma de prueba"
+tipo_ataque = 2
+metadata/_custom_type_script = "uid://dlqasaecls3mv"

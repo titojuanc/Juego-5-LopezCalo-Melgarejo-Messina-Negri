@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://ci7biswve8xrn"]
 
 [ext_resource type="Script" uid="uid://dqmydight4vou" path="res://scripts/combate/battle_manager.gd" id="1_battlemgr"]
-[ext_resource type="PackedScene" path="res://scenes/combate/personaje_combate.tscn" id="2_d3rmf"]
+[ext_resource type="PackedScene" uid="uid://crqcppuysfqlc" path="res://scenes/combate/personajes/personaje_combate.tscn" id="2_d3rmf"]
+[ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="3_j3iaf"]
+[ext_resource type="Resource" uid="uid://ba6gkps55l7p" path="res://scenes/combate/personajes/PJ_prueba1.tres" id="4_h3p5w"]
+[ext_resource type="Resource" uid="uid://dyefy5fuefcaj" path="res://scenes/combate/personajes/PJ_prueba2.tres" id="5_7kbcm"]
+[ext_resource type="Resource" uid="uid://j74bti8ts3xx" path="res://scenes/combate/personajes/PJ_prueba3.tres" id="6_yb4oc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kfgqx"]
 size = Vector3(50, 1, 50)
@@ -15,5 +19,6 @@ mesh = SubResource("BoxMesh_kfgqx")
 [node name="BattleManager" type="Node" parent="." unique_id=1487565887]
 script = ExtResource("1_battlemgr")
 escena_personaje = ExtResource("2_d3rmf")
+equipo = Array[ExtResource("3_j3iaf")]([ExtResource("4_h3p5w"), ExtResource("5_7kbcm"), ExtResource("6_yb4oc")])
 
 [node name="Equipo" type="Node3D" parent="BattleManager" unique_id=1903577391]

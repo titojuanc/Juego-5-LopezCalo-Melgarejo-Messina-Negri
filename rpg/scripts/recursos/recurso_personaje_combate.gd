@@ -10,4 +10,4 @@ enum TipoEnergia {BALAS, ENERGIA, MANA}
 @export var tipo_energia: TipoEnergia = TipoEnergia.ENERGIA
 @export var energia_max: int = 100
 @export var inventario: Array[RecursoItem] = []
-@export var sprite_frames: SpriteFrames
+@export var textura: Texture2D

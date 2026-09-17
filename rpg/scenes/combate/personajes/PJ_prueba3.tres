@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RecursoPersonajeCombate" format=3 uid="uid://j74bti8ts3xx"]
+
+[ext_resource type="Script" uid="uid://cr321xta8d7vw" path="res://scripts/recursos/recurso_ataque_especial.gd" id="1_11hll"]
+[ext_resource type="Resource" uid="uid://fs4a4q1muxlb" path="res://scenes/combate/armas/Arma_prueba3.tres" id="1_jf8b0"]
+[ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="2_6grfa"]
+[ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="3_i8bl3"]
+[ext_resource type="Resource" uid="uid://dptb0ei6sief" path="res://scenes/combate/ataques_especiales/Ataque_prueba1.tres" id="3_q02fx"]
+[ext_resource type="Resource" uid="uid://2mh0ud3g87ln" path="res://scenes/combate/items/DEFF_atk_prueba.tres" id="5_cdcee"]
+[ext_resource type="Resource" uid="uid://dgydfdsc4w06b" path="res://scenes/combate/items/DEFF_def_prueba.tres" id="6_2yfek"]
+[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="8_rsv7q"]
+
+[resource]
+script = ExtResource("3_i8bl3")
+nombre = "Prueba3"
+arma = ExtResource("1_jf8b0")
+ataques_especiales = Array[ExtResource("1_11hll")]([ExtResource("3_q02fx")])
+inventario = Array[ExtResource("2_6grfa")]([ExtResource("5_cdcee"), ExtResource("6_2yfek")])
+textura = ExtResource("8_rsv7q")
+metadata/_custom_type_script = "uid://b8536t7dcpoos"

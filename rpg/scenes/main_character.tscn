@@ -7,21 +7,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrcqd"]
 size = Vector2(127, 126)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ig48j"]
-atlas = ExtResource("1_nrcqd")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tqm6u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ig48j")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="MainCharacter" type="Node2D" unique_id=1843269011]
 script = ExtResource("3_explorador")
 
@@ -31,8 +16,8 @@ script = ExtResource("3_explorador")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_nrcqd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1724449459]
-sprite_frames = SubResource("SpriteFrames_tqm6u")
+[node name="Visual" type="Sprite2D" parent="CharacterBody2D" unique_id=1724449459]
+texture = ExtResource("1_nrcqd")
 
 [node name="Movimiento" type="Node" parent="CharacterBody2D" unique_id=158700056]
 script = ExtResource("2_ig48j")
