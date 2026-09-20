@@ -9,6 +9,7 @@
 script = ExtResource("1_script")
 
 [node name="Visual" type="Sprite3D" parent="." unique_id=566237608]
+billboard = 2
 
 [node name="Salud" type="Node" parent="." unique_id=587985161]
 script = ExtResource("2_salud")

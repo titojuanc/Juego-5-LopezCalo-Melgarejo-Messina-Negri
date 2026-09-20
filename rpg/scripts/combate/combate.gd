@@ -1,7 +1,9 @@
 extends Node
 class_name Combate
 
-signal ataque_realizado(dano: int)
+signal ataque_realizado(atacante: Node3D, objetivo: Salud, dano: int)
+
+@onready var propietario: Node3D = get_parent()
 
 var arma: RecursoArma
 var ataques_especiales: Array[RecursoAtaqueEspecial] = []
@@ -14,14 +16,20 @@ func inicializar(datos: RecursoPersonajeCombate) -> void:
 	ataques_especiales = datos.ataques_especiales
 	energia_max = datos.energia_max
 	energia_actual = datos.energia_max
-	
+
 func atacar(objetivo: Salud) -> void:
 	if arma == null or objetivo == null:
 		return
 	var dano := roundi(arma.daño * bonus_ataque)
 	objetivo.recibir_dano(dano)
-	ataque_realizado.emit(dano)
-	
+	ataque_realizado.emit(propietario, objetivo, dano)
+
+func atacar_enemigo(objetivo: Salud, ataque: int) -> void:
+	if objetivo == null:
+		return
+	objetivo.recibir_dano(ataque)
+	ataque_realizado.emit(propietario, objetivo, ataque)
+
 func usar_ataque_especial(indice: int, objetivo: Salud) -> void:
 	if indice < 0 or indice >= ataques_especiales.size() or objetivo == null:
 		return
@@ -31,4 +39,4 @@ func usar_ataque_especial(indice: int, objetivo: Salud) -> void:
 	energia_actual -= especial.costo_energia
 	var dano := roundi(especial.daño * bonus_ataque)
 	objetivo.recibir_dano(dano)
-	ataque_realizado.emit(dano)
+	ataque_realizado.emit(propietario, objetivo, dano)

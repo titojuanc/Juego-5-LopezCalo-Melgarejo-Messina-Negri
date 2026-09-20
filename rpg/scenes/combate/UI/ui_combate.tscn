@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dicy87axl3gsg"]
 
+[ext_resource type="Script" path="res://scripts/combate/ui_combate.gd" id="1_uiscript"]
+
 [node name="UiCombate" type="CanvasLayer" unique_id=1715428037]
+script = ExtResource("1_uiscript")
 
 [node name="Control" type="Control" parent="." unique_id=611697508]
 layout_mode = 3
@@ -96,3 +99,42 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_vertical = 3
 value = 100.0
+
+[node name="Menu" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -220.0
+offset_right = 340.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Turno" type="Label" parent="Control/Menu"]
+layout_mode = 2
+text = "Turno: -"
+
+[node name="Botones" type="HBoxContainer" parent="Control/Menu"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotonAtacar" type="Button" parent="Control/Menu/Botones"]
+layout_mode = 2
+text = "Atacar"
+
+[node name="BotonEspecial" type="Button" parent="Control/Menu/Botones"]
+layout_mode = 2
+text = "Especial"
+
+[node name="BotonDefender" type="Button" parent="Control/Menu/Botones"]
+layout_mode = 2
+text = "Defender"
+
+[node name="BotonItem" type="Button" parent="Control/Menu/Botones"]
+layout_mode = 2
+text = "Item"
+
+[node name="SubMenu" type="VBoxContainer" parent="Control/Menu"]
+layout_mode = 2
+visible = false

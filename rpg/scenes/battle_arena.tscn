@@ -6,6 +6,11 @@
 [ext_resource type="Resource" uid="uid://ba6gkps55l7p" path="res://scenes/combate/personajes/PJ_prueba1.tres" id="4_h3p5w"]
 [ext_resource type="Resource" uid="uid://dyefy5fuefcaj" path="res://scenes/combate/personajes/PJ_prueba2.tres" id="5_7kbcm"]
 [ext_resource type="Resource" uid="uid://j74bti8ts3xx" path="res://scenes/combate/personajes/PJ_prueba3.tres" id="6_yb4oc"]
+[ext_resource type="Script" uid="uid://blmtf7ntdp5qd" path="res://scripts/combate/camara_combate.gd" id="7_camcombate"]
+[ext_resource type="PackedScene" path="res://scenes/combate/enemigos/personaje_enemigo.tscn" id="8_enemigo"]
+[ext_resource type="Resource" uid="uid://ho5kiidflp3n" path="res://scenes/combate/enemigos/test_enemigo.tres" id="9_datosenemigo"]
+[ext_resource type="Script" uid="uid://b3m0w2nsoup5h" path="res://scripts/combate/debug_camara.gd" id="10_debugcamara"]
+[ext_resource type="PackedScene" uid="uid://dicy87axl3gsg" path="res://scenes/combate/UI/ui_combate.tscn" id="11_uicombate"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kfgqx"]
 size = Vector3(50, 1, 50)
@@ -16,9 +21,52 @@ size = Vector3(50, 1, 50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("BoxMesh_kfgqx")
 
-[node name="BattleManager" type="Node" parent="." unique_id=1487565887]
+[node name="BattleManager" type="Node" parent="." unique_id=1487565887 node_paths=PackedStringArray("camara", "enemigo")]
 script = ExtResource("1_battlemgr")
 escena_personaje = ExtResource("2_d3rmf")
 equipo = Array[ExtResource("3_j3iaf")]([ExtResource("4_h3p5w"), ExtResource("5_7kbcm"), ExtResource("6_yb4oc")])
+camara = NodePath("../CamaraCombate")
+posiciones_equipo = Array[Vector3]([Vector3(-10, 0, 0), Vector3(0, 0, 10), Vector3(10, 0, 0)])
+enemigo = NodePath("../Enemigo")
 
 [node name="Equipo" type="Node3D" parent="BattleManager" unique_id=1903577391]
+
+[node name="Tomas" type="Node3D" parent="." unique_id=1409650358]
+
+[node name="TomaOverview" type="Marker3D" parent="Tomas" unique_id=941254747]
+transform = Transform3D(-0.74209285, -0.07971432, 0.6655402, 0, 0.99290335, 0.118923865, -0.6702971, 0.08825255, -0.7368265, 14, 4, -14)
+
+[node name="TomaAliado1" type="Marker3D" parent="Tomas" unique_id=869693074]
+transform = Transform3D(-0.099493414, 0.049474664, -0.9938075, 0, 0.99876314, 0.04972137, 0.9950382, 0.004946949, -0.09937035, -16, 1.8, -1.6)
+
+[node name="TomaAliado2" type="Marker3D" parent="Tomas" unique_id=1341010222]
+transform = Transform3D(0.9950382, 0.0049469494, -0.09937036, 0, 0.99876314, 0.04972137, 0.09949342, -0.049474664, 0.9938075, -1.6, 1.8, 16)
+
+[node name="TomaAliado3" type="Marker3D" parent="Tomas" unique_id=592185446]
+transform = Transform3D(0.099493444, -0.049474664, 0.9938075, 0, 0.99876314, 0.04972137, -0.9950382, -0.0049469504, 0.09937038, 16, 1.8, 1.6)
+
+[node name="TomaEnemigo" type="Marker3D" parent="Tomas" unique_id=1131056656]
+transform = Transform3D(-1, 1.7832804e-08, -8.558465e-08, 0, 0.97897434, 0.2039835, 8.742278e-08, 0.2039835, -0.97897434, 0, 3.5, -9)
+
+[node name="CamaraCombate" type="Camera3D" parent="." unique_id=1725129946 node_paths=PackedStringArray("toma_overview", "toma_enemigo", "tomas_aliados")]
+current = true
+script = ExtResource("7_camcombate")
+toma_overview = NodePath("../Tomas/TomaOverview")
+toma_enemigo = NodePath("../Tomas/TomaEnemigo")
+tomas_aliados = [NodePath("../Tomas/TomaAliado1"), NodePath("../Tomas/TomaAliado2"), NodePath("../Tomas/TomaAliado3")]
+
+[node name="Enemigo" parent="." unique_id=1737162649 instance=ExtResource("8_enemigo")]
+datos = ExtResource("9_datosenemigo")
+
+[node name="DebugCamara" type="Node" parent="." unique_id=342872099 node_paths=PackedStringArray("camara")]
+script = ExtResource("10_debugcamara")
+camara = NodePath("../CamaraCombate")
+
+[node name="UiCombate" parent="." unique_id=1534499790 node_paths=PackedStringArray("battle_manager") instance=ExtResource("11_uicombate")]
+battle_manager = NodePath("../BattleManager")
+
+[connection signal="turno_cambio" from="BattleManager" to="UiCombate" method="actualizar_turno"]
+[connection signal="ataque_realizado" from="Enemigo/Combate" to="CamaraCombate" method="enfocar_enemigo"]
+
+[editable path="Enemigo"]
+[editable path="UiCombate"]
