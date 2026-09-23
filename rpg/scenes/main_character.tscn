@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ddcrbqx7q3gyc"]
+
+[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="1_nrcqd"]
+[ext_resource type="Script" uid="uid://3q4gmc58l6oy" path="res://scripts/movimiento_jugador.gd" id="2_ig48j"]
+[ext_resource type="Script" path="res://scripts/personaje_explorador.gd" id="3_explorador"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrcqd"]
+size = Vector2(127, 126)
+
+[node name="MainCharacter" type="Node2D" unique_id=1843269011]
+script = ExtResource("3_explorador")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1402744092]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=222351120]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_nrcqd")
+
+[node name="Visual" type="Sprite2D" parent="CharacterBody2D" unique_id=1724449459]
+texture = ExtResource("1_nrcqd")
+
+[node name="Movimiento" type="Node" parent="CharacterBody2D" unique_id=158700056]
+script = ExtResource("2_ig48j")
+
+[node name="Interaccion" type="Node" parent="CharacterBody2D" unique_id=1967586271]

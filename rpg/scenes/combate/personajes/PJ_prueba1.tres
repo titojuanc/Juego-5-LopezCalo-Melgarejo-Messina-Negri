@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RecursoPersonajeCombate" format=3 uid="uid://ba6gkps55l7p"]
+
+[ext_resource type="Resource" uid="uid://cttwwtd233nnx" path="res://scenes/combate/armas/Arma_prueba1.tres" id="1_5j07o"]
+[ext_resource type="Script" uid="uid://cr321xta8d7vw" path="res://scripts/recursos/recurso_ataque_especial.gd" id="1_7vgks"]
+[ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="2_touyw"]
+[ext_resource type="Resource" uid="uid://dptb0ei6sief" path="res://scenes/combate/ataques_especiales/Ataque_prueba1.tres" id="3_2boni"]
+[ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="3_6uskk"]
+[ext_resource type="Resource" uid="uid://bemw78jdmkxks" path="res://scenes/combate/items/HP_prueba.tres" id="5_5vxgd"]
+[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="7_5q5sv"]
+
+[resource]
+script = ExtResource("3_6uskk")
+nombre = "Prueba1"
+arma = ExtResource("1_5j07o")
+ataques_especiales = Array[ExtResource("1_7vgks")]([ExtResource("3_2boni")])
+inventario = Array[ExtResource("2_touyw")]([ExtResource("5_5vxgd")])
+textura = ExtResource("7_5q5sv")
+metadata/_custom_type_script = "uid://b8536t7dcpoos"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecursoAtaqueEspecial" format=3 uid="uid://dptb0ei6sief"]
+
+[ext_resource type="Script" uid="uid://cr321xta8d7vw" path="res://scripts/recursos/recurso_ataque_especial.gd" id="1_81rrf"]
+
+[resource]
+script = ExtResource("1_81rrf")
+nombre = "Prueba1"
+"daño" = 50
+costo_energia = 10
+descripcion = "Esto es un ataque especial de prueba"
+metadata/_custom_type_script = "uid://cr321xta8d7vw"
