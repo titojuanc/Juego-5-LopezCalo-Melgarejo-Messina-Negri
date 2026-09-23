@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Alineamiento="*res://scripts/alineamiento/gestor_alineamiento.gd"
+Global="*uid://b2glroevtqgp5"
 
 [physics]
 

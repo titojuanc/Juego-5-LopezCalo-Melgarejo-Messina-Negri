@@ -2,6 +2,9 @@ extends CanvasLayer
 class_name UiCombate
 
 @export var battle_manager: BattleManager
+@export var PartyHealthbar :PackedScene
+@export var EnemyHealthbar :PackedScene
+
 
 @onready var label_turno: Label = $Control/Menu/Turno
 @onready var boton_atacar: Button = $Control/Menu/Botones/BotonAtacar
@@ -16,9 +19,22 @@ func _ready() -> void:
 	boton_atacar.pressed.connect(_on_atacar_presionado)
 	boton_especial.pressed.connect(_on_especial_presionado)
 	boton_defender.pressed.connect(_on_defender_presionado)
+	#Global.new_personaje.connect(añadirPersonaje)
+	#Global.new_enemigo.connect(añadirEnemigo)
 	boton_item.pressed.connect(_on_item_presionado)
+	
+
 	if battle_manager:
 		actualizar_turno(battle_manager.personaje_actual())
+		var cantidad := clampi(battle_manager.equipo.size(), 1, 3)
+		
+		for i in cantidad:
+
+			añadirPersonaje(battle_manager.equipo[i])
+		cantidad = clampi(battle_manager.enemigos.size(), 1, 4)
+		for i in cantidad:
+			añadirEnemigo(battle_manager.enemigos[i])
+
 
 ## Conectar desde BattleManager (señal "turno_cambio") por Inspector, Node -> Signals.
 func actualizar_turno(actor: Node3D) -> void:
@@ -76,3 +92,12 @@ func _cerrar_submenu() -> void:
 	submenu.visible = false
 	for hijo in submenu.get_children():
 		hijo.queue_free()
+		
+func añadirPersonaje(personaje):
+	var Healthbar:UiEstadoP=PartyHealthbar.instantiate()
+	Healthbar.datosP=personaje
+	$Control/ContainerEstadoParty.add_child(Healthbar)
+func añadirEnemigo(enemigo):
+	var Healthbar:UiEstado=EnemyHealthbar.instantiate()
+	Healthbar.datos=enemigo
+	$Control/ContainerEstadoFoes.add_child(Healthbar)

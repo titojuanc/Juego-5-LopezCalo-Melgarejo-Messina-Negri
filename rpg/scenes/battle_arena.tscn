@@ -8,9 +8,13 @@
 [ext_resource type="Resource" uid="uid://j74bti8ts3xx" path="res://scenes/combate/personajes/PJ_prueba3.tres" id="6_yb4oc"]
 [ext_resource type="Script" uid="uid://blmtf7ntdp5qd" path="res://scripts/combate/camara_combate.gd" id="7_camcombate"]
 [ext_resource type="PackedScene" path="res://scenes/combate/enemigos/personaje_enemigo.tscn" id="8_enemigo"]
-[ext_resource type="Resource" uid="uid://ho5kiidflp3n" path="res://scenes/combate/enemigos/test_enemigo.tres" id="9_datosenemigo"]
+[ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="8_tmtb4"]
+[ext_resource type="Resource" uid="uid://ho5kiidflp3n" path="res://scenes/combate/enemigos/test_enemigo1.tres" id="9_ts8p1"]
 [ext_resource type="Script" uid="uid://b3m0w2nsoup5h" path="res://scripts/combate/debug_camara.gd" id="10_debugcamara"]
+[ext_resource type="Resource" uid="uid://cnmmf5a2nardi" path="res://scenes/combate/enemigos/test_enemigo2.tres" id="10_ei3no"]
+[ext_resource type="Resource" uid="uid://dnps1qstl00qq" path="res://scenes/combate/enemigos/test_enemigo3.tres" id="11_itwoe"]
 [ext_resource type="PackedScene" uid="uid://dicy87axl3gsg" path="res://scenes/combate/UI/ui_combate.tscn" id="11_uicombate"]
+[ext_resource type="Resource" uid="uid://di7tlmsoc0qnr" path="res://scenes/combate/enemigos/test_enemigo4.tres" id="12_4wnud"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kfgqx"]
 size = Vector3(50, 1, 50)
@@ -21,15 +25,19 @@ size = Vector3(50, 1, 50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("BoxMesh_kfgqx")
 
-[node name="BattleManager" type="Node" parent="." unique_id=1487565887 node_paths=PackedStringArray("camara", "enemigo")]
+[node name="BattleManager" type="Node" parent="." unique_id=1487565887 node_paths=PackedStringArray("camara")]
 script = ExtResource("1_battlemgr")
 escena_personaje = ExtResource("2_d3rmf")
+escena_enemigo = ExtResource("8_enemigo")
 equipo = Array[ExtResource("3_j3iaf")]([ExtResource("4_h3p5w"), ExtResource("5_7kbcm"), ExtResource("6_yb4oc")])
 camara = NodePath("../CamaraCombate")
 posiciones_equipo = Array[Vector3]([Vector3(-10, 0, 0), Vector3(0, 0, 10), Vector3(10, 0, 0)])
-enemigo = NodePath("../Enemigo")
+posiciones_enemigos = Array[Vector3]([Vector3(-1, 0, 1), Vector3(1, 0, 1), Vector3(1, 0, -1), Vector3(-1, 0, -1)])
+enemigos = Array[ExtResource("8_tmtb4")]([ExtResource("9_ts8p1"), ExtResource("10_ei3no"), ExtResource("11_itwoe"), ExtResource("12_4wnud")])
 
 [node name="Equipo" type="Node3D" parent="BattleManager" unique_id=1903577391]
+
+[node name="Enemigos" type="Node3D" parent="BattleManager" unique_id=1000325906]
 
 [node name="Tomas" type="Node3D" parent="." unique_id=1409650358]
 
@@ -55,9 +63,6 @@ toma_overview = NodePath("../Tomas/TomaOverview")
 toma_enemigo = NodePath("../Tomas/TomaEnemigo")
 tomas_aliados = [NodePath("../Tomas/TomaAliado1"), NodePath("../Tomas/TomaAliado2"), NodePath("../Tomas/TomaAliado3")]
 
-[node name="Enemigo" parent="." unique_id=1737162649 instance=ExtResource("8_enemigo")]
-datos = ExtResource("9_datosenemigo")
-
 [node name="DebugCamara" type="Node" parent="." unique_id=342872099 node_paths=PackedStringArray("camara")]
 script = ExtResource("10_debugcamara")
 camara = NodePath("../CamaraCombate")
@@ -66,7 +71,5 @@ camara = NodePath("../CamaraCombate")
 battle_manager = NodePath("../BattleManager")
 
 [connection signal="turno_cambio" from="BattleManager" to="UiCombate" method="actualizar_turno"]
-[connection signal="ataque_realizado" from="Enemigo/Combate" to="CamaraCombate" method="enfocar_enemigo"]
 
-[editable path="Enemigo"]
 [editable path="UiCombate"]

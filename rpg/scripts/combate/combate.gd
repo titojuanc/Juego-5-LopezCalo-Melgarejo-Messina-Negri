@@ -38,5 +38,9 @@ func usar_ataque_especial(indice: int, objetivo: Salud) -> void:
 		return
 	energia_actual -= especial.costo_energia
 	var dano := roundi(especial.daño * bonus_ataque)
-	objetivo.recibir_dano(dano)
-	ataque_realizado.emit(propietario, objetivo, dano)
+	if(especial.tipoSpell == especial.TipoSpell.DAÑO ):
+		objetivo.recibir_dano(dano)
+		ataque_realizado.emit(propietario, objetivo, dano)
+
+	else:
+		objetivo.curar(dano)

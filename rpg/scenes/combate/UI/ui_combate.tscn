@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://dicy87axl3gsg"]
 
-[ext_resource type="Script" path="res://scripts/combate/ui_combate.gd" id="1_uiscript"]
+[ext_resource type="Script" uid="uid://sci2lrf876w5" path="res://scripts/combate/ui_combate.gd" id="1_uiscript"]
+[ext_resource type="PackedScene" uid="uid://c7q2n6duk52qi" path="res://scenes/combate/UI/ui_estado_party.tscn" id="2_bd624"]
+[ext_resource type="PackedScene" uid="uid://tp8uvod817c2" path="res://scenes/combate/UI/ui_estado.tscn" id="3_51nio"]
 
 [node name="UiCombate" type="CanvasLayer" unique_id=1715428037]
 script = ExtResource("1_uiscript")
+PartyHealthbar = ExtResource("2_bd624")
+EnemyHealthbar = ExtResource("3_51nio")
 
 [node name="Control" type="Control" parent="." unique_id=611697508]
 layout_mode = 3
@@ -13,94 +17,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1888852998]
+[node name="ContainerEstadoParty" type="HBoxContainer" parent="Control" unique_id=1888852998]
 layout_mode = 0
 offset_right = 700.0
 offset_bottom = 110.0
 theme_override_constants/separation = 16
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer" unique_id=952530340]
-layout_mode = 2
+[node name="ContainerEstadoFoes" type="HBoxContainer" parent="Control" unique_id=2114864552]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 538.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/separation = 16
+alignment = 2
 
-[node name="Contenido" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="Retrato" type="TextureRect" parent="Control/HBoxContainer/PanelContainer/Contenido"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="Barras" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer/Contenido"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BarraVida" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer/Contenido/Barras"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_vertical = 3
-value = 100.0
-
-[node name="BarraEnergia" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer/Contenido/Barras"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_vertical = 3
-value = 100.0
-
-[node name="PanelContainer2" type="PanelContainer" parent="Control/HBoxContainer" unique_id=908566915]
-layout_mode = 2
-
-[node name="Contenido" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer2"]
-layout_mode = 2
-
-[node name="Retrato" type="TextureRect" parent="Control/HBoxContainer/PanelContainer2/Contenido"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="Barras" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer2/Contenido"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BarraVida" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer2/Contenido/Barras"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_vertical = 3
-value = 100.0
-
-[node name="BarraEnergia" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer2/Contenido/Barras"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_vertical = 3
-value = 100.0
-
-[node name="PanelContainer3" type="PanelContainer" parent="Control/HBoxContainer" unique_id=86873574]
-layout_mode = 2
-
-[node name="Contenido" type="HBoxContainer" parent="Control/HBoxContainer/PanelContainer3"]
-layout_mode = 2
-
-[node name="Retrato" type="TextureRect" parent="Control/HBoxContainer/PanelContainer3/Contenido"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-stretch_mode = 5
-
-[node name="Barras" type="VBoxContainer" parent="Control/HBoxContainer/PanelContainer3/Contenido"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BarraVida" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer3/Contenido/Barras"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_vertical = 3
-value = 100.0
-
-[node name="BarraEnergia" type="ProgressBar" parent="Control/HBoxContainer/PanelContainer3/Contenido/Barras"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_vertical = 3
-value = 100.0
-
-[node name="Menu" type="VBoxContainer" parent="Control"]
+[node name="Menu" type="VBoxContainer" parent="Control" unique_id=213839313]
 layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -111,30 +43,30 @@ offset_bottom = -20.0
 grow_vertical = 0
 theme_override_constants/separation = 8
 
-[node name="Turno" type="Label" parent="Control/Menu"]
+[node name="Turno" type="Label" parent="Control/Menu" unique_id=1994618504]
 layout_mode = 2
 text = "Turno: -"
 
-[node name="Botones" type="HBoxContainer" parent="Control/Menu"]
+[node name="Botones" type="HBoxContainer" parent="Control/Menu" unique_id=1113977392]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="BotonAtacar" type="Button" parent="Control/Menu/Botones"]
+[node name="BotonAtacar" type="Button" parent="Control/Menu/Botones" unique_id=1309103864]
 layout_mode = 2
 text = "Atacar"
 
-[node name="BotonEspecial" type="Button" parent="Control/Menu/Botones"]
+[node name="BotonEspecial" type="Button" parent="Control/Menu/Botones" unique_id=2042860255]
 layout_mode = 2
 text = "Especial"
 
-[node name="BotonDefender" type="Button" parent="Control/Menu/Botones"]
+[node name="BotonDefender" type="Button" parent="Control/Menu/Botones" unique_id=2136656740]
 layout_mode = 2
 text = "Defender"
 
-[node name="BotonItem" type="Button" parent="Control/Menu/Botones"]
+[node name="BotonItem" type="Button" parent="Control/Menu/Botones" unique_id=1510532796]
 layout_mode = 2
 text = "Item"
 
-[node name="SubMenu" type="VBoxContainer" parent="Control/Menu"]
-layout_mode = 2
+[node name="SubMenu" type="VBoxContainer" parent="Control/Menu" unique_id=1257457460]
 visible = false
+layout_mode = 2
