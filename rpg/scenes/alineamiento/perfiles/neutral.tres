@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecursoPerfilAlineamiento" format=3]
+
+[ext_resource type="Script" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="1_perfil"]
+
+[resource]
+script = ExtResource("1_perfil")
+nombre = "Neutral"
+posicion_ley = 0.0
+posicion_bien = 0.0
