@@ -3,6 +3,8 @@ class_name BattleManager
 
 signal turno_cambio(actor: Node3D)
 
+
+
 @export var escena_personaje: PackedScene
 
 @export var escena_enemigo: PackedScene
@@ -24,6 +26,8 @@ signal turno_cambio(actor: Node3D)
 @onready var contenedor_enemigos: Node3D = $Enemigos
 
 
+
+
 var _combatientes: Array = []
 var _turno_actual: int = -1
 
@@ -43,6 +47,8 @@ func _generar_equipos() -> void:
 		contenedor_equipo.add_child(personaje)
 		if i < posiciones_equipo.size():
 			personaje.position = posiciones_equipo[i]
+			Global.new_personaje.emit(personaje)
+
 	cantidad = clampi(enemigos.size(), 1, 4)
 	for i in cantidad:
 		var enemigo: PersonajeEnemigo = escena_enemigo.instantiate()
@@ -50,6 +56,7 @@ func _generar_equipos() -> void:
 		contenedor_enemigos.add_child(enemigo)
 		if i < posiciones_enemigos.size():
 			enemigo.position = posiciones_enemigos[i]
+			Global.new_enemigo.emit(enemigo)
 
 
 func personaje_actual() -> Node3D:

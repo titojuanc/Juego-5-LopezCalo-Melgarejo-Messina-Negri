@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://tp8uvod817c2"]
 
+[ext_resource type="Script" uid="uid://cr1q7oober6x7" path="res://scripts/combate/ui_estado.gd" id="1_11l0e"]
+
 [node name="PanelContainer" type="PanelContainer" unique_id=1056025193]
+script = ExtResource("1_11l0e")
 
 [node name="Contenido" type="HBoxContainer" parent="." unique_id=1323515144]
 layout_mode = 2

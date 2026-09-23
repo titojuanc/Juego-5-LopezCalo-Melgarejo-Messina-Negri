@@ -6,6 +6,8 @@
 
 [node name="UiCombate" type="CanvasLayer" unique_id=1715428037]
 script = ExtResource("1_uiscript")
+PartyHealthbar = ExtResource("2_bd624")
+EnemyHealthbar = ExtResource("3_51nio")
 
 [node name="Control" type="Control" parent="." unique_id=611697508]
 layout_mode = 3
@@ -21,20 +23,14 @@ offset_right = 700.0
 offset_bottom = 110.0
 theme_override_constants/separation = 16
 
-[node name="PanelContainer" parent="Control/ContainerEstadoParty" unique_id=1056025193 instance=ExtResource("2_bd624")]
-layout_mode = 2
-
 [node name="ContainerEstadoFoes" type="HBoxContainer" parent="Control" unique_id=2114864552]
 layout_mode = 0
-offset_left = 455.0
-offset_top = 2.0
-offset_right = 1155.0
-offset_bottom = 112.0
+offset_left = 1.0
+offset_top = 538.0
+offset_right = 1152.0
+offset_bottom = 648.0
 theme_override_constants/separation = 16
 alignment = 2
-
-[node name="PanelContainer" parent="Control/ContainerEstadoFoes" unique_id=1939494548 instance=ExtResource("3_51nio")]
-layout_mode = 2
 
 [node name="Menu" type="VBoxContainer" parent="Control" unique_id=213839313]
 layout_mode = 0

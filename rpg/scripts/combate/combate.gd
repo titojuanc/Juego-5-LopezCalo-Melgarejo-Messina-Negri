@@ -40,6 +40,7 @@ func usar_ataque_especial(indice: int, objetivo: Salud) -> void:
 	var dano := roundi(especial.daño * bonus_ataque)
 	if(especial.tipoSpell == especial.TipoSpell.DAÑO ):
 		objetivo.recibir_dano(dano)
+		ataque_realizado.emit(propietario, objetivo, dano)
+
 	else:
 		objetivo.curar(dano)
-	ataque_realizado.emit(propietario, objetivo, dano)
