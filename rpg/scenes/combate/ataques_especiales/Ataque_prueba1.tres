@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_81rrf")
-nombre = "Prueba1"
+nombre = "PruebaCura"
 "daño" = 50
 costo_energia = 10
 descripcion = "Esto es un ataque especial de prueba"
