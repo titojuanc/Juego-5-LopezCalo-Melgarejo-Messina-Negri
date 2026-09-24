@@ -7,6 +7,7 @@
 script = ExtResource("2_6gxps")
 
 [node name="BarraEnergia" type="ProgressBar" parent="Contenido/Barras" parent_id_path=PackedInt32Array(763885399) index="1" unique_id=906017100]
+mouse_filter = 2
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_vertical = 3

@@ -6,18 +6,22 @@
 script = ExtResource("1_11l0e")
 
 [node name="Contenido" type="HBoxContainer" parent="." unique_id=1323515144]
+mouse_filter = 2
 layout_mode = 2
 
 [node name="Retrato" type="TextureRect" parent="Contenido" unique_id=741850456]
+mouse_filter = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 stretch_mode = 5
 
 [node name="Barras" type="VBoxContainer" parent="Contenido" unique_id=763885399]
+mouse_filter = 2
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="BarraVida" type="ProgressBar" parent="Contenido/Barras" unique_id=1209497321]
+mouse_filter = 2
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_vertical = 3

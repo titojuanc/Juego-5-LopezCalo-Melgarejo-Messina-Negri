@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_81rrf")
 nombre = "PruebaCura"
+tipoSpell = 1
 "daño" = 50
 costo_energia = 10
-descripcion = "Esto es un ataque especial de prueba"
+descripcion = "Esto es un hecizo de cura"
 metadata/_custom_type_script = "uid://cr321xta8d7vw"

@@ -2,6 +2,8 @@ extends Node
 class_name Combate
 
 signal ataque_realizado(atacante: Node3D, objetivo: Salud, dano: int)
+signal energia_cambiada(actual: int, maximo: int)
+signal modificado(positivo: bool)
 
 @onready var propietario: Node3D = get_parent()
 
@@ -27,8 +29,9 @@ func atacar(objetivo: Salud) -> void:
 func atacar_enemigo(objetivo: Salud, ataque: int) -> void:
 	if objetivo == null:
 		return
-	objetivo.recibir_dano(ataque)
-	ataque_realizado.emit(propietario, objetivo, ataque)
+	var dano := roundi(ataque * bonus_ataque)
+	objetivo.recibir_dano(dano)
+	ataque_realizado.emit(propietario, objetivo, dano)
 
 func usar_ataque_especial(indice: int, objetivo: Salud) -> void:
 	if indice < 0 or indice >= ataques_especiales.size() or objetivo == null:
@@ -37,6 +40,7 @@ func usar_ataque_especial(indice: int, objetivo: Salud) -> void:
 	if especial.costo_energia > energia_actual:
 		return
 	energia_actual -= especial.costo_energia
+	energia_cambiada.emit(energia_actual, energia_max)
 	var dano := roundi(especial.daño * bonus_ataque)
 	if(especial.tipoSpell == especial.TipoSpell.DAÑO ):
 		objetivo.recibir_dano(dano)

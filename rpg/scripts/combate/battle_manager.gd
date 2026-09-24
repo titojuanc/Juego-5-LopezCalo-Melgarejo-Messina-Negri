@@ -21,6 +21,8 @@ signal turno_cambio(actor: Node3D)
 
 @export var demora_turno_enemigo: float = 1.0
 
+@export var demora_entre_turnos: float = 1.0
+
 @onready var contenedor_equipo: Node3D = $Equipo
 
 @onready var contenedor_enemigos: Node3D = $Enemigos
@@ -89,10 +91,14 @@ func _mover_camara_a(actor: Node3D) -> void:
 		if indice != -1:
 			camara.enfocar_aliado(indice)
 
+func terminar_turno() -> void:
+	await get_tree().create_timer(demora_entre_turnos).timeout
+	avanzar_turno()
+
 func _turno_enemigo(enemigo: PersonajeEnemigo) -> void:
+	await get_tree().create_timer(demora_turno_enemigo).timeout
 	var vivos: Array = contenedor_equipo.get_children().filter(func(p): return p.salud.esta_viva())
 	if not vivos.is_empty():
 		var objetivo = vivos[randi() % vivos.size()]
 		enemigo.atacar(objetivo.salud)
-	await get_tree().create_timer(demora_turno_enemigo).timeout
-	avanzar_turno()
+	terminar_turno()

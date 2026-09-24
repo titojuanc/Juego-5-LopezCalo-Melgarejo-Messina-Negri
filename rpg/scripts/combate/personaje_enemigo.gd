@@ -6,6 +6,7 @@ class_name PersonajeEnemigo
 @onready var visual: Sprite3D = $Visual
 @onready var salud: Salud = $Salud
 @onready var combate: Combate = $Combate
+@onready var animaciones: Animaciones = $Animaciones
 
 func _ready() -> void:
 	if datos:

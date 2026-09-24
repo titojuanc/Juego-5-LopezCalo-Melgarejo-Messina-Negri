@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/combate/personaje_enemigo.gd" id="1_script"]
 [ext_resource type="Script" path="res://scripts/combate/salud.gd" id="2_salud"]
 [ext_resource type="Script" path="res://scripts/combate/combate.gd" id="3_combate"]
+[ext_resource type="Script" path="res://scripts/combate/animaciones.gd" id="4_animaciones"]
 
 [node name="PersonajeEnemigo" type="Node3D"]
 script = ExtResource("1_script")
@@ -15,3 +16,6 @@ script = ExtResource("2_salud")
 
 [node name="Combate" type="Node" parent="."]
 script = ExtResource("3_combate")
+
+[node name="Animaciones" type="Node" parent="."]
+script = ExtResource("4_animaciones")
