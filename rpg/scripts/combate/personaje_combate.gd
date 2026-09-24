@@ -7,6 +7,7 @@ class_name PersonajeCombate
 @onready var salud: Salud = $Salud
 @onready var combate: Combate = $Combate
 @onready var inventario: Inventario = $Inventario
+@onready var animaciones: Animaciones = $Animaciones
 
 func _ready() -> void:
 	if datos:

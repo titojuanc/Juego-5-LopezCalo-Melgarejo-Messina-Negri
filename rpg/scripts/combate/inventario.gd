@@ -22,5 +22,9 @@ func usar_item(indice: int, salud_objetivo: Salud, combate_objetivo: Combate) ->
 		salud_objetivo.bonus_defensa -= item.valor / 100.0
 	elif item.tipo == RecursoItem.TipoItem.DEF_DOWN:
 		salud_objetivo.bonus_defensa += item.valor / 100.0
+	if item.tipo == RecursoItem.TipoItem.ATK_UP or item.tipo == RecursoItem.TipoItem.DEF_UP:
+		combate_objetivo.modificado.emit(true)
+	elif item.tipo == RecursoItem.TipoItem.ATK_DOWN or item.tipo == RecursoItem.TipoItem.DEF_DOWN:
+		combate_objetivo.modificado.emit(false)
 	items.remove_at(indice)
 	item_usado.emit(item)

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ca8lrji54b5ts" path="res://scripts/combate/salud.gd" id="2_salud"]
 [ext_resource type="Script" uid="uid://n7th1xsm1pd1" path="res://scripts/combate/combate.gd" id="3_combate"]
 [ext_resource type="Script" uid="uid://doto8y4vlu0f1" path="res://scripts/combate/inventario.gd" id="4_inventario"]
+[ext_resource type="Script" path="res://scripts/combate/animaciones.gd" id="5_animaciones"]
 
 [node name="PersonajeCombate" type="Node3D" unique_id=418016146]
 script = ExtResource("1_script")
@@ -19,3 +20,6 @@ script = ExtResource("3_combate")
 
 [node name="Inventario" type="Node" parent="." unique_id=685335811]
 script = ExtResource("4_inventario")
+
+[node name="Animaciones" type="Node" parent="."]
+script = ExtResource("5_animaciones")

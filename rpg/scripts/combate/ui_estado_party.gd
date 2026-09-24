@@ -1,22 +1,13 @@
-extends PanelContainer
+extends UiEstado
 class_name UiEstadoP
-@onready var barraEnergia=$Contenido/Barras/BarraEnergia
 
-@export var datosP : RecursoPersonajeCombate
+@onready var barraEnergia = $Contenido/Barras/BarraEnergia
 
-@onready var barraVida = $Contenido/Barras/BarraVida
+func datosExtra(personaje) -> void:
+	barraEnergia.max_value = personaje.combate.energia_max
+	barraEnergia.value = personaje.combate.energia_actual
+	personaje.combate.energia_cambiada.connect(_on_energia_cambiada)
 
-@onready var retrato = $Contenido/Retrato
-
-func _ready() -> void:
-	print(datosP)
-	configurarP(datosP)
-	
-func configurarP(nuevos_datos: RecursoPersonajeCombate) -> void:
-	barraVida.max_value=nuevos_datos.vida_max
-	if nuevos_datos.textura:
-		retrato.texture = nuevos_datos.textura
-	datosExtra(nuevos_datos)
-
-func datosExtra(nuevos_datos: RecursoPersonajeCombate) -> void:
-	barraEnergia.max_value=nuevos_datos.energia_max
+func _on_energia_cambiada(actual: int, maximo: int) -> void:
+	barraEnergia.max_value = maximo
+	barraEnergia.value = actual
