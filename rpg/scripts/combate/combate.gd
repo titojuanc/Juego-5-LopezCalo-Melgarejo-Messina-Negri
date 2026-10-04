@@ -33,7 +33,7 @@ func atacar_enemigo(objetivo: Salud, ataque: int) -> void:
 	objetivo.recibir_dano(dano)
 	ataque_realizado.emit(propietario, objetivo, dano)
 
-func usar_ataque_especial(indice: int, objetivo: Salud) -> void:
+func usar_ataque_especial(indice: int, objetivo: Salud, multiplicador: float = 1.0) -> void:
 	if indice < 0 or indice >= ataques_especiales.size() or objetivo == null:
 		return
 	var especial := ataques_especiales[indice]
@@ -41,7 +41,7 @@ func usar_ataque_especial(indice: int, objetivo: Salud) -> void:
 		return
 	energia_actual -= especial.costo_energia
 	energia_cambiada.emit(energia_actual, energia_max)
-	var dano := roundi(especial.daño * bonus_ataque)
+	var dano := roundi(especial.daño * bonus_ataque * multiplicador)
 	if(especial.tipoSpell == especial.TipoSpell.DAÑO ):
 		objetivo.recibir_dano(dano)
 		ataque_realizado.emit(propietario, objetivo, dano)

@@ -10,4 +10,5 @@ vida_max = 500
 descripcion = "Este es un enemigo de prueba"
 ataque = 30
 textura = ExtResource("2_esk1s")
+debilidades = Array[int]([1])
 metadata/_custom_type_script = "uid://ca2ijkkdmetwi"

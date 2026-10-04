@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://sci2lrf876w5" path="res://scripts/combate/ui_combate.gd" id="1_uiscript"]
 [ext_resource type="PackedScene" uid="uid://c7q2n6duk52qi" path="res://scenes/combate/UI/ui_estado_party.tscn" id="2_bd624"]
 [ext_resource type="PackedScene" uid="uid://tp8uvod817c2" path="res://scenes/combate/UI/ui_estado.tscn" id="3_51nio"]
+[ext_resource type="PackedScene" path="res://scenes/combate/minijuegos/ventana_minijuego.tscn" id="4_ventana"]
 
-[node name="UiCombate" type="CanvasLayer" unique_id=1715428037]
+[node name="UiCombate" type="CanvasLayer" unique_id=1715428037 node_paths=PackedStringArray("ventana_minijuego")]
 script = ExtResource("1_uiscript")
 PartyHealthbar = ExtResource("2_bd624")
 EnemyHealthbar = ExtResource("3_51nio")
+ventana_minijuego = NodePath("VentanaMinijuego")
 
 [node name="Control" type="Control" parent="." unique_id=611697508]
 layout_mode = 3
@@ -73,3 +75,5 @@ text = "Item"
 mouse_filter = 2
 visible = false
 layout_mode = 2
+
+[node name="VentanaMinijuego" parent="." instance=ExtResource("4_ventana")]

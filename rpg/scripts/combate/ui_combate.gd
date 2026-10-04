@@ -4,6 +4,7 @@ class_name UiCombate
 @export var battle_manager: BattleManager
 @export var PartyHealthbar :PackedScene
 @export var EnemyHealthbar :PackedScene
+@export var ventana_minijuego: VentanaMinijuego
 
 
 @onready var label_turno: Label = $Control/Menu/Turno
@@ -74,10 +75,18 @@ func _usar_especial(indice: int) -> void:
 	var especial: RecursoAtaqueEspecial = _actor_actual.combate.ataques_especiales[indice]
 	if especial.costo_energia > _actor_actual.combate.energia_actual:
 		return
-	var candidatos = _enemigos()
 	if especial.tipoSpell == RecursoAtaqueEspecial.TipoSpell.CURA:
-		candidatos = _aliados()
-	_elegir_objetivo(candidatos, func(objetivo): _actor_actual.combate.usar_ataque_especial(indice, objetivo.salud))
+		_elegir_objetivo(_aliados(), func(objetivo): _actor_actual.combate.usar_ataque_especial(indice, objetivo.salud))
+		return
+	_elegir_objetivo(_enemigos(), _especial_con_minijuego.bind(indice))
+
+func _especial_con_minijuego(objetivo: Node3D, indice: int) -> void:
+	var actor := _actor_actual
+	var especial: RecursoAtaqueEspecial = actor.combate.ataques_especiales[indice]
+	var multiplicador := 1.0
+	if ventana_minijuego:
+		multiplicador = await ventana_minijuego.jugar(especial, objetivo)
+	actor.combate.usar_ataque_especial(indice, objetivo.salud, multiplicador)
 
 func _on_item_presionado() -> void:
 	if _actor_actual == null:
@@ -138,7 +147,8 @@ func _cancelar_seleccion() -> void:
 func _confirmar(objetivo: Node3D) -> void:
 	var callback := _al_elegir
 	_cancelar_seleccion()
-	callback.call(objetivo)
+	_habilitar_botones(false)
+	await callback.call(objetivo)
 	_terminar_turno()
 
 func _on_panel_elegido(personaje: Node3D) -> void:
