@@ -8,12 +8,13 @@
 [ext_resource type="Resource" uid="uid://bnkujiagopb3y" path="res://scenes/combate/items/BUFF_atk_prueba.tres" id="5_vctdu"]
 [ext_resource type="Resource" uid="uid://dofh3fa48hgow" path="res://scenes/combate/items/BUFF_def_prueba.tres" id="6_r4htr"]
 [ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="8_81bfs"]
+[ext_resource type="Resource" path="res://scenes/combate/ataques_especiales/Ataque_cortante_prueba.tres" id="9_cortante"]
 
 [resource]
 script = ExtResource("3_rcmxg")
 nombre = "Prueba2"
 arma = ExtResource("1_xxu80")
-ataques_especiales = Array[ExtResource("1_w7a42")]([ExtResource("3_vqq3k")])
+ataques_especiales = Array[ExtResource("1_w7a42")]([ExtResource("3_vqq3k"), ExtResource("9_cortante")])
 inventario = Array[ExtResource("2_d8nax")]([ExtResource("5_vctdu"), ExtResource("6_r4htr")])
 textura = ExtResource("8_81bfs")
 metadata/_custom_type_script = "uid://b8536t7dcpoos"
