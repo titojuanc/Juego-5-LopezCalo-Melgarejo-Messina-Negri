@@ -1,3 +1,72 @@
 [gd_scene format=3 uid="uid://dj21gxtl6y8jd"]
 
-[node name="MainMenu" type="Node2D" unique_id=900156192]
+[ext_resource type="Script" uid="uid://bmgy0itvigmtm" path="res://scripts/menus/menu_principal.gd" id="1_principal"]
+[ext_resource type="PackedScene" path="res://scenes/menus/menu_opciones.tscn" id="2_opciones"]
+
+[node name="MainMenu" type="Control" unique_id=1617991652]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_principal")
+
+[node name="Fondo" type="ColorRect" parent="." unique_id=1996256842]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 0.06, 0.12, 1)
+
+[node name="Centro" type="CenterContainer" parent="." unique_id=2081089549]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contenido" type="VBoxContainer" parent="Centro" unique_id=649868502]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Titulo" type="Label" parent="Centro/Contenido" unique_id=1347577572]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "RPG"
+horizontal_alignment = 1
+
+[node name="Botones" type="VBoxContainer" parent="Centro/Contenido" unique_id=376502987]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+
+[node name="BotonJugar" type="Button" parent="Centro/Contenido/Botones" unique_id=7086099]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Jugar"
+
+[node name="BotonOpciones" type="Button" parent="Centro/Contenido/Botones" unique_id=1109586195]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Opciones"
+
+[node name="BotonSalir" type="Button" parent="Centro/Contenido/Botones" unique_id=322503758]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Salir"
+
+[node name="MenuOpciones" parent="." unique_id=2141698652 instance=ExtResource("2_opciones")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Centro/Contenido/Botones/BotonJugar" to="." method="_on_jugar_presionado"]
+[connection signal="pressed" from="Centro/Contenido/Botones/BotonOpciones" to="." method="_on_opciones_presionado"]
+[connection signal="pressed" from="Centro/Contenido/Botones/BotonSalir" to="." method="_on_salir_presionado"]
+[connection signal="cerrado" from="MenuOpciones" to="." method="_on_opciones_cerrado"]
