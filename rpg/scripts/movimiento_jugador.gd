@@ -14,6 +14,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if MotorDialogo.activo or Transiciones.en_curso:
+		velocity = Vector2.ZERO
+		character_body.velocity = Vector2.ZERO
+		animated_sprite.play("Idle")
+		return
+
 	var input_velocity = Vector2.ZERO
 	
 	if Input.is_action_pressed("ui_right"):
@@ -30,7 +36,6 @@ func _physics_process(delta: float) -> void:
 		velocity = input_velocity * speed
 		animated_sprite.play("Walk")
 		
-		# Girar el sprite según la dirección horizontal
 		if input_velocity.x < 0:
 			animated_sprite.flip_h = true
 		elif input_velocity.x > 0:

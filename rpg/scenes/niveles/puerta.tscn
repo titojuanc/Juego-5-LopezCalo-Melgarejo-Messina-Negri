@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://fyx5uuakye7p"]
+
+[ext_resource type="Script" uid="uid://d4ky54kamf702" path="res://scripts/niveles/puerta.gd" id="1_puerta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw0nn"]
+size = Vector2(156, 119.5)
+
+[node name="Puerta" type="Node2D" unique_id=29171131]
+script = ExtResource("1_puerta")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=364308078]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=781141406]
+position = Vector2(0, -22.25)
+shape = SubResource("RectangleShape2D_mw0nn")
+
+[node name="PuntoLlegada" type="Marker2D" parent="."]
+position = Vector2(0, 64)
