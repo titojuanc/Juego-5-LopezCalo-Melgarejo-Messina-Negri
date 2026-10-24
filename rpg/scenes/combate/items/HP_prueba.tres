@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RecursoItem" format=3 uid="uid://bemw78jdmkxks"]
+
+[ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="1_wu8o3"]
+
+[resource]
+script = ExtResource("1_wu8o3")
+nombre = "PruebaHP"
+valor = 50
+descripcion = "Esto es una prueba"
+metadata/_custom_type_script = "uid://b8e256pukfayp"

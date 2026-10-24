@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecursoEnemigo" format=3 uid="uid://di7tlmsoc0qnr"]
+
+[ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="1_qwwuq"]
+[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="2_wkmbb"]
+
+[resource]
+script = ExtResource("1_qwwuq")
+nombre = "Enemigo1"
+vida_max = 500
+descripcion = "Este es un enemigo de prueba"
+ataque = 30
+textura = ExtResource("2_wkmbb")
+metadata/_custom_type_script = "uid://ca2ijkkdmetwi"

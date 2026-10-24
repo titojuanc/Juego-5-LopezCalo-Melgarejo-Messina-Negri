@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecursoItem" format=3 uid="uid://2mh0ud3g87ln"]
+
+[ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="1_iikku"]
+
+[resource]
+script = ExtResource("1_iikku")
+nombre = "DeffATKPrueba"
+tipo = 4
+valor = 20
+descripcion = "Esto es una prueba"
+metadata/_custom_type_script = "uid://b8e256pukfayp"

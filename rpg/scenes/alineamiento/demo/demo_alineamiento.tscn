@@ -1,0 +1,65 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/alineamiento/demo/demo_alineamiento.gd" id="1_demo"]
+[ext_resource type="PackedScene" path="res://scenes/alineamiento/demo/npc_prueba.tscn" id="2_npc"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/legal_bueno.tres" id="3_lb"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/neutral.tres" id="4_n"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/caotico_malvado.tres" id="5_cm"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/buena_accion.tres" id="6_buena"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/mala_accion.tres" id="7_mala"]
+[ext_resource type="Script" path="res://scripts/alineamiento/demo/jugador_prueba.gd" id="8_jugador"]
+[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="9_icono"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jugador"]
+size = Vector2(44, 44)
+
+[node name="DemoAlineamiento" type="Node2D"]
+script = ExtResource("1_demo")
+buena_accion = ExtResource("6_buena")
+mala_accion = ExtResource("7_mala")
+
+[node name="Piso" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.16, 0.18, 0.2, 1)
+
+[node name="NpcLegalBueno" parent="." instance=ExtResource("2_npc")]
+position = Vector2(230, 240)
+perfil = ExtResource("3_lb")
+
+[node name="NpcNeutral" parent="." instance=ExtResource("2_npc")]
+position = Vector2(576, 240)
+perfil = ExtResource("4_n")
+
+[node name="NpcCaoticoMalvado" parent="." instance=ExtResource("2_npc")]
+position = Vector2(922, 240)
+perfil = ExtResource("5_cm")
+
+[node name="Jugador" type="CharacterBody2D" parent="." groups=["jugador"]]
+position = Vector2(576, 520)
+motion_mode = 1
+script = ExtResource("8_jugador")
+
+[node name="Visual" type="Sprite2D" parent="Jugador"]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("9_icono")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
+shape = SubResource("RectangleShape2D_jugador")
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="LabelAlineamiento" type="Label" parent="Hud"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 500.0
+offset_bottom = 39.0
+
+[node name="Controles" type="Label" parent="Hud"]
+offset_left = 16.0
+offset_top = 44.0
+offset_right = 900.0
+offset_bottom = 67.0
+modulate = Color(1, 1, 1, 0.6)
+text = "Flechas: moverse | Q / E: buena / mala acción | 1 / 2 / 3: Legal bueno / Neutral / Caótico malvado"

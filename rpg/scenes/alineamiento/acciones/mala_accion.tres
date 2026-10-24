@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecursoAccionMoral" format=3]
+
+[ext_resource type="Script" path="res://scripts/alineamiento/recurso_accion_moral.gd" id="1_accion"]
+
+[resource]
+script = ExtResource("1_accion")
+nombre = "Mala acción"
+desplazamiento_ley = -0.25
+desplazamiento_bien = -0.25

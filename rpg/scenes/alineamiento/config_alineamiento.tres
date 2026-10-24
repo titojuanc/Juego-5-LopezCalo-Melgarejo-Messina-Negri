@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="RecursoConfigAlineamiento" format=3]
+
+[ext_resource type="Script" path="res://scripts/alineamiento/recurso_config_alineamiento.gd" id="1_config"]
+
+[resource]
+script = ExtResource("1_config")
