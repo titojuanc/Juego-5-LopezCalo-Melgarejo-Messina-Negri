@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pg2jomrlxn8i"
-path="res://.godot/imported/pisos_y_paredes.png-323db2839125f132553cd0bd4411a738.ctex"
+uid="uid://b0vx1te8m326t"
+path="res://.godot/imported/props_general.png-bfd7eefb66c3f44103b3dc8381eab69b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/<zhjrvkhgfrwgkhrwG/pisos_y_paredes.png"
-dest_files=["res://.godot/imported/pisos_y_paredes.png-323db2839125f132553cd0bd4411a738.ctex"]
+source_file="res://assets/tiles_entorno/props_general.png"
+dest_files=["res://.godot/imported/props_general.png-bfd7eefb66c3f44103b3dc8381eab69b.ctex"]
 
 [params]
 

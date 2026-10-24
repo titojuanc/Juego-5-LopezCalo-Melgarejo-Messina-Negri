@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://assets/<zhjrvkhgfrwgkhrwG/props_general_2.png"
+source_file="res://assets/tiles_entorno/props_general_2.png"
 dest_files=["res://.godot/imported/props_general_2.png-123326a167bcd2f0511827463e09868c.ctex"]
 
 [params]
