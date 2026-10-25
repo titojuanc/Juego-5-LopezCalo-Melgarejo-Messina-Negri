@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RecursoNpc" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/caotico_malvado.tres" id="2_perfil"]
+[ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="3_enemigo"]
+[ext_resource type="Resource" uid="uid://cnmmf5a2nardi" path="res://scenes/combate/enemigos/test_enemigo2.tres" id="4_enemigo2"]
+
+[resource]
+script = ExtResource("1_npc")
+id = &"maton"
+nombre = "Matón"
+perfil = ExtResource("2_perfil")
+lineas_amistoso = Array[String](["Eh, socio. ¿Buscás trabajo sucio?"])
+lineas_indiferente = Array[String](["¿Qué mirás?"])
+lineas_hostil = Array[String](["Mirá quién vino. El santito."])
+motivo_legal = "Olés a policía."
+motivo_bueno = "Los buenitos como vos me dan asco."
+enemigos = Array[ExtResource("3_enemigo")]([ExtResource("4_enemigo2")])

@@ -22,6 +22,7 @@ Global="*uid://b2glroevtqgp5"
 Configuracion="*res://scripts/configuracion.gd"
 MotorDialogo="*uid://chj31iqfavqv5"
 Transiciones="*res://scenes/HUD/Transiciones.tscn"
+Equipo="*res://scripts/party/gestor_equipo.gd"
 
 [global_group]
 

@@ -1,0 +1,65 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/npcs/npc.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/alineamiento/componente_reputacion.gd" id="2_reputacion"]
+[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="3_icono"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_npc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_icono")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuerpo"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interaccion"]
+size = Vector2(160, 160)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vision"]
+radius = 220.0
+
+[node name="Npc" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_npc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_npc")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="ColisionFisica" type="CollisionShape2D" parent="."]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_cuerpo")
+
+[node name="AreaInteraccion" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaInteraccion"]
+shape = SubResource("RectangleShape2D_interaccion")
+
+[node name="AreaVision" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaVision"]
+shape = SubResource("CircleShape2D_vision")
+
+[node name="IndicadorInteraccion" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(0, -90)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_icono")
+
+[node name="ComponenteReputacion" type="Node" parent="."]
+script = ExtResource("2_reputacion")

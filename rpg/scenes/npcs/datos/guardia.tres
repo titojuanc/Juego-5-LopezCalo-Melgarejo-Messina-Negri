@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RecursoNpc" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/legal_neutral.tres" id="2_perfil"]
+[ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="3_enemigo"]
+[ext_resource type="Resource" uid="uid://ho5kiidflp3n" path="res://scenes/combate/enemigos/test_enemigo1.tres" id="4_enemigo1"]
+
+[resource]
+script = ExtResource("1_npc")
+id = &"guardia"
+nombre = "Guardia"
+perfil = ExtResource("2_perfil")
+lineas_amistoso = Array[String](["Buen día, ciudadano.", "Si ves algo raro, avisame."])
+lineas_indiferente = Array[String](["Circulá."])
+lineas_hostil = Array[String](["¡Alto ahí! Quedás detenido."])
+motivo_legal = "Muy correctito vos... algo escondés."
+motivo_caotico = "No me gusta cómo te manejás."
+motivo_bueno = "Andar de héroe no te pone por encima de la ley."
+motivo_malvado = "Sé lo que le hiciste a esa gente."
+enemigos = Array[ExtResource("3_enemigo")]([ExtResource("4_enemigo1")])

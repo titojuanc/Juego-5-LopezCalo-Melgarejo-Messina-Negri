@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/party/party.gd" id="1_party"]
+[ext_resource type="PackedScene" path="res://scenes/party/seguidor.tscn" id="2_seguidor"]
+[ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="3_personaje"]
+[ext_resource type="Resource" uid="uid://ba6gkps55l7p" path="res://scenes/combate/personajes/PJ_prueba1.tres" id="4_pj1"]
+[ext_resource type="Resource" uid="uid://dyefy5fuefcaj" path="res://scenes/combate/personajes/PJ_prueba2.tres" id="5_pj2"]
+[ext_resource type="Resource" uid="uid://j74bti8ts3xx" path="res://scenes/combate/personajes/PJ_prueba3.tres" id="6_pj3"]
+
+[node name="Party" type="Node2D"]
+script = ExtResource("1_party")
+escena_seguidor = ExtResource("2_seguidor")
+equipo_inicial = Array[ExtResource("3_personaje")]([ExtResource("4_pj1"), ExtResource("5_pj2"), ExtResource("6_pj3")])

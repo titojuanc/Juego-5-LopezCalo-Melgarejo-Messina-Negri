@@ -1,0 +1,73 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/party/seguidor.gd" id="1_seguidor"]
+[ext_resource type="Texture2D" uid="uid://buunt6esy6amg" path="res://assets/soldado_prueba/Range _Fire-Sheet.png" id="2_quieto"]
+[ext_resource type="Texture2D" uid="uid://cxmloxqstma8l" path="res://assets/soldado_prueba/Range _Run-Sheet.png" id="3_correr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quieto"]
+atlas = ExtResource("2_quieto")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_correr0"]
+atlas = ExtResource("3_correr")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_correr1"]
+atlas = ExtResource("3_correr")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_correr2"]
+atlas = ExtResource("3_correr")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_correr3"]
+atlas = ExtResource("3_correr")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_seguidor"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quieto")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_correr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_correr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_correr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_correr3")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pies"]
+size = Vector2(24, 9)
+
+[node name="Seguidor" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 12
+motion_mode = 1
+script = ExtResource("1_seguidor")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(5.2916665, 5.25)
+sprite_frames = SubResource("SpriteFrames_seguidor")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="ColisionFisica" type="CollisionShape2D" parent="."]
+position = Vector2(4, 58.5)
+shape = SubResource("RectangleShape2D_pies")

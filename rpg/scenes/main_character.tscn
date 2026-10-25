@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bbfvpctbxnb13" path="res://assets/soldado_prueba/Melee_Run-Sheet.png" id="2_e6tc2"]
 [ext_resource type="Script" uid="uid://3q4gmc58l6oy" path="res://scripts/movimiento_jugador.gd" id="2_ig48j"]
 [ext_resource type="Script" path="res://scripts/personaje_explorador.gd" id="3_explorador"]
+[ext_resource type="PackedScene" path="res://scenes/party/party.tscn" id="4_party"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrcqd"]
 size = Vector2(24, 9)
@@ -61,6 +62,9 @@ size = Vector2(117, 123)
 
 [node name="MainCharacter" type="Node2D" unique_id=1843269011]
 script = ExtResource("3_explorador")
+
+[node name="Party" parent="." node_paths=PackedStringArray("lider") instance=ExtResource("4_party")]
+lider = NodePath("../CharacterBody2D")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1402744092 groups=["Jugador"]]
 collision_mask = 14

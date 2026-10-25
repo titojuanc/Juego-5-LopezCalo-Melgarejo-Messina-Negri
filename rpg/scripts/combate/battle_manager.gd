@@ -34,6 +34,11 @@ var _combatientes: Array = []
 var _turno_actual: int = -1
 
 func _ready() -> void:
+	if not Equipo.miembros.is_empty():
+		equipo = Equipo.miembros
+	if not Global.enemigos_encuentro.is_empty():
+		enemigos = Global.enemigos_encuentro
+		Global.enemigos_encuentro = []
 	_generar_equipos()
 	_combatientes = contenedor_equipo.get_children()
 	_combatientes.append_array(contenedor_enemigos.get_children())
