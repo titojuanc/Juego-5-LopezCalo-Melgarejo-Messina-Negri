@@ -5438,6 +5438,10 @@ sources/0 = SubResource("TileSetAtlasSource_uh8tv")
 sources/1 = SubResource("TileSetAtlasSource_p0hxr")
 sources/2 = SubResource("TileSetAtlasSource_njd7s")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_njd7s"]
+atlas = ExtResource("2_opupj")
+region = Rect2(355.06522, 267.60828, 23.897308, 17.52472)
+
 [node name="Lab_01" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -5471,10 +5475,11 @@ scale = Vector2(2, 2)
 nombre = "Carta"
 lineas = Array[String](["Que", "So
 "])
+textura = SubResource("AtlasTexture_njd7s")
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_njd7s")]
 position = Vector2(606, 82)
 escena_destino = "uid://bfndg73i3w086"
 identificador = &"lab01_north"
-puerta_destino = &"lab02_north"
+puerta_destino = &"lab02_south"
 direccion_llegada = 2
