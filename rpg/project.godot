@@ -12,7 +12,7 @@ config_version=5
 
 config/name="RPG"
 run/main_scene="uid://dj21gxtl6y8jd"
-config/features=PackedStringArray("4.7", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -23,6 +23,7 @@ Configuracion="*res://scripts/configuracion.gd"
 MotorDialogo="*uid://chj31iqfavqv5"
 Transiciones="*res://scenes/HUD/Transiciones.tscn"
 Equipo="*res://scripts/party/gestor_equipo.gd"
+GestorJugador="*res://scripts/party/gestor_jugador.gd"
 
 [global_group]
 
@@ -42,6 +43,7 @@ interactuar={
 2d_physics/layer_2="Enemigos"
 2d_physics/layer_3="Paredes"
 2d_physics/layer_4="Objetos"
+2d_physics/layer_5="Puertas"
 
 [physics]
 

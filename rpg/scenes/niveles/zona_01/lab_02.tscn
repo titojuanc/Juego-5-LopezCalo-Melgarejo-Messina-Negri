@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://pg2jomrlxn8i" path="res://assets/tiles_entorno/pisos_y_paredes.png" id="1_ecmpn"]
 [ext_resource type="Texture2D" uid="uid://b0vx1te8m326t" path="res://assets/tiles_entorno/props_general.png" id="2_ovkyg"]
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_m4ual"]
-[ext_resource type="PackedScene" uid="uid://ddcrbqx7q3gyc" path="res://scenes/main_character.tscn" id="4_631o5"]
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_8riid"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="6_ovkyg"]
 
@@ -5462,15 +5461,13 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAWAAAAAAAWAAAAAAAWAAEAAAAWAAEAAAAXAAAAAAAXAAAAAAAXAAEAAAAXAAEAAAAYAAAAAAAYAAAAAAAYAAEAAAAYAAEAAAAZAAAAAAAZAAAAAAAZAAEAAAAZAAEAAAAKAAAAAAAeAAQAAAAKAAEAAAAeAAUAAAALAAAAAAAfAAQAAAALAAEAAAAfAAUAAAAUAAMAAAAKABAAAAAUAAQAAAAKABEAAAAVAAMAAAALABAAAAAVAAQAAAALABEAAAAUAAoAAAAKABAAAAAUAAsAAAAKABEAAAAVAAoAAAALABAAAAAVAAsAAAALABEAAAASAAoAAAAEABAAAAASAAsAAAAEABEAAAATAAoAAAAFABAAAAATAAsAAAAFABEAAAAXAAYAAAAIABYAAAAXAAcAAAAIABcAAAAYAAYAAAAJABYAAAAYAAcAAAAJABcAAAA=")
 tile_set = SubResource("TileSet_paprv")
 
-[node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("4_631o5")]
-position = Vector2(1386, 494)
-
 [node name="Interactuable" parent="." unique_id=1123185042 instance=ExtResource("5_8riid")]
-position = Vector2(669, 358)
-scale = Vector2(2, 2)
+position = Vector2(576, 119)
+scale = Vector2(6, 6)
 nombre = "Carta"
 lineas = Array[String](["Que", "So
 "])
+distancia_indicador = 8.0
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_ovkyg")]
 position = Vector2(641, 625)
@@ -5481,9 +5478,17 @@ direccion_llegada = 1
 distancia_llegada = 75.0
 
 [node name="Puerta_Lab_03" parent="." unique_id=471500184 instance=ExtResource("6_ovkyg")]
-position = Vector2(161, 116)
-escena_destino = "uid://dcnedo0tooo57"
+position = Vector2(159, 98)
+escena_destino = "res://scenes/niveles/zona_01/lab_03.tscn"
 identificador = &"lab02_north_left"
 puerta_destino = &"lab03_west"
+direccion_llegada = 2
+distancia_llegada = 75.0
+
+[node name="s" parent="." unique_id=49055175 instance=ExtResource("6_ovkyg")]
+position = Vector2(994, 102)
+escena_destino = "uid://dwahfhmaf4cif"
+identificador = &"lab02_north_right"
+puerta_destino = &"lab04_west"
 direccion_llegada = 2
 distancia_llegada = 75.0

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dcnedo0tooo57"]
+[gd_scene format=4 uid="uid://bsy0khvd6gxju"]
 
 [ext_resource type="Texture2D" uid="uid://pg2jomrlxn8i" path="res://assets/tiles_entorno/pisos_y_paredes.png" id="1_pxoh4"]
 [ext_resource type="Texture2D" uid="uid://b0vx1te8m326t" path="res://assets/tiles_entorno/props_general.png" id="2_4dvi1"]
@@ -6,11 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ddcrbqx7q3gyc" path="res://scenes/main_character.tscn" id="4_i6p63"]
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_ycf8p"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="6_d8w53"]
-[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="6_nngx7"]
-[ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="7_0hk80"]
-[ext_resource type="Resource" uid="uid://ho5kiidflp3n" path="res://scenes/combate/enemigos/test_enemigo1.tres" id="8_2i27s"]
-[ext_resource type="Script" uid="uid://d1q16xooot66k" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="9_wwq4b"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="10_ocdo2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_pxoh4")
@@ -5443,21 +5438,6 @@ sources/0 = SubResource("TileSetAtlasSource_uh8tv")
 sources/1 = SubResource("TileSetAtlasSource_p0hxr")
 sources/2 = SubResource("TileSetAtlasSource_ovkyg")
 
-[sub_resource type="Resource" id="Resource_clqv0"]
-script = ExtResource("9_wwq4b")
-nombre = "Test"
-metadata/_custom_type_script = "uid://d1q16xooot66k"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lc6ap"]
-
-[sub_resource type="Resource" id="Resource_82bae"]
-script = ExtResource("10_ocdo2")
-id = &"04"
-nombre = "Test"
-sprite_frames = SubResource("SpriteFrames_lc6ap")
-perfil = SubResource("Resource_clqv0")
-enemigos = Array[ExtResource("7_0hk80")]([ExtResource("8_2i27s"), null, null])
-
 [node name="Lab_02" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -5492,14 +5472,9 @@ nombre = "Ventana"
 lineas = Array[String](["* Ves afuera caos y revuelo.", "* Choques, incendios, como si fuera un apocalipsis.
 ", "* Por lo que recuerdas las cosas hace un rato no eran así."])
 
-[node name="Npc" parent="Interactuable" unique_id=330742882 instance=ExtResource("6_nngx7")]
-position = Vector2(35.454544, 11.454545)
-scale = Vector2(0.1, 0.1)
-datos = SubResource("Resource_82bae")
-
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_d8w53")]
 position = Vector2(10, 395)
-escena_destino = "uid://be0ihdrqaj5l2"
+escena_destino = "uid://bfndg73i3w086"
 identificador = &"lab03_west"
 puerta_destino = &"lab02_north_left"
 direccion_llegada = 3

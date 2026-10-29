@@ -5467,7 +5467,7 @@ tile_map_data = PackedByteArray("AAACAAAAAAAaAAoAAAACAAEAAAAaAAsAAAACAAIAAAAaAAw
 tile_set = SubResource("TileSet_paprv")
 
 [node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("2_ar8a2")]
-position = Vector2(511, 358)
+position = Vector2(510, 357)
 
 [node name="Interactuable" parent="." unique_id=1123185042 instance=ExtResource("5_dmnfp")]
 position = Vector2(669, 358)
