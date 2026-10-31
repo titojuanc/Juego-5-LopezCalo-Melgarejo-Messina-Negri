@@ -31,6 +31,7 @@ func cambiar_escena(ruta: String, puerta_destino: StringName = &"") -> void:
 	_fundido.show()
 	transicion_iniciada.emit()
 	await _animar_fundido(1.0)
+	GestorJugador.desacoplar()
 	var error: Error = get_tree().change_scene_to_file(ruta)
 	if error == OK:
 		await get_tree().scene_changed
@@ -38,6 +39,7 @@ func cambiar_escena(ruta: String, puerta_destino: StringName = &"") -> void:
 			await _ubicar_jugador(puerta_destino)
 	else:
 		push_error("No se pudo abrir la escena %s: %s" % [ruta, error_string(error)])
+		GestorJugador.sincronizar()
 	await _animar_fundido(0.0)
 	_fundido.hide()
 	en_curso = false

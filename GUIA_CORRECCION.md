@@ -17,6 +17,7 @@ más relevantes, ordenados por sistema, indicando qué hay que mirar en cada uno
 | `Global` | `rpg/scripts/global.gd` | Estado global compartido entre escenas |
 | `Configuracion` | `rpg/scripts/configuracion.gd` | Persistencia de ajustes |
 | `MotorDialogo` | `rpg/scripts/motor_dialogo.gd` + `scenes/HUD/MotorDialogo.tscn` | Sistema de diálogos (104 líneas) |
+| `GestorEventos` | `rpg/scripts/niveles/gestor_eventos.gd` | Flags de la partida y ejecución secuencial de eventos |
 | `Transiciones` | `rpg/scripts/transiciones.gd` + `scenes/HUD/Transiciones.tscn` | Fundidos y cambio de escena |
 | `Alineamiento` | `rpg/scripts/alineamiento/gestor_alineamiento.gd` | Singleton del sistema moral |
 | `Equipo` | `rpg/scripts/party/gestor_equipo.gd` | Singleton de la party |
@@ -45,9 +46,21 @@ Son escenas aisladas pensadas para testear cada sistema sin recorrer el juego en
 | Laboratorio 02 | `rpg/scenes/niveles/zona_01/lab_02.tscn` | Segundo mapa, conectado por puertas |
 | Puerta | `rpg/scenes/niveles/puerta.tscn` + `scripts/niveles/puerta.gd` | Transición entre mapas con punto de aparición |
 | Interactuable | `rpg/scenes/niveles/interactuable.tscn` + `scripts/niveles/interactuable.gd` | Clase base de objetos con los que se interactúa (tecla `interactuar` = Z) |
+| Disparador de evento | `rpg/scenes/niveles/disparador_evento.tscn` + `scripts/niveles/disparador_evento.gd` | Inicia secuencias al interactuar o al entrar en una zona |
 
 Tilesets usados: `rpg/assets/tiles_entorno/` (`pisos_y_paredes.png`, `props_general.png`, `props_general_2.png`).
 Capas de física configuradas: `1 Jugador`, `2 Enemigos`, `3 Paredes`, `4 Objetos`.
+
+### Autoría de eventos desde el editor
+
+1. Instanciar `disparador_evento.tscn` en la sala, habilitar **Editable Children** sobre esa instancia y ajustar su `Area2D/CollisionShape2D` para cubrir el objeto o zona deseados.
+2. Elegir `modo`: `INTERACTUAR` espera la tecla Z cerca del disparador; `ENTRAR_EN_ZONA` se activa al entrar el cuerpo del jugador.
+3. En `Acciones`, añadir nodos `AccionDialogoEvento`, `AccionEsperarEvento`, `AccionAnimacionEvento` o `AccionCambiarFlag`. Se ejecutan en el orden de los hijos.
+4. En una puerta, configurar `flag_requerido` con el mismo nombre que escribe `AccionCambiarFlag`. Sin flag requerido, la puerta conserva su comportamiento actual.
+
+Los flags y eventos de una sola ejecución se conservan al cambiar de sala y se limpian al iniciar una partida nueva desde el menú.
+
+Prueba automatizada: desde la raíz del proyecto Godot, ejecutar `Godot --headless --path rpg --scene res://tests/prueba_eventos.tscn`.
 
 ---
 

@@ -83,7 +83,10 @@ func _unhandled_input(evento: InputEvent) -> void:
 			distancia_minima = distancia
 	if cercano != null:
 		get_viewport().set_input_as_handled()
-		iniciar(cercano.nombre, cercano.lineas)
+		if cercano.has_method("ejecutar_evento"):
+			cercano.ejecutar_evento()
+		else:
+			iniciar(cercano.nombre, cercano.lineas)
 
 
 func _mostrar_linea() -> void:

@@ -63,11 +63,11 @@ size = Vector2(117, 123)
 [node name="MainCharacter" type="Node2D" unique_id=1843269011]
 script = ExtResource("3_explorador")
 
-[node name="Party" parent="." node_paths=PackedStringArray("lider") instance=ExtResource("4_party")]
+[node name="Party" parent="." unique_id=1260875497 node_paths=PackedStringArray("lider") instance=ExtResource("4_party")]
 lider = NodePath("../CharacterBody2D")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1402744092 groups=["Jugador"]]
-collision_mask = 14
+collision_mask = 30
 
 [node name="ColisionFisica" type="CollisionShape2D" parent="CharacterBody2D" unique_id=222351120]
 position = Vector2(4, 58.5)

@@ -3,14 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://pg2jomrlxn8i" path="res://assets/tiles_entorno/pisos_y_paredes.png" id="1_pxoh4"]
 [ext_resource type="Texture2D" uid="uid://b0vx1te8m326t" path="res://assets/tiles_entorno/props_general.png" id="2_4dvi1"]
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_7d0co"]
-[ext_resource type="PackedScene" uid="uid://ddcrbqx7q3gyc" path="res://scenes/main_character.tscn" id="4_i6p63"]
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_ycf8p"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="6_d8w53"]
-[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="6_nngx7"]
-[ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="7_0hk80"]
-[ext_resource type="Resource" uid="uid://ho5kiidflp3n" path="res://scenes/combate/enemigos/test_enemigo1.tres" id="8_2i27s"]
-[ext_resource type="Script" uid="uid://d1q16xooot66k" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="9_wwq4b"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="10_ocdo2"]
+[ext_resource type="PackedScene" uid="uid://bdhr47napg8vt" path="res://scenes/niveles/disparador_evento.tscn" id="6_pxoh4"]
+[ext_resource type="Script" uid="uid://dvx3evjwptvet" path="res://scripts/niveles/accion_animacion_evento.gd" id="7_animacion"]
+[ext_resource type="Script" uid="uid://dn6d7ueaoh418" path="res://scripts/niveles/accion_dialogo_evento.gd" id="8_dialogo"]
+[ext_resource type="Script" uid="uid://bb8v34sjhiv8h" path="res://scripts/niveles/accion_esperar_evento.gd" id="9_esperar"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_orientar_protagonista.gd" id="10_orientar"]
+[ext_resource type="Script" uid="uid://shadua1hkcoa" path="res://scripts/niveles/accion_cambiar_flag.gd" id="11_d8w53"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_pxoh4")
@@ -5443,22 +5443,46 @@ sources/0 = SubResource("TileSetAtlasSource_uh8tv")
 sources/1 = SubResource("TileSetAtlasSource_p0hxr")
 sources/2 = SubResource("TileSetAtlasSource_ovkyg")
 
-[sub_resource type="Resource" id="Resource_clqv0"]
-script = ExtResource("9_wwq4b")
-nombre = "Test"
-metadata/_custom_type_script = "uid://d1q16xooot66k"
+[sub_resource type="Animation" id="Animation_sirena_roja"]
+resource_name = "sirena_roja"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pantalla/Flash:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.55, 0.7, 1, 1.15, 1.45, 1.6, 1.9, 2.05, 2.35, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.55), Color(1, 0, 0, 0), Color(1, 0, 0, 0.55), Color(1, 0, 0, 0), Color(1, 0, 0, 0.55), Color(1, 0, 0, 0), Color(1, 0, 0, 0.55), Color(1, 0, 0, 0), Color(1, 0, 0, 0.55), Color(1, 0, 0, 0), Color(1, 0, 0, 0.55), Color(1, 0, 0, 0)]
+}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_lc6ap"]
+[sub_resource type="Animation" id="Animation_detener_sirena"]
+resource_name = "detener_sirena"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pantalla/Flash:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.55), Color(1, 0, 0, 0)]
+}
 
-[sub_resource type="Resource" id="Resource_82bae"]
-script = ExtResource("10_ocdo2")
-id = &"04"
-nombre = "Test"
-sprite_frames = SubResource("SpriteFrames_lc6ap")
-perfil = SubResource("Resource_clqv0")
-enemigos = Array[ExtResource("7_0hk80")]([ExtResource("8_2i27s"), null, null])
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sirena"]
+_data = {
+&"sirena_roja": SubResource("Animation_sirena_roja"),
+&"detener_sirena": SubResource("Animation_detener_sirena")
+}
 
-[node name="Lab_02" type="Node2D" unique_id=10267033]
+[node name="Lab_03" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
 texture_filter = 1
@@ -5482,9 +5506,6 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAdAAEAAAACABoAAAAeAAEAAAADABoAAAAXAAMAAAACABwAAAAXAAQAAAACAB0AAAAYAAMAAAADABwAAAAYAAQAAAADAB0AAAARAAMAAAACABwAAAARAAQAAAACAB0AAAASAAMAAAADABwAAAASAAQAAAADAB0AAAARAAEAAAACABoAAAARAAIAAAACABsAAAASAAEAAAADABoAAAASAAIAAAADABsAAAAXAAEAAAACABoAAAAXAAIAAAACABsAAAAYAAEAAAADABoAAAAYAAIAAAADABsAAAALAAEAAAACABoAAAALAAIAAAACABsAAAALAAMAAAACABwAAAALAAQAAAACAB0AAAAMAAEAAAADABoAAAAMAAIAAAADABsAAAAMAAMAAAADABwAAAAMAAQAAAADAB0AAAAFAAEAAQAKABgAAAAFAAIAAQAKABkAAAAFAAMAAQAKABoAAAAFAAQAAQAKABsAAAAGAAEAAQALABgAAAAGAAIAAQALABkAAAAGAAMAAQALABoAAAAGAAQAAQALABsAAAAdAAIAAAACABsAAAAdAAMAAAACABwAAAAdAAQAAAACAB0AAAAeAAIAAAADABsAAAAeAAMAAAADABwAAAAeAAQAAAADAB0AAAAFAP//AQAKABYAAAAFAAAAAQAKABcAAAAGAP//AQALABYAAAAGAAAAAQALABcAAAA=")
 tile_set = SubResource("TileSet_paprv")
 
-[node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("4_i6p63")]
-position = Vector2(1386, 494)
-
 [node name="Interactuable" parent="." unique_id=1123185042 instance=ExtResource("5_ycf8p")]
 position = Vector2(673, 92)
 scale = Vector2(5.5, 5.5)
@@ -5492,15 +5513,101 @@ nombre = "Ventana"
 lineas = Array[String](["* Ves afuera caos y revuelo.", "* Choques, incendios, como si fuera un apocalipsis.
 ", "* Por lo que recuerdas las cosas hace un rato no eran así."])
 
-[node name="Npc" parent="Interactuable" unique_id=330742882 instance=ExtResource("6_nngx7")]
-position = Vector2(35.454544, 11.454545)
-scale = Vector2(0.1, 0.1)
-datos = SubResource("Resource_82bae")
-
-[node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_d8w53")]
-position = Vector2(10, 395)
-escena_destino = "uid://be0ihdrqaj5l2"
+[node name="Puerta_lab02" parent="." unique_id=29171131 instance=ExtResource("6_d8w53")]
+position = Vector2(-24, 406)
+escena_destino = "uid://bfndg73i3w086"
 identificador = &"lab03_west"
 puerta_destino = &"lab02_north_left"
 direccion_llegada = 3
 distancia_llegada = 84.0
+flag_requerido = &"lab03_puerta"
+valor_flag_requerido = false
+
+[node name="Puerta_lab03a" parent="." unique_id=175463813 instance=ExtResource("6_d8w53")]
+position = Vector2(1168, 404)
+escena_destino = "uid://meu2gyrdls76"
+identificador = &"lab03_east"
+puerta_destino = &"lab03_a_west"
+direccion_llegada = 4
+distancia_llegada = 84.0
+
+[node name="DisparadorEvento" parent="." unique_id=601986142 instance=ExtResource("6_pxoh4")]
+modo = 1
+
+[node name="CollisionShape2D" parent="DisparadorEvento/Area2D" parent_id_path=PackedInt32Array(601986142, 1805804608) index="0" unique_id=1413580006]
+position = Vector2(284, 385.5)
+
+[node name="AccionAnimacionAlarma" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="0" unique_id=560602076]
+script = ExtResource("7_animacion")
+ruta_reproductor = NodePath("../../../Alarma/AnimationPlayer")
+animacion = &"sirena_roja"
+esperar_finalizacion = false
+
+[node name="MirarAtras" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="1" unique_id=1318435930]
+script = ExtResource("10_orientar")
+mirar_a_la_izquierda = true
+
+[node name="EsperarMiradaAtras" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="2" unique_id=1580394861]
+script = ExtResource("9_esperar")
+duracion = 0.25
+
+[node name="MirarAdelante" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="3" unique_id=33431879]
+script = ExtResource("10_orientar")
+
+[node name="EsperarMiradaAdelante" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="4" unique_id=1615782647]
+script = ExtResource("9_esperar")
+duracion = 0.25
+
+[node name="DialogoAlarma" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="5" unique_id=2083568545]
+script = ExtResource("8_dialogo")
+lineas = Array[String](["Eh?", "¿Qué está pasando?", "[BRECHA DE SEGURIDAD EN LA SALA DE CLONACIÓN DETECTADA, SELLANDO...]"])
+
+[node name="ApagarAlarma" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="6"]
+script = ExtResource("7_animacion")
+ruta_reproductor = NodePath("../../../Alarma/AnimationPlayer")
+animacion = &"detener_sirena"
+
+[node name="MirarAtrasFinal" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="7" unique_id=177162266]
+script = ExtResource("10_orientar")
+mirar_a_la_izquierda = true
+
+[node name="EsperarCierrePuerta" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="8" unique_id=81110204]
+script = ExtResource("9_esperar")
+duracion = 1.0
+
+[node name="DialogoPuertaCerrada" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="9" unique_id=1033335557]
+script = ExtResource("8_dialogo")
+lineas = Array[String](["* La puerta se cerró de golpe."])
+
+[node name="AccionCerrarPuerta" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(601986142, 1277747786) index="10" unique_id=792616228]
+script = ExtResource("11_d8w53")
+nombre_flag = &"lab03_puerta"
+valor = true
+metadata/_custom_type_script = "uid://shadua1hkcoa"
+
+[node name="Alarma" type="CanvasLayer" parent="." unique_id=654941182]
+layer = 5
+
+[node name="Pantalla" type="Control" parent="Alarma" unique_id=1142798148]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Flash" type="ColorRect" parent="Alarma/Pantalla" unique_id=1193490640]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Alarma" unique_id=809564537]
+libraries/ = SubResource("AnimationLibrary_sirena")
+
+[editable path="DisparadorEvento"]

@@ -7,6 +7,8 @@ enum DireccionLlegada { PERSONALIZADA, NORTE, SUR, ESTE, OESTE }
 @export var puerta_destino: StringName = &""
 @export var direccion_llegada: DireccionLlegada = DireccionLlegada.PERSONALIZADA
 @export_range(0.0, 1024.0, 1.0, "or_greater", "suffix:px") var distancia_llegada: float = 64.0
+@export var flag_requerido: StringName = &""
+@export var valor_flag_requerido: bool = true
 
 var _jugador_en_llegada: CharacterBody2D = null
 
@@ -23,7 +25,7 @@ func _ready() -> void:
 func _al_entrar(cuerpo: Node2D) -> void:
 	if cuerpo == _jugador_en_llegada:
 		return
-	if cuerpo.is_in_group("Jugador") and not Transiciones.en_curso:
+	if cuerpo.is_in_group("Jugador") and not Transiciones.en_curso and esta_desbloqueada():
 		Transiciones.cambiar_escena(escena_destino, puerta_destino)
 
 
@@ -46,6 +48,12 @@ func obtener_posicion_llegada() -> Vector2:
 		_:
 			return _punto_llegada.global_position
 	return to_global(direccion * distancia_llegada)
+
+
+func esta_desbloqueada() -> bool:
+	if flag_requerido.is_empty():
+		return true
+	return GestorEventos.obtener_flag(flag_requerido) == valor_flag_requerido
 
 
 func colocar_jugador(jugador: CharacterBody2D) -> void:

@@ -21,8 +21,10 @@ Alineamiento="*res://scripts/alineamiento/gestor_alineamiento.gd"
 Global="*uid://b2glroevtqgp5"
 Configuracion="*res://scripts/configuracion.gd"
 MotorDialogo="*uid://chj31iqfavqv5"
+GestorEventos="*res://scripts/niveles/gestor_eventos.gd"
 Transiciones="*res://scenes/HUD/Transiciones.tscn"
 Equipo="*res://scripts/party/gestor_equipo.gd"
+GestorJugador="*res://scripts/party/gestor_jugador.gd"
 
 [global_group]
 
@@ -42,6 +44,7 @@ interactuar={
 2d_physics/layer_2="Enemigos"
 2d_physics/layer_3="Paredes"
 2d_physics/layer_4="Objetos"
+2d_physics/layer_5="Puertas"
 
 [physics]
 

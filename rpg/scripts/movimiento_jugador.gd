@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if MotorDialogo.activo or Transiciones.en_curso:
+	if MotorDialogo.activo or Transiciones.en_curso or GestorEventos.en_curso:
 		velocity = Vector2.ZERO
 		character_body.velocity = Vector2.ZERO
 		animated_sprite.play("Idle")
