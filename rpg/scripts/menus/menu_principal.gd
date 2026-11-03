@@ -15,6 +15,7 @@ func _ready() -> void:
 	boton_jugar.grab_focus()
 	
 func _on_jugar_presionado() -> void:
+	GestorEventos.reiniciar_estado_partida()
 	get_tree().change_scene_to_file(escena_juego)
 	
 func _on_opciones_presionado() -> void:

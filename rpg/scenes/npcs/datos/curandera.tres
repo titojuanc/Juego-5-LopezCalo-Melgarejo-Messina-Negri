@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RecursoNpc" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/neutral_bueno.tres" id="2_perfil"]
+
+[resource]
+script = ExtResource("1_npc")
+id = &"curandera"
+nombre = "Curandera"
+perfil = ExtResource("2_perfil")
+lineas_amistoso = Array[String](["¡Qué bueno verte! ¿Estás herido?"])
+lineas_indiferente = Array[String](["Mmm... ¿Necesitás algo?"])
+lineas_hostil = Array[String](["No voy a ayudar a alguien como vos."])
+motivo_legal = "Tanta regla no ayuda a nadie."
+motivo_caotico = "No confío en tus métodos."
+motivo_malvado = "Me repugnan tus actos."
