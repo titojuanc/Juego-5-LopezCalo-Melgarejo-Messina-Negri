@@ -1,20 +1,21 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dbi0lbuw3ug2e"]
 
-[ext_resource type="Script" path="res://scripts/combate/minijuegos/ventana_minijuego.gd" id="1_ventana"]
+[ext_resource type="Script" uid="uid://cdxovjca12gq" path="res://scripts/combate/minijuegos/ventana_minijuego.gd" id="1_ventana"]
 [ext_resource type="PackedScene" path="res://scenes/combate/minijuegos/minijuego_contundente.tscn" id="2_contundente"]
 [ext_resource type="PackedScene" path="res://scenes/combate/minijuegos/minijuego_perforante.tscn" id="3_perforante"]
 [ext_resource type="PackedScene" path="res://scenes/combate/minijuegos/minijuego_cortante.tscn" id="4_cortante"]
+[ext_resource type="PackedScene" path="res://scenes/combate/minijuegos/minijuego_cura.tscn" id="5_txal0"]
 
-[node name="VentanaMinijuego" type="CanvasLayer"]
+[node name="VentanaMinijuego" type="CanvasLayer" unique_id=43210409]
 layer = 2
 visible = false
 script = ExtResource("1_ventana")
 escena_contundente = ExtResource("2_contundente")
 escena_perforante = ExtResource("3_perforante")
 escena_cortante = ExtResource("4_cortante")
+escena_cura = ExtResource("5_txal0")
 
-[node name="Fondo" type="ColorRect" parent="."]
-layout_mode = 3
+[node name="Fondo" type="ColorRect" parent="." unique_id=1754046869]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,8 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6)
 
-[node name="Panel" type="PanelContainer" parent="."]
-layout_mode = 3
+[node name="Panel" type="PanelContainer" parent="." unique_id=115029664]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -36,27 +36,27 @@ offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Margen" type="MarginContainer" parent="Panel"]
+[node name="Margen" type="MarginContainer" parent="Panel" unique_id=2002726707]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Contenido" type="VBoxContainer" parent="Panel/Margen"]
+[node name="Contenido" type="VBoxContainer" parent="Panel/Margen" unique_id=40762475]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Titulo" type="Label" parent="Panel/Margen/Contenido"]
+[node name="Titulo" type="Label" parent="Panel/Margen/Contenido" unique_id=1073968635]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 
-[node name="Escenario" type="Control" parent="Panel/Margen/Contenido"]
+[node name="Escenario" type="Control" parent="Panel/Margen/Contenido" unique_id=1703574750]
 custom_minimum_size = Vector2(480, 360)
 layout_mode = 2
 
-[node name="FondoNegro" type="ColorRect" parent="Panel/Margen/Contenido/Escenario"]
+[node name="FondoNegro" type="ColorRect" parent="Panel/Margen/Contenido/Escenario" unique_id=1201864169]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,7 +66,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Enemigo" type="TextureRect" parent="Panel/Margen/Contenido/Escenario"]
+[node name="Enemigo" type="TextureRect" parent="Panel/Margen/Contenido/Escenario" unique_id=659630257]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -80,7 +80,7 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Zona" type="Control" parent="Panel/Margen/Contenido/Escenario"]
+[node name="Zona" type="Control" parent="Panel/Margen/Contenido/Escenario" unique_id=73763318]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,7 +88,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Resultado" type="Label" parent="Panel/Margen/Contenido"]
+[node name="Resultado" type="Label" parent="Panel/Margen/Contenido" unique_id=58167476]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 horizontal_alignment = 1

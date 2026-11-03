@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_wu8o3")
 nombre = "PruebaHP"
-valor = 50
+valor = 15
 descripcion = "Esto es una prueba"
 metadata/_custom_type_script = "uid://b8e256pukfayp"

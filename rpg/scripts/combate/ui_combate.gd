@@ -76,7 +76,7 @@ func _usar_especial(indice: int) -> void:
 	if especial.costo_energia > _actor_actual.combate.energia_actual:
 		return
 	if especial.tipoSpell == RecursoAtaqueEspecial.TipoSpell.CURA:
-		_elegir_objetivo(_aliados(), func(objetivo): _actor_actual.combate.usar_ataque_especial(indice, objetivo.salud))
+		_elegir_objetivo(_aliados(), _especial_con_minijuego.bind(indice))
 		return
 	_elegir_objetivo(_enemigos(), _especial_con_minijuego.bind(indice))
 

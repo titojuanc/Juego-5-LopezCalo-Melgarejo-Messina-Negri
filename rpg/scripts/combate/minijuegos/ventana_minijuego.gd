@@ -4,6 +4,9 @@ class_name VentanaMinijuego
 @export var escena_contundente: PackedScene
 @export var escena_perforante: PackedScene
 @export var escena_cortante: PackedScene
+@export var escena_cura: PackedScene
+@export var cura_min: float = 0.5
+@export var cura_max: float = 2.0
 @export var multiplicador_fallo: float = 0.5
 @export var multiplicador_bien: float = 1.0
 @export var multiplicador_perfecto: float = 1.5
@@ -18,7 +21,8 @@ func _ready() -> void:
 	hide()
 
 func jugar(especial: RecursoAtaqueEspecial, objetivo: Node3D) -> float:
-	var escena := _escena_para(especial.tipo_ataque)
+	var es_cura := especial.tipoSpell == RecursoAtaqueEspecial.TipoSpell.CURA
+	var escena := escena_cura if es_cura else _escena_para(especial.tipo_ataque)
 	if escena == null:
 		return 1.0
 	var minijuego: MinijuegoAtaque = escena.instantiate()
@@ -32,7 +36,9 @@ func jugar(especial: RecursoAtaqueEspecial, objetivo: Node3D) -> float:
 	var resultado: MinijuegoAtaque.Resultado = await minijuego.terminado
 	var multiplicador := _multiplicador_resultado(resultado)
 	var texto := _texto_resultado(resultado)
-	if objetivo is PersonajeEnemigo and objetivo.datos:
+	if es_cura:
+		multiplicador = lerpf(cura_min, cura_max, minijuego.puntaje)
+	elif objetivo is PersonajeEnemigo and objetivo.datos:
 		var multiplicador_tipo: float = objetivo.datos.multiplicador_contra(especial.tipo_ataque)
 		multiplicador *= multiplicador_tipo
 		if multiplicador_tipo > 1.0:

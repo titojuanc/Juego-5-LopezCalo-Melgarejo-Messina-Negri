@@ -9,6 +9,7 @@ enum Resultado {FALLO, BIEN, PERFECTO}
 @export var duracion: float = 2.0
 @export var color_tiempo: Color = Color(1, 1, 1, 0.8)
 
+var puntaje: float = 0.0
 var _activo: bool = false
 var _tiempo: float = 0.0
 
