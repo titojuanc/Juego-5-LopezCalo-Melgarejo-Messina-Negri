@@ -1,7 +1,7 @@
 extends Control
 class_name MenuPrincipal
 
-@export_file("*.tscn") var escena_juego: String = "res://scenes/battle_arena.tscn"
+@export_file("*.tscn") var escena_juego: String = "res://scenes/niveles/zona_01/lab_01.tscn"
 
 @onready var botones: VBoxContainer = $Centro/Contenido/Botones
 @onready var boton_jugar: Button = $Centro/Contenido/Botones/BotonJugar

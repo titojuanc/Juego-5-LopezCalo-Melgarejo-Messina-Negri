@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RecursoPersonajeCombate" format=3 uid="uid://cbakoopw557hk"]
+
+[ext_resource type="Script" uid="uid://cr321xta8d7vw" path="res://scripts/recursos/recurso_ataque_especial.gd" id="1_tfyxd"]
+[ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="2_cjb6o"]
+[ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="3_soe4o"]
+
+[resource]
+script = ExtResource("3_soe4o")
+nombre = "Sidekick_1"
+metadata/_custom_type_script = "uid://b8536t7dcpoos"
