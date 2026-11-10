@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://ddcrbqx7q3gyc" path="res://scenes/main_character.tscn" id="4_73whf"]
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_5lyx2"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="6_kx6o3"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="7_s7pe4"]
+[ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="8_5lyx2"]
+[ext_resource type="Script" uid="uid://d1q16xooot66k" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="9_kx6o3"]
+[ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="10_swhcd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_lcjhd")
@@ -5438,6 +5442,20 @@ sources/0 = SubResource("TileSetAtlasSource_uh8tv")
 sources/1 = SubResource("TileSetAtlasSource_p0hxr")
 sources/2 = SubResource("TileSetAtlasSource_ovkyg")
 
+[sub_resource type="Resource" id="Resource_3tjju"]
+script = ExtResource("9_kx6o3")
+metadata/_custom_type_script = "uid://d1q16xooot66k"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_doftb"]
+
+[sub_resource type="Resource" id="Resource_n733f"]
+script = ExtResource("10_swhcd")
+id = &"12"
+nombre = "sidekick_2"
+sprite_frames = SubResource("SpriteFrames_doftb")
+perfil = SubResource("Resource_3tjju")
+metadata/_custom_type_script = "uid://vfx2vuq5n8y1"
+
 [node name="Lab_02" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -5454,10 +5472,12 @@ tile_set = SubResource("TileSet_jl0lj")
 
 [node name="Decoraciones" type="TileMapLayer" parent="." unique_id=283240137]
 scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAQAAAAAAAYAAwAAAAQAAEAAAAYAA0AAAARAAAAAAAZAAwAAAARAAEAAAAZAA0AAAAWAAoAAQAEAAsAAAAWAAsAAQAEAAwAAAAXAAoAAQAFAAsAAAAXAAsAAQAFAAwAAAAYAAoAAQAGAAsAAAAYAAsAAQAGAAwAAAAZAAoAAQAHAAsAAAAZAAsAAQAHAAwAAAAMAA4AAQAAAAoAAAAMAA8AAQAAAAsAAAANAA4AAQABAAoAAAANAA8AAQABAAsAAAAOAA4AAQACAAoAAAAOAA8AAQACAAsAAAAPAA4AAQADAAoAAAAPAA8AAQADAAsAAAA=")
 tile_set = SubResource("TileSet_paprv")
 
 [node name="Objetos" type="TileMapLayer" parent="." unique_id=1947320181]
 scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAMAAEAAAAWAAsAAAAMAAIAAAAWAAwAAAAMAAMAAAAWAA0AAAAMAAQAAAAWAA4AAAANAAEAAAAXAAsAAAANAAIAAAAXAAwAAAANAAMAAAAXAA0AAAANAAQAAAAXAA4AAAAYAAAAAAAeAAQAAAAYAAEAAAAeAAUAAAAZAAAAAAAfAAQAAAAZAAEAAAAfAAUAAAAOAAMAAAAUAAQAAAAOAAQAAAAUAAUAAAAPAAMAAAAVAAQAAAAPAAQAAAAVAAUAAAAYAAMAAAAAAAIAAAAYAAQAAAAAAAMAAAAYAAUAAAAAAAQAAAAYAAYAAAAAAAUAAAAZAAMAAAABAAIAAAAZAAQAAAABAAMAAAAZAAUAAAABAAQAAAAZAAYAAAABAAUAAAAWAAMAAAAAAAQAAAAWAAQAAAAAAAUAAAAXAAMAAAABAAQAAAAXAAQAAAABAAUAAAAYABIAAAAAAAMAAAAYABMAAAAAAAMAAAAZABIAAAABAAMAAAAZABMAAAABAAMAAAAYABAAAAAAAAIAAAAYABEAAAAAAAIAAAAZABAAAAABAAIAAAAZABEAAAABAAIAAAAWABIAAAAAAAIAAAAWABMAAAAAAAMAAAAXABIAAAABAAIAAAAXABMAAAABAAMAAAAMAAYAAAACABAAAAAMAAcAAAACABEAAAAMAAgAAAACABIAAAAMAAkAAAACABMAAAAMAAoAAAACABQAAAANAAYAAAADABAAAAANAAcAAAADABEAAAANAAgAAAADABIAAAANAAkAAAADABMAAAANAAoAAAADABQAAAASAAAAAQACABkAAAASAAEAAQACABoAAAASAAIAAQACABsAAAASAAMAAQACABwAAAASAAQAAQACAB0AAAATAAAAAQADABkAAAATAAEAAQADABoAAAATAAIAAQADABsAAAATAAMAAQADABwAAAATAAQAAQADAB0AAAAUAAAAAQAEABkAAAAUAAEAAQAEABoAAAAUAAIAAQAEABsAAAAUAAMAAQAEABwAAAAUAAQAAQAEAB0AAAAVAAAAAQAFABkAAAAVAAEAAQAFABoAAAAVAAIAAQAFABsAAAAVAAMAAQAFABwAAAAVAAQAAQAFAB0AAAA=")
 tile_set = SubResource("TileSet_paprv")
 
 [node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("4_73whf")]
@@ -5473,8 +5493,12 @@ lineas = Array[String](["* Ves afuera caos y revuelo.", "* Choques, incendios, c
 [node name="Puerta_lab04_1" parent="." unique_id=542793779 instance=ExtResource("6_kx6o3")]
 position = Vector2(607.99994, 619)
 scale = Vector2(0.7, 0.7)
-escena_destino = "uid://gw00dx0lbh4b"
+escena_destino = "uid://dhx0nypxa1j8v"
 identificador = &"lab04_01_south"
 puerta_destino = &"lab04_north"
 direccion_llegada = 1
 distancia_llegada = 84.0
+
+[node name="Npc" parent="." unique_id=188844787 instance=ExtResource("7_s7pe4")]
+position = Vector2(600, 173)
+datos = SubResource("Resource_n733f")

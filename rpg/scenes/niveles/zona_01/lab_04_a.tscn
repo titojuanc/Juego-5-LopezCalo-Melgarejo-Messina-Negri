@@ -5473,7 +5473,7 @@ lineas = Array[String](["\"Almacen\"", "* Piensas \"que mal escrito, le falta la
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_p8w4h")]
 position = Vector2(-31, 402)
-escena_destino = "uid://bfndg73i3w086"
+escena_destino = "uid://dhx0nypxa1j8v"
 identificador = &"lab04_a_west"
 puerta_destino = &"lab04_east"
 direccion_llegada = 3

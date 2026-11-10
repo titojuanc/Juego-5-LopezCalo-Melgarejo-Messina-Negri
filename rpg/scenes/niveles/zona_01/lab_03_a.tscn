@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_ime8e"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="6_g1mk3"]
 [ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="7_xg6fh"]
-[ext_resource type="Resource" uid="uid://ho5kiidflp3n" path="res://scenes/combate/enemigos/test_enemigo1.tres" id="8_54evb"]
 [ext_resource type="Script" uid="uid://d1q16xooot66k" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="9_n51q8"]
+[ext_resource type="Texture2D" uid="uid://buunt6esy6amg" path="res://assets/soldado_prueba/Range _Fire-Sheet.png" id="9_nuydo"]
 [ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="10_1ud1m"]
+[ext_resource type="Texture2D" uid="uid://cxmloxqstma8l" path="res://assets/soldado_prueba/Range _Run-Sheet.png" id="10_vk442"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="11_ddrbp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
@@ -5444,18 +5445,71 @@ sources/2 = SubResource("TileSetAtlasSource_ovkyg")
 
 [sub_resource type="Resource" id="Resource_clqv0"]
 script = ExtResource("9_n51q8")
-nombre = "Test"
+nombre = "Amistoso"
 metadata/_custom_type_script = "uid://d1q16xooot66k"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c661"]
+atlas = ExtResource("9_nuydo")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfyp8"]
+atlas = ExtResource("9_nuydo")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ime8e"]
+atlas = ExtResource("10_vk442")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1mk3"]
+atlas = ExtResource("10_vk442")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg6fh"]
+atlas = ExtResource("10_vk442")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54evb"]
+atlas = ExtResource("10_vk442")
+region = Rect2(72, 0, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_lc6ap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c661")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfyp8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ime8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1mk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg6fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54evb")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [sub_resource type="Resource" id="Resource_82bae"]
 script = ExtResource("10_1ud1m")
-id = &"04"
-nombre = "Test"
+id = &"10"
+nombre = "primer_sidekick"
 sprite_frames = SubResource("SpriteFrames_lc6ap")
 perfil = SubResource("Resource_clqv0")
-enemigos = Array[ExtResource("7_xg6fh")]([ExtResource("8_54evb"), null, null])
+lineas_amistoso = Array[String](["", ""])
 
 [node name="Lab_02" type="Node2D" unique_id=10267033]
 
@@ -5482,9 +5536,10 @@ tile_map_data = PackedByteArray("AAAdAAEAAAACABoAAAAeAAEAAAADABoAAAAXAAMAAAACABw
 tile_set = SubResource("TileSet_paprv")
 
 [node name="Npc" parent="." unique_id=330742882 instance=ExtResource("6_g1mk3")]
-position = Vector2(557, 180)
+position = Vector2(558, 179.99998)
 scale = Vector2(0.55, 0.55)
 datos = SubResource("Resource_82bae")
+escena_combate = "uid://ci7biswve8xrn"
 
 [node name="Interactuable" parent="." unique_id=1123185042 instance=ExtResource("5_ime8e")]
 position = Vector2(673, 92)
