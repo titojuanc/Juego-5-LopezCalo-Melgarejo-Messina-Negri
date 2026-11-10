@@ -8,3 +8,4 @@ class_name PersonajeExplorador
 func _ready() -> void:
 	if datos and datos.textura:
 		visual.texture = datos.textura
+		$CharacterBody2D/AnimatedSprite2D.hide()

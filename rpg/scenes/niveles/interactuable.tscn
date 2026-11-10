@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c5xugg1mb2isb"]
+
+[ext_resource type="Script" uid="uid://cj67cp10t4x3j" path="res://scripts/niveles/interactuable.gd" id="1_276wy"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_indicador"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5uap"]
+
+[node name="Interactuable" type="Node2D" unique_id=1123185042]
+script = ExtResource("1_276wy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=190395411]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=788493544]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2055783998]
+shape = SubResource("RectangleShape2D_d5uap")
+
+[node name="IndicadorInteraccion" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(0, -40)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_indicador")

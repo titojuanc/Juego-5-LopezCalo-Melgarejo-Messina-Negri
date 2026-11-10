@@ -1,0 +1,55 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/npcs/demo/demo_npcs.gd" id="1_demo"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="2_npc"]
+[ext_resource type="Resource" path="res://scenes/npcs/datos/guardia.tres" id="3_guardia"]
+[ext_resource type="Resource" path="res://scenes/npcs/datos/curandera.tres" id="4_curandera"]
+[ext_resource type="Resource" path="res://scenes/npcs/datos/maton.tres" id="5_maton"]
+[ext_resource type="PackedScene" uid="uid://ddcrbqx7q3gyc" path="res://scenes/main_character.tscn" id="6_jugador"]
+[ext_resource type="Script" path="res://scripts/npcs/movimiento_npc.gd" id="7_movimiento"]
+[node name="DemoNpcs" type="Node2D"]
+script = ExtResource("1_demo")
+
+[node name="Piso" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.16, 0.18, 0.2, 1)
+
+[node name="Guardia" parent="." instance=ExtResource("2_npc")]
+position = Vector2(200, 180)
+datos = ExtResource("3_guardia")
+
+[node name="MovimientoNpc" type="Node" parent="Guardia"]
+script = ExtResource("7_movimiento")
+modo = 0
+puntos = Array[Vector2]([Vector2(0, 200), Vector2(0, 0)])
+
+[node name="Curandera" parent="." instance=ExtResource("2_npc")]
+position = Vector2(576, 180)
+datos = ExtResource("4_curandera")
+
+[node name="Maton" parent="." instance=ExtResource("2_npc")]
+position = Vector2(950, 180)
+datos = ExtResource("5_maton")
+
+[node name="MovimientoNpc" type="Node" parent="Maton"]
+script = ExtResource("7_movimiento")
+
+[node name="MainCharacter" parent="." instance=ExtResource("6_jugador")]
+position = Vector2(576, 540)
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="LabelAlineamiento" type="Label" parent="Hud"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 500.0
+offset_bottom = 39.0
+
+[node name="Controles" type="Label" parent="Hud"]
+offset_left = 16.0
+offset_top = 44.0
+offset_right = 700.0
+offset_bottom = 67.0
+text = "1-9: alineamiento (1 LB, 5 N, 9 CM)   Flechas: mover   Z: hablar"

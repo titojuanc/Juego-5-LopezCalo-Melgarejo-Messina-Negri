@@ -7,12 +7,13 @@
 [ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="3_6uskk"]
 [ext_resource type="Resource" uid="uid://bemw78jdmkxks" path="res://scenes/combate/items/HP_prueba.tres" id="5_5vxgd"]
 [ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="7_5q5sv"]
+[ext_resource type="Resource" path="res://scenes/combate/ataques_especiales/Ataque_perforante_prueba.tres" id="9_perforante"]
 
 [resource]
 script = ExtResource("3_6uskk")
 nombre = "Prueba1"
 arma = ExtResource("1_5j07o")
-ataques_especiales = Array[ExtResource("1_7vgks")]([ExtResource("3_2boni")])
+ataques_especiales = Array[ExtResource("1_7vgks")]([ExtResource("3_2boni"), ExtResource("9_perforante")])
 inventario = Array[ExtResource("2_touyw")]([ExtResource("5_5vxgd")])
 textura = ExtResource("7_5q5sv")
 metadata/_custom_type_script = "uid://b8536t7dcpoos"

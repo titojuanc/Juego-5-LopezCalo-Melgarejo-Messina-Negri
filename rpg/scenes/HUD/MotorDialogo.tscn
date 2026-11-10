@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://chj31iqfavqv5"]
+
+[ext_resource type="Script" uid="uid://fi8b1mppcdb8" path="res://scripts/motor_dialogo.gd" id="1_motor"]
+
+[node name="MotorDialogo" type="CanvasLayer" unique_id=1839488343]
+layer = 10
+script = ExtResource("1_motor")
+caracteres_por_segundo = 20.0
+
+[node name="Pantalla" type="Control" parent="." unique_id=379246169]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Caja" type="PanelContainer" parent="Pantalla" unique_id=1366174129]
+visible = false
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -204.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Margen" type="MarginContainer" parent="Pantalla/Caja" unique_id=1729378971]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="Contenido" type="VBoxContainer" parent="Pantalla/Caja/Margen" unique_id=681355305]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Nombre" type="Label" parent="Pantalla/Caja/Margen/Contenido" unique_id=2022508814]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+[node name="Texto" type="RichTextLabel" parent="Pantalla/Caja/Margen/Contenido" unique_id=1446723371]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 20
