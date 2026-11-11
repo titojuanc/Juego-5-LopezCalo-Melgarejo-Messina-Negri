@@ -5509,7 +5509,15 @@ id = &"10"
 nombre = "primer_sidekick"
 sprite_frames = SubResource("SpriteFrames_lc6ap")
 perfil = SubResource("Resource_clqv0")
-lineas_amistoso = Array[String](["", ""])
+lineas_amistoso = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
+
+SI/NO"])
+lineas_indiferente = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
+
+SI/NO"])
+lineas_hostil = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
+
+SI/NO"])
 
 [node name="Lab_02" type="Node2D" unique_id=10267033]
 

@@ -5454,6 +5454,9 @@ id = &"12"
 nombre = "sidekick_2"
 sprite_frames = SubResource("SpriteFrames_doftb")
 perfil = SubResource("Resource_3tjju")
+lineas_amistoso = Array[String](["Hola, ¿necesitas ayuda? ¿estas herido? yo te puedo ayudar.
+
+SI/NO"])
 metadata/_custom_type_script = "uid://vfx2vuq5n8y1"
 
 [node name="Lab_02" type="Node2D" unique_id=10267033]
