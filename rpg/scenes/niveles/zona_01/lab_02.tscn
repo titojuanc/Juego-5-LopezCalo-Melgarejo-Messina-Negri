@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_m4ual"]
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_8riid"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="6_ovkyg"]
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="7_option_script"]
+[ext_resource type="Resource" path="res://scenes/niveles/pc_desbloquear_ascensor.tres" id="8_pc_option"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_ecmpn")
@@ -5469,6 +5471,13 @@ lineas = Array[String](["Que", "So
 "])
 distancia_indicador = 8.0
 
+[node name="PC_Ascensor" parent="." unique_id=1277341239 instance=ExtResource("5_8riid")]
+position = Vector2(730, 232)
+scale = Vector2(5, 5)
+nombre = "PC"
+lineas = Array[String](["El ascensor está bloqueado.", "El cierre de seguridad impide activarlo."])
+opciones = Array[ExtResource("7_option_script")]([ExtResource("8_pc_option")])
+
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_ovkyg")]
 position = Vector2(641, 625)
 escena_destino = "uid://be0ihdrqaj5l2"
@@ -5484,6 +5493,7 @@ identificador = &"lab02_north_left"
 puerta_destino = &"lab03_west"
 direccion_llegada = 2
 distancia_llegada = 75.0
+flags_bloqueo = Array[StringName]([&"lab5_bloquea_lab2_lab3"])
 
 [node name="s" parent="." unique_id=49055175 instance=ExtResource("6_ovkyg")]
 position = Vector2(994, 102)
@@ -5492,3 +5502,4 @@ identificador = &"lab02_north_right"
 puerta_destino = &"lab04_west"
 direccion_llegada = 2
 distancia_llegada = 75.0
+flags_bloqueo = Array[StringName]([&"lab5_bloquea_lab2_lab4"])

@@ -9,6 +9,7 @@ enum DireccionLlegada { PERSONALIZADA, NORTE, SUR, ESTE, OESTE }
 @export_range(0.0, 1024.0, 1.0, "or_greater", "suffix:px") var distancia_llegada: float = 64.0
 @export var flag_requerido: StringName = &""
 @export var valor_flag_requerido: bool = true
+@export var flags_bloqueo: Array[StringName] = []
 
 var _jugador_en_llegada: CharacterBody2D = null
 
@@ -51,9 +52,12 @@ func obtener_posicion_llegada() -> Vector2:
 
 
 func esta_desbloqueada() -> bool:
-	if flag_requerido.is_empty():
-		return true
-	return GestorEventos.obtener_flag(flag_requerido) == valor_flag_requerido
+	if not flag_requerido.is_empty() and GestorEventos.obtener_flag(flag_requerido) != valor_flag_requerido:
+		return false
+	for flag in flags_bloqueo:
+		if not flag.is_empty() and GestorEventos.obtener_flag(flag):
+			return false
+	return true
 
 
 func colocar_jugador(jugador: CharacterBody2D) -> void:

@@ -5,12 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_vk442"]
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_ime8e"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="6_g1mk3"]
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="6_nuydo"]
 [ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="7_xg6fh"]
 [ext_resource type="Script" uid="uid://d1q16xooot66k" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="9_n51q8"]
 [ext_resource type="Texture2D" uid="uid://buunt6esy6amg" path="res://assets/soldado_prueba/Range _Fire-Sheet.png" id="9_nuydo"]
 [ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="10_1ud1m"]
 [ext_resource type="Texture2D" uid="uid://cxmloxqstma8l" path="res://assets/soldado_prueba/Range _Run-Sheet.png" id="10_vk442"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="11_ddrbp"]
+[ext_resource type="Resource" path="res://scenes/npcs/datos/sidekick_1_reclutar.tres" id="12_reclutar"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_wfyp8")
@@ -5509,8 +5511,10 @@ id = &"10"
 nombre = "primer_sidekick"
 sprite_frames = SubResource("SpriteFrames_lc6ap")
 perfil = SubResource("Resource_clqv0")
-lineas_amistoso = Array[String](["", ""])
-
+lineas_indiferente = Array[String](["Hola"])
+lineas_hostil = Array[String](["Hola"])
+lineas_amistoso = Array[String]( ["Hola. ¿Puedo unirme a tu equipo?"] )
+opciones_amistoso = Array[ExtResource("6_nuydo")]([ExtResource("12_reclutar")])
 [node name="Lab_02" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -5541,6 +5545,9 @@ scale = Vector2(0.55, 0.55)
 datos = SubResource("Resource_82bae")
 escena_combate = "uid://ci7biswve8xrn"
 
+[node name="AnimatedSprite2D" parent="Npc" index="0"]
+scale = Vector2(4, 4)
+
 [node name="Interactuable" parent="." unique_id=1123185042 instance=ExtResource("5_ime8e")]
 position = Vector2(673, 92)
 scale = Vector2(5.5, 5.5)
@@ -5563,3 +5570,5 @@ identificador = &"lab03_a_east"
 puerta_destino = &"lab05_west"
 direccion_llegada = 3
 distancia_llegada = 84.0
+
+[editable path="Npc"]

@@ -5481,7 +5481,7 @@ distancia_llegada = 84.0
 
 [node name="Puerta_lab05" parent="." unique_id=808183351 instance=ExtResource("6_p8w4h")]
 position = Vector2(1177, 406)
-escena_destino = "uid://bfndg73i3w086"
+escena_destino = "uid://b6fa32rd6fmct"
 identificador = &"lab04_a_east"
 puerta_destino = &"lab05_east"
 direccion_llegada = 4

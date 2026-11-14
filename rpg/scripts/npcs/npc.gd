@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Npc
 
+const OpcionDialogo = preload("res://scripts/recursos/recurso_opcion_dialogo.gd")
+
 @export var datos: RecursoNpc
 
 @export_file("*.tscn") var escena_combate: String = "res://scenes/battle_arena.tscn"
@@ -13,6 +15,7 @@ class_name Npc
 
 var nombre: String = ""
 var lineas: Array[String] = []
+var opciones: Array[OpcionDialogo] = []
 var _jugadores: Array[Node2D] = []
 var _jugador_a_la_vista := false
 var atacando := false
@@ -24,6 +27,7 @@ func _ready() -> void:
 	area_vision.body_entered.connect(_al_ver)
 	area_vision.body_exited.connect(_al_perder_de_vista)
 	reputacion.afinidad_cambiada.connect(_on_afinidad_cambiada)
+	MotorDialogo.opcion_elegida.connect(_al_elegir_opcion)
 	if datos == null:
 		return
 	nombre = datos.nombre
@@ -42,16 +46,28 @@ func _on_afinidad_cambiada(_afinidad: float) -> void:
 	if _jugador_a_la_vista and puede_atacar():
 		_atacar()
 
+
+func _al_elegir_opcion(opcion: OpcionDialogo) -> void:
+	if not opciones.has(opcion) or opcion.miembro_party == null or not Equipo.miembros.has(opcion.miembro_party):
+		return
+	await MotorDialogo.dialogo_finalizado
+	queue_free()
+
+
 func _actualizar_lineas() -> void:
 	lineas.clear()
+	opciones.clear()
 	match reputacion.estado:
 		CalculoAlineamiento.Estado.AMISTOSO:
 			lineas.append_array(datos.lineas_amistoso)
+			opciones.append_array(datos.opciones_amistoso)
 			return
 		CalculoAlineamiento.Estado.HOSTIL:
 			lineas.append_array(datos.lineas_hostil)
+			opciones.append_array(datos.opciones_hostil)
 		_:
 			lineas.append_array(datos.lineas_indiferente)
+			opciones.append_array(datos.opciones_indiferente)
 	var eje = reputacion.resultado.get("eje")
 	if eje == CalculoAlineamiento.Eje.LEY or eje == CalculoAlineamiento.Eje.AMBOS:
 		lineas.append(datos.motivo_legal if Alineamiento.ley > datos.perfil.posicion_ley else datos.motivo_caotico)
@@ -81,7 +97,7 @@ func _atacar() -> void:
 	if atacando or Transiciones.en_curso:
 		return
 	atacando = true
-	MotorDialogo.iniciar(nombre, lineas)
+	MotorDialogo.iniciar(nombre, lineas, opciones)
 	if MotorDialogo.activo:
 		await MotorDialogo.dialogo_finalizado
 	Global.enemigos_encuentro = datos.enemigos
@@ -108,7 +124,16 @@ func tiene_dialogo() -> bool:
 	for linea in lineas:
 		if not linea.strip_edges().is_empty():
 			return true
+	for opcion in opciones:
+		if opcion == null:
+			continue
+		if opcion.flag_requerido.is_empty() or GestorEventos.obtener_flag(opcion.flag_requerido) == opcion.valor_flag_requerido:
+			return true
 	return false
+
+
+func obtener_opciones_dialogo() -> Array[OpcionDialogo]:
+	return opciones
 
 func _exit_tree() -> void:
 	if is_instance_valid(MotorDialogo):

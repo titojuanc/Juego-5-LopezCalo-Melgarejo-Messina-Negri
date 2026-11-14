@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://d1q16xooot66k" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="8_0anec"]
 [ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="8_ahvdv"]
 [ext_resource type="Texture2D" uid="uid://d1qsfmegfvdeg" path="res://assets/robot_prueba/Robot_walk.png" id="9_f2apr"]
+[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="13_disparador"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="14_accion_flag"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_a6v2y")
@@ -5576,6 +5578,40 @@ puerta_destino = &"lab03_a_east"
 direccion_llegada = 1
 distancia_llegada = 75.0
 
+[node name="CerrarEntradaOeste" parent="." instance=ExtResource("13_disparador")]
+position = Vector2(270, 560)
+modo = 1
+identificador = &"lab5_entrada_oeste"
+flag_requerido = &"lab5_ruta_fijada"
+valor_flag_requerido = false
+
+[node name="AccionCerrarPuertaOeste" type="Node" parent="CerrarEntradaOeste/Acciones" index="0"]
+script = ExtResource("14_accion_flag")
+nombre_flag = &"lab5_bloquea_lab2_lab3"
+valor = true
+
+[node name="MarcarRutaFijadaOeste" type="Node" parent="CerrarEntradaOeste/Acciones" index="1"]
+script = ExtResource("14_accion_flag")
+nombre_flag = &"lab5_ruta_fijada"
+valor = true
+
+[node name="CerrarEntradaEste" parent="." instance=ExtResource("13_disparador")]
+position = Vector2(890, 560)
+modo = 1
+identificador = &"lab5_entrada_este"
+flag_requerido = &"lab5_ruta_fijada"
+valor_flag_requerido = false
+
+[node name="AccionCerrarPuertaEste" type="Node" parent="CerrarEntradaEste/Acciones" index="0"]
+script = ExtResource("14_accion_flag")
+nombre_flag = &"lab5_bloquea_lab2_lab4"
+valor = true
+
+[node name="MarcarRutaFijadaEste" type="Node" parent="CerrarEntradaEste/Acciones" index="1"]
+script = ExtResource("14_accion_flag")
+nombre_flag = &"lab5_ruta_fijada"
+valor = true
+
 [node name="Puerta_lab04_a" parent="." unique_id=49055175 instance=ExtResource("5_2ts3w")]
 position = Vector2(579, 97)
 escena_destino = "uid://dwahfhmaf4cif"
@@ -5588,3 +5624,6 @@ flag_requerido = &"ascensor"
 [node name="Npc" parent="." unique_id=1612028760 instance=ExtResource("6_2ts3w")]
 position = Vector2(575, 236)
 datos = SubResource("Resource_i41m5")
+
+[editable path="CerrarEntradaOeste"]
+[editable path="CerrarEntradaEste"]
