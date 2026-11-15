@@ -25,6 +25,7 @@ GestorEventos="*res://scripts/niveles/gestor_eventos.gd"
 Transiciones="*res://scenes/HUD/Transiciones.tscn"
 Equipo="*res://scripts/party/gestor_equipo.gd"
 GestorJugador="*res://scripts/party/gestor_jugador.gd"
+Rumores="*res://scripts/reputacion/gestor_rumores.gd"
 
 [global_group]
 

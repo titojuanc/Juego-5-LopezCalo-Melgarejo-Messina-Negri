@@ -1,9 +1,12 @@
 extends Node2D
 
+const OpcionDialogo = preload("res://scripts/recursos/recurso_opcion_dialogo.gd")
+
 enum LadoIndicador { PERSONALIZADO, NORTE, SUR, ESTE, OESTE }
 
 @export var nombre: String
 @export_multiline var lineas: Array[String] = []
+@export var opciones: Array[OpcionDialogo] = []
 @export var textura: Texture2D
 @export var lado_indicador: LadoIndicador = LadoIndicador.NORTE
 @export_range(0.0, 1024.0, 1.0, "or_greater", "suffix:px") var distancia_indicador: float = 40.0
@@ -71,7 +74,11 @@ func tiene_dialogo() -> bool:
 	for linea in lineas:
 		if not linea.strip_edges().is_empty():
 			return true
-	return false
+	return not opciones.is_empty()
+
+
+func obtener_opciones_dialogo() -> Array[OpcionDialogo]:
+	return opciones
 
 
 func _exit_tree() -> void:

@@ -1,10 +1,21 @@
 [gd_resource type="Resource" script_class="RecursoPersonajeCombate" format=3 uid="uid://cbakoopw557hk"]
 
-[ext_resource type="Script" uid="uid://cr321xta8d7vw" path="res://scripts/recursos/recurso_ataque_especial.gd" id="1_tfyxd"]
-[ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="2_cjb6o"]
-[ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="3_soe4o"]
+[ext_resource type="Resource" path="res://scenes/combate/armas/Arma_prueba1.tres" id="1_arma"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_ataque_especial.gd" id="2_script_ataque"]
+[ext_resource type="Resource" path="res://scenes/combate/ataques_especiales/Ataque_prueba1.tres" id="3_ataque"]
+[ext_resource type="Resource" path="res://scenes/combate/ataques_especiales/Ataque_perforante_prueba.tres" id="4_ataque"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_item.gd" id="5_script_item"]
+[ext_resource type="Resource" path="res://scenes/combate/items/HP_prueba.tres" id="6_item"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="7_script_personaje"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="8_textura"]
 
 [resource]
-script = ExtResource("3_soe4o")
+script = ExtResource("7_script_personaje")
 nombre = "Sidekick_1"
+vida_max = 110
+arma = ExtResource("1_arma")
+ataques_especiales = Array[ExtResource("2_script_ataque")]([ExtResource("3_ataque"), ExtResource("4_ataque")])
+energia_max = 100
+inventario = Array[ExtResource("5_script_item")]([ExtResource("6_item")])
+textura = ExtResource("8_textura")
 metadata/_custom_type_script = "uid://b8536t7dcpoos"

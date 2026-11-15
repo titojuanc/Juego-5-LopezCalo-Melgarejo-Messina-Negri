@@ -5507,6 +5507,7 @@ direccion_llegada = 3
 distancia_llegada = 84.0
 flag_requerido = &"lab04_puerta"
 valor_flag_requerido = false
+flags_bloqueo = Array[StringName]([&"lab5_bloquea_lab2_lab4"])
 
 [node name="Puerta_lab04_a" parent="." unique_id=712958764 instance=ExtResource("6_aghfl")]
 position = Vector2(1164, 399)
@@ -5527,6 +5528,8 @@ distancia_llegada = 59.0
 
 [node name="DisparadorEvento" parent="." unique_id=254193810 instance=ExtResource("7_fl24f")]
 modo = 1
+flag_requerido = &"evento_cierre_lab"
+valor_flag_requerido = false
 
 [node name="CollisionShape2D" parent="DisparadorEvento/Area2D" parent_id_path=PackedInt32Array(254193810, 1805804608) index="0" unique_id=1413580006]
 position = Vector2(284, 385.5)
@@ -5570,6 +5573,11 @@ lineas = Array[String](["* La puerta se cerró de golpe."])
 script = ExtResource("12_al7cb")
 nombre_flag = &"lab04_puerta"
 metadata/_custom_type_script = "uid://shadua1hkcoa"
+
+[node name="MarcarCierreCompartido" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(254193810, 1277747786) index="10"]
+script = ExtResource("12_al7cb")
+nombre_flag = &"evento_cierre_lab"
+valor = true
 
 [node name="Alarma" type="CanvasLayer" parent="." unique_id=1702329011]
 layer = 5

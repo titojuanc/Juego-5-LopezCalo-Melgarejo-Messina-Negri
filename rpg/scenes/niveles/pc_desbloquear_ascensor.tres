@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecursoOpcionDialogo" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="1_opcion"]
+
+[resource]
+script = ExtResource("1_opcion")
+id = &"desbloquear_ascensor"
+texto = "Desbloquear el ascensor."
+respuesta = Array[String]( ["Bloqueo de seguridad desactivado."] )
+flag_requerido = &"evento_cierre_lab"
+valor_flag_requerido = true
+flag_al_seleccionar = &"ascensor"
+valor_flag_al_seleccionar = true

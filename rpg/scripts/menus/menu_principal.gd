@@ -1,6 +1,8 @@
 extends Control
 class_name MenuPrincipal
 
+const PERSONAJE_PROTAGONISTA: RecursoPersonajeCombate = preload("res://scenes/combate/personajes/PJ_prueba1.tres")
+
 @export_file("*.tscn") var escena_juego: String = "res://scenes/niveles/zona_01/lab_01.tscn"
 
 @onready var botones: VBoxContainer = $Centro/Contenido/Botones
@@ -16,6 +18,8 @@ func _ready() -> void:
 	
 func _on_jugar_presionado() -> void:
 	GestorEventos.reiniciar_estado_partida()
+	var miembros_iniciales: Array[RecursoPersonajeCombate] = [PERSONAJE_PROTAGONISTA]
+	Equipo.establecer(miembros_iniciales)
 	get_tree().change_scene_to_file(escena_juego)
 	
 func _on_opciones_presionado() -> void:

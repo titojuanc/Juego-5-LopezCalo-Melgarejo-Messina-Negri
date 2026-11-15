@@ -11,11 +11,12 @@ func establecer(nuevos: Array[RecursoPersonajeCombate]) -> void:
 	miembros = nuevos.slice(0, maximo)
 	equipo_cambiado.emit()
 
-func agregar(miembro: RecursoPersonajeCombate) -> void:
+func agregar(miembro: RecursoPersonajeCombate) -> bool:
 	if miembro == null or miembros.has(miembro) or miembros.size() >= maximo:
-		return
+		return false
 	miembros.append(miembro)
 	equipo_cambiado.emit()
+	return true
 
 func quitar(miembro: RecursoPersonajeCombate) -> void:
 	if not miembros.has(miembro):
