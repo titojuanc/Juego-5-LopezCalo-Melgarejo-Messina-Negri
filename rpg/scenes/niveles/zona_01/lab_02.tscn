@@ -5475,7 +5475,7 @@ distancia_indicador = 8.0
 position = Vector2(730, 232)
 scale = Vector2(5, 5)
 nombre = "PC"
-lineas = Array[String](["El ascensor está bloqueado.", "El cierre de seguridad impide activarlo."])
+lineas = Array[String](["Una PC con comandos extraños.", "..."])
 opciones = Array[ExtResource("7_option_script")]([ExtResource("8_pc_option")])
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_ovkyg")]
