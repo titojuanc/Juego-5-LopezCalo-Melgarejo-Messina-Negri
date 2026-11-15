@@ -16,7 +16,7 @@ func _ready() -> void:
 func configurar(nuevos_datos: RecursoPersonajeCombate) -> void:
 	datos = nuevos_datos
 	name = datos.nombre
-	salud.inicializar(datos.vida_max)
+	salud.inicializar(Equipo.vida_max_de(datos), Equipo.vida_actual_de(datos))
 	combate.inicializar(datos)
 	inventario.inicializar(datos)
 	if datos.textura:

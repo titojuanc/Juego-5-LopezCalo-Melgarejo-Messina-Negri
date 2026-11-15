@@ -19,8 +19,15 @@ var opciones: Array[OpcionDialogo] = []
 var _jugadores: Array[Node2D] = []
 var _jugador_a_la_vista := false
 var atacando := false
+var persiguiendo := false
+var distancia_contacto: float = 64.0
+var _tregua := false
+var _objetivo: Node2D
 
 func _ready() -> void:
+	if datos and Encuentros.derrotado(clave()):
+		queue_free()
+		return
 	add_to_group("npcs")
 	indicador.hide()
 	area_interaccion.area_entered.connect(_al_entrar)
@@ -32,6 +39,9 @@ func _ready() -> void:
 	Rumores.rumores_cambiados.connect(_on_rumores_cambiados)
 	if datos == null:
 		return
+	_tregua = Encuentros.tomar_tregua(clave())
+	if _tregua:
+		get_tree().create_timer(0.5).timeout.connect(_revisar_tregua)
 	nombre = datos.nombre
 	if datos.sprite_frames:
 		sprite.sprite_frames = datos.sprite_frames
@@ -43,14 +53,45 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	indicador.visible = not _jugadores.is_empty() and tiene_dialogo() and not MotorDialogo.activo
 
+func _physics_process(_delta: float) -> void:
+	if not persiguiendo:
+		return
+	if atacando or not is_instance_valid(_objetivo) or MotorDialogo.activo or Transiciones.en_curso or GestorEventos.en_curso:
+		velocity = Vector2.ZERO
+		return
+	var direccion = global_position.direction_to(_objetivo.global_position)
+	velocity = direccion * datos.velocidad_persecucion
+	move_and_slide()
+	if sprite.sprite_frames.has_animation("Walk"):
+		sprite.play("Walk")
+	if direccion.x < -0.1:
+		sprite.flip_h = true
+	elif direccion.x > 0.1:
+		sprite.flip_h = false
+	if _toca_al_jugador():
+		_atacar()
+
+func _toca_al_jugador() -> bool:
+	for i in get_slide_collision_count():
+		var otro = get_slide_collision(i).get_collider()
+		if otro and otro.is_in_group("Jugador"):
+			return true
+	return global_position.distance_to(_objetivo.global_position) <= distancia_contacto
+
+func _reaccionar() -> void:
+	if datos.sin_mente:
+		persiguiendo = true
+	else:
+		_atacar()
+
 func _on_afinidad_cambiada(_afinidad: float) -> void:
 	_actualizar_lineas()
 	if _jugador_a_la_vista and puede_atacar():
-		_atacar()
+		_reaccionar()
 
 func _on_rumores_cambiados() -> void:
 	if _jugador_a_la_vista and puede_atacar():
-		_atacar()
+		_reaccionar()
 
 
 func _al_elegir_opcion(opcion: OpcionDialogo) -> void:
@@ -86,31 +127,53 @@ func conoce_al_jugador() -> bool:
 func ve_al_jugador() -> bool:
 	return _jugador_a_la_vista
 
+func clave() -> StringName:
+	if not datos.id.is_empty():
+		return datos.id
+	if owner:
+		return StringName(owner.scene_file_path + ":" + name)
+	return StringName(name)
+
+func _revisar_tregua() -> void:
+	if not _jugador_a_la_vista:
+		_tregua = false
+
 func puede_atacar() -> bool:
-	if datos == null or datos.enemigos.is_empty():
+	if _tregua or datos == null or not datos.enemigos.any(func(e): return e != null):
 		return false
+	if datos.sin_mente:
+		return true
 	return reputacion.estado == CalculoAlineamiento.Estado.HOSTIL and conoce_al_jugador()
 
 func _al_ver(cuerpo: Node2D) -> void:
 	if not cuerpo.is_in_group("Jugador"):
 		return
 	_jugador_a_la_vista = true
+	_objetivo = cuerpo
 	if puede_atacar():
-		_atacar()
+		_reaccionar()
 
 func _al_perder_de_vista(cuerpo: Node2D) -> void:
 	if cuerpo.is_in_group("Jugador"):
 		_jugador_a_la_vista = false
+		_tregua = false
+		if persiguiendo and sprite.sprite_frames.has_animation("Idle"):
+			sprite.play("Idle")
+		persiguiendo = false
 
 func _atacar() -> void:
 	if atacando or Transiciones.en_curso:
 		return
 	atacando = true
-	MotorDialogo.iniciar(nombre, lineas, opciones)
-	if MotorDialogo.activo:
-		await MotorDialogo.dialogo_finalizado
-	Global.enemigos_encuentro = datos.enemigos
-	Transiciones.cambiar_escena(escena_combate)
+	persiguiendo = false
+	if not datos.sin_mente:
+		MotorDialogo.iniciar(nombre, lineas, opciones)
+		if MotorDialogo.activo:
+			await MotorDialogo.dialogo_finalizado
+	var textura: Texture2D = null
+	if sprite.sprite_frames and sprite.sprite_frames.get_frame_count(sprite.animation) > 0:
+		textura = sprite.sprite_frames.get_frame_texture(sprite.animation, 0)
+	Encuentros.iniciar(datos.enemigos, clave(), escena_combate, nombre, textura)
 
 func _al_entrar(area: Area2D) -> void:
 	if area.is_in_group("InteraccionJugador") and not _jugadores.has(area):

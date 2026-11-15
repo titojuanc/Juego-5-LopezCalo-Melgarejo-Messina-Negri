@@ -34,3 +34,7 @@ const OpcionDialogo = preload("res://scripts/recursos/recurso_opcion_dialogo.gd"
 @export var enemigos: Array[RecursoEnemigo] = []
 
 @export var umbral_conocimiento: float = 0.0
+
+@export var sin_mente: bool = false
+
+@export var velocidad_persecucion: float = 160.0
