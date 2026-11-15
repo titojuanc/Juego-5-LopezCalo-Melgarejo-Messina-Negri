@@ -59,13 +59,13 @@ func iniciar(nombre: String, lineas: Array[String], opciones: Array[OpcionDialog
 	_iniciar(nombre, retrato, lineas, hablantes, retratos, opciones)
 
 
-# Cada linea tiene su propio hablante; las de sidekicks fuera de la party se saltean.
-func iniciar_conversacion(lineas: Array[RecursoLineaDialogo], opciones: Array[OpcionDialogo] = []) -> void:
+# Cada linea tiene su propio hablante; las de sidekicks que no estan en la party ni presentes se saltean.
+func iniciar_conversacion(lineas: Array[RecursoLineaDialogo], opciones: Array[OpcionDialogo] = [], presentes: Array[RecursoPersonajeCombate] = []) -> void:
 	var textos: Array[String] = []
 	var hablantes: Array[String] = []
 	var retratos: Array[Texture2D] = []
 	for linea in lineas:
-		if linea ==null or not linea.disponible():
+		if linea ==null or not linea.disponible(presentes):
 			continue
 		textos.append(linea.texto)
 		hablantes.append(linea.nombre_hablante())
@@ -307,6 +307,8 @@ func _mostrar_retrato(retrato: Texture2D) -> void:
 
 func _retrato_de_linea(linea: RecursoLineaDialogo) -> Texture2D:
 	if(linea.miembro != null and linea.miembro == Equipo.lider()):
+		return _obtener_retrato_protagonista()
+	if linea.miembro ==null and linea.hablante == nombre_protagonista:
 		return _obtener_retrato_protagonista()
 	return linea.retrato()
 

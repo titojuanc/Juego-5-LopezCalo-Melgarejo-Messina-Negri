@@ -14,6 +14,15 @@
 [ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="14_accion_flag"]
 [ext_resource type="Script" path="res://scripts/npcs/movimiento_npc.gd" id="15_movimiento"]
 [ext_resource type="Resource" uid="uid://di7tlmsoc0qnr" path="res://scenes/combate/enemigos/test_enemigo4.tres" id="16_enemigo_robot"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="91_condicion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="92_conversacion"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="95_linea"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="96_personaje"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="97_wayne"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="98_gloria"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="99_opcion"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_caotica.tres" id="100_caotica"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_legal.tres" id="101_legal"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_a6v2y")
@@ -5534,6 +5543,98 @@ enemigos = Array[ExtResource("7_0anec")]([ExtResource("16_enemigo_robot")])
 sin_mente = true
 metadata/_custom_type_script = "uid://vfx2vuq5n8y1"
 
+[sub_resource type="Resource" id="Linea_wayne_primero_01"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Así que vos fuiste la segunda en sumarte. Bienvenida al club."
+
+[sub_resource type="Resource" id="Linea_wayne_primero_02"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "No es un club, Wayne."
+
+[sub_resource type="Resource" id="Linea_wayne_primero_03"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Todo es un club si le ponés ganas."
+
+[sub_resource type="Resource" id="Linea_gloria_primero_01"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "Desde que se sumó él, todo explota un poco más."
+
+[sub_resource type="Resource" id="Linea_gloria_primero_02"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Coincidencia. Bueno... casi."
+
+[sub_resource type="Resource" id="Linea_solo_wayne"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Un ascensor. Qué emocionante. Ojalá se trabe."
+
+[sub_resource type="Resource" id="Linea_solo_gloria"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "Un ascensor. Bien. Quedate al lado mío, por las dudas."
+
+[sub_resource type="Resource" id="Linea_panel_01"]
+script = ExtResource("95_linea")
+texto = "* Al lado de la puerta del ascensor hay un panel de control con los cables a la vista."
+
+[sub_resource type="Resource" id="Linea_panel_02"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Si arrancamos esos cables, nadie más puede usar el ascensor. Nadie nos sigue."
+
+[sub_resource type="Resource" id="Linea_panel_03"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "O podemos usarlo como gente normal."
+
+[sub_resource type="Resource" id="Linea_panel_04"]
+script = ExtResource("95_linea")
+texto = "* ¿Qué hacés con el panel?"
+
+[sub_resource type="Resource" id="Opcion_romper_panel"]
+script = ExtResource("99_opcion")
+id = &"romper_panel_ascensor"
+texto = "Arrancar los cables."
+respuesta = Array[String](["* Tirás de los cables. Saltan chispas y el panel se apaga."])
+flag_al_seleccionar = &"panel_ascensor_roto"
+accion_moral = ExtResource("100_caotica")
+
+[sub_resource type="Resource" id="Opcion_respetar_panel"]
+script = ExtResource("99_opcion")
+id = &"respetar_panel_ascensor"
+texto = "Dejarlo como está."
+respuesta = Array[String](["* Dejás el panel tranquilo."])
+flag_al_seleccionar = &"panel_ascensor_respetado"
+accion_moral = ExtResource("101_legal")
+
+[sub_resource type="Resource" id="Linea_roto_wayne"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Eso. Así me gusta."
+
+[sub_resource type="Resource" id="Linea_roto_gloria"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "¿Era necesario romperlo?"
+
+[sub_resource type="Resource" id="Linea_respetado_wayne"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Qué aburrido."
+
+[sub_resource type="Resource" id="Linea_respetado_gloria"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "Bien pensado."
+
+[sub_resource type="RectangleShape2D" id="Forma_charla_ascensor"]
+size = Vector2(400, 50)
+
 [node name="Lab_05" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -5633,5 +5734,73 @@ script = ExtResource("15_movimiento")
 modo = 0
 puntos = Array[Vector2]([Vector2(-200, 0), Vector2(-200, 150), Vector2(200, 150), Vector2(200, 0)])
 
+[node name="CharlaAscensor" parent="." instance=ExtResource("13_disparador")]
+position = Vector2(579, 190)
+modo = 1
+identificador = &"charla_ascensor_prueba"
+flag_requerido = &"ascensor"
+
+[node name="CollisionShape2D" parent="CharlaAscensor/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("Forma_charla_ascensor")
+
+[node name="SiWaynePrimero" type="Node" parent="CharlaAscensor/Acciones" index="0"]
+script = ExtResource("91_condicion")
+reclutado_primero = ExtResource("97_wayne")
+reclutado_despues = ExtResource("98_gloria")
+
+[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SiWaynePrimero"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_wayne_primero_01"), SubResource("Linea_wayne_primero_02"), SubResource("Linea_wayne_primero_03")])
+
+[node name="SiGloriaPrimero" type="Node" parent="CharlaAscensor/Acciones" index="1"]
+script = ExtResource("91_condicion")
+reclutado_primero = ExtResource("98_gloria")
+reclutado_despues = ExtResource("97_wayne")
+
+[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SiGloriaPrimero"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_gloria_primero_01"), SubResource("Linea_gloria_primero_02")])
+
+[node name="SoloWayne" type="Node" parent="CharlaAscensor/Acciones" index="2"]
+script = ExtResource("91_condicion")
+miembros_presentes = Array[ExtResource("96_personaje")]([ExtResource("97_wayne")])
+miembros_ausentes = Array[ExtResource("96_personaje")]([ExtResource("98_gloria")])
+
+[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SoloWayne"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_solo_wayne")])
+
+[node name="SoloGloria" type="Node" parent="CharlaAscensor/Acciones" index="3"]
+script = ExtResource("91_condicion")
+miembros_presentes = Array[ExtResource("96_personaje")]([ExtResource("98_gloria")])
+miembros_ausentes = Array[ExtResource("96_personaje")]([ExtResource("97_wayne")])
+
+[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SoloGloria"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_solo_gloria")])
+
+[node name="PanelAscensor" type="Node" parent="CharlaAscensor/Acciones" index="4"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_panel_01"), SubResource("Linea_panel_02"), SubResource("Linea_panel_03"), SubResource("Linea_panel_04")])
+opciones = Array[ExtResource("99_opcion")]([SubResource("Opcion_romper_panel"), SubResource("Opcion_respetar_panel")])
+
+[node name="SiPanelRoto" type="Node" parent="CharlaAscensor/Acciones" index="5"]
+script = ExtResource("91_condicion")
+flag_requerido = &"panel_ascensor_roto"
+
+[node name="Reacciones" type="Node" parent="CharlaAscensor/Acciones/SiPanelRoto"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_roto_wayne"), SubResource("Linea_roto_gloria")])
+
+[node name="SiPanelRespetado" type="Node" parent="CharlaAscensor/Acciones" index="6"]
+script = ExtResource("91_condicion")
+flag_requerido = &"panel_ascensor_respetado"
+
+[node name="Reacciones" type="Node" parent="CharlaAscensor/Acciones/SiPanelRespetado"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_respetado_wayne"), SubResource("Linea_respetado_gloria")])
+
 [editable path="CerrarEntradaOeste"]
 [editable path="CerrarEntradaEste"]
+[editable path="CharlaAscensor"]

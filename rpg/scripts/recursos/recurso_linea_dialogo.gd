@@ -1,7 +1,7 @@
 extends Resource
 class_name RecursoLineaDialogo
 
-# Si hay miembro, habla ese sidekick y la linea solo aparece cuando esta en la party.
+# Si hay miembro, habla ese sidekick y la linea solo aparece cuando esta en la party o presente en la escena.
 @export var miembro: RecursoPersonajeCombate
 @export var hablante: String = ""
 @export_multiline var texto: String = ""
@@ -17,7 +17,7 @@ func retrato() -> Texture2D:
 	return null if miembro == null else miembro.retrato
 
 
-func disponible() -> bool:
+func disponible(presentes: Array[RecursoPersonajeCombate] = []) -> bool:
 	if texto.strip_edges().is_empty():
 		return false
-	return miembro ==null or Equipo.miembros.has(miembro)
+	return miembro ==null or Equipo.miembros.has(miembro) or presentes.has(miembro)
