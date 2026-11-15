@@ -2,6 +2,7 @@ extends Node
 class_name BattleManager
 
 signal turno_cambio(actor: Node3D)
+signal combate_terminado(gano: bool)
 
 
 
@@ -23,6 +24,8 @@ signal turno_cambio(actor: Node3D)
 
 @export var demora_entre_turnos: float = 1.0
 
+@export var escena_resultado: PackedScene = preload("res://scenes/combate/UI/resultado_combate.tscn")
+
 @onready var contenedor_equipo: Node3D = $Equipo
 
 @onready var contenedor_enemigos: Node3D = $Enemigos
@@ -32,13 +35,13 @@ signal turno_cambio(actor: Node3D)
 
 var _combatientes: Array = []
 var _turno_actual: int = -1
+var _terminado := false
 
 func _ready() -> void:
 	if not Equipo.miembros.is_empty():
 		equipo = Equipo.miembros
-	if not Global.enemigos_encuentro.is_empty():
-		enemigos = Global.enemigos_encuentro
-		Global.enemigos_encuentro = []
+	if not Encuentros.enemigos.is_empty():
+		enemigos = Encuentros.enemigos
 	_generar_equipos()
 	_combatientes = contenedor_equipo.get_children()
 	_combatientes.append_array(contenedor_enemigos.get_children())
@@ -72,7 +75,13 @@ func personaje_actual() -> Node3D:
 	return _combatientes[_turno_actual]
 
 func avanzar_turno() -> void:
-	if _combatientes.is_empty():
+	if _combatientes.is_empty() or _terminado:
+		return
+	if _vivos(contenedor_enemigos).is_empty():
+		_terminar(true)
+		return
+	if _vivos(contenedor_equipo).is_empty():
+		_terminar(false)
 		return
 	var intentos := 0
 	while intentos < _combatientes.size():
@@ -100,9 +109,27 @@ func terminar_turno() -> void:
 	await get_tree().create_timer(demora_entre_turnos).timeout
 	avanzar_turno()
 
+func _vivos(contenedor: Node3D) -> Array:
+	return contenedor.get_children().filter(func(p): return p.salud.esta_viva())
+
+func _terminar(gano: bool) -> void:
+	_terminado = true
+	var resultado = escena_resultado.instantiate()
+	add_child(resultado)
+	var datos_enemigos = contenedor_enemigos.get_children().map(func(e): return e.datos)
+	if gano:
+		var miembros_vivos = _vivos(contenedor_equipo).map(func(p): return p.datos)
+		for personaje in contenedor_equipo.get_children():
+			Equipo.fijar_vida(personaje.datos, maxi(personaje.salud.vida_actual, 1))
+		resultado.mostrar_victoria(Encuentros.cobrar(datos_enemigos, miembros_vivos))
+	else:
+		var jefe = datos_enemigos.any(func(d): return d.es_jefe)
+		resultado.mostrar_derrota(Encuentros.perder(jefe), jefe)
+	combate_terminado.emit(gano)
+
 func _turno_enemigo(enemigo: PersonajeEnemigo) -> void:
 	await get_tree().create_timer(demora_turno_enemigo).timeout
-	var vivos: Array = contenedor_equipo.get_children().filter(func(p): return p.salud.esta_viva())
+	var vivos: Array = _vivos(contenedor_equipo)
 	if not vivos.is_empty():
 		var objetivo = vivos[randi() % vivos.size()]
 		enemigo.atacar(objetivo.salud)

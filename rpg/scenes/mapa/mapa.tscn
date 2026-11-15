@@ -1,0 +1,60 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/mapa/gestor_mapa.gd" id="1_mapa"]
+[ext_resource type="Resource" path="res://scenes/mapa/zona_01.tres" id="2_zona01"]
+[ext_resource type="Script" path="res://scripts/mapa/recurso_mapa.gd" id="3_recurso"]
+
+[node name="Mapa" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_mapa")
+mapas = Array[ExtResource("3_recurso")]([ExtResource("2_zona01")])
+
+[node name="Fondo" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -270.0
+offset_right = 320.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margen" type="MarginContainer" parent="Panel"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="Contenido" type="VBoxContainer" parent="Panel/Margen"]
+theme_override_constants/separation = 10
+
+[node name="Titulo" type="Label" parent="Panel/Margen/Contenido"]
+theme_override_font_sizes/font_size = 24
+text = "Mapa"
+horizontal_alignment = 1
+
+[node name="Lienzo" type="Control" parent="Panel/Margen/Contenido"]
+custom_minimum_size = Vector2(560, 380)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Leyenda" type="Label" parent="Panel/Margen/Contenido"]
+modulate = Color(0.9, 0.7, 0.2, 1)
+text = "■ Estás aquí"
+horizontal_alignment = 1
+
+[node name="Ayuda" type="Label" parent="Panel/Margen/Contenido"]
+modulate = Color(1, 1, 1, 0.6)
+text = "M / X: cerrar"
+horizontal_alignment = 1

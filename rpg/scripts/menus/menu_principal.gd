@@ -15,9 +15,22 @@ func _ready() -> void:
 	boton_salir.visible = not OS.has_feature("web")
 	menu_opciones.hide()
 	boton_jugar.grab_focus()
-	
+
+func _unhandled_input(event: InputEvent) -> void:
+	if menu_opciones.visible or event.is_echo() or not event.is_action_pressed("interactuar"):
+		return
+	var foco = get_viewport().gui_get_focus_owner()
+	if foco is Button and botones.is_ancestor_of(foco):
+		get_viewport().set_input_as_handled()
+		foco.pressed.emit()
+
 func _on_jugar_presionado() -> void:
 	GestorEventos.reiniciar_estado_partida()
+	Equipo.reiniciar()
+	Encuentros.reiniciar()
+	Rumores.reiniciar()
+	Mapa.reiniciar()
+	Alineamiento.establecer(0.0, 0.0)
 	var miembros_iniciales: Array[RecursoPersonajeCombate] = [PERSONAJE_PROTAGONISTA]
 	Equipo.establecer(miembros_iniciales)
 	get_tree().change_scene_to_file(escena_juego)

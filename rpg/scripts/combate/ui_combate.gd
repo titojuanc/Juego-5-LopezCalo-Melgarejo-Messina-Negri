@@ -43,6 +43,8 @@ func actualizar_turno(actor: Node3D) -> void:
 	_cerrar_submenu()
 	label_turno.text = "Turno: %s" % (actor.name if actor else "-")
 	_habilitar_botones(actor is PersonajeCombate)
+	if actor is PersonajeCombate:
+		boton_atacar.grab_focus()
 
 func _habilitar_botones(activo: bool) -> void:
 	boton_atacar.disabled = not activo
@@ -110,6 +112,7 @@ func _abrir_submenu(opciones: Array, callback: Callable) -> void:
 		boton.pressed.connect(callback.bind(i))
 		submenu.add_child(boton)
 	submenu.visible = true
+	submenu.get_child(submenu.get_child_count() - opciones.size()).grab_focus()
 
 func _cerrar_submenu() -> void:
 	_cancelar_seleccion()
@@ -160,16 +163,33 @@ func _on_panel_apuntado(personaje: Node3D) -> void:
 		_seleccionar(_objetivos.find(personaje))
 
 func _input(event: InputEvent) -> void:
+	if event.is_echo():
+		return
 	if _objetivos.is_empty():
+		_input_menu(event)
 		return
 	if event.is_action_pressed("ui_right") or event.is_action_pressed("ui_down"):
 		_mover_seleccion(1)
 	elif event.is_action_pressed("ui_left") or event.is_action_pressed("ui_up"):
 		_mover_seleccion(-1)
-	elif event.is_action_pressed("ui_accept"):
+	elif event.is_action_pressed("ui_accept") or event.is_action_pressed("interactuar"):
 		_confirmar(_objetivos[_indice_objetivo])
-	elif event.is_action_pressed("ui_cancel"):
+	elif event.is_action_pressed("ui_cancel") or event.is_action_pressed("cancelar"):
 		_cancelar_seleccion()
+		boton_atacar.grab_focus()
+	else:
+		return
+	get_viewport().set_input_as_handled()
+
+func _input_menu(event: InputEvent) -> void:
+	var foco = get_viewport().gui_get_focus_owner()
+	if not foco is Button or not $Control.is_ancestor_of(foco):
+		return
+	if event.is_action_pressed("interactuar") and not foco.disabled:
+		foco.pressed.emit()
+	elif (event.is_action_pressed("cancelar") or event.is_action_pressed("ui_cancel")) and submenu.visible:
+		_cerrar_submenu()
+		boton_atacar.grab_focus()
 	else:
 		return
 	get_viewport().set_input_as_handled()

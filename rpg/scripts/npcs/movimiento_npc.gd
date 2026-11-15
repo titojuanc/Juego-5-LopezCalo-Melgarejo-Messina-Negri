@@ -26,6 +26,8 @@ func _ready() -> void:
 	_esperando = espera
 
 func _physics_process(delta: float) -> void:
+	if npc.persiguiendo:
+		return
 	if MotorDialogo.activo or Transiciones.en_curso or GestorEventos.en_curso or npc.atacando:
 		_quieto()
 		return

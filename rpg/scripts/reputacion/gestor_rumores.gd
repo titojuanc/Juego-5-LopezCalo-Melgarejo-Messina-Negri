@@ -61,6 +61,10 @@ func _nivel_actual() -> String:
 		return ""
 	return escena.scene_file_path
 
+func reiniciar() -> void:
+	rumores.clear()
+	rumores_cambiados.emit()
+
 func a_diccionario() -> Dictionary:
 	return {"rumores": rumores.duplicate(true)}
 
