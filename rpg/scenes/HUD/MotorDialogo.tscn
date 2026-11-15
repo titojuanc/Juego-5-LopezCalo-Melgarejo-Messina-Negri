@@ -36,21 +36,34 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 16
 
-[node name="Contenido" type="VBoxContainer" parent="Pantalla/Caja/Margen" unique_id=681355305]
+[node name="Fila" type="HBoxContainer" parent="Pantalla/Caja/Margen"]
 layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Contenido" type="VBoxContainer" parent="Pantalla/Caja/Margen/Fila" unique_id=681355305]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="Nombre" type="Label" parent="Pantalla/Caja/Margen/Contenido" unique_id=2022508814]
+[node name="Nombre" type="Label" parent="Pantalla/Caja/Margen/Fila/Contenido" unique_id=2022508814]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 autowrap_mode = 3
 
-[node name="Texto" type="RichTextLabel" parent="Pantalla/Caja/Margen/Contenido" unique_id=1446723371]
+[node name="Texto" type="RichTextLabel" parent="Pantalla/Caja/Margen/Fila/Contenido" unique_id=1446723371]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 20
 
-[node name="Opciones" type="VBoxContainer" parent="Pantalla/Caja/Margen/Contenido"]
+[node name="Opciones" type="VBoxContainer" parent="Pantalla/Caja/Margen/Fila/Contenido"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 4
+
+[node name="Retrato" type="TextureRect" parent="Pantalla/Caja/Margen/Fila"]
+visible = false
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5

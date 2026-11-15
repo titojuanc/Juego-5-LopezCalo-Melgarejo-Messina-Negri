@@ -11,8 +11,14 @@ func reiniciar_estado_partida() -> void:
 	if en_curso:
 		push_warning("No se puede reiniciar el estado mientras se ejecuta un evento")
 		return
+	var flags_activados: Array[StringName] = []
+	for nombre in _flags:
+		if bool(_flags[nombre]):
+			flags_activados.append(nombre)
 	_flags.clear()
 	_eventos_completados.clear()
+	for nombre in flags_activados:
+		flag_cambiado.emit(nombre, false)
 
 
 func obtener_flag(nombre: StringName, valor_por_defecto: bool = false) -> bool:

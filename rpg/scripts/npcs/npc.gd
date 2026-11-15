@@ -97,7 +97,6 @@ func _on_rumores_cambiados() -> void:
 func _al_elegir_opcion(opcion: OpcionDialogo) -> void:
 	if not opciones.has(opcion) or opcion.miembro_party == null or not Equipo.miembros.has(opcion.miembro_party):
 		return
-	await MotorDialogo.dialogo_finalizado
 	queue_free()
 
 
@@ -144,6 +143,12 @@ func puede_atacar() -> bool:
 	if datos.sin_mente:
 		return true
 	return reputacion.estado == CalculoAlineamiento.Estado.HOSTIL and conoce_al_jugador()
+
+
+func obtener_retrato_dialogo() -> Texture2D:
+	if sprite.sprite_frames == null or not sprite.sprite_frames.has_animation("Idle"):
+		return null
+	return sprite.sprite_frames.get_frame_texture("Idle", 0)
 
 func _al_ver(cuerpo: Node2D) -> void:
 	if not cuerpo.is_in_group("Jugador"):

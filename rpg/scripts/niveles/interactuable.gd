@@ -8,6 +8,7 @@ enum LadoIndicador { PERSONALIZADO, NORTE, SUR, ESTE, OESTE }
 @export_multiline var lineas: Array[String] = []
 @export var opciones: Array[OpcionDialogo] = []
 @export var textura: Texture2D
+@export var mostrar_indicador: bool = true
 @export var lado_indicador: LadoIndicador = LadoIndicador.NORTE
 @export_range(0.0, 1024.0, 1.0, "or_greater", "suffix:px") var distancia_indicador: float = 40.0
 var _jugadores: Array[Node2D] = []
@@ -47,7 +48,7 @@ func _posicionar_indicador() -> void:
 
 
 func _process(_delta: float) -> void:
-	_indicador.visible = distancia_al_jugador() < INF and tiene_dialogo() and not MotorDialogo.activo
+	_indicador.visible = mostrar_indicador and distancia_al_jugador() < INF and tiene_dialogo() and not MotorDialogo.activo
 
 
 func _al_entrar(area: Area2D) -> void:
