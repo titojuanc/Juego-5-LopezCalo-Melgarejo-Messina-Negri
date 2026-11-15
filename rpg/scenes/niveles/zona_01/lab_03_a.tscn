@@ -5511,10 +5511,16 @@ id = &"10"
 nombre = "primer_sidekick"
 sprite_frames = SubResource("SpriteFrames_lc6ap")
 perfil = SubResource("Resource_clqv0")
-lineas_indiferente = Array[String](["Hola"])
-lineas_hostil = Array[String](["Hola"])
-lineas_amistoso = Array[String]( ["Hola. ¿Puedo unirme a tu equipo?"] )
-opciones_amistoso = Array[ExtResource("6_nuydo")]([ExtResource("12_reclutar")])
+lineas_amistoso = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
+
+SI/NO"])
+lineas_indiferente = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
+
+SI/NO"])
+lineas_hostil = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
+
+SI/NO"])
+
 [node name="Lab_02" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
