@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.6)
+color = Color(0.04, 0.03, 0.09, 0.7)
 
 [node name="Panel" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -21,58 +21,90 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -280.0
-offset_right = 300.0
-offset_bottom = 280.0
+offset_left = -440.0
+offset_top = -270.0
+offset_right = 440.0
+offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Margen" type="MarginContainer" parent="Panel"]
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 16
 
 [node name="Contenido" type="VBoxContainer" parent="Panel/Margen"]
-theme_override_constants/separation = 10
+theme_override_constants/separation = 12
 
 [node name="Titulo" type="Label" parent="Panel/Margen/Contenido"]
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.91, 0.725, 0.29, 1)
+theme_override_font_sizes/font_size = 30
 text = "Party"
 horizontal_alignment = 1
 
-[node name="Lista" type="VBoxContainer" parent="Panel/Margen/Contenido"]
-theme_override_constants/separation = 14
+[node name="Pestanas" type="HBoxContainer" parent="Panel/Margen/Contenido"]
+alignment = 1
+theme_override_constants/separation = 12
 
-[node name="Oro" type="Label" parent="Panel/Margen/Contenido"]
+[node name="BotonEquipo" type="Button" parent="Panel/Margen/Contenido/Pestanas"]
+custom_minimum_size = Vector2(140, 0)
+text = "Equipo"
 
-[node name="TituloItems" type="Label" parent="Panel/Margen/Contenido"]
-theme_override_font_sizes/font_size = 20
+[node name="BotonObjetos" type="Button" parent="Panel/Margen/Contenido/Pestanas"]
+custom_minimum_size = Vector2(140, 0)
 text = "Objetos"
 
-[node name="Items" type="VBoxContainer" parent="Panel/Margen/Contenido"]
+[node name="PaginaEquipo" type="HBoxContainer" parent="Panel/Margen/Contenido"]
 size_flags_vertical = 3
+theme_override_constants/separation = 16
 
-[node name="Ayuda" type="Label" parent="Panel/Margen/Contenido"]
-modulate = Color(1, 1, 1, 0.6)
-text = "Z: elegir   X: volver   C / Tab: cerrar"
-horizontal_alignment = 1
+[node name="Lista" type="VBoxContainer" parent="Panel/Margen/Contenido/PaginaEquipo"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
 
-[node name="Submenu" type="PanelContainer" parent="."]
+[node name="Lado" type="PanelContainer" parent="Panel/Margen/Contenido/PaginaEquipo"]
+custom_minimum_size = Vector2(240, 0)
+size_flags_vertical = 0
+
+[node name="Cuerpo" type="VBoxContainer" parent="Panel/Margen/Contenido/PaginaEquipo/Lado"]
+
+[node name="TituloResumen" type="Label" parent="Panel/Margen/Contenido/PaginaEquipo/Lado/Cuerpo"]
+theme_override_colors/font_color = Color(0.91, 0.725, 0.29, 1)
+text = "Objetos"
+
+[node name="Resumen" type="Label" parent="Panel/Margen/Contenido/PaginaEquipo/Lado/Cuerpo"]
+
+[node name="PaginaObjetos" type="HBoxContainer" parent="Panel/Margen/Contenido"]
 visible = false
-offset_right = 180.0
-offset_bottom = 120.0
+size_flags_vertical = 3
+theme_override_constants/separation = 16
 
-[node name="Margen" type="MarginContainer" parent="Submenu"]
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 8
+[node name="Items" type="VBoxContainer" parent="Panel/Margen/Contenido/PaginaObjetos"]
+size_flags_horizontal = 3
 
-[node name="Contenido" type="VBoxContainer" parent="Submenu/Margen"]
-theme_override_constants/separation = 6
+[node name="Detalle" type="PanelContainer" parent="Panel/Margen/Contenido/PaginaObjetos"]
+custom_minimum_size = Vector2(300, 0)
 
-[node name="Titulo" type="Label" parent="Submenu/Margen/Contenido"]
+[node name="Cuerpo" type="VBoxContainer" parent="Panel/Margen/Contenido/PaginaObjetos/Detalle"]
+theme_override_constants/separation = 10
 
-[node name="Opciones" type="VBoxContainer" parent="Submenu/Margen/Contenido"]
+[node name="NombreItem" type="Label" parent="Panel/Margen/Contenido/PaginaObjetos/Detalle/Cuerpo"]
+theme_override_colors/font_color = Color(0.91, 0.725, 0.29, 1)
+theme_override_font_sizes/font_size = 22
+
+[node name="EfectoItem" type="Label" parent="Panel/Margen/Contenido/PaginaObjetos/Detalle/Cuerpo"]
+autowrap_mode = 3
+
+[node name="Acciones" type="VBoxContainer" parent="Panel/Margen/Contenido/PaginaObjetos/Detalle/Cuerpo"]
+size_flags_vertical = 10
+
+[node name="Pie" type="HBoxContainer" parent="Panel/Margen/Contenido"]
+
+[node name="Ayuda" type="Label" parent="Panel/Margen/Contenido/Pie"]
+modulate = Color(1, 1, 1, 0.6)
+size_flags_horizontal = 3
+text = "Z: elegir   X: volver   C / Tab: cerrar"
+
+[node name="Oro" type="Label" parent="Panel/Margen/Contenido/Pie"]
+theme_override_colors/font_color = Color(0.91, 0.725, 0.29, 1)
