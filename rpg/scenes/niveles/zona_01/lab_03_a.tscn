@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="10_1ud1m"]
 [ext_resource type="Texture2D" uid="uid://cxmloxqstma8l" path="res://assets/soldado_prueba/Range _Run-Sheet.png" id="10_vk442"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="11_ddrbp"]
-[ext_resource type="Resource" path="res://scenes/npcs/datos/sidekick_1_reclutar.tres" id="12_reclutar"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_wfyp8")
@@ -5445,6 +5444,10 @@ sources/0 = SubResource("TileSetAtlasSource_uh8tv")
 sources/1 = SubResource("TileSetAtlasSource_p0hxr")
 sources/2 = SubResource("TileSetAtlasSource_ovkyg")
 
+[sub_resource type="Resource" id="Resource_nuydo"]
+script = ExtResource("6_nuydo")
+metadata/_custom_type_script = "uid://ge22qwf4al28"
+
 [sub_resource type="Resource" id="Resource_clqv0"]
 script = ExtResource("9_n51q8")
 nombre = "Amistoso"
@@ -5520,6 +5523,7 @@ SI/NO"])
 lineas_hostil = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
 
 SI/NO"])
+opciones_amistoso = Array[ExtResource("6_nuydo")]([SubResource("Resource_nuydo")])
 
 [node name="Lab_02" type="Node2D" unique_id=10267033]
 

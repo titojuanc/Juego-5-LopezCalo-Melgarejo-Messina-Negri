@@ -8,6 +8,7 @@
 [ext_resource type="Resource" path="res://scenes/combate/items/HP_prueba.tres" id="6_item"]
 [ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="7_script_personaje"]
 [ext_resource type="Texture2D" path="res://icon.svg" id="8_textura"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/caotico_neutral.tres" id="9_perfil"]
 
 [resource]
 script = ExtResource("7_script_personaje")
@@ -18,4 +19,5 @@ ataques_especiales = Array[ExtResource("2_script_ataque")]([ExtResource("3_ataqu
 energia_max = 100
 inventario = Array[ExtResource("5_script_item")]([ExtResource("6_item")])
 textura = ExtResource("8_textura")
+perfil = ExtResource("9_perfil")
 metadata/_custom_type_script = "uid://b8536t7dcpoos"

@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="RecursoEnemigo" format=3 uid="uid://ho5kiidflp3n"]
 
 [ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="1_1lrbw"]
-[ext_resource type="Resource" uid="uid://bemw78jdmkxks" path="res://scenes/combate/items/HP_prueba.tres" id="9_drop"]
 [ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="2_dj4dy"]
+[ext_resource type="Resource" uid="uid://bemw78jdmkxks" path="res://scenes/combate/items/HP_prueba.tres" id="9_drop"]
 
 [resource]
 script = ExtResource("1_1lrbw")
-item_drop = ExtResource("9_drop")
 nombre = "Enemigo1"
 vida_max = 120
 descripcion = "Este es un enemigo de prueba"
@@ -14,4 +13,5 @@ ataque = 12
 textura = ExtResource("2_dj4dy")
 debilidades = Array[int]([2])
 resistencias = Array[int]([0])
+item_drop = ExtResource("9_drop")
 metadata/_custom_type_script = "uid://ca2ijkkdmetwi"
