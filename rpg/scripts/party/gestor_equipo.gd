@@ -47,6 +47,11 @@ func lider() -> RecursoPersonajeCombate:
 func seguidores() -> Array:
 	return miembros.slice(1)
 
+func reclutado_antes(primero: RecursoPersonajeCombate, segundo: RecursoPersonajeCombate) -> bool:
+	var indice_primero := miembros.find(primero)
+	var indice_segundo := miembros.find(segundo)
+	return indice_primero != -1 and indice_segundo != -1 and indice_primero <indice_segundo
+
 func progreso_de(miembro: RecursoPersonajeCombate) -> Dictionary:
 	if not _progreso.has(miembro):
 		_progreso[miembro] = {"nivel": 1, "exp": 0, "vida": miembro.vida_max}

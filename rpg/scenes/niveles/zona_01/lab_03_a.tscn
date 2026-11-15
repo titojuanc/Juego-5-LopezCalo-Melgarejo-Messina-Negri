@@ -12,7 +12,15 @@
 [ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="10_1ud1m"]
 [ext_resource type="Texture2D" uid="uid://cxmloxqstma8l" path="res://assets/soldado_prueba/Range _Run-Sheet.png" id="10_vk442"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="11_ddrbp"]
-[ext_resource type="Resource" path="res://scenes/npcs/datos/sidekick_1_reclutar.tres" id="12_reclutar"]
+[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="90_disparador"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="91_condicion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="92_conversacion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_quitar_nodo.gd" id="93_quitar"]
+[ext_resource type="Script" path="res://scripts/niveles/quitar_si_flag.gd" id="94_quitar_si_flag"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="95_linea"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="96_personaje"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="97_wayne"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="98_gloria"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_wfyp8")
@@ -5508,18 +5516,86 @@ animations = [{
 [sub_resource type="Resource" id="Resource_82bae"]
 script = ExtResource("10_1ud1m")
 id = &"10"
-nombre = "primer_sidekick"
+nombre = "Wayne"
 sprite_frames = SubResource("SpriteFrames_lc6ap")
 perfil = SubResource("Resource_clqv0")
-lineas_amistoso = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
 
-SI/NO"])
-lineas_indiferente = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
+[sub_resource type="Resource" id="Linea_cruce_01"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Uh, mirá vos. Llegaste con niñera y todo."
 
-SI/NO"])
-lineas_hostil = Array[String](["Se pudrio todo loco que onda. ¿Te jode si te acompaño?
+[sub_resource type="Resource" id="Linea_cruce_02"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "¿Y vos quién sos? No parecés muy preocupado por el incendio."
 
-SI/NO"])
+[sub_resource type="Resource" id="Linea_cruce_03"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Preocupado no. Entretenido. Hay una diferencia."
+
+[sub_resource type="Resource" id="Linea_cruce_04"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "(A vos, en voz baja) No me da buena espina."
+
+[sub_resource type="Resource" id="Linea_solo_01"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Ey, ey. Tranqui, no te voy a hacer nada."
+
+[sub_resource type="Resource" id="Linea_solo_02"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Se pudrió todo, loco. Alarmas, fuego, robots a los tiros..."
+
+[sub_resource type="Resource" id="Linea_solo_03"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Y vos tenés la misma cara que el que arrancó todo esto. Interesante."
+
+[sub_resource type="Resource" id="Linea_solo_04"]
+script = ExtResource("95_linea")
+hablante = "Protagonista"
+texto = "¿El que arrancó todo esto?"
+
+[sub_resource type="Resource" id="Linea_solo_05"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Ajá. Igualito. Capaz sos vos y no te acordás. Capaz no."
+
+[sub_resource type="Resource" id="Linea_propuesta_01"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "La cosa es así: donde vayas vos, seguro pasa algo. Y a mí me gusta que pasen cosas."
+
+[sub_resource type="Resource" id="Linea_propuesta_02"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "No le hagas caso... o sí, no sé. Vos decidís."
+
+[sub_resource type="Resource" id="Linea_propuesta_03"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "¿Te jode si te acompaño?"
+
+[sub_resource type="Resource" id="Opcion_reclutar_wayne"]
+script = ExtResource("6_nuydo")
+id = &"reclutar_wayne"
+texto = "Dale, vení."
+respuesta = Array[String](["Eso. Va a estar bueno."])
+miembro_party = ExtResource("97_wayne")
+flag_al_seleccionar = &"wayne_reclutado"
+
+[sub_resource type="Resource" id="Opcion_rechazar_wayne"]
+script = ExtResource("6_nuydo")
+id = &"rechazar_wayne"
+texto = "Prefiero ir solo."
+respuesta = Array[String](["Como quieras. Igual voy a andar cerca, por las dudas."])
+
+[sub_resource type="RectangleShape2D" id="Forma_evento_wayne"]
+size = Vector2(160, 160)
 
 [node name="Lab_02" type="Node2D" unique_id=10267033]
 
@@ -5577,4 +5653,53 @@ puerta_destino = &"lab05_west"
 direccion_llegada = 3
 distancia_llegada = 84.0
 
+[node name="EventoWayne" parent="." instance=ExtResource("90_disparador")]
+position = Vector2(558, 180)
+identificador = &"reclutar_wayne"
+solo_una_vez = false
+flag_requerido = &"wayne_reclutado"
+valor_flag_requerido = false
+
+[node name="CollisionShape2D" parent="EventoWayne/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("Forma_evento_wayne")
+
+[node name="SiGloriaPresente" type="Node" parent="EventoWayne/Acciones" index="0"]
+script = ExtResource("91_condicion")
+miembros_presentes = Array[ExtResource("96_personaje")]([ExtResource("98_gloria")])
+
+[node name="CruceConGloria" type="Node" parent="EventoWayne/Acciones/SiGloriaPresente"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_cruce_01"), SubResource("Linea_cruce_02"), SubResource("Linea_cruce_03"), SubResource("Linea_cruce_04")])
+presentes = Array[ExtResource("96_personaje")]([ExtResource("97_wayne")])
+
+[node name="SiGloriaAusente" type="Node" parent="EventoWayne/Acciones" index="1"]
+script = ExtResource("91_condicion")
+miembros_ausentes = Array[ExtResource("96_personaje")]([ExtResource("98_gloria")])
+
+[node name="PresentacionWayne" type="Node" parent="EventoWayne/Acciones/SiGloriaAusente"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_solo_01"), SubResource("Linea_solo_02"), SubResource("Linea_solo_03"), SubResource("Linea_solo_04"), SubResource("Linea_solo_05")])
+presentes = Array[ExtResource("96_personaje")]([ExtResource("97_wayne")])
+
+[node name="PropuestaWayne" type="Node" parent="EventoWayne/Acciones" index="2"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_propuesta_01"), SubResource("Linea_propuesta_02"), SubResource("Linea_propuesta_03")])
+opciones = Array[ExtResource("6_nuydo")]([SubResource("Opcion_reclutar_wayne"), SubResource("Opcion_rechazar_wayne")])
+presentes = Array[ExtResource("96_personaje")]([ExtResource("97_wayne")])
+
+[node name="SiReclutado" type="Node" parent="EventoWayne/Acciones" index="3"]
+script = ExtResource("91_condicion")
+flag_requerido = &"wayne_reclutado"
+
+[node name="QuitarWayneDelMapa" type="Node" parent="EventoWayne/Acciones/SiReclutado"]
+script = ExtResource("93_quitar")
+ruta_nodo = NodePath("../../../../Npc")
+
+[node name="QuitarWayneSiReclutado" type="Node" parent="."]
+script = ExtResource("94_quitar_si_flag")
+flag = &"wayne_reclutado"
+rutas = Array[NodePath]([NodePath("../Npc"), NodePath("../EventoWayne")])
+
 [editable path="Npc"]
+[editable path="EventoWayne"]
