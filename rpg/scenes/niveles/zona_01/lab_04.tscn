@@ -5574,7 +5574,12 @@ script = ExtResource("12_al7cb")
 nombre_flag = &"lab04_puerta"
 metadata/_custom_type_script = "uid://shadua1hkcoa"
 
-[node name="MarcarCierreCompartido" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(254193810, 1277747786) index="10"]
+[node name="BloquearConexionLab2Lab4" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(254193810, 1277747786) index="10"]
+script = ExtResource("12_al7cb")
+nombre_flag = &"lab5_bloquea_lab2_lab4"
+valor = true
+
+[node name="MarcarCierreCompartido" type="Node" parent="DisparadorEvento/Acciones" parent_id_path=PackedInt32Array(254193810, 1277747786) index="11"]
 script = ExtResource("12_al7cb")
 nombre_flag = &"evento_cierre_lab"
 valor = true

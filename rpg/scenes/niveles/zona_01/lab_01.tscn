@@ -5469,17 +5469,48 @@ tile_set = SubResource("TileSet_paprv")
 [node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("2_ar8a2")]
 position = Vector2(510, 357)
 
-[node name="Interactuable" parent="." unique_id=1123185042 instance=ExtResource("5_dmnfp")]
-position = Vector2(669, 358)
-scale = Vector2(2, 2)
-nombre = "Carta"
-lineas = Array[String](["Que", "So
-"])
-textura = SubResource("AtlasTexture_njd7s")
-
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_njd7s")]
 position = Vector2(606, 82)
 escena_destino = "uid://bfndg73i3w086"
 identificador = &"lab01_north"
 puerta_destino = &"lab02_south"
 direccion_llegada = 2
+
+[node name="Interactuables" type="Node" parent="." unique_id=1951482948]
+
+[node name="Biblioteca2" parent="Interactuables" unique_id=1123185042 instance=ExtResource("5_dmnfp")]
+position = Vector2(926.00006, 141.00002)
+scale = Vector2(5, 5)
+nombre = "Biblioteca"
+lineas = Array[String](["* Libros de investigación, histioria y biología.", "* Nada muy útil..."])
+mostrar_indicador = false
+
+[node name="Biblioteca" parent="Interactuables" unique_id=2039235882 instance=ExtResource("5_dmnfp")]
+position = Vector2(802.00006, 143.00002)
+scale = Vector2(5, 5)
+nombre = "Biblioteca"
+lineas = Array[String](["* Libros de investigación, histioria y biología.", "* Nada muy útil..."])
+mostrar_indicador = false
+
+[node name="Carta" parent="Interactuables" unique_id=1147647734 instance=ExtResource("5_dmnfp")]
+position = Vector2(673, 349)
+scale = Vector2(2, 2)
+nombre = "Carta"
+lineas = Array[String](["Que", "So
+"])
+textura = SubResource("AtlasTexture_njd7s")
+mostrar_indicador = false
+
+[node name="Casillero" parent="Interactuables" unique_id=1219611576 instance=ExtResource("5_dmnfp")]
+position = Vector2(385, 123)
+scale = Vector2(4, 5)
+nombre = "Casillero"
+lineas = Array[String](["* Dentro hay muchos componentes químicos y herramientas.", "* Parecen algunos usados."])
+mostrar_indicador = false
+
+[node name="Caja" parent="Interactuables" unique_id=1059382055 instance=ExtResource("5_dmnfp")]
+position = Vector2(41, 202.00002)
+scale = Vector2(5, 12)
+nombre = "Cajas"
+lineas = Array[String](["* Cajas con artilugios extraños.", "* Algunos parecen de medición, otros son como frascos.", "* Tranquilamente estarían en un laboratorio."])
+mostrar_indicador = false
