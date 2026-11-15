@@ -28,7 +28,6 @@ func _ready() -> void:
 	if datos and Encuentros.derrotado(clave()):
 		queue_free()
 		return
-	add_to_group("npcs")
 	indicador.hide()
 	area_interaccion.area_entered.connect(_al_entrar)
 	area_interaccion.area_exited.connect(_al_salir)
@@ -36,7 +35,6 @@ func _ready() -> void:
 	area_vision.body_exited.connect(_al_perder_de_vista)
 	reputacion.afinidad_cambiada.connect(_on_afinidad_cambiada)
 	MotorDialogo.opcion_elegida.connect(_al_elegir_opcion)
-	Rumores.rumores_cambiados.connect(_on_rumores_cambiados)
 	if datos == null:
 		return
 	_tregua = Encuentros.tomar_tregua(clave())
@@ -89,10 +87,6 @@ func _on_afinidad_cambiada(_afinidad: float) -> void:
 	if _jugador_a_la_vista and puede_atacar():
 		_reaccionar()
 
-func _on_rumores_cambiados() -> void:
-	if _jugador_a_la_vista and puede_atacar():
-		_reaccionar()
-
 
 func _al_elegir_opcion(opcion: OpcionDialogo) -> void:
 	if not opciones.has(opcion) or opcion.miembro_party == null or not Equipo.miembros.has(opcion.miembro_party):
@@ -122,10 +116,7 @@ func _actualizar_lineas() -> void:
 		lineas.append(datos.motivo_bueno if Alineamiento.bien > datos.perfil.posicion_bien else datos.motivo_malvado)
 
 func conoce_al_jugador() -> bool:
-	return Rumores.conocimiento_de(datos.id, get_tree().current_scene.scene_file_path) >= datos.umbral_conocimiento
-
-func ve_al_jugador() -> bool:
-	return _jugador_a_la_vista
+	return absf(Reputacion.reputacion_actual()) >= datos.umbral_conocimiento
 
 func clave() -> StringName:
 	if not datos.id.is_empty():

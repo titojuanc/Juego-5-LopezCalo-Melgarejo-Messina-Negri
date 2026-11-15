@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/reputacion/gestor_reputacion.gd" id="1_gestor"]
+[ext_resource type="Script" path="res://scripts/reputacion/recurso_zona.gd" id="2_zona"]
+[ext_resource type="Resource" path="res://scenes/reputacion/zonas/laboratorio.tres" id="3_laboratorio"]
+
+[node name="Reputacion" type="Node"]
+script = ExtResource("1_gestor")
+zonas = Array[ExtResource("2_zona")]([ExtResource("3_laboratorio")])

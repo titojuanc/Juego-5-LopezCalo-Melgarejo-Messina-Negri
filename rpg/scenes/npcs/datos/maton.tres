@@ -16,4 +16,4 @@ lineas_hostil = Array[String](["Mirá quién vino. El santito."])
 motivo_legal = "Olés a policía."
 motivo_bueno = "Los buenitos como vos me dan asco."
 enemigos = Array[ExtResource("3_enemigo")]([ExtResource("4_enemigo2")])
-umbral_conocimiento = 0.5
+umbral_conocimiento = 10.0

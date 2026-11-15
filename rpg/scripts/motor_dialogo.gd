@@ -52,9 +52,11 @@ func iniciar(nombre: String, lineas: Array[String], opciones: Array[OpcionDialog
 	_lineas = _filtrar_lineas(lineas)
 	_opciones_dialogo.clear()
 	for opcion in opciones:
-		if not _opcion_disponible(opcion):
+		if not _opcion_visible(opcion):
 			continue
 		_opciones_dialogo.append(opcion)
+	if not _opciones_dialogo.any(_opcion_disponible):
+		_opciones_dialogo.clear()
 	if _lineas.is_empty() and _opciones_dialogo.is_empty():
 		return
 	activo = true
@@ -156,7 +158,11 @@ func _mostrar_opciones() -> void:
 	_indice_opcion = 0
 	for indice in _opciones_dialogo.size():
 		var boton := Button.new()
-		boton.text = _opciones_dialogo[indice].texto
+		var opcion: OpcionDialogo = _opciones_dialogo[indice]
+		boton.text = opcion.texto
+		if opcion.perfil_requerido != null:
+			boton.text = "[%s] %s" % [opcion.perfil_requerido.nombre, opcion.texto]
+			boton.disabled = not _cumple_alineamiento(opcion)
 		boton.custom_minimum_size = Vector2(0, 40)
 		boton.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		boton.focus_mode = Control.FOCUS_ALL
@@ -166,8 +172,10 @@ func _mostrar_opciones() -> void:
 		_botones_opciones.append(boton)
 	_opciones.show()
 	_actualizar_altura_caja(_botones_opciones.size())
-	if not _botones_opciones.is_empty():
-		_botones_opciones[0].grab_focus()
+	for boton in _botones_opciones:
+		if not boton.disabled:
+			boton.grab_focus()
+			return
 
 
 func _mover_opcion(direccion: int) -> void:
@@ -205,6 +213,14 @@ func _seleccionar_opcion(indice: int) -> void:
 
 
 func _opcion_disponible(opcion: OpcionDialogo) -> bool:
+	return _opcion_visible(opcion) and _cumple_alineamiento(opcion)
+
+
+func _cumple_alineamiento(opcion: OpcionDialogo) -> bool:
+	return opcion.perfil_requerido == null or Alineamiento.cerca_de(opcion.perfil_requerido, opcion.distancia_maxima)
+
+
+func _opcion_visible(opcion: OpcionDialogo) -> bool:
 	if opcion == null or opcion.texto.strip_edges().is_empty():
 		return false
 	if not opcion.flag_requerido.is_empty() and GestorEventos.obtener_flag(opcion.flag_requerido) != opcion.valor_flag_requerido:

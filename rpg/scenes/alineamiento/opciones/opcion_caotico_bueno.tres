@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecursoOpcionDialogo" format=3]
+
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="1_opcion"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/caotico_bueno.tres" id="2_perfil"]
+
+[resource]
+script = ExtResource("1_opcion")
+id = &"opcion_caotico_bueno"
+texto = "Respuesta Caótico bueno (placeholder)"
+respuesta = Array[String](["(Placeholder) El NPC reacciona a una respuesta Caótico bueno."])
+perfil_requerido = ExtResource("2_perfil")

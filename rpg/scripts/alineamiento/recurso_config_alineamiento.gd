@@ -10,3 +10,5 @@ class_name RecursoConfigAlineamiento
 @export var umbral_amistoso: float = 1.0
 
 @export var umbral_hostil: float = -1.0
+
+@export var peso_reputacion: float = 1.0

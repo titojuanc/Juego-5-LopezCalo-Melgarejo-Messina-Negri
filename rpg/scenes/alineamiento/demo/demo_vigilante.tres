@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RecursoNpc" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/legal_bueno.tres" id="2_perfil"]
+
+[resource]
+script = ExtResource("1_npc")
+id = &"demo_vigilante"
+nombre = "Vigilante"
+perfil = ExtResource("2_perfil")
+lineas_amistoso = Array[String](["¡Gracias por cuidar el barrio!"])
+lineas_indiferente = Array[String](["Te estoy vigilando."])
+lineas_hostil = Array[String](["Ya me contaron lo que hiciste. No te escapás."])
+motivo_legal = ""
+motivo_caotico = "No respetás ninguna regla."
+motivo_bueno = ""
+motivo_malvado = "Sé que lastimaste gente."
+umbral_conocimiento = 10.0
