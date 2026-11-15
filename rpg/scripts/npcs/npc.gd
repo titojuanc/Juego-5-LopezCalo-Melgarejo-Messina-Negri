@@ -21,6 +21,7 @@ var _jugador_a_la_vista := false
 var atacando := false
 
 func _ready() -> void:
+	add_to_group("npcs")
 	indicador.hide()
 	area_interaccion.area_entered.connect(_al_entrar)
 	area_interaccion.area_exited.connect(_al_salir)
@@ -28,6 +29,7 @@ func _ready() -> void:
 	area_vision.body_exited.connect(_al_perder_de_vista)
 	reputacion.afinidad_cambiada.connect(_on_afinidad_cambiada)
 	MotorDialogo.opcion_elegida.connect(_al_elegir_opcion)
+	Rumores.rumores_cambiados.connect(_on_rumores_cambiados)
 	if datos == null:
 		return
 	nombre = datos.nombre
@@ -43,6 +45,10 @@ func _process(_delta: float) -> void:
 
 func _on_afinidad_cambiada(_afinidad: float) -> void:
 	_actualizar_lineas()
+	if _jugador_a_la_vista and puede_atacar():
+		_atacar()
+
+func _on_rumores_cambiados() -> void:
 	if _jugador_a_la_vista and puede_atacar():
 		_atacar()
 
@@ -75,7 +81,10 @@ func _actualizar_lineas() -> void:
 		lineas.append(datos.motivo_bueno if Alineamiento.bien > datos.perfil.posicion_bien else datos.motivo_malvado)
 
 func conoce_al_jugador() -> bool:
-	return true
+	return Rumores.conocimiento_de(datos.id, get_tree().current_scene.scene_file_path) >= datos.umbral_conocimiento
+
+func ve_al_jugador() -> bool:
+	return _jugador_a_la_vista
 
 func puede_atacar() -> bool:
 	if datos == null or datos.enemigos.is_empty():

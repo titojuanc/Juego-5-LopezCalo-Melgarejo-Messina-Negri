@@ -32,3 +32,5 @@ const OpcionDialogo = preload("res://scripts/recursos/recurso_opcion_dialogo.gd"
 @export var motivo_malvado: String
 
 @export var enemigos: Array[RecursoEnemigo] = []
+
+@export var umbral_conocimiento: float = 0.0

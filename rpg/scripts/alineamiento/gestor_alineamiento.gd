@@ -2,6 +2,7 @@ extends Node
 class_name GestorAlineamiento
 
 signal alineamiento_cambiado(ley: float, bien: float)
+signal accion_aplicada(accion: RecursoAccionMoral)
 
 var config: RecursoConfigAlineamiento = preload("res://scenes/alineamiento/config_alineamiento.tres")
 
@@ -20,6 +21,7 @@ func aplicar_accion(accion: RecursoAccionMoral) -> void:
 	if accion == null:
 		return
 	desplazar(accion.desplazamiento_ley, accion.desplazamiento_bien)
+	accion_aplicada.emit(accion)
 
 func desplazar(delta_ley: float, delta_bien: float) -> void:
 	establecer(ley + delta_ley, bien + delta_bien)

@@ -1,5 +1,9 @@
 extends Node2D
 
+@export var accion_buena: RecursoAccionMoral
+
+@export var accion_mala: RecursoAccionMoral
+
 @onready var label_alineamiento: Label = $Hud/LabelAlineamiento
 
 func _ready() -> void:
@@ -8,6 +12,12 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventKey or not event.pressed or event.echo:
+		return
+	if event.keycode == KEY_Q:
+		Alineamiento.aplicar_accion(accion_mala)
+		return
+	if event.keycode == KEY_E:
+		Alineamiento.aplicar_accion(accion_buena)
 		return
 	var indice = event.keycode - KEY_1
 	if indice < 0 or indice > 8:
