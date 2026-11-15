@@ -28,7 +28,7 @@ func _on_jugar_presionado() -> void:
 	GestorEventos.reiniciar_estado_partida()
 	Equipo.reiniciar()
 	Encuentros.reiniciar()
-	Rumores.reiniciar()
+	Reputacion.reiniciar()
 	Mapa.reiniciar()
 	Alineamiento.establecer(0.0, 0.0)
 	var miembros_iniciales: Array[RecursoPersonajeCombate] = [PERSONAJE_PROTAGONISTA]

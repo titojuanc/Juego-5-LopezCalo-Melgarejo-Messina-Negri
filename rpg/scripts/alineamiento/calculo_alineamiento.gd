@@ -51,3 +51,6 @@ static func nombre_alineamiento(ley: float, bien: float, config: RecursoConfigAl
 	var nombres_ley = ["Caótico", "Neutral", "Legal"]
 	var nombres_bien = ["malvado", "neutral", "bueno"]
 	return nombres_ley[l + 1] + " " + nombres_bien[b + 1]
+
+static func distancia(perfil: RecursoPerfilAlineamiento, ley: float, bien: float) -> float:
+	return Vector2(ley, bien).distance_to(Vector2(perfil.posicion_ley, perfil.posicion_bien))
