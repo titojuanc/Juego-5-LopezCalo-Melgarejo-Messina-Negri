@@ -12,9 +12,20 @@ func _ready() -> void:
 	_cargar_valores()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if visible and event.is_action_pressed("ui_cancel"):
+	if not visible or event.is_echo():
+		return
+	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("cancelar"):
 		get_viewport().set_input_as_handled()
 		cerrar()
+	elif event.is_action_pressed("interactuar"):
+		var foco = get_viewport().gui_get_focus_owner()
+		if not foco is BaseButton or not is_ancestor_of(foco):
+			return
+		get_viewport().set_input_as_handled()
+		if foco.toggle_mode:
+			foco.button_pressed = not foco.button_pressed
+		else:
+			foco.pressed.emit()
 	
 func abrir() -> void:
 	show()

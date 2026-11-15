@@ -22,14 +22,16 @@ var _indice: int = 0
 var _indice_opcion: int = 0
 var _caracteres_visibles: float = 0.0
 var _nombre_dialogo: String = ""
+var _retrato_dialogo: Texture2D
 var _mostrando_opciones: bool = false
 var _eleccion_realizada: bool = false
 var _mostrando_respuesta_jugador: bool = false
 
 @onready var _caja: PanelContainer = $Pantalla/Caja
-@onready var _nombre: Label = $Pantalla/Caja/Margen/Contenido/Nombre
-@onready var _texto: RichTextLabel = $Pantalla/Caja/Margen/Contenido/Texto
-@onready var _opciones: VBoxContainer = $Pantalla/Caja/Margen/Contenido/Opciones
+@onready var _nombre: Label = $Pantalla/Caja/Margen/Fila/Contenido/Nombre
+@onready var _texto: RichTextLabel = $Pantalla/Caja/Margen/Fila/Contenido/Texto
+@onready var _opciones: VBoxContainer = $Pantalla/Caja/Margen/Fila/Contenido/Opciones
+@onready var _retrato: TextureRect = $Pantalla/Caja/Margen/Fila/Retrato
 
 
 func _ready() -> void:
@@ -46,24 +48,29 @@ func desregistrar(interactuable: Node2D) -> void:
 	_disponibles.erase(interactuable)
 
 
-func iniciar(nombre: String, lineas: Array[String], opciones: Array[OpcionDialogo] = []) -> void:
+func iniciar(nombre: String, lineas: Array[String], opciones: Array[OpcionDialogo] = [], retrato: Texture2D = null) -> void:
 	if activo:
 		return
 	_lineas = _filtrar_lineas(lineas)
 	_opciones_dialogo.clear()
 	for opcion in opciones:
-		if not _opcion_disponible(opcion):
+		if not _opcion_visible(opcion):
 			continue
 		_opciones_dialogo.append(opcion)
+	if not _opciones_dialogo.any(_opcion_disponible):
+		_opciones_dialogo.clear()
 	if _lineas.is_empty() and _opciones_dialogo.is_empty():
 		return
 	activo = true
 	_indice = 0
 	_nombre_dialogo = nombre
+	_retrato_dialogo = retrato
 	_eleccion_realizada = false
 	_mostrando_respuesta_jugador = false
 	_nombre.text = nombre
 	_nombre.visible = not nombre.is_empty()
+	_retrato.texture = retrato
+	_retrato.visible = retrato != null
 	_caja.show()
 	if _lineas.is_empty():
 		_mostrar_opciones()
@@ -111,6 +118,8 @@ func _unhandled_input(evento: InputEvent) -> void:
 			if _mostrando_respuesta_jugador:
 				_nombre.text = _nombre_dialogo
 				_nombre.visible = not _nombre_dialogo.is_empty()
+				_retrato.texture = _retrato_dialogo
+				_retrato.visible = _retrato_dialogo != null
 				_mostrando_respuesta_jugador = false
 			_mostrar_linea()
 		elif not _opciones_dialogo.is_empty() and not _eleccion_realizada:
@@ -138,7 +147,10 @@ func _unhandled_input(evento: InputEvent) -> void:
 			var opciones: Array[OpcionDialogo] = []
 			if cercano.has_method("obtener_opciones_dialogo"):
 				opciones = cercano.obtener_opciones_dialogo()
-			iniciar(cercano.nombre, cercano.lineas, opciones)
+			var retrato: Texture2D = null
+			if cercano.has_method("obtener_retrato_dialogo"):
+				retrato = cercano.obtener_retrato_dialogo()
+			iniciar(cercano.nombre, cercano.lineas, opciones, retrato)
 
 
 func _mostrar_linea() -> void:
@@ -156,7 +168,11 @@ func _mostrar_opciones() -> void:
 	_indice_opcion = 0
 	for indice in _opciones_dialogo.size():
 		var boton := Button.new()
-		boton.text = _opciones_dialogo[indice].texto
+		var opcion: OpcionDialogo = _opciones_dialogo[indice]
+		boton.text = opcion.texto
+		if opcion.perfil_requerido != null:
+			boton.text = "[%s] %s" % [opcion.perfil_requerido.nombre, opcion.texto]
+			boton.disabled = not _cumple_alineamiento(opcion)
 		boton.custom_minimum_size = Vector2(0, 40)
 		boton.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		boton.focus_mode = Control.FOCUS_ALL
@@ -166,8 +182,10 @@ func _mostrar_opciones() -> void:
 		_botones_opciones.append(boton)
 	_opciones.show()
 	_actualizar_altura_caja(_botones_opciones.size())
-	if not _botones_opciones.is_empty():
-		_botones_opciones[0].grab_focus()
+	for boton in _botones_opciones:
+		if not boton.disabled:
+			boton.grab_focus()
+			return
 
 
 func _mover_opcion(direccion: int) -> void:
@@ -201,10 +219,20 @@ func _seleccionar_opcion(indice: int) -> void:
 	_mostrando_respuesta_jugador = true
 	_nombre.text = nombre_protagonista
 	_nombre.visible = not nombre_protagonista.is_empty()
+	_retrato.texture = _obtener_retrato_protagonista()
+	_retrato.visible = _retrato.texture != null
 	_mostrar_linea()
 
 
 func _opcion_disponible(opcion: OpcionDialogo) -> bool:
+	return _opcion_visible(opcion) and _cumple_alineamiento(opcion)
+
+
+func _cumple_alineamiento(opcion: OpcionDialogo) -> bool:
+	return opcion.perfil_requerido == null or Alineamiento.cerca_de(opcion.perfil_requerido, opcion.distancia_maxima)
+
+
+func _opcion_visible(opcion: OpcionDialogo) -> bool:
 	if opcion == null or opcion.texto.strip_edges().is_empty():
 		return false
 	if not opcion.flag_requerido.is_empty() and GestorEventos.obtener_flag(opcion.flag_requerido) != opcion.valor_flag_requerido:
@@ -240,6 +268,19 @@ func _filtrar_lineas(lineas: Array[String]) -> Array[String]:
 	return resultado
 
 
+func _obtener_retrato_protagonista() -> Texture2D:
+	var jugador: Node2D = GestorJugador.jugador
+	if not is_instance_valid(jugador):
+		return null
+	var sprite: AnimatedSprite2D = jugador.get_node_or_null("CharacterBody2D/AnimatedSprite2D") as AnimatedSprite2D
+	if sprite == null or sprite.sprite_frames == null:
+		return null
+	var animacion: StringName = &"Idle" if sprite.sprite_frames.has_animation(&"Idle") else sprite.animation
+	if not sprite.sprite_frames.has_animation(animacion) or sprite.sprite_frames.get_frame_count(animacion) == 0:
+		return null
+	return sprite.sprite_frames.get_frame_texture(animacion, 0)
+
+
 func finalizar() -> void:
 	if not activo:
 		return
@@ -249,6 +290,9 @@ func finalizar() -> void:
 	_caja.hide()
 	_lineas.clear()
 	_opciones_dialogo.clear()
+	_retrato_dialogo = null
+	_retrato.texture = null
+	_retrato.hide()
 	_eleccion_realizada = false
 	_mostrando_respuesta_jugador = false
 	dialogo_finalizado.emit()

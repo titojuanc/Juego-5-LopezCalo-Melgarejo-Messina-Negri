@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RecursoZona" format=3]
+
+[ext_resource type="Script" path="res://scripts/reputacion/recurso_zona.gd" id="1_zona"]
+
+[resource]
+script = ExtResource("1_zona")
+carpeta = "res://scenes/niveles/zona_01"
+nombre = "Laboratorio"
+reputacion_inicial = -60.0

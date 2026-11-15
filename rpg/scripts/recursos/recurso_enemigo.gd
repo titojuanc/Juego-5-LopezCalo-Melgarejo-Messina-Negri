@@ -10,6 +10,11 @@ class_name RecursoEnemigo
 @export var resistencias: Array[RecursoAtaqueEspecial.TipoAtaque] = []
 @export var multiplicador_debilidad: float = 1.5
 @export var multiplicador_resistencia: float = 0.5
+@export var experiencia: int = 20
+@export var oro: int = 10
+@export var item_drop: RecursoItem
+@export_range(0.0, 1.0, 0.05) var probabilidad_drop: float = 0.5
+@export var es_jefe: bool = false
 
 func multiplicador_contra(tipo: RecursoAtaqueEspecial.TipoAtaque) -> float:
 	if debilidades.has(tipo):

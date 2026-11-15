@@ -6,7 +6,10 @@ signal item_usado(item: RecursoItem)
 var items: Array[RecursoItem] = []
 
 func inicializar(datos: RecursoPersonajeCombate) -> void:
-	items = datos.inventario.duplicate()
+	if Equipo.miembros.has(datos):
+		items = Equipo.inventario
+	else:
+		items = datos.inventario.duplicate()
 
 func usar_item(indice: int, salud_objetivo: Salud, combate_objetivo: Combate) -> void:
 	if indice < 0 or indice >= items.size():

@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="RecursoMapa" format=3]
+
+[ext_resource type="Script" path="res://scripts/mapa/recurso_mapa.gd" id="1_mapa"]
+[ext_resource type="Script" path="res://scripts/mapa/recurso_sala_mapa.gd" id="2_sala"]
+
+[sub_resource type="Resource" id="Sala_lab_01"]
+script = ExtResource("2_sala")
+escena = "res://scenes/niveles/zona_01/lab_01.tscn"
+nombre = "Lab 1"
+
+[sub_resource type="Resource" id="Sala_lab_02"]
+script = ExtResource("2_sala")
+escena = "res://scenes/niveles/zona_01/lab_02.tscn"
+nombre = "Lab 2"
+
+[sub_resource type="Resource" id="Sala_lab_03"]
+script = ExtResource("2_sala")
+escena = "res://scenes/niveles/zona_01/lab_03.tscn"
+nombre = "Lab 3"
+
+[sub_resource type="Resource" id="Sala_lab_03_a"]
+script = ExtResource("2_sala")
+escena = "res://scenes/niveles/zona_01/lab_03_a.tscn"
+nombre = "Lab 3-A"
+
+[sub_resource type="Resource" id="Sala_lab_05"]
+script = ExtResource("2_sala")
+escena = "res://scenes/niveles/zona_01/lab_05.tscn"
+nombre = "Lab 5"
+
+[sub_resource type="Resource" id="Sala_lab_04"]
+script = ExtResource("2_sala")
+escena = "res://scenes/niveles/zona_01/lab_04.tscn"
+nombre = "Lab 4"
+
+[sub_resource type="Resource" id="Sala_lab_04_01"]
+script = ExtResource("2_sala")
+escena = "res://scenes/niveles/zona_01/lab_04_01.tscn"
+nombre = "Lab 4-1"
+
+[sub_resource type="Resource" id="Sala_lab_04_a"]
+script = ExtResource("2_sala")
+escena = "res://scenes/niveles/zona_01/lab_04_a.tscn"
+nombre = "Lab 4-A"
+
+[resource]
+script = ExtResource("1_mapa")
+nombre = "Zona 1 - Laboratorio"
+salas = Array[ExtResource("2_sala")]([SubResource("Sala_lab_01"), SubResource("Sala_lab_02"), SubResource("Sala_lab_03"), SubResource("Sala_lab_03_a"), SubResource("Sala_lab_05"), SubResource("Sala_lab_04"), SubResource("Sala_lab_04_01"), SubResource("Sala_lab_04_a")])

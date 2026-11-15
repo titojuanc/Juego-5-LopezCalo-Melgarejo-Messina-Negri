@@ -12,17 +12,19 @@ var ataques_especiales: Array[RecursoAtaqueEspecial] = []
 var energia_max: int = 0
 var energia_actual: int = 0
 var bonus_ataque: float = 1.0
+var ataque_extra: int = 0
 
 func inicializar(datos: RecursoPersonajeCombate) -> void:
 	arma = datos.arma
 	ataques_especiales = datos.ataques_especiales
-	energia_max = datos.energia_max
-	energia_actual = datos.energia_max
+	energia_max = Equipo.energia_max_de(datos)
+	energia_actual = energia_max
+	ataque_extra = Equipo.ataque_extra_de(datos)
 
 func atacar(objetivo: Salud) -> void:
 	if arma == null or objetivo == null:
 		return
-	var dano := roundi(arma.daño * bonus_ataque)
+	var dano := roundi((arma.daño + ataque_extra) * bonus_ataque)
 	objetivo.recibir_dano(dano)
 	ataque_realizado.emit(propietario, objetivo, dano)
 
@@ -41,7 +43,7 @@ func usar_ataque_especial(indice: int, objetivo: Salud, multiplicador: float = 1
 		return
 	energia_actual -= especial.costo_energia
 	energia_cambiada.emit(energia_actual, energia_max)
-	var dano := roundi(especial.daño * bonus_ataque * multiplicador)
+	var dano := roundi((especial.daño + ataque_extra) * bonus_ataque * multiplicador)
 	if(especial.tipoSpell == especial.TipoSpell.DAÑO ):
 		objetivo.recibir_dano(dano)
 		ataque_realizado.emit(propietario, objetivo, dano)

@@ -46,3 +46,6 @@ func a_diccionario() -> Dictionary:
 
 func desde_diccionario(datos: Dictionary) -> void:
 	establecer(datos.get("ley", 0.0), datos.get("bien", 0.0))
+
+func cerca_de(perfil: RecursoPerfilAlineamiento, distancia_maxima: float) -> bool:
+	return CalculoAlineamiento.distancia(perfil, ley, bien) <= distancia_maxima

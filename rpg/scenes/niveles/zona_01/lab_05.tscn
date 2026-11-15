@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="13_disparador"]
 [ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="14_accion_flag"]
 [ext_resource type="Script" path="res://scripts/npcs/movimiento_npc.gd" id="15_movimiento"]
+[ext_resource type="Resource" uid="uid://di7tlmsoc0qnr" path="res://scenes/combate/enemigos/test_enemigo4.tres" id="16_enemigo_robot"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_a6v2y")
@@ -5529,7 +5530,8 @@ perfil = SubResource("Resource_ahvdv")
 lineas_amistoso = Array[String]([""])
 lineas_indiferente = Array[String]([""])
 lineas_hostil = Array[String]([""])
-enemigos = Array[ExtResource("7_0anec")]([null])
+enemigos = Array[ExtResource("7_0anec")]([ExtResource("16_enemigo_robot")])
+sin_mente = true
 metadata/_custom_type_script = "uid://vfx2vuq5n8y1"
 
 [node name="Lab_05" type="Node2D" unique_id=10267033]
