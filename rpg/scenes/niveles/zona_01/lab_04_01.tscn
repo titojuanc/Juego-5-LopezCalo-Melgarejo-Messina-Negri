@@ -12,8 +12,16 @@
 [ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="10_swhcd"]
 [ext_resource type="Texture2D" uid="uid://buunt6esy6amg" path="res://assets/soldado_prueba/Range _Fire-Sheet.png" id="11_quieto"]
 [ext_resource type="Texture2D" uid="uid://cxmloxqstma8l" path="res://assets/soldado_prueba/Range _Run-Sheet.png" id="12_correr"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="13_opcion_dialogo"]
-[ext_resource type="Resource" path="res://scenes/npcs/datos/sidekick_2_reclutar.tres" id="14_reclutar_sidekick_2"]
+[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="90_disparador"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="91_condicion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="92_conversacion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_quitar_nodo.gd" id="93_quitar"]
+[ext_resource type="Script" path="res://scripts/niveles/quitar_si_flag.gd" id="94_quitar_si_flag"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="95_linea"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="96_personaje"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="97_wayne"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="98_gloria"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="99_opcion"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_lcjhd")
@@ -5508,16 +5516,82 @@ animations = [{
 [sub_resource type="Resource" id="Resource_n733f"]
 script = ExtResource("10_swhcd")
 id = &"12"
-nombre = "sidekick_2"
+nombre = "Gloria"
 sprite_frames = SubResource("SpriteFrames_doftb")
 perfil = SubResource("Resource_3tjju")
-lineas_amistoso = Array[String]( ["Hola, ¿necesitas ayuda? ¿estas herido? yo te puedo ayudar."])
-lineas_indiferente = Array[String]( ["Hola, ¿necesitas ayuda? ¿estas herido? yo te puedo ayudar."])
-lineas_hostil = Array[String]( ["Hola, ¿necesitas ayuda? ¿estas herido? yo te puedo ayudar."])
-opciones_amistoso = Array[ExtResource("13_opcion_dialogo")]([ExtResource("14_reclutar_sidekick_2")])
-opciones_indiferente = Array[ExtResource("13_opcion_dialogo")]([ExtResource("14_reclutar_sidekick_2")])
-opciones_hostil = Array[ExtResource("13_opcion_dialogo")]([ExtResource("14_reclutar_sidekick_2")])
 metadata/_custom_type_script = "uid://vfx2vuq5n8y1"
+
+[sub_resource type="Resource" id="Linea_cruce_01"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "¡Ey! ¿Están bien? ¿Alguno está herido?"
+
+[sub_resource type="Resource" id="Linea_cruce_02"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Yo estoy bárbaro. Él no sé, siempre tiene esa cara."
+
+[sub_resource type="Resource" id="Linea_cruce_03"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "No es momento para chistes."
+
+[sub_resource type="Resource" id="Linea_cruce_04"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Siempre es momento para chistes. Sobre todo ahora."
+
+[sub_resource type="Resource" id="Linea_solo_01"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "¡Ey! ¿Estás bien? ¿Estás herido?"
+
+[sub_resource type="Resource" id="Linea_solo_02"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "Perdón, es que... con todo esto pensé que no quedaba nadie."
+
+[sub_resource type="Resource" id="Linea_solo_03"]
+script = ExtResource("95_linea")
+hablante = "Protagonista"
+texto = "Me desperté en una cápsula. No sé bien qué pasó."
+
+[sub_resource type="Resource" id="Linea_solo_04"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "Tenés cara de perdido. Me hacés acordar a... no, nada. No importa."
+
+[sub_resource type="Resource" id="Linea_propuesta_01"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "Mirá, no te voy a dejar solo acá adentro."
+
+[sub_resource type="Resource" id="Linea_propuesta_02"]
+script = ExtResource("95_linea")
+miembro = ExtResource("97_wayne")
+texto = "Ah, buenísimo. Ahora tenemos mamá."
+
+[sub_resource type="Resource" id="Linea_propuesta_03"]
+script = ExtResource("95_linea")
+miembro = ExtResource("98_gloria")
+texto = "¿Querés que vaya con vos?"
+
+[sub_resource type="Resource" id="Opcion_reclutar_gloria"]
+script = ExtResource("99_opcion")
+id = &"reclutar_gloria"
+texto = "Sí, gracias."
+respuesta = Array[String](["Bien. Quedate cerca mío."])
+miembro_party = ExtResource("98_gloria")
+flag_al_seleccionar = &"gloria_reclutada"
+
+[sub_resource type="Resource" id="Opcion_rechazar_gloria"]
+script = ExtResource("99_opcion")
+id = &"rechazar_gloria"
+texto = "Estoy bien solo."
+respuesta = Array[String](["Bueno... si cambiás de idea, acá voy a estar."])
+
+[sub_resource type="RectangleShape2D" id="Forma_evento_gloria"]
+size = Vector2(160, 160)
 
 [node name="Lab_02" type="Node2D" unique_id=10267033]
 
@@ -5570,4 +5644,53 @@ datos = SubResource("Resource_n733f")
 [node name="AnimatedSprite2D" parent="Npc" index="0"]
 scale = Vector2(4, 4)
 
+[node name="EventoGloria" parent="." instance=ExtResource("90_disparador")]
+position = Vector2(600, 173)
+identificador = &"reclutar_gloria"
+solo_una_vez = false
+flag_requerido = &"gloria_reclutada"
+valor_flag_requerido = false
+
+[node name="CollisionShape2D" parent="EventoGloria/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("Forma_evento_gloria")
+
+[node name="SiWaynePresente" type="Node" parent="EventoGloria/Acciones" index="0"]
+script = ExtResource("91_condicion")
+miembros_presentes = Array[ExtResource("96_personaje")]([ExtResource("97_wayne")])
+
+[node name="CruceConWayne" type="Node" parent="EventoGloria/Acciones/SiWaynePresente"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_cruce_01"), SubResource("Linea_cruce_02"), SubResource("Linea_cruce_03"), SubResource("Linea_cruce_04")])
+presentes = Array[ExtResource("96_personaje")]([ExtResource("98_gloria")])
+
+[node name="SiWayneAusente" type="Node" parent="EventoGloria/Acciones" index="1"]
+script = ExtResource("91_condicion")
+miembros_ausentes = Array[ExtResource("96_personaje")]([ExtResource("97_wayne")])
+
+[node name="PresentacionGloria" type="Node" parent="EventoGloria/Acciones/SiWayneAusente"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_solo_01"), SubResource("Linea_solo_02"), SubResource("Linea_solo_03"), SubResource("Linea_solo_04")])
+presentes = Array[ExtResource("96_personaje")]([ExtResource("98_gloria")])
+
+[node name="PropuestaGloria" type="Node" parent="EventoGloria/Acciones" index="2"]
+script = ExtResource("92_conversacion")
+lineas = Array[ExtResource("95_linea")]([SubResource("Linea_propuesta_01"), SubResource("Linea_propuesta_02"), SubResource("Linea_propuesta_03")])
+opciones = Array[ExtResource("99_opcion")]([SubResource("Opcion_reclutar_gloria"), SubResource("Opcion_rechazar_gloria")])
+presentes = Array[ExtResource("96_personaje")]([ExtResource("98_gloria")])
+
+[node name="SiReclutada" type="Node" parent="EventoGloria/Acciones" index="3"]
+script = ExtResource("91_condicion")
+flag_requerido = &"gloria_reclutada"
+
+[node name="QuitarGloriaDelMapa" type="Node" parent="EventoGloria/Acciones/SiReclutada"]
+script = ExtResource("93_quitar")
+ruta_nodo = NodePath("../../../../Npc")
+
+[node name="QuitarGloriaSiReclutada" type="Node" parent="."]
+script = ExtResource("94_quitar_si_flag")
+flag = &"gloria_reclutada"
+rutas = Array[NodePath]([NodePath("../Npc"), NodePath("../EventoGloria")])
+
 [editable path="Npc"]
+[editable path="EventoGloria"]

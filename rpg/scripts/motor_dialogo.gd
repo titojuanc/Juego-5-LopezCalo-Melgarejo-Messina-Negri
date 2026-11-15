@@ -16,6 +16,8 @@ var activo: bool = false
 var escribiendo: bool = false
 var _disponibles: Array[Node2D] = []
 var _lineas: Array[String] = []
+var _hablantes: Array[String] = []
+var _retratos: Array[Texture2D] = []
 var _opciones_dialogo: Array[OpcionDialogo] = []
 var _botones_opciones: Array[Button] = []
 var _indice: int = 0
@@ -25,7 +27,6 @@ var _nombre_dialogo: String = ""
 var _retrato_dialogo: Texture2D
 var _mostrando_opciones: bool = false
 var _eleccion_realizada: bool = false
-var _mostrando_respuesta_jugador: bool = false
 
 @onready var _caja: PanelContainer = $Pantalla/Caja
 @onready var _nombre: Label = $Pantalla/Caja/Margen/Fila/Contenido/Nombre
@@ -49,14 +50,42 @@ func desregistrar(interactuable: Node2D) -> void:
 
 
 func iniciar(nombre: String, lineas: Array[String], opciones: Array[OpcionDialogo] = [], retrato: Texture2D = null) -> void:
+	var hablantes: Array[String] = []
+	hablantes.resize(lineas.size())
+	hablantes.fill(nombre)
+	var retratos: Array[Texture2D] = []
+	retratos.resize(lineas.size())
+	retratos.fill(retrato)
+	_iniciar(nombre, retrato, lineas, hablantes, retratos, opciones)
+
+
+# Cada linea tiene su propio hablante; las de sidekicks que no estan en la party ni presentes se saltean.
+func iniciar_conversacion(lineas: Array[RecursoLineaDialogo], opciones: Array[OpcionDialogo] = [], presentes: Array[RecursoPersonajeCombate] = []) -> void:
+	var textos: Array[String] = []
+	var hablantes: Array[String] = []
+	var retratos: Array[Texture2D] = []
+	for linea in lineas:
+		if linea ==null or not linea.disponible(presentes):
+			continue
+		textos.append(linea.texto)
+		hablantes.append(linea.nombre_hablante())
+		retratos.append(_retrato_de_linea(linea))
+	var ultimo: String = "" if hablantes.is_empty() else hablantes[-1]
+	var ultimo_retrato: Texture2D = null if retratos.is_empty() else retratos[-1]
+	_iniciar(ultimo, ultimo_retrato, textos, hablantes, retratos, opciones)
+
+
+func _iniciar(nombre: String, retrato: Texture2D, lineas: Array[String], hablantes: Array[String], retratos: Array[Texture2D], opciones: Array[OpcionDialogo]) -> void:
 	if activo:
 		return
-	_lineas = _filtrar_lineas(lineas)
+	_cargar_lineas(lineas, hablantes, retratos)
 	_opciones_dialogo.clear()
 	for opcion in opciones:
-		if not _opcion_disponible(opcion):
+		if not _opcion_visible(opcion):
 			continue
 		_opciones_dialogo.append(opcion)
+	if not _opciones_dialogo.any(_opcion_disponible):
+		_opciones_dialogo.clear()
 	if _lineas.is_empty() and _opciones_dialogo.is_empty():
 		return
 	activo = true
@@ -64,11 +93,9 @@ func iniciar(nombre: String, lineas: Array[String], opciones: Array[OpcionDialog
 	_nombre_dialogo = nombre
 	_retrato_dialogo = retrato
 	_eleccion_realizada = false
-	_mostrando_respuesta_jugador = false
 	_nombre.text = nombre
 	_nombre.visible = not nombre.is_empty()
-	_retrato.texture = retrato
-	_retrato.visible = retrato != null
+	_mostrar_retrato(retrato)
 	_caja.show()
 	if _lineas.is_empty():
 		_mostrar_opciones()
@@ -113,12 +140,6 @@ func _unhandled_input(evento: InputEvent) -> void:
 				_mostrar_opciones()
 		elif _indice + 1 < _lineas.size():
 			_indice += 1
-			if _mostrando_respuesta_jugador:
-				_nombre.text = _nombre_dialogo
-				_nombre.visible = not _nombre_dialogo.is_empty()
-				_retrato.texture = _retrato_dialogo
-				_retrato.visible = _retrato_dialogo != null
-				_mostrando_respuesta_jugador = false
 			_mostrar_linea()
 		elif not _opciones_dialogo.is_empty() and not _eleccion_realizada:
 			_mostrar_opciones()
@@ -153,6 +174,9 @@ func _unhandled_input(evento: InputEvent) -> void:
 
 func _mostrar_linea() -> void:
 	_opciones.hide()
+	_nombre.text = _hablantes[_indice]
+	_nombre.visible = not _nombre.text.is_empty()
+	_mostrar_retrato(_retratos[_indice])
 	_texto.text = _lineas[_indice]
 	_texto.visible_characters = 0
 	_texto.get_v_scroll_bar().value = 0
@@ -166,7 +190,11 @@ func _mostrar_opciones() -> void:
 	_indice_opcion = 0
 	for indice in _opciones_dialogo.size():
 		var boton := Button.new()
-		boton.text = _opciones_dialogo[indice].texto
+		var opcion: OpcionDialogo = _opciones_dialogo[indice]
+		boton.text = opcion.texto
+		if opcion.perfil_requerido != null:
+			boton.text = "[%s] %s" % [opcion.perfil_requerido.nombre, opcion.texto]
+			boton.disabled = not _cumple_alineamiento(opcion)
 		boton.custom_minimum_size = Vector2(0, 40)
 		boton.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		boton.focus_mode = Control.FOCUS_ALL
@@ -176,8 +204,10 @@ func _mostrar_opciones() -> void:
 		_botones_opciones.append(boton)
 	_opciones.show()
 	_actualizar_altura_caja(_botones_opciones.size())
-	if not _botones_opciones.is_empty():
-		_botones_opciones[0].grab_focus()
+	for boton in _botones_opciones:
+		if not boton.disabled:
+			boton.grab_focus()
+			return
 
 
 func _mover_opcion(direccion: int) -> void:
@@ -201,22 +231,36 @@ func _seleccionar_opcion(indice: int) -> void:
 		return
 	if not opcion.flag_al_seleccionar.is_empty():
 		GestorEventos.cambiar_flag(opcion.flag_al_seleccionar, opcion.valor_flag_al_seleccionar)
+	if(opcion.accion_moral != null):
+		Alineamiento.aplicar_accion(opcion.accion_moral)
 	opcion_elegida.emit(opcion)
 	_mostrando_opciones = false
 	_eleccion_realizada = true
 	_esconder_botones()
-	_lineas = _filtrar_lineas(opcion.respuesta)
-	_lineas.push_front(opcion.texto)
+	var lineas: Array[String] = [opcion.texto]
+	lineas.append_array(opcion.respuesta)
+	var hablantes: Array[String] = []
+	hablantes.resize(lineas.size())
+	hablantes.fill(_nombre_dialogo)
+	hablantes[0] = nombre_protagonista
+	var retratos: Array[Texture2D] = []
+	retratos.resize(lineas.size())
+	retratos.fill(_retrato_dialogo)
+	retratos[0] = _obtener_retrato_protagonista()
+	_cargar_lineas(lineas, hablantes, retratos)
 	_indice = 0
-	_mostrando_respuesta_jugador = true
-	_nombre.text = nombre_protagonista
-	_nombre.visible = not nombre_protagonista.is_empty()
-	_retrato.texture = _obtener_retrato_protagonista()
-	_retrato.visible = _retrato.texture != null
 	_mostrar_linea()
 
 
 func _opcion_disponible(opcion: OpcionDialogo) -> bool:
+	return _opcion_visible(opcion) and _cumple_alineamiento(opcion)
+
+
+func _cumple_alineamiento(opcion: OpcionDialogo) -> bool:
+	return opcion.perfil_requerido == null or Alineamiento.cerca_de(opcion.perfil_requerido, opcion.distancia_maxima)
+
+
+func _opcion_visible(opcion: OpcionDialogo) -> bool:
 	if opcion == null or opcion.texto.strip_edges().is_empty():
 		return false
 	if not opcion.flag_requerido.is_empty() and GestorEventos.obtener_flag(opcion.flag_requerido) != opcion.valor_flag_requerido:
@@ -244,15 +288,36 @@ func _actualizar_altura_caja(cantidad_opciones: int) -> void:
 	_caja.offset_top = _caja.offset_bottom - minf(altura_deseada, altura_maxima)
 
 
-func _filtrar_lineas(lineas: Array[String]) -> Array[String]:
-	var resultado: Array[String] = []
-	for linea in lineas:
-		if not linea.strip_edges().is_empty():
-			resultado.append(linea)
-	return resultado
+func _cargar_lineas(lineas: Array[String], hablantes: Array[String], retratos: Array[Texture2D]) -> void:
+	_lineas.clear()
+	_hablantes.clear()
+	_retratos.clear()
+	for i in lineas.size():
+		if lineas[i].strip_edges().is_empty():
+			continue
+		_lineas.append(lineas[i])
+		_hablantes.append(hablantes[i])
+		_retratos.append(retratos[i])
 
 
+func _mostrar_retrato(retrato: Texture2D) -> void:
+	_retrato.texture = retrato
+	_retrato.visible = retrato != null
+
+
+func _retrato_de_linea(linea: RecursoLineaDialogo) -> Texture2D:
+	if(linea.miembro != null and linea.miembro == Equipo.lider()):
+		return _obtener_retrato_protagonista()
+	if linea.miembro ==null and linea.hablante == nombre_protagonista:
+		return _obtener_retrato_protagonista()
+	return linea.retrato()
+
+
+# Usa el retrato cargado en el lider de la party y, si no tiene, el sprite del jugador.
 func _obtener_retrato_protagonista() -> Texture2D:
+	var lider: RecursoPersonajeCombate = Equipo.lider()
+	if lider != null and lider.retrato !=null:
+		return lider.retrato
 	var jugador: Node2D = GestorJugador.jugador
 	if not is_instance_valid(jugador):
 		return null
@@ -273,10 +338,10 @@ func finalizar() -> void:
 	escribiendo = false
 	_caja.hide()
 	_lineas.clear()
+	_hablantes.clear()
+	_retratos.clear()
 	_opciones_dialogo.clear()
 	_retrato_dialogo = null
-	_retrato.texture = null
-	_retrato.hide()
+	_mostrar_retrato(null)
 	_eleccion_realizada = false
-	_mostrando_respuesta_jugador = false
 	dialogo_finalizado.emit()

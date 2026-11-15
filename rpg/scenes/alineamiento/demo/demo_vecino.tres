@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="RecursoNpc" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/neutral.tres" id="2_perfil"]
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="3_opcion"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/opciones/opcion_legal_bueno.tres" id="10_legal_bueno"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/opciones/opcion_neutral_bueno.tres" id="11_neutral_bueno"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/opciones/opcion_caotico_bueno.tres" id="12_caotico_bueno"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/opciones/opcion_legal_neutral.tres" id="13_legal_neutral"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/opciones/opcion_neutral.tres" id="14_neutral"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/opciones/opcion_caotico_neutral.tres" id="15_caotico_neutral"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/opciones/opcion_legal_malvado.tres" id="16_legal_malvado"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/opciones/opcion_neutral_malvado.tres" id="17_neutral_malvado"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/opciones/opcion_caotico_malvado.tres" id="18_caotico_malvado"]
+
+[resource]
+script = ExtResource("1_npc")
+id = &"demo_vecino"
+nombre = "Vecino"
+perfil = ExtResource("2_perfil")
+lineas_amistoso = Array[String](["Buenas, ¿todo bien?"])
+lineas_indiferente = Array[String](["No me meto en problemas."])
+lineas_hostil = Array[String](["Andate de acá."])
+opciones_amistoso = Array[ExtResource("3_opcion")]([ExtResource("10_legal_bueno"), ExtResource("11_neutral_bueno"), ExtResource("12_caotico_bueno"), ExtResource("13_legal_neutral"), ExtResource("14_neutral"), ExtResource("15_caotico_neutral"), ExtResource("16_legal_malvado"), ExtResource("17_neutral_malvado"), ExtResource("18_caotico_malvado")])
+opciones_indiferente = Array[ExtResource("3_opcion")]([ExtResource("10_legal_bueno"), ExtResource("11_neutral_bueno"), ExtResource("12_caotico_bueno"), ExtResource("13_legal_neutral"), ExtResource("14_neutral"), ExtResource("15_caotico_neutral"), ExtResource("16_legal_malvado"), ExtResource("17_neutral_malvado"), ExtResource("18_caotico_malvado")])
+motivo_legal = "Demasiado rígido para mi gusto."
+motivo_caotico = "Sos un descontrolado."
+motivo_bueno = "Tanta bondad me pone nervioso."
+motivo_malvado = "No me gusta lo que hacés."
+umbral_conocimiento = 0.0

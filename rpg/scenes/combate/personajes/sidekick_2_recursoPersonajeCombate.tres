@@ -1,20 +1,27 @@
 [gd_resource type="Resource" script_class="RecursoPersonajeCombate" format=3]
 
-[ext_resource type="Resource" path="res://scenes/combate/armas/Arma_prueba1.tres" id="1_arma"]
+[ext_resource type="Resource" path="res://scenes/combate/armas/Arma_prueba2.tres" id="1_arma"]
 [ext_resource type="Script" path="res://scripts/recursos/recurso_ataque_especial.gd" id="2_script_ataque"]
-[ext_resource type="Resource" path="res://scenes/combate/ataques_especiales/Ataque_prueba1.tres" id="3_ataque"]
-[ext_resource type="Resource" path="res://scenes/combate/ataques_especiales/Ataque_perforante_prueba.tres" id="4_ataque"]
+[ext_resource type="Resource" path="res://scenes/combate/ataques_especiales/Cura_prueba1.tres" id="3_ataque"]
 [ext_resource type="Script" path="res://scripts/recursos/recurso_item.gd" id="5_script_item"]
 [ext_resource type="Resource" path="res://scenes/combate/items/HP_prueba.tres" id="6_item"]
 [ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="7_script_personaje"]
 [ext_resource type="Texture2D" path="res://icon.svg" id="8_textura"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/neutral_bueno.tres" id="9_perfil"]
+[ext_resource type="Texture2D" uid="uid://buunt6esy6amg" path="res://assets/soldado_prueba/Range _Fire-Sheet.png" id="10_hoja"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_retrato"]
+atlas = ExtResource("10_hoja")
+region = Rect2(0, 0, 24, 24)
 
 [resource]
 script = ExtResource("7_script_personaje")
-nombre = "Sidekick_2"
-vida_max = 110
+nombre = "Gloria"
+vida_max = 100
 arma = ExtResource("1_arma")
-ataques_especiales = Array[ExtResource("2_script_ataque")]([ExtResource("3_ataque"), ExtResource("4_ataque")])
+ataques_especiales = Array[ExtResource("2_script_ataque")]([ExtResource("3_ataque")])
 energia_max = 100
 inventario = Array[ExtResource("5_script_item")]([ExtResource("6_item")])
 textura = ExtResource("8_textura")
+retrato = SubResource("AtlasTexture_retrato")
+perfil = ExtResource("9_perfil")

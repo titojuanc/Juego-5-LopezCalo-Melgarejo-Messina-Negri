@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RecursoNpc" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/caotico_malvado.tres" id="2_perfil"]
+
+[resource]
+script = ExtResource("1_npc")
+id = &"demo_pandillero"
+nombre = "Pandillero"
+perfil = ExtResource("2_perfil")
+lineas_amistoso = Array[String](["Eh, socio. Sos de los nuestros."])
+lineas_indiferente = Array[String](["¿Qué mirás?"])
+lineas_hostil = Array[String](["Así que vos sos el santito del que todos hablan..."])
+motivo_legal = "Olés a policía."
+motivo_caotico = ""
+motivo_bueno = "Los buenitos como vos me dan asco."
+motivo_malvado = ""
+umbral_conocimiento = 20.0
