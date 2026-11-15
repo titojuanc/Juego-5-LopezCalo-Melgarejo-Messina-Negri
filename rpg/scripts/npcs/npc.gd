@@ -172,7 +172,7 @@ func _atacar() -> void:
 	atacando = true
 	persiguiendo = false
 	if not datos.sin_mente:
-		MotorDialogo.iniciar(nombre, lineas, opciones)
+		MotorDialogo.iniciar(nombre, lineas, opciones, obtener_retrato_dialogo())
 		if MotorDialogo.activo:
 			await MotorDialogo.dialogo_finalizado
 	var textura: Texture2D = null

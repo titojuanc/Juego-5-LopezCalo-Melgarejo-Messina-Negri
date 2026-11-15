@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RecursoOpcionDialogo" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="1_opcion"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="2_sidekick"]
+
+[resource]
+script = ExtResource("1_opcion")
+id = &"reclutar_sidekick_2"
+texto = "Sí, únete a mi equipo."
+respuesta = Array[String]( ["¡Gracias! Te acompañaré."] )
+miembro_party = ExtResource("2_sidekick")
+flag_al_seleccionar = &"sidekick_2_reclutado"

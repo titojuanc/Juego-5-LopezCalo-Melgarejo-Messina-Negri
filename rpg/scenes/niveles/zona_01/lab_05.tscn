@@ -10,9 +10,10 @@
 [ext_resource type="Script" uid="uid://d1q16xooot66k" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="8_0anec"]
 [ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="8_ahvdv"]
 [ext_resource type="Texture2D" uid="uid://d1qsfmegfvdeg" path="res://assets/robot_prueba/Robot_walk.png" id="9_f2apr"]
-[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="13_disparador"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="14_accion_flag"]
-[ext_resource type="Script" path="res://scripts/npcs/movimiento_npc.gd" id="15_movimiento"]
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="11_egrfj"]
+[ext_resource type="PackedScene" uid="uid://bdhr47napg8vt" path="res://scenes/niveles/disparador_evento.tscn" id="13_disparador"]
+[ext_resource type="Script" uid="uid://shadua1hkcoa" path="res://scripts/niveles/accion_cambiar_flag.gd" id="14_accion_flag"]
+[ext_resource type="Script" uid="uid://dphcmcyx8iiph" path="res://scripts/npcs/movimiento_npc.gd" id="15_movimiento"]
 [ext_resource type="Resource" uid="uid://di7tlmsoc0qnr" path="res://scenes/combate/enemigos/test_enemigo4.tres" id="16_enemigo_robot"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
@@ -5581,45 +5582,41 @@ puerta_destino = &"lab03_a_east"
 direccion_llegada = 1
 distancia_llegada = 75.0
 
-[node name="CerrarEntradaOeste" parent="." instance=ExtResource("13_disparador")]
+[node name="CerrarEntradaOeste" parent="." unique_id=1705029351 instance=ExtResource("13_disparador")]
 position = Vector2(270, 560)
 modo = 1
 identificador = &"lab5_entrada_oeste"
 flag_requerido = &"lab5_ruta_fijada"
 valor_flag_requerido = false
 
-[node name="AccionCerrarPuertaOeste" type="Node" parent="CerrarEntradaOeste/Acciones" index="0"]
+[node name="AccionCerrarPuertaOeste" type="Node" parent="CerrarEntradaOeste/Acciones" parent_id_path=PackedInt32Array(1705029351, 1277747786) index="0" unique_id=450314689]
 script = ExtResource("14_accion_flag")
 nombre_flag = &"lab5_bloquea_lab2_lab3"
-valor = true
 
-[node name="MarcarRutaFijadaOeste" type="Node" parent="CerrarEntradaOeste/Acciones" index="1"]
+[node name="MarcarRutaFijadaOeste" type="Node" parent="CerrarEntradaOeste/Acciones" parent_id_path=PackedInt32Array(1705029351, 1277747786) index="1" unique_id=2071732099]
 script = ExtResource("14_accion_flag")
 nombre_flag = &"lab5_ruta_fijada"
-valor = true
 
-[node name="CerrarEntradaEste" parent="." instance=ExtResource("13_disparador")]
+[node name="CerrarEntradaEste" parent="." unique_id=1597272382 instance=ExtResource("13_disparador")]
 position = Vector2(890, 560)
 modo = 1
 identificador = &"lab5_entrada_este"
 flag_requerido = &"lab5_ruta_fijada"
 valor_flag_requerido = false
 
-[node name="AccionCerrarPuertaEste" type="Node" parent="CerrarEntradaEste/Acciones" index="0"]
+[node name="AccionCerrarPuertaEste" type="Node" parent="CerrarEntradaEste/Acciones" parent_id_path=PackedInt32Array(1597272382, 1277747786) index="0" unique_id=208993418]
 script = ExtResource("14_accion_flag")
 nombre_flag = &"lab5_bloquea_lab2_lab4"
-valor = true
 
-[node name="MarcarRutaFijadaEste" type="Node" parent="CerrarEntradaEste/Acciones" index="1"]
+[node name="MarcarRutaFijadaEste" type="Node" parent="CerrarEntradaEste/Acciones" parent_id_path=PackedInt32Array(1597272382, 1277747786) index="1" unique_id=1138397747]
 script = ExtResource("14_accion_flag")
 nombre_flag = &"lab5_ruta_fijada"
-valor = true
 
 [node name="Puerta_lab04_a" parent="." unique_id=49055175 instance=ExtResource("5_2ts3w")]
 position = Vector2(579, 97)
-escena_destino = "uid://dwahfhmaf4cif"
-identificador = &"lab02_north_right"
-puerta_destino = &"lab04_west"
+escena_destino = "uid://bq8jduptg5kcu"
+identificador = &"lab05_north"
+puerta_destino = &"ascensor"
 direccion_llegada = 2
 distancia_llegada = 75.0
 flag_requerido = &"ascensor"
@@ -5628,7 +5625,7 @@ flag_requerido = &"ascensor"
 position = Vector2(575, 236)
 datos = SubResource("Resource_i41m5")
 
-[node name="MovimientoNpc" type="Node" parent="Npc"]
+[node name="MovimientoNpc" type="Node" parent="Npc" unique_id=1253288302]
 script = ExtResource("15_movimiento")
 modo = 0
 puntos = Array[Vector2]([Vector2(-200, 0), Vector2(-200, 150), Vector2(200, 150), Vector2(200, 0)])
