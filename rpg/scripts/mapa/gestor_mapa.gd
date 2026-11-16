@@ -3,17 +3,23 @@ class_name GestorMapa
 
 const SEPARACION := 96.0
 const MARGEN := 24.0
-const COLOR_SALA := Color(0.25, 0.3, 0.42)
-const COLOR_ACTUAL := Color(0.9, 0.7, 0.2)
-const COLOR_BORDE := Color(0.9, 0.9, 0.9)
-const COLOR_CAMINO := Color(0.65, 0.65, 0.65)
+const COLOR_PANEL := Color("1a1730")
+const COLOR_LIENZO := Color("0f0d1a")
+const COLOR_LINEA := Color("3a3366")
+const COLOR_SALA := Color("403a73")
+const COLOR_ACTUAL := Color("e8b94a")
+const COLOR_BORDE := Color("ece8ff")
+const COLOR_CAMINO := Color("9a93c4")
+const COLOR_TEXTO_ACTUAL := Color("1a1200")
 
 @export var mapas: Array[RecursoMapa] = []
 
 @onready var fondo: ColorRect = $Fondo
 @onready var panel: PanelContainer = $Panel
 @onready var titulo: Label = $Panel/Margen/Contenido/Titulo
+@onready var zona: Label = $Panel/Margen/Contenido/Zona
 @onready var lienzo: Control = $Panel/Margen/Contenido/Lienzo
+@onready var contador: Label = $Panel/Margen/Contenido/Pie/Contador
 
 var visitadas: Array = []
 var conexiones: Array = []
@@ -24,6 +30,12 @@ var _pasillos: Dictionary = {}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	var estilo = StyleBoxFlat.new()
+	estilo.bg_color = COLOR_PANEL
+	estilo.border_color = COLOR_ACTUAL
+	estilo.set_border_width_all(3)
+	estilo.set_corner_radius_all(4)
+	panel.add_theme_stylebox_override("panel", estilo)
 	fondo.hide()
 	panel.hide()
 	lienzo.draw.connect(_dibujar)
@@ -61,7 +73,9 @@ func _se_puede_abrir() -> bool:
 
 func abrir() -> void:
 	var mapa = _mapa_actual()
-	titulo.text = mapa.nombre if mapa else "Mapa"
+	titulo.text = "Mapa"
+	zona.text = mapa.nombre if mapa else ""
+	contador.text = "Salas descubiertas: %d / %d" % [mapa.salas.filter(func(s): return visitadas.has(s.escena)).size(), mapa.salas.size()] if mapa else ""
 	fondo.show()
 	panel.show()
 	lienzo.queue_redraw()
@@ -81,6 +95,8 @@ func _mapa_actual() -> RecursoMapa:
 func _dibujar() -> void:
 	var fuente = ThemeDB.fallback_font
 	var mapa = _mapa_actual()
+	lienzo.draw_rect(Rect2(Vector2.ZERO, lienzo.size), COLOR_LIENZO)
+	lienzo.draw_rect(Rect2(Vector2.ZERO, lienzo.size), COLOR_LINEA, false, 2.0)
 	if mapa == null:
 		lienzo.draw_string(fuente, Vector2(0, lienzo.size.y / 2), "No hay mapa de esta zona.", HORIZONTAL_ALIGNMENT_CENTER, lienzo.size.x)
 		return
@@ -105,7 +121,7 @@ func _dibujar() -> void:
 		var tamano_fuente = 16
 		while tamano_fuente > 9 and fuente.get_string_size(sala.nombre, HORIZONTAL_ALIGNMENT_LEFT, -1, tamano_fuente).x > rect.size.x - 4:
 			tamano_fuente -= 1
-		lienzo.draw_string(fuente, Vector2(rect.position.x, rect.get_center().y + tamano_fuente * 0.35), sala.nombre, HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, tamano_fuente, Color.BLACK if es_actual else Color.WHITE)
+		lienzo.draw_string(fuente, Vector2(rect.position.x, rect.get_center().y + tamano_fuente * 0.35), sala.nombre, HORIZONTAL_ALIGNMENT_CENTER, rect.size.x, tamano_fuente, COLOR_TEXTO_ACTUAL if es_actual else COLOR_BORDE)
 
 func _calcular_geometria(mapa: RecursoMapa) -> void:
 	if _mapa_calculado == mapa:

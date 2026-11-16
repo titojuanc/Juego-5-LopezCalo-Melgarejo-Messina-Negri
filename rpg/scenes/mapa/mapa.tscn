@@ -15,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.6)
+color = Color(0.04, 0.03, 0.09, 0.7)
 
 [node name="Panel" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -23,9 +23,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
+offset_left = -360.0
 offset_top = -270.0
-offset_right = 320.0
+offset_right = 360.0
 offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -40,8 +40,13 @@ theme_override_constants/margin_bottom = 16
 theme_override_constants/separation = 10
 
 [node name="Titulo" type="Label" parent="Panel/Margen/Contenido"]
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.91, 0.725, 0.29, 1)
+theme_override_font_sizes/font_size = 30
 text = "Mapa"
+horizontal_alignment = 1
+
+[node name="Zona" type="Label" parent="Panel/Margen/Contenido"]
+theme_override_colors/font_color = Color(0.604, 0.576, 0.769, 1)
 horizontal_alignment = 1
 
 [node name="Lienzo" type="Control" parent="Panel/Margen/Contenido"]
@@ -49,12 +54,20 @@ custom_minimum_size = Vector2(560, 380)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Leyenda" type="Label" parent="Panel/Margen/Contenido"]
-modulate = Color(0.9, 0.7, 0.2, 1)
+[node name="Pie" type="HBoxContainer" parent="Panel/Margen/Contenido"]
+
+[node name="Leyenda" type="Label" parent="Panel/Margen/Contenido/Pie"]
+theme_override_colors/font_color = Color(0.91, 0.725, 0.29, 1)
+size_flags_horizontal = 3
 text = "■ Estás aquí"
+
+[node name="Contador" type="Label" parent="Panel/Margen/Contenido/Pie"]
+theme_override_colors/font_color = Color(0.925, 0.91, 1, 1)
+size_flags_horizontal = 3
 horizontal_alignment = 1
 
-[node name="Ayuda" type="Label" parent="Panel/Margen/Contenido"]
+[node name="Ayuda" type="Label" parent="Panel/Margen/Contenido/Pie"]
 modulate = Color(1, 1, 1, 0.6)
+size_flags_horizontal = 3
 text = "M / X: cerrar"
-horizontal_alignment = 1
+horizontal_alignment = 2
