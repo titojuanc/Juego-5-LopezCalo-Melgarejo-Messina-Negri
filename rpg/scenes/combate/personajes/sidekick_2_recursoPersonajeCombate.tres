@@ -6,11 +6,14 @@
 [ext_resource type="Script" path="res://scripts/recursos/recurso_item.gd" id="5_script_item"]
 [ext_resource type="Resource" path="res://scenes/combate/items/HP_prueba.tres" id="6_item"]
 [ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="7_script_personaje"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="8_textura"]
 [ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/neutral_bueno.tres" id="9_perfil"]
 [ext_resource type="Texture2D" uid="uid://buunt6esy6amg" path="res://assets/soldado_prueba/Range _Fire-Sheet.png" id="10_hoja"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_retrato"]
+atlas = ExtResource("10_hoja")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sprite"]
 atlas = ExtResource("10_hoja")
 region = Rect2(0, 0, 24, 24)
 
@@ -22,6 +25,6 @@ arma = ExtResource("1_arma")
 ataques_especiales = Array[ExtResource("2_script_ataque")]([ExtResource("3_ataque")])
 energia_max = 100
 inventario = Array[ExtResource("5_script_item")]([ExtResource("6_item")])
-textura = ExtResource("8_textura")
+textura = SubResource("AtlasTexture_sprite")
 retrato = SubResource("AtlasTexture_retrato")
 perfil = ExtResource("9_perfil")
