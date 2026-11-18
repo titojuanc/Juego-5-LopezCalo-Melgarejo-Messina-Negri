@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bdhr47napg8vt" path="res://scenes/niveles/disparador_evento.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://dn6d7ueaoh418" path="res://scripts/niveles/accion_dialogo_evento.gd" id="2_dialogo"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dar_item.gd" id="3_dar_item"]
+
+[sub_resource type="RectangleShape2D" id="Forma_item"]
+resource_local_to_scene = true
+size = Vector2(64, 64)
+
+[node name="ItemRecogible" instance=ExtResource("1_base")]
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("Forma_item")
+
+[node name="Dialogo" type="Node" parent="Acciones" index="0"]
+script = ExtResource("2_dialogo")
+lineas = Array[String](["* Hay algo tirado en el suelo."])
+
+[node name="DarItem" type="Node" parent="Acciones" index="1"]
+script = ExtResource("3_dar_item")

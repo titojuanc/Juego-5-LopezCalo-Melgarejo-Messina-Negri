@@ -6,6 +6,7 @@ enum ModoActivacion { INTERACTUAR, ENTRAR_EN_ZONA }
 @export var modo: ModoActivacion = ModoActivacion.INTERACTUAR
 @export var identificador: StringName = &""
 @export var solo_una_vez: bool = true
+@export var mostrar_indicador: bool = true
 @export var flag_requerido: StringName = &""
 @export var valor_flag_requerido: bool = true
 
@@ -24,7 +25,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	_indicador.visible = modo == ModoActivacion.INTERACTUAR and not _areas_jugador.is_empty() and puede_activarse()
+	_indicador.visible = mostrar_indicador and modo == ModoActivacion.INTERACTUAR and not _areas_jugador.is_empty() and puede_activarse()
 
 
 func _al_entrar_area(area: Area2D) -> void:

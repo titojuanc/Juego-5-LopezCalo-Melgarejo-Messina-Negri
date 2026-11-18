@@ -33,6 +33,14 @@ func agregar(miembro: RecursoPersonajeCombate) -> bool:
 	equipo_cambiado.emit()
 	return true
 
+func agregar_items(nuevos: Array[RecursoItem]) -> void:
+	if nuevos.is_empty():
+		return
+	for item in nuevos:
+		if item != null:
+			inventario.append(item)
+	equipo_cambiado.emit()
+
 func quitar(miembro: RecursoPersonajeCombate) -> void:
 	if not miembros.has(miembro):
 		return

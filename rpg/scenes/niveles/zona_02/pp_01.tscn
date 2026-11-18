@@ -5471,7 +5471,7 @@ distancia_llegada = 73.0
 
 [node name="PuertaPP2" parent="." unique_id=1006200171 instance=ExtResource("5_nsl5j")]
 position = Vector2(-16, 497)
-escena_destino = "uid://bq8jduptg5kcu"
+escena_destino = "uid://c42bobihwutj0"
 identificador = &"pp_01_west"
 puerta_destino = &"pp_02_east"
 direccion_llegada = 3
@@ -5484,6 +5484,7 @@ identificador = &"pp_01_east"
 puerta_destino = &"pp_05_west"
 direccion_llegada = 4
 distancia_llegada = 73.0
+flag_requerido = &"pp_shortcut"
 
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
 

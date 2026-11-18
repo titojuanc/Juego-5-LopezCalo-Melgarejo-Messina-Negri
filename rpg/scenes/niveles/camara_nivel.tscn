@@ -1,23 +1,23 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://2ge63h5tr2ii"]
 
-[ext_resource type="Script" path="res://scripts/niveles/camara_nivel.gd" id="1_camnivel"]
+[ext_resource type="Script" uid="uid://ew6y8liqtdc1" path="res://scripts/niveles/camara_nivel.gd" id="1_camnivel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_limites"]
 resource_local_to_scene = true
 size = Vector2(1152, 648)
 
-[node name="CamaraNivel" type="Node2D"]
+[node name="CamaraNivel" type="Node2D" unique_id=1487418937]
 script = ExtResource("1_camnivel")
 
-[node name="Camara" type="Camera2D" parent="."]
+[node name="Camara" type="Camera2D" parent="." unique_id=118970214]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="Limites" type="Area2D" parent="."]
+[node name="Limites" type="Area2D" parent="." unique_id=94154297]
 collision_layer = 0
 collision_mask = 0
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limites" unique_id=649505806]
 shape = SubResource("RectangleShape2D_limites")

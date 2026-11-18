@@ -2,8 +2,7 @@ extends Node2D
 
 # Camara estilo Undertale para niveles largos: sigue al jugador solo cuando se
 # acerca a los margenes de la pantalla y nunca muestra nada fuera del area de
-# limites. El area se define con la caja "Limites", que se redimensiona con el
-# mouse en el editor igual que una caja de colision.
+# limites.
 
 @onready var _camara: Camera2D = $Camara
 @onready var _forma_limites: CollisionShape2D = $Limites/CollisionShape2D
@@ -36,9 +35,6 @@ func _al_acoplar_jugador(_jugador: Node2D) -> void:
 # Convierte el rectangulo de la caja Limites en los limites de la camara.
 func _aplicar_limites() -> void:
 	var forma: RectangleShape2D = _forma_limites.shape as RectangleShape2D
-	if forma == null:
-		push_warning("CamaraNivel necesita un RectangleShape2D en Limites/CollisionShape2D")
-		return
 	var centro: Vector2 = _forma_limites.global_position
 	var mitad: Vector2 = forma.size * _forma_limites.global_scale.abs() * 0.5
 	_camara.limit_left = int(centro.x - mitad.x)
@@ -46,9 +42,6 @@ func _aplicar_limites() -> void:
 	_camara.limit_right = int(centro.x + mitad.x)
 	_camara.limit_bottom = int(centro.y + mitad.y)
 
-
-# Al morir la camara con la escena, el viewport conserva el ultimo encuadre;
-# se restaura para que las escenas sin camara no queden corridas.
 func _exit_tree() -> void:
 	if GestorJugador.jugador_acoplado.is_connected(_al_acoplar_jugador):
 		GestorJugador.jugador_acoplado.disconnect(_al_acoplar_jugador)
