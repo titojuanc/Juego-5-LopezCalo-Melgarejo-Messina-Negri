@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RecursoPersonajeCombate" format=3]
+[gd_resource type="Resource" script_class="RecursoPersonajeCombate" format=3 uid="uid://c7n4r8kw1dj34"]
 
 [ext_resource type="Resource" path="res://scenes/combate/armas/Arma_prueba2.tres" id="1_arma"]
 [ext_resource type="Script" path="res://scripts/recursos/recurso_ataque_especial.gd" id="2_script_ataque"]
@@ -20,10 +20,8 @@ region = Rect2(0, 0, 24, 24)
 [resource]
 script = ExtResource("7_script_personaje")
 nombre = "Gloria"
-vida_max = 100
 arma = ExtResource("1_arma")
 ataques_especiales = Array[ExtResource("2_script_ataque")]([ExtResource("3_ataque")])
-energia_max = 100
 inventario = Array[ExtResource("5_script_item")]([ExtResource("6_item")])
 textura = SubResource("AtlasTexture_sprite")
 retrato = SubResource("AtlasTexture_retrato")

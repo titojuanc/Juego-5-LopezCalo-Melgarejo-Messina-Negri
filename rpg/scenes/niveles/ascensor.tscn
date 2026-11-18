@@ -4,6 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b0vx1te8m326t" path="res://assets/tiles_entorno/props_general.png" id="2_0y63c"]
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_c5epn"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="4_0y63c"]
+[ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_panel"]
+[ext_resource type="Script" uid="uid://bb82jniar6vmy" path="res://scripts/niveles/puerta_ascensor.gd" id="6_pasc"]
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="7_opcion"]
+[ext_resource type="Script" uid="uid://0t7eiuib8d0y" path="res://scripts/niveles/ascensor.gd" id="8_asc"]
+[ext_resource type="PackedScene" uid="uid://ddcrbqx7q3gyc" path="res://scenes/main_character.tscn" id="8_k7f1q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hhgne"]
 texture = ExtResource("1_ert38")
@@ -5436,7 +5441,32 @@ sources/0 = SubResource("TileSetAtlasSource_1ooxr")
 sources/1 = SubResource("TileSetAtlasSource_0v4ts")
 sources/2 = SubResource("TileSetAtlasSource_qpqbr")
 
+[sub_resource type="Resource" id="Opcion_laboratorio"]
+script = ExtResource("7_opcion")
+id = &"ascensor_laboratorio"
+texto = "Laboratorio"
+respuesta = Array[String](["* El ascensor baja hasta el laboratorio."])
+flag_requerido = &"ascensor_piso_1"
+flag_al_seleccionar = &"ascensor_piso_1"
+valor_flag_al_seleccionar = false
+
+[sub_resource type="Resource" id="Opcion_primer_piso"]
+script = ExtResource("7_opcion")
+id = &"ascensor_primer_piso"
+texto = "Primer piso"
+respuesta = Array[String](["* El ascensor sube hasta el primer piso."])
+flag_requerido = &"ascensor_piso_1"
+valor_flag_requerido = false
+flag_al_seleccionar = &"ascensor_piso_1"
+
+[sub_resource type="Resource" id="Opcion_dejar_panel"]
+script = ExtResource("7_opcion")
+id = &"ascensor_dejar_panel"
+texto = "Dejar el panel."
+respuesta = Array[String](["* Te alejás del panel."])
+
 [node name="Ascensor" type="Node2D" unique_id=223279906]
+script = ExtResource("8_asc")
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=16233701]
 texture_filter = 1
@@ -5461,8 +5491,25 @@ tile_set = SubResource("TileSet_qlqdk")
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("4_0y63c")]
 position = Vector2(581, 663)
+script = ExtResource("6_pasc")
+flag_piso = &"ascensor_piso_1"
+escena_planta_baja = "uid://b6fa32rd6fmct"
+puerta_planta_baja = &"lab05_north"
+escena_piso_1 = "uid://che0rhvnacp46"
+puerta_piso_1 = &"pp_01_ascensor"
 escena_destino = "uid://b6fa32rd6fmct"
 identificador = &"ascensor"
 puerta_destino = &"lab05_north"
 direccion_llegada = 1
 distancia_llegada = 83.0
+
+[node name="PanelAscensor" parent="." unique_id=1399478221 instance=ExtResource("5_panel")]
+position = Vector2(485, 225.00002)
+scale = Vector2(4, 5)
+nombre = "Panel del ascensor"
+lineas = Array[String](["* Un panel con los botones del ascensor.", "¿A qué piso querés ir?"])
+opciones = Array[ExtResource("7_opcion")]([SubResource("Opcion_laboratorio"), SubResource("Opcion_primer_piso"), SubResource("Opcion_dejar_panel")])
+distancia_indicador = 69.0
+
+[node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("8_k7f1q")]
+position = Vector2(560, 467)
