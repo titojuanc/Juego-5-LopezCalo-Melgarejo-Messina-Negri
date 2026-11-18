@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="RecursoPersonajeCombate" format=3 uid="uid://c7n4r8kw1dj34"]
 
-[ext_resource type="Resource" path="res://scenes/combate/armas/Arma_prueba2.tres" id="1_arma"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_ataque_especial.gd" id="2_script_ataque"]
-[ext_resource type="Resource" path="res://scenes/combate/ataques_especiales/Cura_prueba1.tres" id="3_ataque"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_item.gd" id="5_script_item"]
-[ext_resource type="Resource" path="res://scenes/combate/items/HP_prueba.tres" id="6_item"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="7_script_personaje"]
+[ext_resource type="Resource" uid="uid://eh4pg1ebix0m" path="res://scenes/combate/armas/Arma_prueba2.tres" id="1_arma"]
+[ext_resource type="Script" uid="uid://cr321xta8d7vw" path="res://scripts/recursos/recurso_ataque_especial.gd" id="2_script_ataque"]
+[ext_resource type="Resource" uid="uid://ksivr7k45yfn" path="res://scenes/combate/ataques_especiales/Cura_prueba1.tres" id="3_ataque"]
+[ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="5_script_item"]
+[ext_resource type="Resource" uid="uid://bemw78jdmkxks" path="res://scenes/combate/items/HP_prueba.tres" id="6_item"]
+[ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="7_script_personaje"]
 [ext_resource type="Resource" path="res://scenes/alineamiento/perfiles/neutral_bueno.tres" id="9_perfil"]
 [ext_resource type="Texture2D" uid="uid://buunt6esy6amg" path="res://assets/soldado_prueba/Range _Fire-Sheet.png" id="10_hoja"]
 
