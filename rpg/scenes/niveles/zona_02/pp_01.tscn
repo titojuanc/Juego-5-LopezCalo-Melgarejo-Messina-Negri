@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_i5b7w"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="5_nsl5j"]
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="6_aeyoc"]
+[ext_resource type="Script" path="res://scripts/niveles/quitar_si_flag.gd" id="7_atajo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_3ldai")
@@ -5479,7 +5480,7 @@ distancia_llegada = 73.0
 
 [node name="PuertaPP5" parent="." unique_id=444257690 instance=ExtResource("5_nsl5j")]
 position = Vector2(1146, 504)
-escena_destino = "uid://bq8jduptg5kcu"
+escena_destino = "res://scenes/niveles/zona_02/pp_05.tscn"
 identificador = &"pp_01_east"
 puerta_destino = &"pp_05_west"
 direccion_llegada = 4
@@ -5487,6 +5488,11 @@ distancia_llegada = 73.0
 flag_requerido = &"pp_shortcut"
 
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
+
+[node name="QuitarAvisoAtajo" type="Node" parent="Interactuables"]
+script = ExtResource("7_atajo")
+flag = &"pp_shortcut"
+rutas = Array[NodePath]([NodePath("../Puerta")])
 
 [node name="SeñalDeAscensor" parent="Interactuables" unique_id=1123185042 instance=ExtResource("6_aeyoc")]
 position = Vector2(477.00003, 128)

@@ -7601,15 +7601,15 @@ sources/2 = SubResource("TileSetAtlasSource_njd7s")
 sources/3 = SubResource("TileSetAtlasSource_efu55")
 sources/4 = SubResource("TileSetAtlasSource_dfa0n")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfa0n"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pkw1"]
 resource_local_to_scene = true
 size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7yb4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyxtr"]
 resource_local_to_scene = true
-size = Vector2(64, 64)
+size = Vector2(103, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3su67"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih2dh"]
 resource_local_to_scene = true
 size = Vector2(1152, 1920)
 
@@ -7714,9 +7714,10 @@ mostrar_indicador = false
 position = Vector2(47, 769)
 scale = Vector2(1, 2)
 identificador = &"pp_02_casillero"
+mostrar_indicador = false
 
 [node name="CollisionShape2D" parent="Interactuables/Estante/Area2D" parent_id_path=PackedInt32Array(456663927, 1805804608) index="0" unique_id=1413580006]
-shape = SubResource("RectangleShape2D_dfa0n")
+shape = SubResource("RectangleShape2D_3pkw1")
 
 [node name="Dialogo" parent="Interactuables/Estante/Acciones" parent_id_path=PackedInt32Array(456663927, 1277747786) index="0"]
 nombre = "Estante"
@@ -7729,12 +7730,14 @@ items = Array[ExtResource("8_f5r8t")]([ExtResource("9_g7yb4")])
 position = Vector2(521, 370)
 
 [node name="Mueble" parent="Interactuables" unique_id=1762215148 instance=ExtResource("7_dfa0n")]
-position = Vector2(1068, 1273)
-scale = Vector2(1, 2)
-identificador = &"pp_02_casillero"
+position = Vector2(1099, 1280)
+scale = Vector2(1, 4)
+identificador = &"pp_02_mueble"
+mostrar_indicador = false
 
 [node name="CollisionShape2D" parent="Interactuables/Mueble/Area2D" parent_id_path=PackedInt32Array(1762215148, 1805804608) index="0" unique_id=1413580006]
-shape = SubResource("RectangleShape2D_g7yb4")
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_eyxtr")
 
 [node name="Dialogo" parent="Interactuables/Mueble/Acciones" parent_id_path=PackedInt32Array(1762215148, 1277747786) index="0"]
 nombre = "Mueble"
@@ -7750,7 +7753,7 @@ visible = false
 position = Vector2(576, 960)
 
 [node name="CollisionShape2D" parent="CamaraNivelLargo/Limites" index="0" unique_id=649505806]
-shape = SubResource("RectangleShape2D_3su67")
+shape = SubResource("RectangleShape2D_ih2dh")
 
 [editable path="Interactuables/Estante"]
 [editable path="Interactuables/Mueble"]
