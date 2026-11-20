@@ -1,0 +1,2771 @@
+{
+  "type": "regular-grid-tilesheet",
+  "image": "topdown_modern_industrial_mega_clean_tilesheet.png",
+  "count": 120,
+  "columns": 8,
+  "rows": 15,
+  "cell_width": 336,
+  "cell_height": 352,
+  "tiles": [
+    {
+      "name": "conveyor_belt_segment",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_conveyor_belt_segment_01.png",
+      "row": 0,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 12,
+        "y": 73,
+        "width": 312,
+        "height": 279
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "robotic_arm_industrial",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_robotic_arm_industrial_01.png",
+      "row": 0,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 0,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 390,
+        "y": 61,
+        "width": 228,
+        "height": 291
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "hydraulic_press_stamping",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_hydraulic_press_stamping_01.png",
+      "row": 0,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 0,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 714,
+        "y": 35,
+        "width": 251,
+        "height": 317
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "lathe_machine_metal",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_lathe_machine_metal_01.png",
+      "row": 0,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 0,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1024,
+        "y": 79,
+        "width": 303,
+        "height": 273
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "control_console_levers",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_control_console_levers_01.png",
+      "row": 0,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 0,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1394,
+        "y": 61,
+        "width": 236,
+        "height": 291
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "workbench_steel_vise",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_workbench_steel_vise_01.png",
+      "row": 0,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 0,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1694,
+        "y": 107,
+        "width": 308,
+        "height": 245
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "generator_diesel",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_generator_diesel_01.png",
+      "row": 0,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 0,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2039,
+        "y": 78,
+        "width": 289,
+        "height": 274
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "air_compressor_tank",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_air_compressor_tank_01.png",
+      "row": 0,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 0,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2379,
+        "y": 80,
+        "width": 281,
+        "height": 272
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "welding_station_curtain",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_welding_station_curtain_01.png",
+      "row": 1,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 352,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 33,
+        "y": 415,
+        "width": 269,
+        "height": 289
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "tool_cabinet_tall",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_tool_cabinet_tall_01.png",
+      "row": 1,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 352,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 401,
+        "y": 392,
+        "width": 205,
+        "height": 312
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "drill_press_floor",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_drill_press_floor_01.png",
+      "row": 1,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 352,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 746,
+        "y": 386,
+        "width": 188,
+        "height": 318
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "industrial_fan_floor",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_industrial_fan_floor_01.png",
+      "row": 1,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 352,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1039,
+        "y": 437,
+        "width": 273,
+        "height": 267
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "chain_hoist_gantry",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_chain_hoist_gantry_01.png",
+      "row": 1,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 352,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1371,
+        "y": 402,
+        "width": 282,
+        "height": 302
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "furnace_industrial_small",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_furnace_industrial_small_01.png",
+      "row": 1,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 352,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1733,
+        "y": 404,
+        "width": 229,
+        "height": 300
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "bandsaw_metal_cutting",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_bandsaw_metal_cutting_01.png",
+      "row": 1,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 352,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2040,
+        "y": 424,
+        "width": 288,
+        "height": 280
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "locker_staff_double",
+      "category": "factory_fixtures",
+      "file": "Tiles/FactoryFixtures/industrial_factory_fixtures_locker_staff_double_01.png",
+      "row": 1,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 352,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2407,
+        "y": 393,
+        "width": 226,
+        "height": 311
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "oil_drum_single",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_oil_drum_single_01.png",
+      "row": 2,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 704,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 91,
+        "y": 825,
+        "width": 153,
+        "height": 231
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "oil_drums_group",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_oil_drums_group_01.png",
+      "row": 2,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 704,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 358,
+        "y": 807,
+        "width": 292,
+        "height": 249
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "gas_cylinder_pair",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_gas_cylinder_pair_01.png",
+      "row": 2,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 704,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 749,
+        "y": 786,
+        "width": 182,
+        "height": 270
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "cable_spool_large",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_cable_spool_large_01.png",
+      "row": 2,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 704,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1060,
+        "y": 807,
+        "width": 232,
+        "height": 249
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "toolbox_steel",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_toolbox_steel_01.png",
+      "row": 2,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 704,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1395,
+        "y": 855,
+        "width": 233,
+        "height": 201
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "safety_cone_pair",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_safety_cone_pair_01.png",
+      "row": 2,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 704,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1732,
+        "y": 850,
+        "width": 231,
+        "height": 206
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "metal_sheet_stack",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_metal_sheet_stack_01.png",
+      "row": 2,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 704,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2053,
+        "y": 829,
+        "width": 262,
+        "height": 227
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "gear_pile",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_gear_pile_01.png",
+      "row": 2,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 704,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2396,
+        "y": 826,
+        "width": 248,
+        "height": 230
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "warning_sign_stand_blank",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_warning_sign_stand_blank_01.png",
+      "row": 3,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 1056,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 70,
+        "y": 1144,
+        "width": 196,
+        "height": 264
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "eye_wash_station",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_eye_wash_station_01.png",
+      "row": 3,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 1056,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 392,
+        "y": 1173,
+        "width": 223,
+        "height": 235
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "fire_extinguisher_cart",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_fire_extinguisher_cart_01.png",
+      "row": 3,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 1056,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 752,
+        "y": 1153,
+        "width": 175,
+        "height": 255
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "trash_bin_industrial_wheeled",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_trash_bin_industrial_wheeled_01.png",
+      "row": 3,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 1056,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1056,
+        "y": 1159,
+        "width": 239,
+        "height": 249
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "pipe_bundle_stack",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_pipe_bundle_stack_01.png",
+      "row": 3,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 1056,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1378,
+        "y": 1205,
+        "width": 268,
+        "height": 203
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "chemical_barrel_sealed",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_chemical_barrel_sealed_01.png",
+      "row": 3,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 1056,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1760,
+        "y": 1181,
+        "width": 176,
+        "height": 227
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "chain_coil_heavy",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_chain_coil_heavy_01.png",
+      "row": 3,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 1056,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2060,
+        "y": 1232,
+        "width": 248,
+        "height": 176
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "grease_bucket_pump",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_grease_bucket_pump_01.png",
+      "row": 3,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 1056,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2432,
+        "y": 1173,
+        "width": 176,
+        "height": 235
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "parts_crate_metal",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_parts_crate_metal_01.png",
+      "row": 4,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 1408,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 41,
+        "y": 1530,
+        "width": 253,
+        "height": 230
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "step_ladder_steel",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_step_ladder_steel_01.png",
+      "row": 4,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 1408,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 396,
+        "y": 1495,
+        "width": 215,
+        "height": 265
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "hard_hat_rack",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_hard_hat_rack_01.png",
+      "row": 4,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 1408,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 707,
+        "y": 1595,
+        "width": 265,
+        "height": 165
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "tool_trolley_wheeled",
+      "category": "factory_props",
+      "file": "Tiles/FactoryProps/industrial_factory_props_tool_trolley_wheeled_01.png",
+      "row": 4,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 1408,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1062,
+        "y": 1496,
+        "width": 228,
+        "height": 264
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "pallet_rack_tall",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_pallet_rack_tall_01.png",
+      "row": 4,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 1408,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1402,
+        "y": 1427,
+        "width": 220,
+        "height": 333
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "shelving_unit_wide",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_shelving_unit_wide_01.png",
+      "row": 4,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 1408,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1707,
+        "y": 1445,
+        "width": 282,
+        "height": 315
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "roller_conveyor_line",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_roller_conveyor_line_01.png",
+      "row": 4,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 1408,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2023,
+        "y": 1517,
+        "width": 322,
+        "height": 243
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "forklift_counterbalance",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_forklift_counterbalance_01.png",
+      "row": 4,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 1408,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2368,
+        "y": 1478,
+        "width": 304,
+        "height": 282
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "hand_truck_dolly",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_hand_truck_dolly_01.png",
+      "row": 5,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 1760,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 73,
+        "y": 1814,
+        "width": 189,
+        "height": 298
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "pallet_jack_manual",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_pallet_jack_manual_01.png",
+      "row": 5,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 1760,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 377,
+        "y": 1828,
+        "width": 253,
+        "height": 284
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "floor_scale_platform",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_floor_scale_platform_01.png",
+      "row": 5,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 1760,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 726,
+        "y": 1823,
+        "width": 227,
+        "height": 289
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "stretch_wrap_machine",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_stretch_wrap_machine_01.png",
+      "row": 5,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 1760,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1044,
+        "y": 1800,
+        "width": 264,
+        "height": 312
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "roll_cage_trolley",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_roll_cage_trolley_01.png",
+      "row": 5,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 1760,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1408,
+        "y": 1816,
+        "width": 207,
+        "height": 296
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "packing_station_desk",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_packing_station_desk_01.png",
+      "row": 5,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 1760,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1715,
+        "y": 1824,
+        "width": 266,
+        "height": 288
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "shelving_bins_unit",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_shelving_bins_unit_01.png",
+      "row": 5,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 1760,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2058,
+        "y": 1836,
+        "width": 252,
+        "height": 276
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "security_cage_locker",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_security_cage_locker_01.png",
+      "row": 5,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 1760,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2403,
+        "y": 1824,
+        "width": 234,
+        "height": 288
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "forklift_charging_station",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_forklift_charging_station_01.png",
+      "row": 6,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 2112,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 60,
+        "y": 2174,
+        "width": 215,
+        "height": 290
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "warehouse_ladder_rolling",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_warehouse_ladder_rolling_01.png",
+      "row": 6,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 2112,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 392,
+        "y": 2137,
+        "width": 223,
+        "height": 327
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "cardboard_baler",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_cardboard_baler_01.png",
+      "row": 6,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 2112,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 727,
+        "y": 2123,
+        "width": 225,
+        "height": 341
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "industrial_heater_portable",
+      "category": "warehouse_fixtures",
+      "file": "Tiles/WarehouseFixtures/industrial_warehouse_fixtures_industrial_heater_portable_01.png",
+      "row": 6,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 2112,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1039,
+        "y": 2207,
+        "width": 273,
+        "height": 257
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "cardboard_boxes_stack",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_cardboard_boxes_stack_01.png",
+      "row": 6,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 2112,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1388,
+        "y": 2231,
+        "width": 247,
+        "height": 233
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "cardboard_box_open",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_cardboard_box_open_01.png",
+      "row": 6,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 2112,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1723,
+        "y": 2248,
+        "width": 250,
+        "height": 216
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "wooden_crate_large",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_wooden_crate_large_01.png",
+      "row": 6,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 2112,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2064,
+        "y": 2213,
+        "width": 240,
+        "height": 251
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "wooden_crates_stacked",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_wooden_crates_stacked_01.png",
+      "row": 6,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 2112,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2416,
+        "y": 2193,
+        "width": 207,
+        "height": 271
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "plastic_tote_stack",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_plastic_tote_stack_01.png",
+      "row": 7,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 2464,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 68,
+        "y": 2562,
+        "width": 199,
+        "height": 254
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "burlap_sack_pile",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_burlap_sack_pile_01.png",
+      "row": 7,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 2464,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 370,
+        "y": 2601,
+        "width": 267,
+        "height": 215
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "pallet_empty",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_pallet_empty_01.png",
+      "row": 7,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 2464,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 705,
+        "y": 2629,
+        "width": 270,
+        "height": 187
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "pallet_stack",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_pallet_stack_01.png",
+      "row": 7,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 2464,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1056,
+        "y": 2586,
+        "width": 240,
+        "height": 230
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "pallet_loaded_strapped",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_pallet_loaded_strapped_01.png",
+      "row": 7,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 2464,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1382,
+        "y": 2574,
+        "width": 259,
+        "height": 242
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "tape_dispenser_station",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_tape_dispenser_station_01.png",
+      "row": 7,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 2464,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1747,
+        "y": 2556,
+        "width": 201,
+        "height": 260
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "labeled_box_blank_panel",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_labeled_box_blank_panel_01.png",
+      "row": 7,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 2464,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2073,
+        "y": 2601,
+        "width": 222,
+        "height": 215
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "mini_container_blue",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_mini_container_blue_01.png",
+      "row": 7,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 2464,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2393,
+        "y": 2560,
+        "width": 253,
+        "height": 256
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "plastic_barrel_blue",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_plastic_barrel_blue_01.png",
+      "row": 8,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 2816,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 84,
+        "y": 2932,
+        "width": 168,
+        "height": 236
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "ratchet_strap_set",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_ratchet_strap_set_01.png",
+      "row": 8,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 2816,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 388,
+        "y": 2948,
+        "width": 231,
+        "height": 220
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "bubble_wrap_roll",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_bubble_wrap_roll_01.png",
+      "row": 8,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 2816,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 716,
+        "y": 2950,
+        "width": 248,
+        "height": 218
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "bench_scale_small",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_bench_scale_small_01.png",
+      "row": 8,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 2816,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1084,
+        "y": 2927,
+        "width": 184,
+        "height": 241
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "cargo_net_folded",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_cargo_net_folded_01.png",
+      "row": 8,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 2816,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1370,
+        "y": 2955,
+        "width": 283,
+        "height": 213
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "floor_tape_roll",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_floor_tape_roll_01.png",
+      "row": 8,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 2816,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1753,
+        "y": 2982,
+        "width": 189,
+        "height": 186
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "furniture_dolly_flat",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_furniture_dolly_flat_01.png",
+      "row": 8,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 2816,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2055,
+        "y": 2975,
+        "width": 258,
+        "height": 193
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "foam_sheet_stack",
+      "category": "warehouse_props",
+      "file": "Tiles/WarehouseProps/industrial_warehouse_props_foam_sheet_stack_01.png",
+      "row": 8,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 2816,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2400,
+        "y": 2949,
+        "width": 239,
+        "height": 219
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "tunnel_pipe_section",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_tunnel_pipe_section_01.png",
+      "row": 9,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 3168,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 44,
+        "y": 3250,
+        "width": 248,
+        "height": 270
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "valve_wheel_cluster",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_valve_wheel_cluster_01.png",
+      "row": 9,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 3168,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 372,
+        "y": 3251,
+        "width": 264,
+        "height": 269
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "ladder_wall_rungs",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_ladder_wall_rungs_01.png",
+      "row": 9,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 3168,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 762,
+        "y": 3235,
+        "width": 155,
+        "height": 285
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "drain_grate_floor",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_drain_grate_floor_01.png",
+      "row": 9,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 3168,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1017,
+        "y": 3314,
+        "width": 318,
+        "height": 206
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "sluice_gate_channel",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_sluice_gate_channel_01.png",
+      "row": 9,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 3168,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1380,
+        "y": 3227,
+        "width": 263,
+        "height": 293
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "pump_station_unit",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_pump_station_unit_01.png",
+      "row": 9,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 3168,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1715,
+        "y": 3244,
+        "width": 265,
+        "height": 276
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "maintenance_platform_rail",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_maintenance_platform_rail_01.png",
+      "row": 9,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 3168,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2036,
+        "y": 3215,
+        "width": 295,
+        "height": 305
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "electrical_box_conduits",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_electrical_box_conduits_01.png",
+      "row": 9,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 3168,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2430,
+        "y": 3241,
+        "width": 179,
+        "height": 279
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "pipe_junction_manifold",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_pipe_junction_manifold_01.png",
+      "row": 10,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 3520,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 34,
+        "y": 3643,
+        "width": 267,
+        "height": 229
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "valve_control_panel",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_valve_control_panel_01.png",
+      "row": 10,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 3520,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 390,
+        "y": 3590,
+        "width": 227,
+        "height": 282
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "catwalk_segment",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_catwalk_segment_01.png",
+      "row": 10,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 3520,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 686,
+        "y": 3616,
+        "width": 308,
+        "height": 256
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "sump_pump_portable",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_sump_pump_portable_01.png",
+      "row": 10,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 3520,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1032,
+        "y": 3621,
+        "width": 288,
+        "height": 251
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "flood_light_tripod",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_flood_light_tripod_01.png",
+      "row": 10,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 3520,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1413,
+        "y": 3572,
+        "width": 198,
+        "height": 300
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "exhaust_fan_wall",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_exhaust_fan_wall_01.png",
+      "row": 10,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 3520,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1734,
+        "y": 3598,
+        "width": 228,
+        "height": 274
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "pipe_bracket_wall",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_pipe_bracket_wall_01.png",
+      "row": 10,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 3520,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2051,
+        "y": 3614,
+        "width": 265,
+        "height": 258
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "hose_reel_wall",
+      "category": "sewer_fixtures",
+      "file": "Tiles/SewerFixtures/industrial_sewer_fixtures_hose_reel_wall_01.png",
+      "row": 10,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 3520,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2403,
+        "y": 3591,
+        "width": 234,
+        "height": 281
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "toxic_barrel_leaking",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_toxic_barrel_leaking_01.png",
+      "row": 11,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 3872,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 48,
+        "y": 3941,
+        "width": 240,
+        "height": 283
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "sludge_puddle_green",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_sludge_puddle_green_01.png",
+      "row": 11,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 3872,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 364,
+        "y": 4041,
+        "width": 280,
+        "height": 183
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "rubble_pile_bricks",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_rubble_pile_bricks_01.png",
+      "row": 11,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 3872,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 685,
+        "y": 3983,
+        "width": 310,
+        "height": 241
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "glowing_mushrooms_cluster",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_glowing_mushrooms_cluster_01.png",
+      "row": 11,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 3872,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1030,
+        "y": 3963,
+        "width": 291,
+        "height": 261
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "broken_pipe_leaking",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_broken_pipe_leaking_01.png",
+      "row": 11,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 3872,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1378,
+        "y": 3985,
+        "width": 268,
+        "height": 239
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "rat_nest_debris",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_rat_nest_debris_01.png",
+      "row": 11,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 3872,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1700,
+        "y": 3989,
+        "width": 296,
+        "height": 235
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "mattress_abandoned",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_mattress_abandoned_01.png",
+      "row": 11,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 3872,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2020,
+        "y": 3991,
+        "width": 327,
+        "height": 233
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "plank_walkway_segment",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_plank_walkway_segment_01.png",
+      "row": 11,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 3872,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2371,
+        "y": 3995,
+        "width": 298,
+        "height": 229
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "moss_stone_patch",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_moss_stone_patch_01.png",
+      "row": 12,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 4224,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 26,
+        "y": 4372,
+        "width": 283,
+        "height": 204
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "bottle_debris_pile",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_bottle_debris_pile_01.png",
+      "row": 12,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 4224,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 362,
+        "y": 4319,
+        "width": 284,
+        "height": 257
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "shopping_cart_abandoned",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_shopping_cart_abandoned_01.png",
+      "row": 12,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 4224,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 710,
+        "y": 4292,
+        "width": 260,
+        "height": 284
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "campfire_makeshift",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_campfire_makeshift_01.png",
+      "row": 12,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 4224,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1026,
+        "y": 4367,
+        "width": 300,
+        "height": 209
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "crate_rotten",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_crate_rotten_01.png",
+      "row": 12,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 4224,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1377,
+        "y": 4319,
+        "width": 269,
+        "height": 257
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "lantern_hanging_old",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_lantern_hanging_old_01.png",
+      "row": 12,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 4224,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1775,
+        "y": 4287,
+        "width": 146,
+        "height": 289
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "water_puddle_shallow",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_water_puddle_shallow_01.png",
+      "row": 12,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 4224,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2027,
+        "y": 4389,
+        "width": 314,
+        "height": 187
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "drain_grate_broken",
+      "category": "sewer_props",
+      "file": "Tiles/SewerProps/industrial_sewer_props_drain_grate_broken_01.png",
+      "row": 12,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 4224,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2368,
+        "y": 4369,
+        "width": 303,
+        "height": 207
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "floor_concrete_factory",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_floor_concrete_factory_01.png",
+      "row": 13,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 4576,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 15,
+        "y": 4625,
+        "width": 306,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "floor_epoxy_warehouse",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_floor_epoxy_warehouse_01.png",
+      "row": 13,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 4576,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 350,
+        "y": 4624,
+        "width": 308,
+        "height": 304
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "floor_metal_diamond_plate",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_floor_metal_diamond_plate_01.png",
+      "row": 13,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 4576,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 686,
+        "y": 4625,
+        "width": 308,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "floor_sewer_brick",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_floor_sewer_brick_01.png",
+      "row": 13,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 4576,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1022,
+        "y": 4625,
+        "width": 308,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "wall_metal_panel_factory",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_wall_metal_panel_factory_01.png",
+      "row": 13,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 4576,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1358,
+        "y": 4625,
+        "width": 307,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "wall_concrete_warehouse",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_wall_concrete_warehouse_01.png",
+      "row": 13,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 4576,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1694,
+        "y": 4625,
+        "width": 307,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "wall_sewer_brick_arch",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_wall_sewer_brick_arch_01.png",
+      "row": 13,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 4576,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2030,
+        "y": 4625,
+        "width": 308,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "wall_corrugated_metal",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_wall_corrugated_metal_01.png",
+      "row": 13,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 4576,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2366,
+        "y": 4625,
+        "width": 308,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "water_channel_straight",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_water_channel_straight_01.png",
+      "row": 14,
+      "column": 0,
+      "cell": {
+        "x": 0,
+        "y": 4928,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 14,
+        "y": 4977,
+        "width": 307,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "water_channel_edge",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_water_channel_edge_01.png",
+      "row": 14,
+      "column": 1,
+      "cell": {
+        "x": 336,
+        "y": 4928,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 350,
+        "y": 5021,
+        "width": 307,
+        "height": 259
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "door_maintenance_steel",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_door_maintenance_steel_01.png",
+      "row": 14,
+      "column": 2,
+      "cell": {
+        "x": 672,
+        "y": 4928,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 686,
+        "y": 4977,
+        "width": 308,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "door_roller_shutter",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_door_roller_shutter_01.png",
+      "row": 14,
+      "column": 3,
+      "cell": {
+        "x": 1008,
+        "y": 4928,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1022,
+        "y": 4977,
+        "width": 308,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "fence_chain_link_segment",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_fence_chain_link_segment_01.png",
+      "row": 14,
+      "column": 4,
+      "cell": {
+        "x": 1344,
+        "y": 4928,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1358,
+        "y": 4977,
+        "width": 307,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "crane_rail_overhead",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_crane_rail_overhead_01.png",
+      "row": 14,
+      "column": 5,
+      "cell": {
+        "x": 1680,
+        "y": 4928,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 1694,
+        "y": 5026,
+        "width": 307,
+        "height": 254
+      },
+      "anchor_in_cell": {
+        "x": 167,
+        "y": 336
+      }
+    },
+    {
+      "name": "wall_pipe_run_segment",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_wall_pipe_run_segment_01.png",
+      "row": 14,
+      "column": 6,
+      "cell": {
+        "x": 2016,
+        "y": 4928,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2030,
+        "y": 4977,
+        "width": 308,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    },
+    {
+      "name": "tunnel_arch_entrance",
+      "category": "architecture",
+      "file": "Tiles/Architecture/industrial_architecture_tunnel_arch_entrance_01.png",
+      "row": 14,
+      "column": 7,
+      "cell": {
+        "x": 2352,
+        "y": 4928,
+        "width": 336,
+        "height": 352
+      },
+      "sprite": {
+        "x": 2366,
+        "y": 4977,
+        "width": 308,
+        "height": 303
+      },
+      "anchor_in_cell": {
+        "x": 168,
+        "y": 336
+      }
+    }
+  ]
+}

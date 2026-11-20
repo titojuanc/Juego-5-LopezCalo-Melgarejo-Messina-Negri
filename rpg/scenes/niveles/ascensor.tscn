@@ -5445,19 +5445,19 @@ sources/2 = SubResource("TileSetAtlasSource_qpqbr")
 script = ExtResource("7_opcion")
 id = &"ascensor_laboratorio"
 texto = "Laboratorio"
-respuesta = Array[String](["* El ascensor baja hasta el laboratorio."])
-flag_requerido = &"ascensor_piso_1"
-flag_al_seleccionar = &"ascensor_piso_1"
-valor_flag_al_seleccionar = false
+respuesta = Array[String](["* El ascensor llega al laboratorio."])
 
 [sub_resource type="Resource" id="Opcion_primer_piso"]
 script = ExtResource("7_opcion")
 id = &"ascensor_primer_piso"
 texto = "Primer piso"
 respuesta = Array[String](["* El ascensor sube hasta el primer piso."])
-flag_requerido = &"ascensor_piso_1"
-valor_flag_requerido = false
-flag_al_seleccionar = &"ascensor_piso_1"
+
+[sub_resource type="Resource" id="Opcion_subsuelo"]
+script = ExtResource("7_opcion")
+id = &"ascensor_subsuelo"
+texto = "Subsuelo"
+respuesta = Array[String](["* El ascensor baja hasta el subsuelo."])
 
 [sub_resource type="Resource" id="Opcion_dejar_panel"]
 script = ExtResource("7_opcion")
@@ -5492,11 +5492,12 @@ tile_set = SubResource("TileSet_qlqdk")
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("4_0y63c")]
 position = Vector2(581, 663)
 script = ExtResource("6_pasc")
-flag_piso = &"ascensor_piso_1"
 escena_planta_baja = "uid://b6fa32rd6fmct"
 puerta_planta_baja = &"lab05_north"
 escena_piso_1 = "uid://che0rhvnacp46"
 puerta_piso_1 = &"pp_01_ascensor"
+escena_subsuelo = "res://scenes/niveles/zona_03/pb_01.tscn"
+puerta_subsuelo = &"pb_01_ascensor"
 escena_destino = "uid://b6fa32rd6fmct"
 identificador = &"ascensor"
 puerta_destino = &"lab05_north"
@@ -5508,7 +5509,7 @@ position = Vector2(485, 225.00002)
 scale = Vector2(4, 5)
 nombre = "Panel del ascensor"
 lineas = Array[String](["* Un panel con los botones del ascensor.", "¿A qué piso querés ir?"])
-opciones = Array[ExtResource("7_opcion")]([SubResource("Opcion_laboratorio"), SubResource("Opcion_primer_piso"), SubResource("Opcion_dejar_panel")])
+opciones = Array[ExtResource("7_opcion")]([SubResource("Opcion_laboratorio"), SubResource("Opcion_primer_piso"), SubResource("Opcion_subsuelo"), SubResource("Opcion_dejar_panel")])
 distancia_indicador = 69.0
 
 [node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("8_k7f1q")]

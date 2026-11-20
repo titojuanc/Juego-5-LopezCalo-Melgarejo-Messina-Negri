@@ -44,6 +44,7 @@ Son escenas aisladas pensadas para testear cada sistema sin recorrer el juego en
 | Juego (contenedor) | `rpg/scenes/game.tscn` | Escena que arma el overworld |
 | Laboratorio 01 | `rpg/scenes/niveles/zona_01/lab_01.tscn` | Primer mapa jugable, TileMap + puertas |
 | Laboratorio 02 | `rpg/scenes/niveles/zona_01/lab_02.tscn` | Segundo mapa, conectado por puertas |
+| Ascensor | `rpg/scenes/niveles/ascensor.tscn` | El panel cambia el destino de la puerta de salida: Laboratorio, Primer piso o Subsuelo (`zona_03/pb_01.tscn`). |
 | Puerta | `rpg/scenes/niveles/puerta.tscn` + `scripts/niveles/puerta.gd` | Transición entre mapas con punto de aparición |
 | Interactuable | `rpg/scenes/niveles/interactuable.tscn` + `scripts/niveles/interactuable.gd` | Clase base de objetos con los que se interactúa (tecla `interactuar` = Z) |
 | Disparador de evento | `rpg/scenes/niveles/disparador_evento.tscn` + `scripts/niveles/disparador_evento.gd` | Inicia secuencias al interactuar o al entrar en una zona |
