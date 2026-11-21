@@ -14742,8 +14742,8 @@ distancia_llegada = 73.0
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
 
 [node name="SeñalDeAscensor" parent="Interactuables" unique_id=1123185042 instance=ExtResource("6_bwoo2")]
-position = Vector2(477.00003, 128)
-scale = Vector2(3, 3)
+position = Vector2(529, 152)
+scale = Vector2(10, 3)
 nombre = "Señal de ascensor"
 lineas = Array[String](["* Laboratorio: P3
 * Buffet: P2
@@ -14752,7 +14752,7 @@ lineas = Array[String](["* Laboratorio: P3
 mostrar_indicador = false
 
 [node name="Puerta" parent="Interactuables" unique_id=2039235882 instance=ExtResource("6_bwoo2")]
-position = Vector2(363.00003, 255.00002)
+position = Vector2(814, 526)
 scale = Vector2(5, 5)
 nombre = "Puerta "
 lineas = Array[String](["* Una puerta normal", "* Por conveniencia del guión, no se abre de este lado"])
@@ -14761,7 +14761,7 @@ lado_indicador = 4
 distancia_indicador = 78.0
 
 [node name="Armarios" parent="Interactuables" unique_id=2144772144 instance=ExtResource("6_bwoo2")]
-position = Vector2(1073.0001, 147)
+position = Vector2(994, 145)
 scale = Vector2(7, 5)
 nombre = "Puerta "
 lineas = Array[String](["* Una puerta normal", "* Por conveniencia del guión, no se abre de este lado"])
@@ -14770,7 +14770,7 @@ lado_indicador = 4
 distancia_indicador = 78.0
 
 [node name="Tele" parent="Interactuables" unique_id=1219611576 instance=ExtResource("6_bwoo2")]
-position = Vector2(546, 257)
+position = Vector2(753, 137)
 scale = Vector2(8, 5)
 nombre = "Tele"
 lineas = Array[String](["* La tele está apagada."])
