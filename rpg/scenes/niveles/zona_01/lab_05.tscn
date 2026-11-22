@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://pg2jomrlxn8i" path="res://assets/tiles_entorno/pisos_y_paredes.png" id="1_a6v2y"]
 [ext_resource type="Texture2D" uid="uid://b0vx1te8m326t" path="res://assets/tiles_entorno/props_general.png" id="2_xb2s2"]
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_3ley0"]
-[ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="4_4wed7"]
+[ext_resource type="Script" uid="uid://dn6d7ueaoh418" path="res://scripts/niveles/accion_dialogo_evento.gd" id="4_dialogo"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="5_2ts3w"]
 [ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="6_2ts3w"]
 [ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="7_0anec"]
@@ -5545,6 +5545,9 @@ metadata/_custom_type_script = "uid://vfx2vuq5n8y1"
 [sub_resource type="RectangleShape2D" id="Forma_charla_ascensor"]
 size = Vector2(400, 50)
 
+[sub_resource type="RectangleShape2D" id="Forma_cartel_ascensor"]
+size = Vector2(120, 120)
+
 [sub_resource type="Resource" id="Linea_wayne_primero_01"]
 script = ExtResource("95_linea")
 miembro = ExtResource("97_wayne")
@@ -5657,13 +5660,33 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAASAAAAAQAWABIAAAASAAEAAQAWABMAAAASAAIAAQAWABIAAAASAAMAAQAWABMAAAATAAAAAQAXABIAAAATAAEAAQAXABMAAAATAAIAAQAXABIAAAATAAMAAQAXABMAAAARAAAAAQAbABIAAAARAAEAAQAbABMAAAARAAIAAQAbABIAAAARAAMAAQAbABMAAAAQAAAAAQAaABIAAAAQAAEAAQAaABMAAAAQAAIAAQAaABIAAAAQAAMAAQAaABMAAAAUAAEAAQAcABQAAAAUAAIAAQAcABUAAAAVAAEAAQAdABQAAAAVAAIAAQAdABUAAAA=")
 tile_set = SubResource("TileSet_paprv")
 
-[node name="Interactuable" parent="." unique_id=1123185042 instance=ExtResource("4_4wed7")]
+[node name="CartelAscensor" parent="." instance=ExtResource("13_disparador")]
 position = Vector2(576, 119)
-scale = Vector2(6, 6)
+identificador = &"cartel_ascensor_lab05"
+solo_una_vez = false
+
+[node name="CollisionShape2D" parent="CartelAscensor/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("Forma_cartel_ascensor")
+
+[node name="SiBloqueado" type="Node" parent="CartelAscensor/Acciones" index="0"]
+script = ExtResource("91_condicion")
+flag_requerido = &"ascensor"
+valor_flag_requerido = false
+
+[node name="Dialogo" type="Node" parent="CartelAscensor/Acciones/SiBloqueado"]
+script = ExtResource("4_dialogo")
 nombre = "Ascensor"
-lineas = Array[String](["* La puerta del ascensor está cerrada por el bloqueo", "* Tal vez en algún lado se pueda desactivar el bloqueo... 
-"])
-distancia_indicador = 8.0
+lineas = Array[String](["* La puerta del ascensor está cerrada por el bloqueo", "* Tal vez en algún lado se pueda desactivar el bloqueo..."])
+
+[node name="SiDesbloqueado" type="Node" parent="CartelAscensor/Acciones" index="1"]
+script = ExtResource("91_condicion")
+flag_requerido = &"ascensor"
+
+[node name="Dialogo" type="Node" parent="CartelAscensor/Acciones/SiDesbloqueado"]
+script = ExtResource("4_dialogo")
+nombre = "Ascensor"
+lineas = Array[String](["* El bloqueo está desactivado.", "* La puerta del ascensor está abierta. Podés entrar."])
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("5_2ts3w")]
 position = Vector2(969, 632)
@@ -5766,3 +5789,4 @@ script = ExtResource("92_conversacion")
 lineas = Array[ExtResource("95_linea")]([SubResource("Linea_respetado_wayne"), SubResource("Linea_respetado_gloria")])
 
 [editable path="CharlaAscensor"]
+[editable path="CartelAscensor"]

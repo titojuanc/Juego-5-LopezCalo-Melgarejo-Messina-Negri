@@ -10,6 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://2nlhnuywuiyu" path="res://assets/tiles_entorno/Rasaks_Modern_Tileset/Tilesets/Interiors/Tileset_Modern_StorageOffice_Rasak.png" id="6_o4ntt"]
 [ext_resource type="PackedScene" path="res://scenes/niveles/item_recogible.tscn" id="7_x6cao"]
 [ext_resource type="PackedScene" uid="uid://2ge63h5tr2ii" path="res://scenes/niveles/camara_nivel.tscn" id="10_5l3m1"]
+[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="ev_disparador"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dialogo_evento.gd" id="ev_dialogo"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="ev_flag"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_item.gd" id="ev_item_script"]
+[ext_resource type="Resource" path="res://scenes/combate/items/botiquin.tres" id="ev_item_botiquin"]
+[ext_resource type="Resource" path="res://scenes/combate/items/calmante.tres" id="ev_item_calmante"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwcf3"]
 texture = ExtResource("1_r6e11")
@@ -14701,6 +14713,25 @@ size = Vector2(64, 64)
 resource_local_to_scene = true
 size = Vector2(2304, 1088)
 
+[sub_resource type="RectangleShape2D" id="ev_EventoFicha_1"]
+size = Vector2(700, 100)
+
+[sub_resource type="RectangleShape2D" id="ev_EventoComputadora_1"]
+size = Vector2(160, 200)
+
+[sub_resource type="Resource" id="ev_EventoComputadora_2"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "¿Vos firmaste eso?"
+
+[sub_resource type="Resource" id="ev_EventoComputadora_3"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "O el otro. O vos siendo el otro. Me encanta."
+
+[sub_resource type="RectangleShape2D" id="ev_EventoLavadoras_1"]
+size = Vector2(240, 120)
+
 [node name="PB_03" type="Node2D" unique_id=10267033]
 
 [node name="Suelo" type="TileMapLayer" parent="." unique_id=1423687800]
@@ -14751,30 +14782,115 @@ nombre = "Tacho"
 lineas = Array[String](["* Revisas el tacho en busca de algo . . .", "* . . . no hay nada."])
 mostrar_indicador = false
 
-[node name="Lavadoras" parent="Interactuables" unique_id=2039235882 instance=ExtResource("5_vkro0")]
+[node name="EventoLavadoras" parent="Interactuables" instance=ExtResource("ev_disparador")]
 position = Vector2(121, 918.00006)
-scale = Vector2(12, 6)
-nombre = "Lavadoras "
+identificador = &"pb_03_lavadoras"
+solo_una_vez = false
+mostrar_indicador = false
+
+[node name="CollisionShape2D" parent="Interactuables/EventoLavadoras/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("ev_EventoLavadoras_1")
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoLavadoras/Acciones"]
+script = ExtResource("ev_dialogo")
+nombre = "Lavadoras"
 lineas = Array[String](["* Unas cuantas lavadoras.", "* Dentro se ven batas de médicos, ropa de personal y algunas prendas normales."])
-mostrar_indicador = false
-lado_indicador = 4
-distancia_indicador = 78.0
 
-[node name="Armarios" parent="Interactuables" unique_id=2144772144 instance=ExtResource("5_vkro0")]
+[node name="Si" type="Node" parent="Interactuables/EventoLavadoras/Acciones"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"tarjeta_clinica"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoLavadoras/Acciones/Si"]
+script = ExtResource("ev_dialogo")
+nombre = "Lavadoras"
+lineas = Array[String](["* En el bolsillo de una bata hay una tarjeta de acceso.", "* Dice \"Clínicas - 1er piso\"."])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoLavadoras/Acciones/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"tarjeta_clinica"
+valor = true
+
+[node name="Si2" type="Node" parent="Interactuables/EventoLavadoras/Acciones"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"escondite_lavanderia"
+
+[node name="Si" type="Node" parent="Interactuables/EventoLavadoras/Acciones/Si2"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"escondite_recogido"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoLavadoras/Acciones/Si2/Si"]
+script = ExtResource("ev_dialogo")
+nombre = "Lavadoras"
+lineas = Array[String](["* En la máquina 3, debajo de la ropa, hay una caja con suministros."])
+
+[node name="DarItem" type="Node" parent="Interactuables/EventoLavadoras/Acciones/Si2/Si"]
+script = ExtResource("ev_dar")
+items = Array[ExtResource("ev_item_script")]([ExtResource("ev_item_botiquin"), ExtResource("ev_item_calmante")])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoLavadoras/Acciones/Si2/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"escondite_recogido"
+valor = true
+
+
+[node name="EventoComputadora" parent="Interactuables" instance=ExtResource("ev_disparador")]
 position = Vector2(582, 648)
-scale = Vector2(8, 10)
-nombre = "Computadora "
-lineas = Array[String](["* Parece que tiene registros de todo el almacén.", "* Se supone que debe haber muchos suplementos médicos, herramientas y papeles.", "* Lo saquearon todo."])
+identificador = &"pb_03_computadora"
+solo_una_vez = false
 mostrar_indicador = false
-lado_indicador = 4
-distancia_indicador = 78.0
 
-[node name="Estantes1" parent="Interactuables" unique_id=1219611576 instance=ExtResource("5_vkro0")]
+[node name="CollisionShape2D" parent="Interactuables/EventoComputadora/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("ev_EventoComputadora_1")
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoComputadora/Acciones"]
+script = ExtResource("ev_dialogo")
+nombre = "Computadora"
+lineas = Array[String](["* Parece que tiene registros de todo el almacén.", "* Se supone que debe haber muchos suplementos médicos, herramientas y papeles.", "* Lo saquearon todo.", "* Último retiro autorizado: suministros médicos varios.", "* Firma: tu nombre. Fecha: dos días antes de que despertaras.", "* Nota del sistema: \"Material reubicado en la lavandería, máquina 3.\""])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoComputadora/Acciones"]
+script = ExtResource("ev_flag")
+nombre_flag = &"escondite_lavanderia"
+valor = true
+
+[node name="Si" type="Node" parent="Interactuables/EventoComputadora/Acciones"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"computadora_leida"
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoComputadora/Acciones/Si"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoComputadora_2"), SubResource("ev_EventoComputadora_3")])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoComputadora/Acciones/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"computadora_leida"
+valor = true
+
+
+[node name="EventoFicha" parent="Interactuables" instance=ExtResource("ev_disparador")]
 position = Vector2(297, 144)
-scale = Vector2(35, 5)
-nombre = "Estantes"
-lineas = Array[String](["* Carpetas y archivos con lo que parecen ser pacientes.", "* Hojeando, ves que algunos datan de hace casi 100 años."])
+identificador = &"pb_03_ficha"
+solo_una_vez = false
 mostrar_indicador = false
+
+[node name="CollisionShape2D" parent="Interactuables/EventoFicha/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("ev_EventoFicha_1")
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoFicha/Acciones"]
+script = ExtResource("ev_dialogo")
+nombre = "Estantes"
+lineas = Array[String](["* Carpetas y archivos con lo que parecen ser pacientes.", "* Hojeando, ves que algunos datan de hace casi 100 años.", "* Una ficha tiene la fecha de ingreso marcada con un círculo rojo: 11/03.", "* Abajo, escrito a mano: \"la de la caja, por si me olvido\"."])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoFicha/Acciones"]
+script = ExtResource("ev_flag")
+nombre_flag = &"codigo_caja_fuerte"
+valor = true
+
 
 [node name="Estantes2" parent="Interactuables" unique_id=1696983344 instance=ExtResource("5_vkro0")]
 position = Vector2(1122, 139)
@@ -14815,3 +14931,6 @@ shape = SubResource("RectangleShape2D_o4ntt")
 
 [editable path="Interactuables/Escritorio"]
 [editable path="CamaraNivel"]
+[editable path="Interactuables/EventoFicha"]
+[editable path="Interactuables/EventoComputadora"]
+[editable path="Interactuables/EventoLavadoras"]
