@@ -5467,7 +5467,7 @@ tile_map_data = PackedByteArray("AAACAAAAAAAaAAoAAAACAAEAAAAaAAsAAAACAAIAAAAaAAw
 tile_set = SubResource("TileSet_paprv")
 
 [node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("2_ar8a2")]
-position = Vector2(510, 357)
+position = Vector2(871, 338)
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_njd7s")]
 position = Vector2(606, 82)
@@ -5496,8 +5496,7 @@ mostrar_indicador = false
 position = Vector2(673, 349)
 scale = Vector2(2, 2)
 nombre = "Carta"
-lineas = Array[String](["Que", "So
-"])
+lineas = Array[String](["* Una carta con escritura a mano, algo desordenada. Sin firma ni nada destacable", "* Lo único que dice es \"Búscame\""])
 textura = SubResource("AtlasTexture_njd7s")
 mostrar_indicador = false
 
@@ -5513,4 +5512,25 @@ position = Vector2(41, 202.00002)
 scale = Vector2(5, 12)
 nombre = "Cajas"
 lineas = Array[String](["* Cajas con artilugios extraños.", "* Algunos parecen de medición, otros son como frascos.", "* Tranquilamente estarían en un laboratorio."])
+mostrar_indicador = false
+
+[node name="PC" parent="Interactuables" unique_id=245923644 instance=ExtResource("5_dmnfp")]
+position = Vector2(321.00003, 298.00003)
+scale = Vector2(5, 5)
+nombre = "PC"
+lineas = Array[String](["* La PC está apagada.", "* Algunos parecen de medición, otros son como frascos.", "* Tranquilamente estarían en un laboratorio."])
+mostrar_indicador = false
+
+[node name="PC2" parent="Interactuables" unique_id=153353361 instance=ExtResource("5_dmnfp")]
+position = Vector2(961, 252)
+scale = Vector2(4, 4)
+nombre = "PC"
+lineas = Array[String](["* La PC está apagada.", "* Algunos parecen de medición, otros son como frascos.", "* Tranquilamente estarían en un laboratorio."])
+mostrar_indicador = false
+
+[node name="PC3" parent="Interactuables" unique_id=86283096 instance=ExtResource("5_dmnfp")]
+position = Vector2(737, 251)
+scale = Vector2(4, 4)
+nombre = "PC"
+lineas = Array[String](["* La PC está encendida.", "* \"Clonación exitosa\""])
 mostrar_indicador = false

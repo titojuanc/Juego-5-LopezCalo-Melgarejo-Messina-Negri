@@ -1,0 +1,284 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/tiles_entorno/piso_blanco.png" id="1_piso"]
+[ext_resource type="Texture2D" path="res://assets/tiles_entorno/pared_blanca.png" id="2_pared"]
+[ext_resource type="Texture2D" path="res://assets/tiles_entorno/props_general_2.png" id="3_props"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_piso"]
+shading_mode = 0
+albedo_texture = ExtResource("1_piso")
+uv1_scale = Vector3(6, 6, 1)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="Mat_pared"]
+shading_mode = 0
+albedo_texture = ExtResource("2_pared")
+uv1_scale = Vector3(6, 1, 1)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="Mesh_piso"]
+material = SubResource("Mat_piso")
+size = Vector2(36, 36)
+
+[sub_resource type="QuadMesh" id="Mesh_pared"]
+material = SubResource("Mat_pared")
+size = Vector2(36, 9)
+
+[sub_resource type="Environment" id="Env_escenario"]
+background_mode = 1
+background_color = Color(0.08, 0.1, 0.12, 1)
+
+[node name="Escenario" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_escenario")
+
+[node name="Piso" type="MeshInstance3D" parent="."]
+mesh = SubResource("Mesh_piso")
+
+[node name="Techo" type="MeshInstance3D" parent="."]
+position = Vector3(0, 9, 0)
+rotation = Vector3(3.1416, 0, 0)
+mesh = SubResource("Mesh_piso")
+
+[node name="Paredes" type="Node3D" parent="."]
+
+[node name="ParedFondo" type="MeshInstance3D" parent="Paredes"]
+position = Vector3(0, 4.5, -18.0)
+rotation = Vector3(0, 0, 0)
+mesh = SubResource("Mesh_pared")
+
+[node name="ParedFrente" type="MeshInstance3D" parent="Paredes"]
+position = Vector3(0, 4.5, 18.0)
+rotation = Vector3(0, 3.1416, 0)
+mesh = SubResource("Mesh_pared")
+
+[node name="ParedIzquierda" type="MeshInstance3D" parent="Paredes"]
+position = Vector3(-18.0, 4.5, 0)
+rotation = Vector3(0, 1.5708, 0)
+mesh = SubResource("Mesh_pared")
+
+[node name="ParedDerecha" type="MeshInstance3D" parent="Paredes"]
+position = Vector3(18.0, 4.5, 0)
+rotation = Vector3(0, -1.5708, 0)
+mesh = SubResource("Mesh_pared")
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Fondo" type="Node3D" parent="Props"]
+
+[node name="EstanteA0" type="Sprite3D" parent="Props/Fondo"]
+position = Vector3(-13, 2.88, -17.7)
+rotation = Vector3(0, 0, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(32, 0, 64, 96)
+
+[node name="EstanteB1" type="Sprite3D" parent="Props/Fondo"]
+position = Vector3(-8.5, 2.88, -17.7)
+rotation = Vector3(0, 0, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(96, 0, 64, 96)
+
+[node name="Ventana2" type="Sprite3D" parent="Props/Fondo"]
+position = Vector3(0, 4.92, -17.9)
+rotation = Vector3(0, 0, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(384, 0, 64, 64)
+
+[node name="Ventana3" type="Sprite3D" parent="Props/Fondo"]
+position = Vector3(5, 4.92, -17.9)
+rotation = Vector3(0, 0, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(384, 0, 64, 64)
+
+[node name="PlantaGrande4" type="Sprite3D" parent="Props/Fondo"]
+position = Vector3(12, 2.88, -17.4)
+rotation = Vector3(0, 0, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(128, 320, 32, 96)
+
+[node name="Locker5" type="Sprite3D" parent="Props/Fondo"]
+position = Vector3(15, 2.55, -17.6)
+rotation = Vector3(0, 0, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(225, 390, 30, 85)
+
+[node name="Frente" type="Node3D" parent="Props"]
+
+[node name="EstanteC0" type="Sprite3D" parent="Props/Frente"]
+position = Vector3(13, 2.88, 17.7)
+rotation = Vector3(0, 3.1416, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(160, 0, 64, 96)
+
+[node name="Corcho1" type="Sprite3D" parent="Props/Frente"]
+position = Vector3(6, 4.5, 17.9)
+rotation = Vector3(0, 3.1416, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(354, 365, 60, 50)
+
+[node name="PizarronVerde2" type="Sprite3D" parent="Props/Frente"]
+position = Vector3(0, 4.4, 17.9)
+rotation = Vector3(0, 3.1416, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(289, 385, 63, 30)
+
+[node name="Banco3" type="Sprite3D" parent="Props/Frente"]
+position = Vector3(-8, 0.96, 17.5)
+rotation = Vector3(0, 3.1416, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(135, 480, 80, 32)
+
+[node name="PlantaChica4" type="Sprite3D" parent="Props/Frente"]
+position = Vector3(-14, 2.4, 17.5)
+rotation = Vector3(0, 3.1416, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(160, 352, 32, 80)
+
+[node name="Izquierda" type="Node3D" parent="Props"]
+
+[node name="EstanteC0" type="Sprite3D" parent="Props/Izquierda"]
+position = Vector3(-17.7, 2.88, 14)
+rotation = Vector3(0, 1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(160, 0, 64, 96)
+
+[node name="Pizarra1" type="Sprite3D" parent="Props/Izquierda"]
+position = Vector3(-17.9, 4.42, 6)
+rotation = Vector3(0, 1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(32, 320, 64, 64)
+
+[node name="Cafetera2" type="Sprite3D" parent="Props/Izquierda"]
+position = Vector3(-17.6, 1.89, -3)
+rotation = Vector3(0, 1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(192, 385, 32, 63)
+
+[node name="Servidores3" type="Sprite3D" parent="Props/Izquierda"]
+position = Vector3(-17.6, 2.85, -8)
+rotation = Vector3(0, 1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(32, 385, 64, 95)
+
+[node name="PlantaChica4" type="Sprite3D" parent="Props/Izquierda"]
+position = Vector3(-17.5, 2.4, -14)
+rotation = Vector3(0, 1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(160, 352, 32, 80)
+
+[node name="Derecha" type="Node3D" parent="Props"]
+
+[node name="Ventana0" type="Sprite3D" parent="Props/Derecha"]
+position = Vector3(17.9, 4.92, -10)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(384, 0, 64, 64)
+
+[node name="Ventana1" type="Sprite3D" parent="Props/Derecha"]
+position = Vector3(17.9, 4.92, -4)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(384, 0, 64, 64)
+
+[node name="Escritorios2" type="Sprite3D" parent="Props/Derecha"]
+position = Vector3(17.5, 1.92, 6)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(64, 96, 64, 64)
+
+[node name="Sillon3" type="Sprite3D" parent="Props/Derecha"]
+position = Vector3(17.4, 1.92, 12)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(260, 224, 56, 64)
+
+[node name="PlantaGrande4" type="Sprite3D" parent="Props/Derecha"]
+position = Vector3(17.4, 2.88, 15.5)
+rotation = Vector3(0, -1.5708, 0)
+pixel_size = 0.06
+texture_filter = 0
+alpha_cut = 1
+texture = ExtResource("3_props")
+region_enabled = true
+region_rect = Rect2(128, 320, 32, 96)

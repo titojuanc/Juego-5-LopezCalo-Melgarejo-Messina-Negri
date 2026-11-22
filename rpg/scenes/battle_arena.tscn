@@ -15,15 +15,11 @@
 [ext_resource type="Resource" uid="uid://dnps1qstl00qq" path="res://scenes/combate/enemigos/test_enemigo3.tres" id="11_itwoe"]
 [ext_resource type="PackedScene" uid="uid://dicy87axl3gsg" path="res://scenes/combate/UI/ui_combate.tscn" id="11_uicombate"]
 [ext_resource type="Resource" uid="uid://di7tlmsoc0qnr" path="res://scenes/combate/enemigos/test_enemigo4.tres" id="12_4wnud"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_kfgqx"]
-size = Vector3(50, 1, 50)
+[ext_resource type="PackedScene" path="res://scenes/combate/escenario_oficina.tscn" id="13_escenario"]
 
 [node name="BattleArena" type="Node3D" unique_id=1215351448]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1308968784]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh = SubResource("BoxMesh_kfgqx")
+[node name="Escenario" parent="." instance=ExtResource("13_escenario")]
 
 [node name="BattleManager" type="Node" parent="." unique_id=1487565887 node_paths=PackedStringArray("camara")]
 script = ExtResource("1_battlemgr")

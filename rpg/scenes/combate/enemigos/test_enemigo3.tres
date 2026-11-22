@@ -1,8 +1,12 @@
 [gd_resource type="Resource" script_class="RecursoEnemigo" format=3 uid="uid://dnps1qstl00qq"]
 
 [ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="1_bpf2x"]
-[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="2_cw3ps"]
+[ext_resource type="Texture2D" path="res://assets/robot_prueba/Robot_walk.png" id="2_cw3ps"]
 [ext_resource type="Resource" uid="uid://bemw78jdmkxks" path="res://scenes/combate/items/HP_prueba.tres" id="9_drop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sprite"]
+atlas = ExtResource("2_cw3ps")
+region = Rect2(0, 0, 48, 48)
 
 [resource]
 script = ExtResource("1_bpf2x")
@@ -10,7 +14,7 @@ nombre = "Enemigo3"
 vida_max = 90
 descripcion = "Este es un enemigo de prueba"
 ataque = 10
-textura = ExtResource("2_cw3ps")
+textura = SubResource("AtlasTexture_sprite")
 debilidades = Array[int]([0])
 resistencias = Array[int]([2])
 item_drop = ExtResource("9_drop")

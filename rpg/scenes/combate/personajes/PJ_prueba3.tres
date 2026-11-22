@@ -7,7 +7,11 @@
 [ext_resource type="Resource" uid="uid://ksivr7k45yfn" path="res://scenes/combate/ataques_especiales/Cura_prueba1.tres" id="3_jf8b0"]
 [ext_resource type="Resource" uid="uid://2mh0ud3g87ln" path="res://scenes/combate/items/DEFF_atk_prueba.tres" id="5_cdcee"]
 [ext_resource type="Resource" uid="uid://dgydfdsc4w06b" path="res://scenes/combate/items/DEFF_def_prueba.tres" id="6_2yfek"]
-[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="8_rsv7q"]
+[ext_resource type="Texture2D" path="res://assets/soldado_prueba/Range _Fire-Sheet.png" id="8_rsv7q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sprite"]
+atlas = ExtResource("8_rsv7q")
+region = Rect2(0, 0, 24, 24)
 
 [resource]
 script = ExtResource("3_i8bl3")
@@ -15,5 +19,5 @@ nombre = "Prueba3"
 arma = ExtResource("1_jf8b0")
 ataques_especiales = Array[ExtResource("1_11hll")]([ExtResource("3_jf8b0")])
 inventario = Array[ExtResource("2_6grfa")]([ExtResource("5_cdcee"), ExtResource("6_2yfek")])
-textura = ExtResource("8_rsv7q")
+textura = SubResource("AtlasTexture_sprite")
 metadata/_custom_type_script = "uid://b8536t7dcpoos"

@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="RPG"
-run/main_scene="uid://dj21gxtl6y8jd"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Alineamiento="*res://scripts/alineamiento/gestor_alineamiento.gd"
-Global="*uid://b2glroevtqgp5"
+Global="*res://scripts/global.gd"
 Configuracion="*res://scripts/configuracion.gd"
-MotorDialogo="*uid://chj31iqfavqv5"
+MotorDialogo="*res://scenes/HUD/MotorDialogo.tscn"
 GestorEventos="*res://scripts/niveles/gestor_eventos.gd"
 Transiciones="*res://scenes/HUD/Transiciones.tscn"
 Equipo="*res://scripts/party/gestor_equipo.gd"

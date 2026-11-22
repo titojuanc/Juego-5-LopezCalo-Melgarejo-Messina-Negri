@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RecursoMapa" format=3]
+[gd_resource type="Resource" script_class="RecursoMapa" format=3 uid="uid://dxgfkkvecntpj"]
 
-[ext_resource type="Script" path="res://scripts/mapa/recurso_mapa.gd" id="1_mapa"]
-[ext_resource type="Script" path="res://scripts/mapa/recurso_sala_mapa.gd" id="2_sala"]
+[ext_resource type="Script" uid="uid://dxx7ehk8tfrrw" path="res://scripts/mapa/recurso_mapa.gd" id="1_mapa"]
+[ext_resource type="Script" uid="uid://ch1c12o2ttobh" path="res://scripts/mapa/recurso_sala_mapa.gd" id="2_sala"]
 
 [sub_resource type="Resource" id="Sala_lab_01"]
 script = ExtResource("2_sala")

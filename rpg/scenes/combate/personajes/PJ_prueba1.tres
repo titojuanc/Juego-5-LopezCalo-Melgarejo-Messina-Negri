@@ -6,8 +6,12 @@
 [ext_resource type="Resource" uid="uid://dptb0ei6sief" path="res://scenes/combate/ataques_especiales/Ataque_prueba1.tres" id="3_2boni"]
 [ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="3_6uskk"]
 [ext_resource type="Resource" uid="uid://bemw78jdmkxks" path="res://scenes/combate/items/HP_prueba.tres" id="5_5vxgd"]
-[ext_resource type="Texture2D" uid="uid://c2toy2ejc52at" path="res://icon.svg" id="7_5q5sv"]
-[ext_resource type="Resource" path="res://scenes/combate/ataques_especiales/Ataque_perforante_prueba.tres" id="9_perforante"]
+[ext_resource type="Texture2D" uid="uid://buunt6esy6amg" path="res://assets/soldado_prueba/Range _Fire-Sheet.png" id="7_5q5sv"]
+[ext_resource type="Resource" uid="uid://bw3djqv2jlhb2" path="res://scenes/combate/ataques_especiales/Ataque_perforante_prueba.tres" id="9_perforante"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sprite"]
+atlas = ExtResource("7_5q5sv")
+region = Rect2(0, 0, 24, 24)
 
 [resource]
 script = ExtResource("3_6uskk")
@@ -15,5 +19,5 @@ nombre = "Prueba1"
 arma = ExtResource("1_5j07o")
 ataques_especiales = Array[ExtResource("1_7vgks")]([ExtResource("3_2boni"), ExtResource("9_perforante")])
 inventario = Array[ExtResource("2_touyw")]([ExtResource("5_5vxgd")])
-textura = ExtResource("7_5q5sv")
+textura = SubResource("AtlasTexture_sprite")
 metadata/_custom_type_script = "uid://b8536t7dcpoos"

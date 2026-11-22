@@ -10,17 +10,16 @@
 [ext_resource type="Script" uid="uid://d1q16xooot66k" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="8_0anec"]
 [ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="8_ahvdv"]
 [ext_resource type="Texture2D" uid="uid://d1qsfmegfvdeg" path="res://assets/robot_prueba/Robot_walk.png" id="9_f2apr"]
-[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="13_disparador"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="14_accion_flag"]
-[ext_resource type="Script" path="res://scripts/npcs/movimiento_npc.gd" id="15_movimiento"]
+[ext_resource type="PackedScene" uid="uid://bdhr47napg8vt" path="res://scenes/niveles/disparador_evento.tscn" id="13_disparador"]
+[ext_resource type="Script" uid="uid://dphcmcyx8iiph" path="res://scripts/npcs/movimiento_npc.gd" id="15_movimiento"]
 [ext_resource type="Resource" uid="uid://di7tlmsoc0qnr" path="res://scenes/combate/enemigos/test_enemigo4.tres" id="16_enemigo_robot"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="91_condicion"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="92_conversacion"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="95_linea"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="96_personaje"]
-[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="97_wayne"]
+[ext_resource type="Script" uid="uid://dcea1btnrlmyy" path="res://scripts/niveles/accion_condicion.gd" id="91_condicion"]
+[ext_resource type="Script" uid="uid://jog4vs2kv0ll" path="res://scripts/niveles/accion_conversacion.gd" id="92_conversacion"]
+[ext_resource type="Script" uid="uid://dpbraaoxwhusc" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="95_linea"]
+[ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="96_personaje"]
+[ext_resource type="Resource" uid="uid://cbakoopw557hk" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="97_wayne"]
 [ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="98_gloria"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="99_opcion"]
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="99_opcion"]
 [ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_caotica.tres" id="100_caotica"]
 [ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_legal.tres" id="101_legal"]
 
@@ -5543,6 +5542,9 @@ enemigos = Array[ExtResource("7_0anec")]([ExtResource("16_enemigo_robot")])
 sin_mente = true
 metadata/_custom_type_script = "uid://vfx2vuq5n8y1"
 
+[sub_resource type="RectangleShape2D" id="Forma_charla_ascensor"]
+size = Vector2(400, 50)
+
 [sub_resource type="Resource" id="Linea_wayne_primero_01"]
 script = ExtResource("95_linea")
 miembro = ExtResource("97_wayne")
@@ -5632,9 +5634,6 @@ script = ExtResource("95_linea")
 miembro = ExtResource("98_gloria")
 texto = "Bien pensado."
 
-[sub_resource type="RectangleShape2D" id="Forma_charla_ascensor"]
-size = Vector2(400, 50)
-
 [node name="Lab_05" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -5682,45 +5681,11 @@ puerta_destino = &"lab03_a_east"
 direccion_llegada = 1
 distancia_llegada = 75.0
 
-[node name="CerrarEntradaOeste" parent="." instance=ExtResource("13_disparador")]
-position = Vector2(270, 560)
-modo = 1
-identificador = &"lab5_entrada_oeste"
-flag_requerido = &"lab5_ruta_fijada"
-valor_flag_requerido = false
-
-[node name="AccionCerrarPuertaOeste" type="Node" parent="CerrarEntradaOeste/Acciones" index="0"]
-script = ExtResource("14_accion_flag")
-nombre_flag = &"lab5_bloquea_lab2_lab3"
-valor = true
-
-[node name="MarcarRutaFijadaOeste" type="Node" parent="CerrarEntradaOeste/Acciones" index="1"]
-script = ExtResource("14_accion_flag")
-nombre_flag = &"lab5_ruta_fijada"
-valor = true
-
-[node name="CerrarEntradaEste" parent="." instance=ExtResource("13_disparador")]
-position = Vector2(890, 560)
-modo = 1
-identificador = &"lab5_entrada_este"
-flag_requerido = &"lab5_ruta_fijada"
-valor_flag_requerido = false
-
-[node name="AccionCerrarPuertaEste" type="Node" parent="CerrarEntradaEste/Acciones" index="0"]
-script = ExtResource("14_accion_flag")
-nombre_flag = &"lab5_bloquea_lab2_lab4"
-valor = true
-
-[node name="MarcarRutaFijadaEste" type="Node" parent="CerrarEntradaEste/Acciones" index="1"]
-script = ExtResource("14_accion_flag")
-nombre_flag = &"lab5_ruta_fijada"
-valor = true
-
 [node name="Puerta_lab04_a" parent="." unique_id=49055175 instance=ExtResource("5_2ts3w")]
 position = Vector2(579, 97)
-escena_destino = "uid://dwahfhmaf4cif"
-identificador = &"lab02_north_right"
-puerta_destino = &"lab04_west"
+escena_destino = "uid://bq8jduptg5kcu"
+identificador = &"lab05_north"
+puerta_destino = &"ascensor"
 direccion_llegada = 2
 distancia_llegada = 75.0
 flag_requerido = &"ascensor"
@@ -5729,78 +5694,75 @@ flag_requerido = &"ascensor"
 position = Vector2(575, 236)
 datos = SubResource("Resource_i41m5")
 
-[node name="MovimientoNpc" type="Node" parent="Npc"]
+[node name="MovimientoNpc" type="Node" parent="Npc" unique_id=1253288302]
 script = ExtResource("15_movimiento")
 modo = 0
 puntos = Array[Vector2]([Vector2(-200, 0), Vector2(-200, 150), Vector2(200, 150), Vector2(200, 0)])
 
-[node name="CharlaAscensor" parent="." instance=ExtResource("13_disparador")]
+[node name="CharlaAscensor" parent="." unique_id=2047522332 instance=ExtResource("13_disparador")]
 position = Vector2(579, 190)
 modo = 1
 identificador = &"charla_ascensor_prueba"
 flag_requerido = &"ascensor"
 
-[node name="CollisionShape2D" parent="CharlaAscensor/Area2D" index="0"]
-position = Vector2(0, 0)
+[node name="CollisionShape2D" parent="CharlaAscensor/Area2D" parent_id_path=PackedInt32Array(2047522332, 1805804608) index="0" unique_id=1413580006]
 shape = SubResource("Forma_charla_ascensor")
 
-[node name="SiWaynePrimero" type="Node" parent="CharlaAscensor/Acciones" index="0"]
+[node name="SiWaynePrimero" type="Node" parent="CharlaAscensor/Acciones" parent_id_path=PackedInt32Array(2047522332, 1277747786) index="0" unique_id=620279857]
 script = ExtResource("91_condicion")
 reclutado_primero = ExtResource("97_wayne")
 reclutado_despues = ExtResource("98_gloria")
 
-[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SiWaynePrimero"]
+[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SiWaynePrimero" unique_id=1122886968]
 script = ExtResource("92_conversacion")
 lineas = Array[ExtResource("95_linea")]([SubResource("Linea_wayne_primero_01"), SubResource("Linea_wayne_primero_02"), SubResource("Linea_wayne_primero_03")])
 
-[node name="SiGloriaPrimero" type="Node" parent="CharlaAscensor/Acciones" index="1"]
+[node name="SiGloriaPrimero" type="Node" parent="CharlaAscensor/Acciones" parent_id_path=PackedInt32Array(2047522332, 1277747786) index="1" unique_id=1787276215]
 script = ExtResource("91_condicion")
 reclutado_primero = ExtResource("98_gloria")
 reclutado_despues = ExtResource("97_wayne")
 
-[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SiGloriaPrimero"]
+[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SiGloriaPrimero" unique_id=1780955869]
 script = ExtResource("92_conversacion")
 lineas = Array[ExtResource("95_linea")]([SubResource("Linea_gloria_primero_01"), SubResource("Linea_gloria_primero_02")])
 
-[node name="SoloWayne" type="Node" parent="CharlaAscensor/Acciones" index="2"]
+[node name="SoloWayne" type="Node" parent="CharlaAscensor/Acciones" parent_id_path=PackedInt32Array(2047522332, 1277747786) index="2" unique_id=455553054]
 script = ExtResource("91_condicion")
 miembros_presentes = Array[ExtResource("96_personaje")]([ExtResource("97_wayne")])
 miembros_ausentes = Array[ExtResource("96_personaje")]([ExtResource("98_gloria")])
 
-[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SoloWayne"]
+[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SoloWayne" unique_id=484154129]
 script = ExtResource("92_conversacion")
 lineas = Array[ExtResource("95_linea")]([SubResource("Linea_solo_wayne")])
 
-[node name="SoloGloria" type="Node" parent="CharlaAscensor/Acciones" index="3"]
+[node name="SoloGloria" type="Node" parent="CharlaAscensor/Acciones" parent_id_path=PackedInt32Array(2047522332, 1277747786) index="3" unique_id=634418641]
 script = ExtResource("91_condicion")
 miembros_presentes = Array[ExtResource("96_personaje")]([ExtResource("98_gloria")])
 miembros_ausentes = Array[ExtResource("96_personaje")]([ExtResource("97_wayne")])
 
-[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SoloGloria"]
+[node name="Conversacion" type="Node" parent="CharlaAscensor/Acciones/SoloGloria" unique_id=1305609734]
 script = ExtResource("92_conversacion")
 lineas = Array[ExtResource("95_linea")]([SubResource("Linea_solo_gloria")])
 
-[node name="PanelAscensor" type="Node" parent="CharlaAscensor/Acciones" index="4"]
+[node name="PanelAscensor" type="Node" parent="CharlaAscensor/Acciones" parent_id_path=PackedInt32Array(2047522332, 1277747786) index="4" unique_id=2114772578]
 script = ExtResource("92_conversacion")
 lineas = Array[ExtResource("95_linea")]([SubResource("Linea_panel_01"), SubResource("Linea_panel_02"), SubResource("Linea_panel_03"), SubResource("Linea_panel_04")])
 opciones = Array[ExtResource("99_opcion")]([SubResource("Opcion_romper_panel"), SubResource("Opcion_respetar_panel")])
 
-[node name="SiPanelRoto" type="Node" parent="CharlaAscensor/Acciones" index="5"]
+[node name="SiPanelRoto" type="Node" parent="CharlaAscensor/Acciones" parent_id_path=PackedInt32Array(2047522332, 1277747786) index="5" unique_id=1111289114]
 script = ExtResource("91_condicion")
 flag_requerido = &"panel_ascensor_roto"
 
-[node name="Reacciones" type="Node" parent="CharlaAscensor/Acciones/SiPanelRoto"]
+[node name="Reacciones" type="Node" parent="CharlaAscensor/Acciones/SiPanelRoto" unique_id=1052432905]
 script = ExtResource("92_conversacion")
 lineas = Array[ExtResource("95_linea")]([SubResource("Linea_roto_wayne"), SubResource("Linea_roto_gloria")])
 
-[node name="SiPanelRespetado" type="Node" parent="CharlaAscensor/Acciones" index="6"]
+[node name="SiPanelRespetado" type="Node" parent="CharlaAscensor/Acciones" parent_id_path=PackedInt32Array(2047522332, 1277747786) index="6" unique_id=560513729]
 script = ExtResource("91_condicion")
 flag_requerido = &"panel_ascensor_respetado"
 
-[node name="Reacciones" type="Node" parent="CharlaAscensor/Acciones/SiPanelRespetado"]
+[node name="Reacciones" type="Node" parent="CharlaAscensor/Acciones/SiPanelRespetado" unique_id=1687319987]
 script = ExtResource("92_conversacion")
 lineas = Array[ExtResource("95_linea")]([SubResource("Linea_respetado_wayne"), SubResource("Linea_respetado_gloria")])
 
-[editable path="CerrarEntradaOeste"]
-[editable path="CerrarEntradaEste"]
 [editable path="CharlaAscensor"]
