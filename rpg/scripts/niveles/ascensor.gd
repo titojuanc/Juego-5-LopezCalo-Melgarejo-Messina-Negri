@@ -10,6 +10,7 @@ const PISOS_POR_OPCION := {
 	&"ascensor_laboratorio": PuertaAscensor.Piso.LABORATORIO,
 	&"ascensor_primer_piso": PuertaAscensor.Piso.PRIMER_PISO,
 	&"ascensor_subsuelo": PuertaAscensor.Piso.SUBSUELO,
+	&"ascensor_recepcion": PuertaAscensor.Piso.RECEPCION,
 }
 const TECLAS_POR_OPCION := {
 	&"ascensor_instalar_subsuelo": [PuertaAscensor.FLAG_TECLA_SUBSUELO, PuertaAscensor.FLAG_SUBSUELO_HABILITADO],
@@ -69,8 +70,6 @@ func _actualizar_opciones() -> void:
 		if TECLAS_POR_OPCION.has(opcion.id):
 			var tecla: Array = TECLAS_POR_OPCION[opcion.id]
 			return GestorEventos.obtener_flag(tecla[0]) and not GestorEventos.obtener_flag(tecla[1])
-		if opcion.id == &"ascensor_recepcion":
-			return GestorEventos.obtener_flag(PuertaAscensor.FLAG_RECEPCION_HABILITADA)
 		return true
 	)
 

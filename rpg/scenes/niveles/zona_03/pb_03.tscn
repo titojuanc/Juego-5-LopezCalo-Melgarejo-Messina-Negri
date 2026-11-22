@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_vkro0"]
 [ext_resource type="Texture2D" uid="uid://2nlhnuywuiyu" path="res://assets/tiles_entorno/Rasaks_Modern_Tileset/Tilesets/Interiors/Tileset_Modern_StorageOffice_Rasak.png" id="6_o4ntt"]
 [ext_resource type="PackedScene" path="res://scenes/niveles/item_recogible.tscn" id="7_x6cao"]
+[ext_resource type="PackedScene" uid="uid://2ge63h5tr2ii" path="res://scenes/niveles/camara_nivel.tscn" id="10_5l3m1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwcf3"]
 texture = ExtResource("1_r6e11")
@@ -14696,6 +14697,10 @@ sources/3 = SubResource("TileSetAtlasSource_ilg2w")
 resource_local_to_scene = true
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4ntt"]
+resource_local_to_scene = true
+size = Vector2(2304, 1088)
+
 [node name="PB_03" type="Node2D" unique_id=10267033]
 
 [node name="Suelo" type="TileMapLayer" parent="." unique_id=1423687800]
@@ -14800,4 +14805,13 @@ lineas = Array[String](["* hay algo en el cajón..."])
 [node name="DarItem" parent="Interactuables/Escritorio/Acciones" parent_id_path=PackedInt32Array(1169350063, 1277747786) index="1"]
 oro = 30
 
+[node name="CamaraNivel" parent="." unique_id=1487418937 instance=ExtResource("10_5l3m1")]
+visible = false
+position = Vector2(782, 536)
+
+[node name="CollisionShape2D" parent="CamaraNivel/Limites" parent_id_path=PackedInt32Array(1487418937, 94154297) index="0" unique_id=649505806]
+position = Vector2(370, 8)
+shape = SubResource("RectangleShape2D_o4ntt")
+
 [editable path="Interactuables/Escritorio"]
+[editable path="CamaraNivel"]

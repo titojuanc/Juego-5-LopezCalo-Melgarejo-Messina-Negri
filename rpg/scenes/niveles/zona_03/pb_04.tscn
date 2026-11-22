@@ -16265,7 +16265,8 @@ shape = SubResource("Forma_tecla")
 
 [node name="Dialogo" type="Node" parent="Interactuables/ItemRecogible/Acciones" parent_id_path=PackedInt32Array(881588680, 1277747786) index="0" unique_id=2144825822]
 script = ExtResource("10_dialogo_tecla")
-lineas = Array[String](["* Encontraste la tecla del ascensor marcada \"Recepción\".", "* La guardás para instalarla en el panel del ascensor."])
+lineas = Array[String](["* (Encontraste la tecla del ascensor marcada \"Recepción\".)", "* (La guardás para instalarla en el panel del ascensor.)", "* Dentro del cajón hay muchos registros de autopsias", "* Sobre la mesa, una libreta con un reporte más", "* Sujeto: ||||||||||| |||||||||||
+Causa de muerte \"Fallo letal en experimento ||||||||||||\"", "* Parece estar censurado el nombre de la persona y del experimento."])
 
 [node name="RecogerTecla" type="Node" parent="Interactuables/ItemRecogible/Acciones" parent_id_path=PackedInt32Array(881588680, 1277747786) index="1" unique_id=928610973]
 script = ExtResource("11_flag_tecla")

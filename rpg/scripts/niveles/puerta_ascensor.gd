@@ -1,9 +1,10 @@
 extends "res://scripts/niveles/puerta.gd"
 
-enum Piso { LABORATORIO, PRIMER_PISO, SUBSUELO }
+enum Piso { LABORATORIO, PRIMER_PISO, SUBSUELO, RECEPCION }
 
 const FLAG_PRIMER_PISO := &"ascensor_piso_1"
 const FLAG_SUBSUELO := &"ascensor_subsuelo"
+const FLAG_RECEPCION := &"ascensor_recepcion"
 const FLAG_TECLA_SUBSUELO := &"ascensor_tecla_subsuelo_encontrada"
 const FLAG_SUBSUELO_HABILITADO := &"ascensor_tecla_subsuelo_instalada"
 const FLAG_TECLA_RECEPCION := &"ascensor_tecla_recepcion_encontrada"
@@ -21,6 +22,10 @@ const FLAG_RECEPCION_HABILITADA := &"ascensor_tecla_recepcion_instalada"
 @export_file("*.tscn") var escena_subsuelo: String = ""
 @export var puerta_subsuelo: StringName = &""
 
+@export_group("Recepción")
+@export_file("*.tscn") var escena_recepcion: String = ""
+@export var puerta_recepcion: StringName = &""
+
 
 func _ready() -> void:
 	super()
@@ -29,11 +34,13 @@ func _ready() -> void:
 
 
 func _al_cambiar_flag(nombre: StringName, _valor: bool) -> void:
-	if nombre == FLAG_PRIMER_PISO or nombre == FLAG_SUBSUELO:
+	if nombre in [FLAG_PRIMER_PISO, FLAG_SUBSUELO, FLAG_RECEPCION]:
 		_actualizar_destino()
 
 
 func piso_actual() -> Piso:
+	if GestorEventos.obtener_flag(FLAG_RECEPCION):
+		return Piso.RECEPCION
 	if GestorEventos.obtener_flag(FLAG_SUBSUELO):
 		return Piso.SUBSUELO
 	if GestorEventos.obtener_flag(FLAG_PRIMER_PISO):
@@ -42,19 +49,28 @@ func piso_actual() -> Piso:
 
 
 func piso_disponible(piso: Piso) -> bool:
-	return piso != Piso.SUBSUELO or GestorEventos.obtener_flag(FLAG_SUBSUELO_HABILITADO)
+	match piso:
+		Piso.SUBSUELO:
+			return GestorEventos.obtener_flag(FLAG_SUBSUELO_HABILITADO)
+		Piso.RECEPCION:
+			return GestorEventos.obtener_flag(FLAG_RECEPCION_HABILITADA)
+	return true
 
 
 func elegir_piso(piso: Piso) -> void:
 	if not piso_disponible(piso):
-		push_warning("El ascensor no tiene instalada la tecla del subsuelo")
+		push_warning("El ascensor no tiene instalada la tecla de ese piso")
 		return
 	GestorEventos.cambiar_flag(FLAG_PRIMER_PISO, piso == Piso.PRIMER_PISO)
 	GestorEventos.cambiar_flag(FLAG_SUBSUELO, piso == Piso.SUBSUELO)
+	GestorEventos.cambiar_flag(FLAG_RECEPCION, piso == Piso.RECEPCION)
 
 
 func _actualizar_destino() -> void:
 	match piso_actual():
+		Piso.RECEPCION:
+			escena_destino = escena_recepcion
+			puerta_destino = puerta_recepcion
 		Piso.SUBSUELO:
 			escena_destino = escena_subsuelo
 			puerta_destino = puerta_subsuelo

@@ -5468,16 +5468,16 @@ tile_set = SubResource("TileSet_paprv")
 [node name="Interactuable" parent="." unique_id=1123185042 instance=ExtResource("5_8riid")]
 position = Vector2(576, 119)
 scale = Vector2(6, 6)
-nombre = "Carta"
-lineas = Array[String](["Que", "So
-"])
+nombre = "Tele"
+lineas = Array[String](["* La tele está apagada."])
+mostrar_indicador = false
 distancia_indicador = 8.0
 
 [node name="PC_Ascensor" parent="." unique_id=1277341239 instance=ExtResource("5_8riid")]
 position = Vector2(730, 232)
 scale = Vector2(5, 5)
 nombre = "PC"
-lineas = Array[String](["Una PC con comandos extraños.", "..."])
+lineas = Array[String](["Una PC con comandos extraños.", "Hay unos comandos de desbloqueo, pero están en gris."])
 opciones = Array[ExtResource("7_option_script")]([ExtResource("8_pc_option")])
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_ovkyg")]

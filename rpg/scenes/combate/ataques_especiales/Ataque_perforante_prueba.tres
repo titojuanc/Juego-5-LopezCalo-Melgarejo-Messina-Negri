@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RecursoAtaqueEspecial" format=3]
+[gd_resource type="Resource" script_class="RecursoAtaqueEspecial" format=3 uid="uid://bw3djqv2jlhb2"]
 
 [ext_resource type="Script" uid="uid://cr321xta8d7vw" path="res://scripts/recursos/recurso_ataque_especial.gd" id="1_script"]
 

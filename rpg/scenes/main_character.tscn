@@ -58,7 +58,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e6tc2"]
-size = Vector2(98, 29)
+size = Vector2(72, 15)
 
 [node name="MainCharacter" type="Node2D" unique_id=1843269011]
 script = ExtResource("3_explorador")
@@ -95,5 +95,5 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AreaInteraccion" unique_id=967390392]
-position = Vector2(-3, 51.5)
+position = Vector2(-1, 58.5)
 shape = SubResource("RectangleShape2D_e6tc2")
