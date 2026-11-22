@@ -14744,11 +14744,8 @@ distancia_llegada = 73.0
 [node name="SeñalDeAscensor" parent="Interactuables" unique_id=1123185042 instance=ExtResource("6_bwoo2")]
 position = Vector2(529, 152)
 scale = Vector2(10, 3)
-nombre = "Señal de ascensor"
-lineas = Array[String](["* Laboratorio: P3
-* Buffet: P2
-* Clínicas: P1 <--
-* Recepción: PB", "* Almacén: PB"])
+nombre = "Estante."
+lineas = Array[String](["* Vacío", ""])
 mostrar_indicador = false
 
 [node name="Puerta" parent="Interactuables" unique_id=2039235882 instance=ExtResource("6_bwoo2")]

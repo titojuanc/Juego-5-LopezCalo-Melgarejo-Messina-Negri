@@ -5465,6 +5465,24 @@ id = &"ascensor_dejar_panel"
 texto = "Dejar el panel."
 respuesta = Array[String](["* Te alejás del panel."])
 
+[sub_resource type="Resource" id="Opcion_instalar_subsuelo"]
+script = ExtResource("7_opcion")
+id = &"ascensor_instalar_subsuelo"
+texto = "Instalar tecla: Subsuelo"
+respuesta = Array[String](["* Encajás la tecla en el panel.", "* Ahora podés usar el ascensor para bajar al subsuelo."])
+
+[sub_resource type="Resource" id="Opcion_instalar_recepcion"]
+script = ExtResource("7_opcion")
+id = &"ascensor_instalar_recepcion"
+texto = "Instalar tecla: Recepción"
+respuesta = Array[String](["* Encajás la tecla en el panel.", "* La tecla de recepción está instalada, pero el destino todavía no está disponible."])
+
+[sub_resource type="Resource" id="Opcion_recepcion"]
+script = ExtResource("7_opcion")
+id = &"ascensor_recepcion"
+texto = "Recepción"
+respuesta = Array[String](["* La tecla está instalada, pero recepción todavía no está disponible.", "* El ascensor permanece en este piso."])
+
 [node name="Ascensor" type="Node2D" unique_id=223279906]
 script = ExtResource("8_asc")
 
@@ -5508,8 +5526,8 @@ distancia_llegada = 83.0
 position = Vector2(485, 225.00002)
 scale = Vector2(4, 5)
 nombre = "Panel del ascensor"
-lineas = Array[String](["* Un panel con los botones del ascensor.", "¿A qué piso querés ir?"])
-opciones = Array[ExtResource("7_opcion")]([SubResource("Opcion_laboratorio"), SubResource("Opcion_primer_piso"), SubResource("Opcion_subsuelo"), SubResource("Opcion_dejar_panel")])
+lineas = Array[String](["* Un panel con los botones del ascensor.", "* Faltan las teclas de subsuelo y recepción.", "¿Qué querés hacer?"])
+opciones = Array[ExtResource("7_opcion")]([SubResource("Opcion_laboratorio"), SubResource("Opcion_primer_piso"), SubResource("Opcion_subsuelo"), SubResource("Opcion_instalar_subsuelo"), SubResource("Opcion_instalar_recepcion"), SubResource("Opcion_recepcion"), SubResource("Opcion_dejar_panel")])
 distancia_indicador = 69.0
 
 [node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("8_k7f1q")]

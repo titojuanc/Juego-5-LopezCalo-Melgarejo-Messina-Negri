@@ -11,6 +11,10 @@ const PISOS_POR_OPCION := {
 	&"ascensor_primer_piso": PuertaAscensor.Piso.PRIMER_PISO,
 	&"ascensor_subsuelo": PuertaAscensor.Piso.SUBSUELO,
 }
+const TECLAS_POR_OPCION := {
+	&"ascensor_instalar_subsuelo": [PuertaAscensor.FLAG_TECLA_SUBSUELO, PuertaAscensor.FLAG_SUBSUELO_HABILITADO],
+	&"ascensor_instalar_recepcion": [PuertaAscensor.FLAG_TECLA_RECEPCION, PuertaAscensor.FLAG_RECEPCION_HABILITADA],
+}
 
 @export_range(0.1, 5.0, 0.05, "suffix:s") var duracion_vibracion: float = 2.0
 @export_range(0.5, 64.0, 0.5, "suffix:px") var intensidad_vibracion: float = 2.0
@@ -28,13 +32,23 @@ var _origen_base: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	MotorDialogo.opcion_elegida.connect(_al_elegir_opcion)
 	MotorDialogo.dialogo_finalizado.connect(_al_finalizar_dialogo)
+	GestorEventos.flag_cambiado.connect(_al_cambiar_flag)
 	_actualizar_opciones()
 
 
 func _al_elegir_opcion(opcion: RecursoOpcionDialogo) -> void:
-	if not _panel.opciones.has(opcion) or not PISOS_POR_OPCION.has(opcion.id):
+	if not _panel.opciones.has(opcion):
+		return
+	if TECLAS_POR_OPCION.has(opcion.id):
+		var tecla: Array = TECLAS_POR_OPCION[opcion.id]
+		if GestorEventos.obtener_flag(tecla[0]) and not GestorEventos.obtener_flag(tecla[1]):
+			GestorEventos.cambiar_flag(tecla[1], true)
+		return
+	if not PISOS_POR_OPCION.has(opcion.id):
 		return
 	var piso: PuertaAscensor.Piso = PISOS_POR_OPCION[opcion.id]
+	if not _puerta.piso_disponible(piso):
+		return
 	_puerta.elegir_piso(piso)
 	_actualizar_opciones()
 	_vibracion_pendiente = true
@@ -42,9 +56,27 @@ func _al_elegir_opcion(opcion: RecursoOpcionDialogo) -> void:
 
 func _actualizar_opciones() -> void:
 	var piso := _puerta.piso_actual()
+	_panel.lineas.assign(["* Un panel con los botones del ascensor."])
+	if not GestorEventos.obtener_flag(PuertaAscensor.FLAG_SUBSUELO_HABILITADO):
+		_panel.lineas.append("* Falta la tecla de subsuelo.")
+	if not GestorEventos.obtener_flag(PuertaAscensor.FLAG_RECEPCION_HABILITADA):
+		_panel.lineas.append("* Falta la tecla de recepción.")
+	_panel.lineas.append("¿Qué querés hacer?")
 	_panel.opciones = _opciones_panel.filter(func(opcion: RecursoOpcionDialogo) -> bool:
-		return PISOS_POR_OPCION.get(opcion.id) != piso
+		if PISOS_POR_OPCION.has(opcion.id):
+			var destino: PuertaAscensor.Piso = PISOS_POR_OPCION[opcion.id]
+			return destino != piso and _puerta.piso_disponible(destino)
+		if TECLAS_POR_OPCION.has(opcion.id):
+			var tecla: Array = TECLAS_POR_OPCION[opcion.id]
+			return GestorEventos.obtener_flag(tecla[0]) and not GestorEventos.obtener_flag(tecla[1])
+		if opcion.id == &"ascensor_recepcion":
+			return GestorEventos.obtener_flag(PuertaAscensor.FLAG_RECEPCION_HABILITADA)
+		return true
 	)
+
+
+func _al_cambiar_flag(_nombre: StringName, _valor: bool) -> void:
+	_actualizar_opciones()
 
 
 func _al_finalizar_dialogo() -> void:

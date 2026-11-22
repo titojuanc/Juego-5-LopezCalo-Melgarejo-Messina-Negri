@@ -14725,8 +14725,8 @@ tile_set = SubResource("TileSet_paprv")
 [node name="PuertaPB1" parent="." unique_id=444257690 instance=ExtResource("4_dfa0n")]
 position = Vector2(1146, 504)
 escena_destino = "uid://7jqjh4tadx1f"
-identificador = &"pb_02_west"
-puerta_destino = &"pb_01_east"
+identificador = &"pb_02_east"
+puerta_destino = &"pb_01_west"
 direccion_llegada = 4
 distancia_llegada = 73.0
 

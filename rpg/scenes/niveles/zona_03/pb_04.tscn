@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://drxj3lr15wv5h" path="res://assets/tiles_entorno/pisos_y_paredes_2.png" id="4_w6amc"]
 [ext_resource type="Texture2D" uid="uid://2nlhnuywuiyu" path="res://assets/tiles_entorno/Rasaks_Modern_Tileset/Tilesets/Interiors/Tileset_Modern_StorageOffice_Rasak.png" id="6_bf0p3"]
 [ext_resource type="Texture2D" uid="uid://bdfusua55uoj6" path="res://assets/tiles_entorno/Rasaks_Modern_Tileset/Tilesets/PublicBuilding/Tileset_Modern_Hospital_Rasak.png" id="7_w6amc"]
+[ext_resource type="PackedScene" uid="uid://bdhr47napg8vt" path="res://scenes/niveles/disparador_evento.tscn" id="9_e43hi"]
+[ext_resource type="Script" uid="uid://dn6d7ueaoh418" path="res://scripts/niveles/accion_dialogo_evento.gd" id="10_dialogo_tecla"]
+[ext_resource type="Script" uid="uid://shadua1hkcoa" path="res://scripts/niveles/accion_cambiar_flag.gd" id="11_flag_tecla"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_87fwh")
@@ -16216,6 +16219,9 @@ sources/2 = SubResource("TileSetAtlasSource_njd7s")
 sources/3 = SubResource("TileSetAtlasSource_ilg2w")
 sources/4 = SubResource("TileSetAtlasSource_bf0p3")
 
+[sub_resource type="RectangleShape2D" id="Forma_tecla"]
+size = Vector2(64, 64)
+
 [node name="PB_02" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -16249,3 +16255,20 @@ direccion_llegada = 1
 distancia_llegada = 73.0
 
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
+
+[node name="ItemRecogible" parent="Interactuables" unique_id=881588680 instance=ExtResource("9_e43hi")]
+position = Vector2(68, 504)
+identificador = &"ascensor_recoger_tecla_recepcion"
+
+[node name="CollisionShape2D" parent="Interactuables/ItemRecogible/Area2D" parent_id_path=PackedInt32Array(881588680, 1805804608) index="0" unique_id=1413580006]
+shape = SubResource("Forma_tecla")
+
+[node name="Dialogo" type="Node" parent="Interactuables/ItemRecogible/Acciones" parent_id_path=PackedInt32Array(881588680, 1277747786) index="0" unique_id=2144825822]
+script = ExtResource("10_dialogo_tecla")
+lineas = Array[String](["* Encontraste la tecla del ascensor marcada \"Recepción\".", "* La guardás para instalarla en el panel del ascensor."])
+
+[node name="RecogerTecla" type="Node" parent="Interactuables/ItemRecogible/Acciones" parent_id_path=PackedInt32Array(881588680, 1277747786) index="1" unique_id=928610973]
+script = ExtResource("11_flag_tecla")
+nombre_flag = &"ascensor_tecla_recepcion_encontrada"
+
+[editable path="Interactuables/ItemRecogible"]

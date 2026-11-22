@@ -4,6 +4,10 @@ enum Piso { LABORATORIO, PRIMER_PISO, SUBSUELO }
 
 const FLAG_PRIMER_PISO := &"ascensor_piso_1"
 const FLAG_SUBSUELO := &"ascensor_subsuelo"
+const FLAG_TECLA_SUBSUELO := &"ascensor_tecla_subsuelo_encontrada"
+const FLAG_SUBSUELO_HABILITADO := &"ascensor_tecla_subsuelo_instalada"
+const FLAG_TECLA_RECEPCION := &"ascensor_tecla_recepcion_encontrada"
+const FLAG_RECEPCION_HABILITADA := &"ascensor_tecla_recepcion_instalada"
 
 @export_group("Laboratorio")
 @export_file("*.tscn") var escena_planta_baja: String = ""
@@ -37,7 +41,14 @@ func piso_actual() -> Piso:
 	return Piso.LABORATORIO
 
 
+func piso_disponible(piso: Piso) -> bool:
+	return piso != Piso.SUBSUELO or GestorEventos.obtener_flag(FLAG_SUBSUELO_HABILITADO)
+
+
 func elegir_piso(piso: Piso) -> void:
+	if not piso_disponible(piso):
+		push_warning("El ascensor no tiene instalada la tecla del subsuelo")
+		return
 	GestorEventos.cambiar_flag(FLAG_PRIMER_PISO, piso == Piso.PRIMER_PISO)
 	GestorEventos.cambiar_flag(FLAG_SUBSUELO, piso == Piso.SUBSUELO)
 
