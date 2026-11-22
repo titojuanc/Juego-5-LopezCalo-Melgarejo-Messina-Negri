@@ -2,6 +2,8 @@ extends "res://scripts/niveles/accion_evento.gd"
 class_name AccionCondicion
 
 # Ejecuta sus acciones hijas en orden solo si se cumplen todas las condiciones configuradas.
+# Con invertir activo, las ejecuta cuando NO se cumplen (sirve como rama "si no").
+@export var invertir: bool = false
 
 @export_group("Flag")
 @export var flag_requerido: StringName = &""
@@ -23,9 +25,15 @@ class_name AccionCondicion
 @export var miembro_opinion: RecursoPersonajeCombate
 @export var estado_opinion: CalculoAlineamiento.Estado = CalculoAlineamiento.Estado.AMISTOSO
 
+@export_group("Inventario")
+@export var items_requeridos: Array[RecursoItem] = []
+@export var requiere_tipo: bool = false
+@export var tipo_requerido: RecursoItem.TipoItem = RecursoItem.TipoItem.HP
+@export var oro_minimo: int = 0
+
 
 func ejecutar(disparador: Node2D) -> void:
-	if not se_cumple():
+	if se_cumple() == invertir:
 		return
 	for accion in get_children():
 		if accion.has_method("ejecutar"):
@@ -54,4 +62,11 @@ func se_cumple() -> bool:
 			return false
 		if Alineamiento.calcular(miembro_opinion.perfil).estado != estado_opinion:
 			return false
+	for item in items_requeridos:
+		if(item != null and not Equipo.inventario.has(item)):
+			return false
+	if requiere_tipo and not Equipo.inventario.any(func(otro): return otro != null and otro.tipo ==tipo_requerido):
+		return false
+	if Equipo.oro < oro_minimo:
+		return false
 	return true

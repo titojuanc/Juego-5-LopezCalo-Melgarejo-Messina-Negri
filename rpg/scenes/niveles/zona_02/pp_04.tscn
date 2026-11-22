@@ -6,6 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="4_i58uy"]
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_dg01r"]
 [ext_resource type="PackedScene" uid="uid://2ge63h5tr2ii" path="res://scenes/niveles/camara_nivel.tscn" id="16_fsex5"]
+[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="ev_disparador"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="ev_flag"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="ev_personaje"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_caotica.tres" id="ev_moral_accion_caotica"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dialogo_evento.gd" id="ev_dialogo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_87fwh")
@@ -5442,6 +5454,53 @@ sources/2 = SubResource("TileSetAtlasSource_njd7s")
 resource_local_to_scene = true
 size = Vector2(1152, 1280)
 
+[sub_resource type="RectangleShape2D" id="ev_EventoMatafuegos_1"]
+size = Vector2(80, 100)
+
+[sub_resource type="Resource" id="ev_EventoMatafuegos_2"]
+script = ExtResource("ev_linea")
+hablante = "Matafuegos"
+texto = "* Un matafuegos. . . está vencido."
+
+[sub_resource type="Resource" id="ev_EventoMatafuegos_3"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Te apuesto 20 de oro a que no te animás a tirarlo por la ventana."
+
+[sub_resource type="Resource" id="ev_EventoMatafuegos_4"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "No le hagas caso."
+
+[sub_resource type="Resource" id="ev_EventoMatafuegos_5"]
+script = ExtResource("ev_linea")
+hablante = "Matafuegos"
+texto = "* ¿Aceptás la apuesta?"
+
+[sub_resource type="Resource" id="ev_EventoMatafuegos_6"]
+script = ExtResource("ev_opcion")
+id = &"apuesta_aceptar"
+texto = "Tirarlo por la ventana."
+respuesta = Array[String](["* Revoleás el matafuegos. Se escucha un estruendo abajo."])
+flag_al_seleccionar = &"apuesta_matafuegos"
+accion_moral = ExtResource("ev_moral_accion_caotica")
+
+[sub_resource type="Resource" id="ev_EventoMatafuegos_7"]
+script = ExtResource("ev_opcion")
+id = &"apuesta_rechazar"
+texto = "No."
+respuesta = Array[String](["* Dejás el matafuegos en su lugar."])
+
+[sub_resource type="Resource" id="ev_EventoMatafuegos_8"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "¡JA! Bien ahí. Una apuesta es una apuesta."
+
+[sub_resource type="Resource" id="ev_EventoMatafuegos_9"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Aburrido."
+
 [node name="PP_04" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -5498,12 +5557,90 @@ nombre = "Almohadones"
 lineas = Array[String](["* Unas pilas de almohadones.", "* Nada muy útil..."])
 mostrar_indicador = false
 
-[node name="Casillero" parent="Interactuables" unique_id=1219611576 instance=ExtResource("5_dg01r")]
+[node name="EventoMatafuegos" parent="Interactuables" instance=ExtResource("ev_disparador")]
 position = Vector2(130, 131.00002)
-scale = Vector2(4, 5)
+identificador = &"pp_04_matafuegos"
+solo_una_vez = false
+mostrar_indicador = false
+
+[node name="CollisionShape2D" parent="Interactuables/EventoMatafuegos/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("ev_EventoMatafuegos_1")
+
+[node name="Flag" type="Node" parent="Interactuables/EventoMatafuegos/Acciones"]
+script = ExtResource("ev_flag")
+nombre_flag = &"matafuegos_recien"
+valor = false
+
+[node name="Si" type="Node" parent="Interactuables/EventoMatafuegos/Acciones"]
+script = ExtResource("ev_condicion")
+miembros_presentes = Array[ExtResource("ev_personaje")]([ExtResource("ev_W")])
+
+[node name="Si" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"apuesta_matafuegos"
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si/Si"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoMatafuegos_2"), SubResource("ev_EventoMatafuegos_3"), SubResource("ev_EventoMatafuegos_4"), SubResource("ev_EventoMatafuegos_5")])
+opciones = Array[ExtResource("ev_opcion")]([SubResource("ev_EventoMatafuegos_6"), SubResource("ev_EventoMatafuegos_7")])
+
+[node name="Si" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si/Si"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"apuesta_matafuegos"
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si/Si/Si"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoMatafuegos_8")])
+
+[node name="DarItem" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si/Si/Si"]
+script = ExtResource("ev_dar")
+oro = 20
+
+[node name="Si2" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si/Si"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"apuesta_matafuegos"
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si/Si/Si2"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoMatafuegos_9")])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"matafuegos_recien"
+valor = true
+
+[node name="Si2" type="Node" parent="Interactuables/EventoMatafuegos/Acciones"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"apuesta_matafuegos"
+
+[node name="Si" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si2"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"matafuegos_recien"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si2/Si"]
+script = ExtResource("ev_dialogo")
+nombre = "Matafuegos"
+lineas = Array[String](["* Acá estaba el matafuegos. Ahora está en la calle."])
+
+[node name="Si3" type="Node" parent="Interactuables/EventoMatafuegos/Acciones"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"apuesta_matafuegos"
+
+[node name="Si" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si3"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"matafuegos_recien"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoMatafuegos/Acciones/Si3/Si"]
+script = ExtResource("ev_dialogo")
 nombre = "Matafuegos"
 lineas = Array[String](["* Un matafuegos.", "* . . . está vencido."])
-mostrar_indicador = false
+
 
 [node name="CamaraNivel" parent="." unique_id=1487418937 instance=ExtResource("16_fsex5")]
 visible = false
@@ -5513,3 +5650,4 @@ position = Vector2(576, 640)
 shape = SubResource("RectangleShape2D_eonx6")
 
 [editable path="CamaraNivel"]
+[editable path="Interactuables/EventoMatafuegos"]

@@ -11,6 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://bdhr47napg8vt" path="res://scenes/niveles/disparador_evento.tscn" id="9_e43hi"]
 [ext_resource type="Script" uid="uid://dn6d7ueaoh418" path="res://scripts/niveles/accion_dialogo_evento.gd" id="10_dialogo_tecla"]
 [ext_resource type="Script" uid="uid://shadua1hkcoa" path="res://scripts/niveles/accion_cambiar_flag.gd" id="11_flag_tecla"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_87fwh")
@@ -16222,6 +16228,49 @@ sources/4 = SubResource("TileSetAtlasSource_bf0p3")
 [sub_resource type="RectangleShape2D" id="Forma_tecla"]
 size = Vector2(64, 64)
 
+[sub_resource type="Resource" id="ev_ItemRecogible_1"]
+script = ExtResource("ev_linea")
+hablante = "Camilla"
+texto = "* Sobre una camilla hay una bolsa para cadáveres. La etiqueta está tachada, igual que el informe."
+
+[sub_resource type="Resource" id="ev_ItemRecogible_2"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "No la abras. Por favor."
+
+[sub_resource type="Resource" id="ev_ItemRecogible_3"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Yo la abriría. Pero yo soy yo."
+
+[sub_resource type="Resource" id="ev_ItemRecogible_4"]
+script = ExtResource("ev_linea")
+hablante = "Camilla"
+texto = "* ¿Abrís la bolsa?"
+
+[sub_resource type="Resource" id="ev_ItemRecogible_5"]
+script = ExtResource("ev_opcion")
+id = &"bolsa_abrir"
+texto = "Abrirla."
+respuesta = Array[String](["* Bajás el cierre.", "* Adentro no hay nadie. Solo ropa doblada . . .", "* . . . y una pulsera de paciente idéntica a la que tenés puesta."])
+flag_al_seleccionar = &"bolsa_abierta"
+
+[sub_resource type="Resource" id="ev_ItemRecogible_6"]
+script = ExtResource("ev_opcion")
+id = &"bolsa_dejar"
+texto = "Dejarla cerrada."
+respuesta = Array[String](["* La dejás como está."])
+
+[sub_resource type="Resource" id="ev_ItemRecogible_7"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "Esa pulsera . . . es igual a la tuya."
+
+[sub_resource type="Resource" id="ev_ItemRecogible_8"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Ahora sí se puso interesante."
+
 [node name="PB_02" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -16271,5 +16320,19 @@ Causa de muerte \"Fallo letal en experimento ||||||||||||\"", "* Parece estar ce
 [node name="RecogerTecla" type="Node" parent="Interactuables/ItemRecogible/Acciones" parent_id_path=PackedInt32Array(881588680, 1277747786) index="1" unique_id=928610973]
 script = ExtResource("11_flag_tecla")
 nombre_flag = &"ascensor_tecla_recepcion_encontrada"
+
+[node name="Conversacion" type="Node" parent="Interactuables/ItemRecogible/Acciones"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_ItemRecogible_1"), SubResource("ev_ItemRecogible_2"), SubResource("ev_ItemRecogible_3"), SubResource("ev_ItemRecogible_4")])
+opciones = Array[ExtResource("ev_opcion")]([SubResource("ev_ItemRecogible_5"), SubResource("ev_ItemRecogible_6")])
+
+[node name="Si" type="Node" parent="Interactuables/ItemRecogible/Acciones"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"bolsa_abierta"
+
+[node name="Conversacion" type="Node" parent="Interactuables/ItemRecogible/Acciones/Si"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_ItemRecogible_7"), SubResource("ev_ItemRecogible_8")])
+
 
 [editable path="Interactuables/ItemRecogible"]

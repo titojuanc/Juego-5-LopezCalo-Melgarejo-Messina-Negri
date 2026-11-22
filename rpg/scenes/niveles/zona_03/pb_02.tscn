@@ -11,6 +11,17 @@
 [ext_resource type="PackedScene" path="res://scenes/niveles/item_recogible.tscn" id="7_dfa0n"]
 [ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="8_f5r8t"]
 [ext_resource type="Resource" uid="uid://dgydfdsc4w06b" path="res://scenes/combate/items/DEFF_def_prueba.tres" id="11_ybqu6"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="ev_flag"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
+[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="ev_disparador"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dialogo_evento.gd" id="ev_dialogo"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
+[ext_resource type="Resource" path="res://scenes/combate/items/botiquin.tres" id="ev_item_botiquin"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_0o5jr")
@@ -14698,6 +14709,80 @@ sources/3 = SubResource("TileSetAtlasSource_ilg2w")
 resource_local_to_scene = true
 size = Vector2(64, 64)
 
+[sub_resource type="Resource" id="ev_Cesto_1"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Ponete uno. Con eso pasás por personal y nadie te mira dos veces."
+
+[sub_resource type="Resource" id="ev_Cesto_2"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "No me gusta mentir . . . pero tiene sentido."
+
+[sub_resource type="Resource" id="ev_Cesto_3"]
+script = ExtResource("ev_linea")
+hablante = "Cesto"
+texto = "* (Con el overol podés hacerte pasar por personal del hospital.)"
+
+[sub_resource type="RectangleShape2D" id="ev_EventoCajaFuerte_1"]
+size = Vector2(400, 100)
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_2"]
+script = ExtResource("ev_linea")
+hablante = "Muebles"
+texto = "* Varios cajones, armarios, mesadas. Todas de madera vieja."
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_3"]
+script = ExtResource("ev_linea")
+hablante = "Muebles"
+texto = "* Detrás de unos adornos hay una caja fuerte con un teclado de cuatro dígitos."
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_4"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Dale, probá cualquier número."
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_5"]
+script = ExtResource("ev_linea")
+hablante = "Muebles"
+texto = "* ¿Qué número probás?"
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_6"]
+script = ExtResource("ev_opcion")
+id = &"caja_1103"
+texto = "1103 (la fecha de la ficha)"
+respuesta = Array[String](["* La caja fuerte hace clic y se abre."])
+flag_requerido = &"codigo_caja_fuerte"
+flag_al_seleccionar = &"caja_fuerte_abierta"
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_7"]
+script = ExtResource("ev_opcion")
+id = &"caja_1234"
+texto = "1234"
+respuesta = Array[String](["* Suena un pitido. No se abre."])
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_8"]
+script = ExtResource("ev_opcion")
+id = &"caja_0000"
+texto = "0000"
+respuesta = Array[String](["* Suena un pitido. No se abre."])
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_9"]
+script = ExtResource("ev_opcion")
+id = &"caja_dejar"
+texto = "Dejarla."
+respuesta = Array[String](["* La dejás para después."])
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_10"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "¡Bingo!"
+
+[sub_resource type="Resource" id="ev_EventoCajaFuerte_11"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "¿Cómo sabías el número?"
+
 [node name="PB_02" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -14757,12 +14842,58 @@ mostrar_indicador = false
 lado_indicador = 4
 distancia_indicador = 78.0
 
-[node name="Tele" parent="Interactuables" unique_id=1219611576 instance=ExtResource("5_0bgoa")]
+[node name="EventoCajaFuerte" parent="Interactuables" instance=ExtResource("ev_disparador")]
 position = Vector2(198, 148)
-scale = Vector2(20, 5)
-nombre = "Muebles"
-lineas = Array[String](["* Varios cajones, armarios, mesadas. Todas de madera vieja.", "* Hay algunas decoraciones por encima de las mesas.", "* Qué raro que no se las hayan llevado."])
+identificador = &"pb_02_caja_fuerte"
+solo_una_vez = false
 mostrar_indicador = false
+
+[node name="CollisionShape2D" parent="Interactuables/EventoCajaFuerte/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("ev_EventoCajaFuerte_1")
+
+[node name="Flag" type="Node" parent="Interactuables/EventoCajaFuerte/Acciones"]
+script = ExtResource("ev_flag")
+nombre_flag = &"caja_recien"
+valor = false
+
+[node name="Si" type="Node" parent="Interactuables/EventoCajaFuerte/Acciones"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"caja_fuerte_abierta"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoCajaFuerte/Acciones/Si"]
+script = ExtResource("ev_dialogo")
+nombre = "Muebles"
+lineas = Array[String](["* Varios cajones, armarios, mesadas. Todas de madera vieja.", "* La caja fuerte escondida detrás de los adornos está abierta y vacía."])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoCajaFuerte/Acciones/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"caja_recien"
+valor = true
+
+[node name="Si2" type="Node" parent="Interactuables/EventoCajaFuerte/Acciones"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"caja_recien"
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoCajaFuerte/Acciones/Si2"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoCajaFuerte_2"), SubResource("ev_EventoCajaFuerte_3"), SubResource("ev_EventoCajaFuerte_4"), SubResource("ev_EventoCajaFuerte_5")])
+opciones = Array[ExtResource("ev_opcion")]([SubResource("ev_EventoCajaFuerte_6"), SubResource("ev_EventoCajaFuerte_7"), SubResource("ev_EventoCajaFuerte_8"), SubResource("ev_EventoCajaFuerte_9")])
+
+[node name="Si" type="Node" parent="Interactuables/EventoCajaFuerte/Acciones/Si2"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"caja_fuerte_abierta"
+
+[node name="DarItem" type="Node" parent="Interactuables/EventoCajaFuerte/Acciones/Si2/Si"]
+script = ExtResource("ev_dar")
+items = Array[ExtResource("8_f5r8t")]([ExtResource("ev_item_botiquin")])
+oro = 60
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoCajaFuerte/Acciones/Si2/Si"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoCajaFuerte_10"), SubResource("ev_EventoCajaFuerte_11")])
+
 
 [node name="Cesto" parent="Interactuables" unique_id=1169350063 instance=ExtResource("7_dfa0n")]
 position = Vector2(56, 324)
@@ -14778,4 +14909,15 @@ lineas = Array[String](["* Un cesto con ropa dentro. Parece haber overoles de bu
 [node name="DarItem" parent="Interactuables/Cesto/Acciones" parent_id_path=PackedInt32Array(1169350063, 1277747786) index="1"]
 items = Array[ExtResource("8_f5r8t")]([ExtResource("11_ybqu6")])
 
+[node name="Flag" type="Node" parent="Interactuables/Cesto/Acciones"]
+script = ExtResource("ev_flag")
+nombre_flag = &"disfraz_overol"
+valor = true
+
+[node name="Conversacion" type="Node" parent="Interactuables/Cesto/Acciones"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_Cesto_1"), SubResource("ev_Cesto_2"), SubResource("ev_Cesto_3")])
+
+
 [editable path="Interactuables/Cesto"]
+[editable path="Interactuables/EventoCajaFuerte"]

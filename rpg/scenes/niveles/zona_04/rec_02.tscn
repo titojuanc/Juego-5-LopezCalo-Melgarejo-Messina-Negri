@@ -11,6 +11,19 @@
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="8_5onhd"]
 [ext_resource type="Texture2D" uid="uid://b628f0aeal1pr" path="res://assets/tiles_entorno/Rasaks_Modern_Tileset/Tilesets/City/Tileset_Modern_CityShopping_Rasak.png" id="8_v4ekx"]
 [ext_resource type="PackedScene" uid="uid://2ge63h5tr2ii" path="res://scenes/niveles/camara_nivel.tscn" id="11_c3pmw"]
+[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="ev_disparador"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dialogo_evento.gd" id="ev_dialogo"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="ev_flag"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_personaje_combate.gd" id="ev_personaje"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_item.gd" id="ev_item_script"]
+[ext_resource type="Resource" path="res://scenes/combate/items/coctel_casero.tres" id="ev_item_coctel_casero"]
+[ext_resource type="Resource" path="res://scenes/combate/items/botiquin.tres" id="ev_item_botiquin"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_xopd8")
@@ -18811,6 +18824,75 @@ sources/4 = SubResource("TileSetAtlasSource_c3pmw")
 resource_local_to_scene = true
 size = Vector2(1152, 836)
 
+[sub_resource type="RectangleShape2D" id="ev_EventoImpresora_1"]
+size = Vector2(140, 100)
+
+[sub_resource type="Resource" id="ev_EventoImpresora_2"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = ". . ."
+
+[sub_resource type="Resource" id="ev_EventoImpresora_3"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Bueno. Eso es lo más perturbador que leí hoy. Y hoy leí bastante."
+
+[sub_resource type="RectangleShape2D" id="ev_EventoArchivos_1"]
+size = Vector2(200, 60)
+
+[sub_resource type="Resource" id="ev_EventoArchivos_2"]
+script = ExtResource("ev_linea")
+hablante = "Archivos"
+texto = "* Entre los papeles hay dos fichas con tu nombre."
+
+[sub_resource type="Resource" id="ev_EventoArchivos_3"]
+script = ExtResource("ev_linea")
+hablante = "Archivos"
+texto = "* Misma foto. Mismo grupo sanguíneo."
+
+[sub_resource type="Resource" id="ev_EventoArchivos_4"]
+script = ExtResource("ev_linea")
+hablante = "Archivos"
+texto = "* Una tiene fecha de ingreso de hace dos días. La otra, de hace casi cien años."
+
+[sub_resource type="Resource" id="ev_EventoArchivos_5"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Te conservás bárbaro."
+
+[sub_resource type="Resource" id="ev_EventoArchivos_6"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "Tiene que ser un error . . . ¿no?"
+
+[sub_resource type="RectangleShape2D" id="ev_EventoArmario_1"]
+size = Vector2(100, 160)
+
+[sub_resource type="Resource" id="ev_EventoArmario_2"]
+script = ExtResource("ev_linea")
+hablante = "Armario"
+texto = "* El armario está bloqueando la puerta al ala Oeste del hospital."
+
+[sub_resource type="Resource" id="ev_EventoArmario_3"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Entre los tres lo corremos. Gloria, agarrá de ese lado."
+
+[sub_resource type="Resource" id="ev_EventoArmario_4"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "Uno, dos . . . ¡tres!"
+
+[sub_resource type="Resource" id="ev_EventoArmario_5"]
+script = ExtResource("ev_linea")
+hablante = "Armario"
+texto = "* Entre los tres corren el armario."
+
+[sub_resource type="Resource" id="ev_EventoArmario_6"]
+script = ExtResource("ev_linea")
+hablante = "Armario"
+texto = "* La puerta sigue trabada, pero atrás del armario había una caja escondida."
+
 [node name="PB_01" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -18853,30 +18935,180 @@ distancia_llegada = 73.0
 
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
 
-[node name="SeñalDeAscensor" parent="Interactuables" unique_id=1123185042 instance=ExtResource("8_5onhd")]
+[node name="EventoArchivos" parent="Interactuables" instance=ExtResource("ev_disparador")]
 position = Vector2(1026, 29.000002)
-scale = Vector2(10, 3)
+identificador = &"rec_02_archivos"
+solo_una_vez = false
+mostrar_indicador = false
+
+[node name="CollisionShape2D" parent="Interactuables/EventoArchivos/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("ev_EventoArchivos_1")
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoArchivos/Acciones"]
+script = ExtResource("ev_dialogo")
 nombre = "Archivos"
-lineas = Array[String](["* Mucha documentación de pacientes", "* Hay de todas las edades, y algunos datan de hace 100 años."])
-mostrar_indicador = false
+lineas = Array[String](["* Mucha documentación de pacientes.", "* Hay de todas las edades, y algunos datan de hace 100 años."])
 
-[node name="Puerta" parent="Interactuables" unique_id=2039235882 instance=ExtResource("8_5onhd")]
+[node name="Si" type="Node" parent="Interactuables/EventoArchivos/Acciones"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"fichas_dobles"
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoArchivos/Acciones/Si"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoArchivos_2"), SubResource("ev_EventoArchivos_3"), SubResource("ev_EventoArchivos_4"), SubResource("ev_EventoArchivos_5"), SubResource("ev_EventoArchivos_6")])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoArchivos/Acciones/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"fichas_dobles"
+valor = true
+
+
+[node name="EventoArmario" parent="Interactuables" instance=ExtResource("ev_disparador")]
 position = Vector2(1098, 485)
-scale = Vector2(5, 8)
-nombre = "Armario "
-lineas = Array[String](["* El armario está bloqueando la puerta al ala Oeste del hospital", "* Por conveniencia del guión y de tiempo, no lo puedes mover."])
+identificador = &"rec_02_armario"
+solo_una_vez = false
 mostrar_indicador = false
-lado_indicador = 4
-distancia_indicador = 78.0
 
-[node name="Armarios" parent="Interactuables" unique_id=2144772144 instance=ExtResource("8_5onhd")]
+[node name="CollisionShape2D" parent="Interactuables/EventoArmario/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("ev_EventoArmario_1")
+
+[node name="Flag" type="Node" parent="Interactuables/EventoArmario/Acciones"]
+script = ExtResource("ev_flag")
+nombre_flag = &"armario_recien"
+valor = false
+
+[node name="Si" type="Node" parent="Interactuables/EventoArmario/Acciones"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"armario_movido"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoArmario/Acciones/Si"]
+script = ExtResource("ev_dialogo")
+nombre = "Armario"
+lineas = Array[String](["* El armario quedó corrido. La puerta al ala Oeste sigue trabada del otro lado."])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoArmario/Acciones/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"armario_recien"
+valor = true
+
+[node name="Si2" type="Node" parent="Interactuables/EventoArmario/Acciones"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"armario_recien"
+
+[node name="Si" type="Node" parent="Interactuables/EventoArmario/Acciones/Si2"]
+script = ExtResource("ev_condicion")
+miembros_presentes = Array[ExtResource("ev_personaje")]([ExtResource("ev_W"), ExtResource("ev_G")])
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoArmario/Acciones/Si2/Si"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoArmario_2"), SubResource("ev_EventoArmario_3"), SubResource("ev_EventoArmario_4"), SubResource("ev_EventoArmario_5"), SubResource("ev_EventoArmario_6")])
+
+[node name="DarItem" type="Node" parent="Interactuables/EventoArmario/Acciones/Si2/Si"]
+script = ExtResource("ev_dar")
+items = Array[ExtResource("ev_item_script")]([ExtResource("ev_item_coctel_casero"), ExtResource("ev_item_botiquin")])
+oro = 30
+
+[node name="Flag" type="Node" parent="Interactuables/EventoArmario/Acciones/Si2/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"armario_movido"
+valor = true
+
+[node name="Flag2" type="Node" parent="Interactuables/EventoArmario/Acciones/Si2/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"armario_recien"
+valor = true
+
+[node name="Si3" type="Node" parent="Interactuables/EventoArmario/Acciones"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"armario_recien"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoArmario/Acciones/Si3"]
+script = ExtResource("ev_dialogo")
+nombre = "Armario"
+lineas = Array[String](["* El armario está bloqueando la puerta al ala Oeste del hospital.", "* Pesa demasiado para moverlo con menos de tres personas."])
+
+
+[node name="EventoImpresora" parent="Interactuables" instance=ExtResource("ev_disparador")]
 position = Vector2(1078, 136)
-scale = Vector2(7, 5)
-nombre = "Impresora "
-lineas = Array[String](["* La impresora tiene recién sacado un papel con-", "* ¿Tu cara?", "* Dice \"búscame\""])
+identificador = &"rec_02_impresora"
+solo_una_vez = false
 mostrar_indicador = false
-lado_indicador = 4
-distancia_indicador = 78.0
+
+[node name="CollisionShape2D" parent="Interactuables/EventoImpresora/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("ev_EventoImpresora_1")
+
+[node name="Si" type="Node" parent="Interactuables/EventoImpresora/Acciones"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"impresion_3"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si"]
+script = ExtResource("ev_dialogo")
+nombre = "Impresora"
+lineas = Array[String](["* La impresora está en silencio. Se quedó sin papel."])
+
+[node name="Si2" type="Node" parent="Interactuables/EventoImpresora/Acciones"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"impresion_2"
+
+[node name="Si" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si2"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"impresion_3"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si2/Si"]
+script = ExtResource("ev_dialogo")
+nombre = "Impresora"
+lineas = Array[String](["* La impresora saca una última hoja. Está escrita a mano. Es tu letra.", "* \"Si estás leyendo esto, uno de los dos ya salió. No sé cuál de los dos soy. Vos tampoco.\""])
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si2/Si"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoImpresora_2"), SubResource("ev_EventoImpresora_3")])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si2/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"impresion_3"
+valor = true
+
+[node name="Si3" type="Node" parent="Interactuables/EventoImpresora/Acciones"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"impresion_1"
+
+[node name="Si" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si3"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"impresion_2"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si3/Si"]
+script = ExtResource("ev_dialogo")
+nombre = "Impresora"
+lineas = Array[String](["* La impresora se activa sola y saca otra hoja.", "* Es un plano del hospital. La salida de recepción está tachada.", "* Al costado dice: \"por acá no\"."])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si3/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"impresion_2"
+valor = true
+
+[node name="Si4" type="Node" parent="Interactuables/EventoImpresora/Acciones"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"impresion_1"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si4"]
+script = ExtResource("ev_dialogo")
+nombre = "Impresora"
+lineas = Array[String](["* La impresora tiene recién sacado un papel con-", "* ¿Tu cara?", "* Dice \"búscame\"."])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoImpresora/Acciones/Si4"]
+script = ExtResource("ev_flag")
+nombre_flag = &"impresion_1"
+valor = true
+
 
 [node name="Tele" parent="Interactuables" unique_id=1219611576 instance=ExtResource("8_5onhd")]
 position = Vector2(259.99997, 237)
@@ -18894,3 +19126,6 @@ position = Vector2(-7, -85)
 shape = SubResource("RectangleShape2D_kiw3i")
 
 [editable path="CamaraNivel"]
+[editable path="Interactuables/EventoImpresora"]
+[editable path="Interactuables/EventoArchivos"]
+[editable path="Interactuables/EventoArmario"]

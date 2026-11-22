@@ -9,6 +9,19 @@
 [ext_resource type="PackedScene" path="res://scenes/niveles/item_recogible.tscn" id="7_x6cao"]
 [ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="8_vkro0"]
 [ext_resource type="Resource" uid="uid://dgydfdsc4w06b" path="res://scenes/combate/items/DEFF_def_prueba.tres" id="9_y1on4"]
+[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="ev_disparador"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="ev_flag"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dialogo_evento.gd" id="ev_dialogo"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_caotica.tres" id="ev_moral_accion_caotica"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_quitar_item.gd" id="ev_quitar"]
+[ext_resource type="Script" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
+[ext_resource type="Resource" path="res://scenes/combate/items/cafe.tres" id="ev_item_cafe"]
+[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_r6e11")
@@ -7612,6 +7625,57 @@ sources/3 = SubResource("TileSetAtlasSource_y283q")
 resource_local_to_scene = true
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="ev_EventoCafe_1"]
+size = Vector2(100, 100)
+
+[sub_resource type="Resource" id="ev_EventoCafe_2"]
+script = ExtResource("ev_linea")
+hablante = "Máquina de café"
+texto = "* Una máquina de café. Un café sale 5 de oro."
+
+[sub_resource type="Resource" id="ev_EventoCafe_3"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "¿Pagar? Dejame a mí, yo sé cómo se usa esto."
+
+[sub_resource type="Resource" id="ev_EventoCafe_4"]
+script = ExtResource("ev_linea")
+hablante = "Máquina de café"
+texto = "* ¿Qué hacés?"
+
+[sub_resource type="Resource" id="ev_EventoCafe_5"]
+script = ExtResource("ev_opcion")
+id = &"cafe_pp_03_comprar"
+texto = "Comprar un café (5 de oro)."
+respuesta = Array[String](["* La máquina zumba y sirve un café."])
+flag_requerido = &"cafe_tiene_oro"
+flag_al_seleccionar = &"cafe_pp_03_pagado"
+
+[sub_resource type="Resource" id="ev_EventoCafe_6"]
+script = ExtResource("ev_opcion")
+id = &"cafe_pp_03_patear"
+texto = "Dejar que Wayne se encargue."
+respuesta = Array[String](["* Wayne le da una patada a la máquina. Caen dos cafés."])
+flag_requerido = &"wayne_reclutado"
+flag_al_seleccionar = &"cafe_pp_03_rota"
+accion_moral = ExtResource("ev_moral_accion_caotica")
+
+[sub_resource type="Resource" id="ev_EventoCafe_7"]
+script = ExtResource("ev_opcion")
+id = &"cafe_pp_03_nada"
+texto = "Nada."
+respuesta = Array[String](["* Qué ganas de un cafecito . . .", "* Pero no hay tiempo, hay que buscar la salida."])
+
+[sub_resource type="Resource" id="ev_EventoCafe_8"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "Service técnico."
+
+[sub_resource type="Resource" id="ev_EventoCafe_9"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "Wayne . . ."
+
 [node name="PP_03" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -7663,12 +7727,88 @@ distancia_llegada = 73.0
 
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
 
-[node name="Café" parent="Interactuables" unique_id=1123185042 instance=ExtResource("5_vkro0")]
+[node name="EventoCafe" parent="Interactuables" instance=ExtResource("ev_disparador")]
 position = Vector2(1058, 125)
-scale = Vector2(5, 5)
-nombre = "Máquina de café"
-lineas = Array[String](["* Qué ganas de un cafecito ahora . . .", "* Pero no hay tiempo, hay que buscar la salida"])
+identificador = &"pp_03_cafe"
+solo_una_vez = false
 mostrar_indicador = false
+
+[node name="CollisionShape2D" parent="Interactuables/EventoCafe/Area2D" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("ev_EventoCafe_1")
+
+[node name="Flag" type="Node" parent="Interactuables/EventoCafe/Acciones"]
+script = ExtResource("ev_flag")
+nombre_flag = &"cafe_tiene_oro"
+valor = false
+
+[node name="Si" type="Node" parent="Interactuables/EventoCafe/Acciones"]
+script = ExtResource("ev_condicion")
+oro_minimo = 5
+
+[node name="Flag" type="Node" parent="Interactuables/EventoCafe/Acciones/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"cafe_tiene_oro"
+valor = true
+
+[node name="Flag2" type="Node" parent="Interactuables/EventoCafe/Acciones"]
+script = ExtResource("ev_flag")
+nombre_flag = &"cafe_recien"
+valor = false
+
+[node name="Si2" type="Node" parent="Interactuables/EventoCafe/Acciones"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"cafe_pp_03_rota"
+
+[node name="Dialogo" type="Node" parent="Interactuables/EventoCafe/Acciones/Si2"]
+script = ExtResource("ev_dialogo")
+nombre = "Máquina de café"
+lineas = Array[String](["* La máquina de café tiene una abolladura con forma de zapatilla.", "* Ya no funciona."])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoCafe/Acciones/Si2"]
+script = ExtResource("ev_flag")
+nombre_flag = &"cafe_recien"
+valor = true
+
+[node name="Si3" type="Node" parent="Interactuables/EventoCafe/Acciones"]
+script = ExtResource("ev_condicion")
+invertir = true
+flag_requerido = &"cafe_recien"
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoCafe/Acciones/Si3"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoCafe_2"), SubResource("ev_EventoCafe_3"), SubResource("ev_EventoCafe_4")])
+opciones = Array[ExtResource("ev_opcion")]([SubResource("ev_EventoCafe_5"), SubResource("ev_EventoCafe_6"), SubResource("ev_EventoCafe_7")])
+
+[node name="Si" type="Node" parent="Interactuables/EventoCafe/Acciones/Si3"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"cafe_pp_03_pagado"
+
+[node name="QuitarItem" type="Node" parent="Interactuables/EventoCafe/Acciones/Si3/Si"]
+script = ExtResource("ev_quitar")
+oro = 5
+
+[node name="DarItem" type="Node" parent="Interactuables/EventoCafe/Acciones/Si3/Si"]
+script = ExtResource("ev_dar")
+items = Array[ExtResource("8_vkro0")]([ExtResource("ev_item_cafe")])
+
+[node name="Flag" type="Node" parent="Interactuables/EventoCafe/Acciones/Si3/Si"]
+script = ExtResource("ev_flag")
+nombre_flag = &"cafe_pp_03_pagado"
+valor = false
+
+[node name="Si2" type="Node" parent="Interactuables/EventoCafe/Acciones/Si3"]
+script = ExtResource("ev_condicion")
+flag_requerido = &"cafe_pp_03_rota"
+
+[node name="DarItem" type="Node" parent="Interactuables/EventoCafe/Acciones/Si3/Si2"]
+script = ExtResource("ev_dar")
+items = Array[ExtResource("8_vkro0")]([ExtResource("ev_item_cafe"), ExtResource("ev_item_cafe")])
+
+[node name="Conversacion" type="Node" parent="Interactuables/EventoCafe/Acciones/Si3/Si2"]
+script = ExtResource("ev_conversacion")
+lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoCafe_8"), SubResource("ev_EventoCafe_9")])
+
 
 [node name="Biblioteca" parent="Interactuables" unique_id=2039235882 instance=ExtResource("5_vkro0")]
 position = Vector2(672, 122)
@@ -7692,3 +7832,4 @@ lineas = Array[String](["* Ves algo en el fondo del cesto. . ."])
 items = Array[ExtResource("8_vkro0")]([ExtResource("9_y1on4")])
 
 [editable path="Interactuables/Cesto"]
+[editable path="Interactuables/EventoCafe"]

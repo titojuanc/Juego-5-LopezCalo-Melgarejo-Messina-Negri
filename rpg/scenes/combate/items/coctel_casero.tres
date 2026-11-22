@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecursoItem" format=3]
+
+[ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+nombre = "Cóctel casero"
+tipo = 1
+valor = 25
+descripcion = "Una mezcla inestable que Wayne jura que funciona."
+metadata/_custom_type_script = "uid://b8e256pukfayp"
