@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RecursoEnemigo" format=3]
+[gd_resource type="Resource" script_class="RecursoEnemigo" format=3 uid="uid://cg7lnknjstv1a"]
 
-[ext_resource type="Script" path="res://scripts/recursos/recurso_enemigo.gd" id="1_enemigo"]
-[ext_resource type="Texture2D" path="res://assets/robot_prueba/Robot_walk.png" id="2_robot"]
+[ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="1_enemigo"]
+[ext_resource type="Texture2D" uid="uid://d1qsfmegfvdeg" path="res://assets/robot_prueba/Robot_walk.png" id="2_robot"]
 [ext_resource type="Resource" path="res://scenes/combate/items/botiquin.tres" id="3_drop"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_robot"]
@@ -17,8 +17,8 @@ ataque = 40
 textura = SubResource("AtlasTexture_robot")
 experiencia = 150
 oro = 100
-es_jefe = true
 item_drop = ExtResource("3_drop")
 probabilidad_drop = 1.0
+es_jefe = true
 flag_debilitado = &"disfraz_overol"
 flag_ayuda = &"enfermero_ayudado"

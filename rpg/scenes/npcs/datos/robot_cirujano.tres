@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="RecursoNpc" format=3]
+[gd_resource type="Resource" script_class="RecursoNpc" format=3 uid="uid://dnxbhtihyl8f"]
 
-[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
-[ext_resource type="Texture2D" path="res://assets/robot_prueba/Robot_walk.png" id="2_hoja"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_enemigo.gd" id="3_enemigo"]
-[ext_resource type="Resource" path="res://scenes/combate/enemigos/robot_cirujano.tres" id="4_enemigo"]
+[ext_resource type="Script" uid="uid://vfx2vuq5n8y1" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
+[ext_resource type="Texture2D" uid="uid://d1qsfmegfvdeg" path="res://assets/robot_prueba/Robot_walk.png" id="2_hoja"]
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="3_5fflt"]
+[ext_resource type="Script" uid="uid://ca2ijkkdmetwi" path="res://scripts/recursos/recurso_enemigo.gd" id="3_enemigo"]
+[ext_resource type="Resource" uid="uid://c5vkmm1bk2jhr" path="res://scenes/combate/enemigos/robot_cirujano.tres" id="4_enemigo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0"]
 atlas = ExtResource("2_hoja")

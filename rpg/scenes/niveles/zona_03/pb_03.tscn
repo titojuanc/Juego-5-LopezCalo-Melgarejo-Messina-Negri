@@ -14722,7 +14722,7 @@ miembro = ExtResource("ev_W")
 texto = "O el otro. O vos siendo el otro. Me encanta."
 
 [sub_resource type="RectangleShape2D" id="ev_EventoFicha_1"]
-size = Vector2(700, 100)
+size = Vector2(197, 87)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdnb5"]
 resource_local_to_scene = true
@@ -14774,13 +14774,6 @@ direccion_llegada = 2
 distancia_llegada = 73.0
 
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
-
-[node name="Tacho" parent="Interactuables" unique_id=1123185042 instance=ExtResource("5_vkro0")]
-position = Vector2(773, 160)
-scale = Vector2(9, 3)
-nombre = "Tacho"
-lineas = Array[String](["* Revisas el tacho en busca de algo . . .", "* . . . no hay nada."])
-mostrar_indicador = false
 
 [node name="EventoLavadoras" parent="Interactuables" unique_id=790143942 instance=ExtResource("ev_disparador")]
 position = Vector2(121, 918.00006)
@@ -14870,6 +14863,7 @@ solo_una_vez = false
 mostrar_indicador = false
 
 [node name="CollisionShape2D" parent="Interactuables/EventoFicha/Area2D" parent_id_path=PackedInt32Array(364916174, 1805804608) index="0" unique_id=1413580006]
+position = Vector2(471, 2)
 shape = SubResource("ev_EventoFicha_1")
 
 [node name="Dialogo" type="Node" parent="Interactuables/EventoFicha/Acciones" parent_id_path=PackedInt32Array(364916174, 1277747786) index="0" unique_id=947074608]
@@ -14884,6 +14878,13 @@ nombre_flag = &"codigo_caja_fuerte"
 [node name="Estantes2" parent="Interactuables" unique_id=1696983344 instance=ExtResource("5_vkro0")]
 position = Vector2(1122, 139)
 scale = Vector2(22, 5)
+nombre = "Estantes"
+lineas = Array[String](["* Completamente vacío."])
+mostrar_indicador = false
+
+[node name="Estantes4" parent="Interactuables" unique_id=1123185042 instance=ExtResource("5_vkro0")]
+position = Vector2(330, 127)
+scale = Vector2(32, 7.273)
 nombre = "Estantes"
 lineas = Array[String](["* Completamente vacío."])
 mostrar_indicador = false

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://b0vx1te8m326t" path="res://assets/tiles_entorno/props_general.png" id="2_f584h"]
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_73cgj"]
 [ext_resource type="PackedScene" uid="uid://ddcrbqx7q3gyc" path="res://scenes/main_character.tscn" id="4_76h5d"]
-[ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_vgg6w"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="6_p8w4h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
@@ -5454,7 +5453,7 @@ tile_set = SubResource("TileSet_jl0lj")
 
 [node name="Decoraciones" type="TileMapLayer" parent="." unique_id=283240137]
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAeAAEAAAAZAAsAAAAAAAQAAQAAAAwAAAAAAAUAAQAAAA0AAAABAAQAAQABAAwAAAABAAUAAQABAA0AAAAdAAEAAAAYAAsAAAAdAAAAAAAYAAoAAAAeAAAAAAAZAAoAAAAOAAEAAAAYAA8AAAAOAAIAAAAYABAAAAAPAAEAAAAZAA8AAAAPAAIAAAAZABAAAAA=")
+tile_map_data = PackedByteArray("AAAeAAEAAAAZAAsAAAAAAAQAAQAAAAwAAAAAAAUAAQAAAA0AAAABAAQAAQABAAwAAAABAAUAAQABAA0AAAAdAAEAAAAYAAsAAAAdAAAAAAAYAAoAAAAeAAAAAAAZAAoAAAA=")
 tile_set = SubResource("TileSet_paprv")
 
 [node name="Objetos" type="TileMapLayer" parent="." unique_id=1947320181]
@@ -5464,12 +5463,6 @@ tile_set = SubResource("TileSet_paprv")
 
 [node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("4_76h5d")]
 position = Vector2(1386, 494)
-
-[node name="Interactuable" parent="." unique_id=1123185042 instance=ExtResource("5_vgg6w")]
-position = Vector2(477, 102)
-scale = Vector2(5.5, 5.5)
-nombre = "Ventana"
-lineas = Array[String](["\"Almacen\"", "* Piensas \"que mal escrito, le falta la tilde\"", "* Despues recuerdas que godot en linux se traba cuando presionas la tilde", "* . . .", "* Retiras lo dicho "])
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("6_p8w4h")]
 position = Vector2(-31, 402)
