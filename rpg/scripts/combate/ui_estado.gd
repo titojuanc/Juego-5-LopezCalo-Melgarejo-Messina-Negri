@@ -10,12 +10,15 @@ var personaje: Node3D
 
 @onready var retrato = $Contenido/Retrato
 
+@onready var nombre = $Contenido/Barras/Nombre
+
 func _ready() -> void:
 	mouse_entered.connect(func(): apuntado.emit(personaje))
 	configurar(personaje)
 
 func configurar(nuevo: Node3D) -> void:
 	personaje = nuevo
+	nombre.text = personaje.datos.nombre
 	barraVida.max_value = personaje.salud.vida_max
 	barraVida.value = personaje.salud.vida_actual
 	personaje.salud.vida_cambiada.connect(_on_vida_cambiada)
@@ -36,11 +39,7 @@ func _on_vida_cambiada(actual: int, maximo: int) -> void:
 
 func resaltar(activo: bool) -> void:
 	if activo:
-		var estilo := StyleBoxFlat.new()
-		estilo.bg_color = Color(0.15, 0.15, 0.15, 0.9)
-		estilo.set_border_width_all(3)
-		estilo.border_color = Color.YELLOW
-		add_theme_stylebox_override("panel", estilo)
+		add_theme_stylebox_override("panel", get_theme_stylebox("panel_resaltado"))
 	else:
 		remove_theme_stylebox_override("panel")
 	personaje.animaciones.resaltar(activo)

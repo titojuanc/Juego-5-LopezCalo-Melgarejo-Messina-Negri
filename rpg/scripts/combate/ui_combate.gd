@@ -7,12 +7,12 @@ class_name UiCombate
 @export var ventana_minijuego: VentanaMinijuego
 
 
-@onready var label_turno: Label = $Control/Menu/Turno
-@onready var boton_atacar: Button = $Control/Menu/Botones/BotonAtacar
-@onready var boton_especial: Button = $Control/Menu/Botones/BotonEspecial
-@onready var boton_defender: Button = $Control/Menu/Botones/BotonDefender
-@onready var boton_item: Button = $Control/Menu/Botones/BotonItem
-@onready var submenu: VBoxContainer = $Control/Menu/SubMenu
+@onready var label_turno: Label = $Control/Menu/Contenido/Turno
+@onready var boton_atacar: Button = $Control/Menu/Contenido/Botones/BotonAtacar
+@onready var boton_especial: Button = $Control/Menu/Contenido/Botones/BotonEspecial
+@onready var boton_defender: Button = $Control/Menu/Contenido/Botones/BotonDefender
+@onready var boton_item: Button = $Control/Menu/Contenido/Botones/BotonItem
+@onready var submenu: VBoxContainer = $Control/Menu/Contenido/SubMenu
 
 var _actor_actual: Node3D
 var _paneles = {}
@@ -24,8 +24,6 @@ func _ready() -> void:
 	boton_atacar.pressed.connect(_on_atacar_presionado)
 	boton_especial.pressed.connect(_on_especial_presionado)
 	boton_defender.pressed.connect(_on_defender_presionado)
-	#Global.new_personaje.connect(añadirPersonaje)
-	#Global.new_enemigo.connect(añadirEnemigo)
 	boton_item.pressed.connect(_on_item_presionado)
 
 
@@ -37,7 +35,6 @@ func _ready() -> void:
 		actualizar_turno(battle_manager.personaje_actual())
 
 
-## Conectar desde BattleManager (señal "turno_cambio") por Inspector, Node -> Signals.
 func actualizar_turno(actor: Node3D) -> void:
 	_actor_actual = actor
 	_cerrar_submenu()

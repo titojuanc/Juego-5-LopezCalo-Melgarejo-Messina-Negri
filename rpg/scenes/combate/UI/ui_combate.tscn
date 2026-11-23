@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7q2n6duk52qi" path="res://scenes/combate/UI/ui_estado_party.tscn" id="2_bd624"]
 [ext_resource type="PackedScene" uid="uid://tp8uvod817c2" path="res://scenes/combate/UI/ui_estado.tscn" id="3_51nio"]
 [ext_resource type="PackedScene" path="res://scenes/combate/minijuegos/ventana_minijuego.tscn" id="4_ventana"]
+[ext_resource type="Theme" path="res://scenes/combate/UI/tema_combate.tres" id="5_tema"]
 
 [node name="UiCombate" type="CanvasLayer" unique_id=1715428037 node_paths=PackedStringArray("ventana_minijuego")]
 script = ExtResource("1_uiscript")
@@ -18,62 +19,80 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_tema")
 
 [node name="ContainerEstadoParty" type="HBoxContainer" parent="Control" unique_id=1888852998]
 layout_mode = 0
-offset_right = 700.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 716.0
 offset_bottom = 110.0
-theme_override_constants/separation = 16
+theme_override_constants/separation = 12
 
-[node name="ContainerEstadoFoes" type="HBoxContainer" parent="Control" unique_id=2114864552]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 538.0
-offset_right = 1152.0
-offset_bottom = 648.0
-theme_override_constants/separation = 16
-alignment = 2
+[node name="ContainerEstadoFoes" type="GridContainer" parent="Control" unique_id=2114864552]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
 
-[node name="Menu" type="VBoxContainer" parent="Control" unique_id=213839313]
+[node name="Menu" type="PanelContainer" parent="Control" unique_id=213839313]
 mouse_filter = 2
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -220.0
-offset_right = 340.0
-offset_bottom = -20.0
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = -16.0
 grow_vertical = 0
-theme_override_constants/separation = 8
+theme_type_variation = &"PanelMenu"
 
-[node name="Turno" type="Label" parent="Control/Menu" unique_id=1994618504]
-layout_mode = 2
-text = "Turno: -"
-
-[node name="Botones" type="HBoxContainer" parent="Control/Menu" unique_id=1113977392]
+[node name="Contenido" type="VBoxContainer" parent="Control/Menu"]
 mouse_filter = 2
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="BotonAtacar" type="Button" parent="Control/Menu/Botones" unique_id=1309103864]
+[node name="Turno" type="Label" parent="Control/Menu/Contenido" unique_id=1994618504]
 layout_mode = 2
-text = "Atacar"
+theme_type_variation = &"LabelTurno"
+text = "Turno: -"
 
-[node name="BotonEspecial" type="Button" parent="Control/Menu/Botones" unique_id=2042860255]
-layout_mode = 2
-text = "Especial"
-
-[node name="BotonDefender" type="Button" parent="Control/Menu/Botones" unique_id=2136656740]
-layout_mode = 2
-text = "Defender"
-
-[node name="BotonItem" type="Button" parent="Control/Menu/Botones" unique_id=1510532796]
-layout_mode = 2
-text = "Item"
-
-[node name="SubMenu" type="VBoxContainer" parent="Control/Menu" unique_id=1257457460]
+[node name="SubMenu" type="VBoxContainer" parent="Control/Menu/Contenido" unique_id=1257457460]
 mouse_filter = 2
 visible = false
 layout_mode = 2
+
+[node name="Botones" type="HBoxContainer" parent="Control/Menu/Contenido" unique_id=1113977392]
+mouse_filter = 2
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotonAtacar" type="Button" parent="Control/Menu/Contenido/Botones" unique_id=1309103864]
+layout_mode = 2
+text = "Atacar"
+
+[node name="BotonEspecial" type="Button" parent="Control/Menu/Contenido/Botones" unique_id=2042860255]
+layout_mode = 2
+text = "Especial"
+
+[node name="BotonDefender" type="Button" parent="Control/Menu/Contenido/Botones" unique_id=2136656740]
+layout_mode = 2
+text = "Defender"
+
+[node name="BotonItem" type="Button" parent="Control/Menu/Contenido/Botones" unique_id=1510532796]
+layout_mode = 2
+text = "Item"
 
 [node name="VentanaMinijuego" parent="." instance=ExtResource("4_ventana")]

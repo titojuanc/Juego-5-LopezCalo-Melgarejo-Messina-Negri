@@ -4,11 +4,16 @@
 [ext_resource type="Script" uid="uid://b6nr1toeeja5e" path="res://scripts/combate/ui_estado_party.gd" id="2_6gxps"]
 
 [node name="PanelContainer" unique_id=1056025193 instance=ExtResource("1_88q62")]
+theme_type_variation = &"PanelParty"
 script = ExtResource("2_6gxps")
 
-[node name="BarraEnergia" type="ProgressBar" parent="Contenido/Barras" parent_id_path=PackedInt32Array(763885399) index="1" unique_id=906017100]
+[node name="BarraVida" parent="Contenido/Barras" index="1" unique_id=1209497321]
+theme_type_variation = &"BarraVida"
+
+[node name="BarraEnergia" type="ProgressBar" parent="Contenido/Barras" index="2" unique_id=906017100]
+theme_type_variation = &"BarraEnergia"
 mouse_filter = 2
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(120, 14)
 layout_mode = 2
-size_flags_vertical = 3
 value = 100.0
+show_percentage = false
