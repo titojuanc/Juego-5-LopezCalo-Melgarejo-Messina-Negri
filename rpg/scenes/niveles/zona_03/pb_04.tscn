@@ -17,6 +17,8 @@
 [ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
 [ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
 [ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="npc_instancia_nuevo"]
+[ext_resource type="Resource" path="res://scenes/npcs/datos/saqueador.tres" id="npc_datos_nuevo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_87fwh")
@@ -16334,5 +16336,9 @@ flag_requerido = &"bolsa_abierta"
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_ItemRecogible_7"), SubResource("ev_ItemRecogible_8")])
 
+
+[node name="Saqueador" parent="." instance=ExtResource("npc_instancia_nuevo")]
+position = Vector2(576, 320)
+datos = ExtResource("npc_datos_nuevo")
 
 [editable path="Interactuables/ItemRecogible"]

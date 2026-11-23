@@ -15,7 +15,7 @@ var bonus_ataque: float = 1.0
 var ataque_extra: int = 0
 
 func inicializar(datos: RecursoPersonajeCombate) -> void:
-	arma = datos.arma
+	arma = Equipo.arma_de(datos)
 	ataques_especiales = datos.ataques_especiales
 	energia_max = Equipo.energia_max_de(datos)
 	energia_actual = energia_max

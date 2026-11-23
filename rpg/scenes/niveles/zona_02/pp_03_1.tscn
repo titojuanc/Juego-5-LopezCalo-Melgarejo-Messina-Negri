@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_adgl0"]
 [ext_resource type="Texture2D" uid="uid://drxj3lr15wv5h" path="res://assets/tiles_entorno/pisos_y_paredes_2.png" id="3_vlmlv"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="4_q3553"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="npc_instancia_nuevo"]
+[ext_resource type="Resource" path="res://scenes/npcs/datos/robot_cirujano.tres" id="npc_datos_nuevo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_sblj0")
@@ -7698,3 +7700,7 @@ direccion_llegada = 1
 distancia_llegada = 73.0
 
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
+
+[node name="RobotCirujano" parent="." instance=ExtResource("npc_instancia_nuevo")]
+position = Vector2(576, 300)
+datos = ExtResource("npc_datos_nuevo")

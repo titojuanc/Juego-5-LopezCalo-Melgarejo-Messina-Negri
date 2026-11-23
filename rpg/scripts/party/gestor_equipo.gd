@@ -65,6 +65,19 @@ func progreso_de(miembro: RecursoPersonajeCombate) -> Dictionary:
 		_progreso[miembro] = {"nivel": 1, "exp": 0, "vida": miembro.vida_max}
 	return _progreso[miembro]
 
+func arma_de(miembro: RecursoPersonajeCombate) -> RecursoArma:
+	var ruta = progreso_de(miembro).get("arma", "")
+	if ruta is String and not ruta.is_empty():
+		return load(ruta) as RecursoArma
+	return miembro.arma
+
+func equipar_si_mejor(miembro: RecursoPersonajeCombate, arma: RecursoArma) -> void:
+	if miembro == null or arma == null:
+		return
+	var actual := arma_de(miembro)
+	if actual == null or arma.daño > actual.daño:
+		progreso_de(miembro).arma = arma.resource_path
+
 func vida_actual_de(miembro: RecursoPersonajeCombate) -> int:
 	return clampi(progreso_de(miembro).get("vida", vida_max_de(miembro)), 0, vida_max_de(miembro))
 

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RecursoArma" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_arma.gd" id="1_arma"]
+
+[resource]
+script = ExtResource("1_arma")
+nombre = "Bisturí láser"
+"daño" = 25
+descripcion = "Corta limpio. El robot cirujano lo usaba para algo peor que operar."
+tipo_ataque = 2

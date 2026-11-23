@@ -15,6 +15,9 @@ class_name RecursoEnemigo
 @export var item_drop: RecursoItem
 @export_range(0.0, 1.0, 0.05) var probabilidad_drop: float = 0.5
 @export var es_jefe: bool = false
+@export var arma_drop: RecursoArma
+@export var flag_debilitado: StringName = &""
+@export var flag_ayuda: StringName = &""
 
 func multiplicador_contra(tipo: RecursoAtaqueEspecial.TipoAtaque) -> float:
 	if debilidades.has(tipo):

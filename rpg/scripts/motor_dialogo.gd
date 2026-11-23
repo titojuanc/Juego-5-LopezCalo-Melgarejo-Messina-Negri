@@ -265,6 +265,8 @@ func _opcion_visible(opcion: OpcionDialogo) -> bool:
 		return false
 	if not opcion.flag_requerido.is_empty() and GestorEventos.obtener_flag(opcion.flag_requerido) != opcion.valor_flag_requerido:
 		return false
+	if Reputacion.reputacion_actual() < opcion.reputacion_minima:
+		return false
 	if opcion.miembro_party != null:
 		if Equipo.miembros.has(opcion.miembro_party) or Equipo.miembros.size() >= Equipo.maximo:
 			return false

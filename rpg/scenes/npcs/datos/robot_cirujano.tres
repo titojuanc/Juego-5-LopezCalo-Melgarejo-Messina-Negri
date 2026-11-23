@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="RecursoNpc" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
+[ext_resource type="Texture2D" path="res://assets/robot_prueba/Robot_walk.png" id="2_hoja"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_enemigo.gd" id="3_enemigo"]
+[ext_resource type="Resource" path="res://scenes/combate/enemigos/robot_cirujano.tres" id="4_enemigo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0"]
+atlas = ExtResource("2_hoja")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1"]
+atlas = ExtResource("2_hoja")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2"]
+atlas = ExtResource("2_hoja")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3"]
+atlas = ExtResource("2_hoja")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4"]
+atlas = ExtResource("2_hoja")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5"]
+atlas = ExtResource("2_hoja")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_robot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_npc")
+id = &"robot_cirujano"
+nombre = "Robot cirujano"
+sprite_frames = SubResource("SpriteFrames_robot")
+lineas_amistoso = Array[String]([""])
+lineas_indiferente = Array[String]([""])
+lineas_hostil = Array[String]([""])
+enemigos = Array[ExtResource("3_enemigo")]([ExtResource("4_enemigo")])
+sin_mente = true

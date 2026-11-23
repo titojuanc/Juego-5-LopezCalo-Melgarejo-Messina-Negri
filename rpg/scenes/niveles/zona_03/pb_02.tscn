@@ -22,6 +22,8 @@
 [ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
 [ext_resource type="Script" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
 [ext_resource type="Resource" path="res://scenes/combate/items/botiquin.tres" id="ev_item_botiquin"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="npc_instancia_nuevo"]
+[ext_resource type="Resource" path="res://scenes/npcs/datos/saqueador.tres" id="npc_datos_nuevo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_0o5jr")
@@ -14918,6 +14920,10 @@ valor = true
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_Cesto_1"), SubResource("ev_Cesto_2"), SubResource("ev_Cesto_3")])
 
+
+[node name="Saqueador" parent="." instance=ExtResource("npc_instancia_nuevo")]
+position = Vector2(576, 320)
+datos = ExtResource("npc_datos_nuevo")
 
 [editable path="Interactuables/Cesto"]
 [editable path="Interactuables/EventoCajaFuerte"]

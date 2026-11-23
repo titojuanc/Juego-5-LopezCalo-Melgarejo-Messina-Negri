@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Npc
 
 const OpcionDialogo = preload("res://scripts/recursos/recurso_opcion_dialogo.gd")
+const UMBRAL_REPUTACION_INVERTIDA := 20.0
 
 @export var datos: RecursoNpc
 
@@ -89,18 +90,34 @@ func _on_afinidad_cambiada(_afinidad: float) -> void:
 
 
 func _al_elegir_opcion(opcion: OpcionDialogo) -> void:
-	if not opciones.has(opcion) or opcion.miembro_party == null or not Equipo.miembros.has(opcion.miembro_party):
+	if not opciones.has(opcion):
 		return
+	if opcion.inicia_combate:
+		_combatir_al_terminar()
+	elif opcion.retira_npc:
+		_retirar_al_terminar()
+	elif opcion.miembro_party != null and Equipo.miembros.has(opcion.miembro_party):
+		queue_free()
+
+func _combatir_al_terminar() -> void:
+	await MotorDialogo.dialogo_finalizado
+	_iniciar_combate()
+
+func _retirar_al_terminar() -> void:
+	await MotorDialogo.dialogo_finalizado
+	if not Encuentros.npcs_derrotados.has(clave()):
+		Encuentros.npcs_derrotados.append(clave())
 	queue_free()
 
 
 func _actualizar_lineas() -> void:
 	lineas.clear()
 	opciones.clear()
-	match reputacion.estado:
+	match estado_efectivo():
 		CalculoAlineamiento.Estado.AMISTOSO:
 			lineas.append_array(datos.lineas_amistoso)
 			opciones.append_array(datos.opciones_amistoso)
+			_agregar_lineas_por_flag()
 			return
 		CalculoAlineamiento.Estado.HOSTIL:
 			lineas.append_array(datos.lineas_hostil)
@@ -108,11 +125,29 @@ func _actualizar_lineas() -> void:
 		_:
 			lineas.append_array(datos.lineas_indiferente)
 			opciones.append_array(datos.opciones_indiferente)
+	_agregar_lineas_por_flag()
+	if datos.reputacion_invertida:
+		return
 	var eje = reputacion.resultado.get("eje")
 	if eje == CalculoAlineamiento.Eje.LEY or eje == CalculoAlineamiento.Eje.AMBOS:
 		lineas.append(datos.motivo_legal if Alineamiento.ley > datos.perfil.posicion_ley else datos.motivo_caotico)
 	if eje == CalculoAlineamiento.Eje.BIEN or eje == CalculoAlineamiento.Eje.AMBOS:
 		lineas.append(datos.motivo_bueno if Alineamiento.bien > datos.perfil.posicion_bien else datos.motivo_malvado)
+
+func _agregar_lineas_por_flag() -> void:
+	for flag in datos.lineas_por_flag:
+		if GestorEventos.obtener_flag(flag):
+			lineas.append(datos.lineas_por_flag[flag])
+
+func estado_efectivo() -> CalculoAlineamiento.Estado:
+	if not datos.reputacion_invertida:
+		return reputacion.estado
+	var puntos = Reputacion.reputacion_actual()
+	if puntos >= UMBRAL_REPUTACION_INVERTIDA:
+		return CalculoAlineamiento.Estado.HOSTIL
+	if puntos <= -UMBRAL_REPUTACION_INVERTIDA:
+		return CalculoAlineamiento.Estado.AMISTOSO
+	return CalculoAlineamiento.Estado.INDIFERENTE
 
 func conoce_al_jugador() -> bool:
 	return absf(Reputacion.reputacion_actual()) >= datos.umbral_conocimiento
@@ -133,7 +168,7 @@ func puede_atacar() -> bool:
 		return false
 	if datos.sin_mente:
 		return true
-	return reputacion.estado == CalculoAlineamiento.Estado.HOSTIL and conoce_al_jugador()
+	return estado_efectivo() == CalculoAlineamiento.Estado.HOSTIL and conoce_al_jugador()
 
 
 func obtener_retrato_dialogo() -> Texture2D:
@@ -166,6 +201,11 @@ func _atacar() -> void:
 		MotorDialogo.iniciar(nombre, lineas, opciones, obtener_retrato_dialogo())
 		if MotorDialogo.activo:
 			await MotorDialogo.dialogo_finalizado
+	_iniciar_combate()
+
+func _iniciar_combate() -> void:
+	atacando = true
+	persiguiendo = false
 	var textura: Texture2D = null
 	if sprite.sprite_frames and sprite.sprite_frames.get_frame_count(sprite.animation) > 0:
 		textura = sprite.sprite_frames.get_frame_texture(sprite.animation, 0)

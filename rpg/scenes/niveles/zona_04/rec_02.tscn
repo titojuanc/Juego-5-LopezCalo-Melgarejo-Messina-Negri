@@ -24,6 +24,8 @@
 [ext_resource type="Script" path="res://scripts/recursos/recurso_item.gd" id="ev_item_script"]
 [ext_resource type="Resource" path="res://scenes/combate/items/coctel_casero.tres" id="ev_item_coctel_casero"]
 [ext_resource type="Resource" path="res://scenes/combate/items/botiquin.tres" id="ev_item_botiquin"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/npc.tscn" id="npc_instancia_nuevo"]
+[ext_resource type="Resource" path="res://scenes/npcs/datos/jefe_recepcion.tres" id="npc_datos_nuevo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_xopd8")
@@ -19124,6 +19126,10 @@ position = Vector2(583, 311)
 [node name="CollisionShape2D" parent="CamaraNivel/Limites" parent_id_path=PackedInt32Array(1487418937, 94154297) index="0" unique_id=649505806]
 position = Vector2(-7, -85)
 shape = SubResource("RectangleShape2D_kiw3i")
+
+[node name="JefeRecepcion" parent="." instance=ExtResource("npc_instancia_nuevo")]
+position = Vector2(700, 300)
+datos = ExtResource("npc_datos_nuevo")
 
 [editable path="CamaraNivel"]
 [editable path="Interactuables/EventoImpresora"]

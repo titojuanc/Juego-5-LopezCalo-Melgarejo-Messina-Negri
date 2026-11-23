@@ -2,6 +2,7 @@ extends Node
 class_name GestorEncuentros
 
 const ESCENA_MENU := "res://scenes/main_menu.tscn"
+const AUMENTO_POR_PISO := 0.25
 
 var enemigos: Array[RecursoEnemigo] = []
 
@@ -34,6 +35,13 @@ func iniciar(nuevos: Array[RecursoEnemigo], npc: StringName, escena_combate: Str
 		_posicion_retorno = GestorJugador.cuerpo.global_position
 	Transiciones.cambiar_escena(escena_combate)
 
+func piso() -> int:
+	var zona := _escena_retorno.get_base_dir().get_file()
+	return maxi(zona.trim_prefix("zona_").to_int() - 1, 0)
+
+func multiplicador_piso() -> float:
+	return 1.0 + AUMENTO_POR_PISO * piso()
+
 func derrotado(npc: StringName) -> bool:
 	return npcs_derrotados.has(npc)
 
@@ -45,12 +53,15 @@ func tomar_tregua(npc: StringName) -> bool:
 
 func cobrar(datos_enemigos: Array, miembros_vivos: Array) -> Dictionary:
 	_gano = true
-	var recompensa = {"exp": 0, "oro": 0, "items": [], "subidas": []}
+	var recompensa = {"exp": 0, "oro": 0, "items": [], "armas": [], "subidas": []}
 	for enemigo in datos_enemigos:
-		recompensa.exp += enemigo.experiencia
-		recompensa.oro += enemigo.oro
+		var factor := 1.0 if enemigo.es_jefe else multiplicador_piso()
+		recompensa.exp += roundi(enemigo.experiencia * factor)
+		recompensa.oro += roundi(enemigo.oro * factor)
 		if enemigo.item_drop and randf() < enemigo.probabilidad_drop:
 			recompensa.items.append(enemigo.item_drop)
+		if enemigo.arma_drop:
+			recompensa.armas.append(enemigo.arma_drop)
 	for miembro in miembros_vivos:
 		var antes = Equipo.nivel_de(miembro)
 		Equipo.dar_experiencia(miembro, recompensa.exp)
@@ -59,6 +70,8 @@ func cobrar(datos_enemigos: Array, miembros_vivos: Array) -> Dictionary:
 	Equipo.agregar_oro(recompensa.oro)
 	for item in recompensa.items:
 		Equipo.agregar_item(item)
+	for arma in recompensa.armas:
+		Equipo.equipar_si_mejor(Equipo.lider(), arma)
 	if not _npc.is_empty() and not npcs_derrotados.has(_npc):
 		npcs_derrotados.append(_npc)
 	return recompensa

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RecursoEnemigo" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_enemigo.gd" id="1_enemigo"]
+[ext_resource type="Texture2D" path="res://assets/robot_prueba/Robot_walk.png" id="2_robot"]
+[ext_resource type="Resource" path="res://scenes/combate/armas/bisturi_laser.tres" id="3_arma"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_robot"]
+atlas = ExtResource("2_robot")
+region = Rect2(0, 0, 48, 48)
+
+[resource]
+script = ExtResource("1_enemigo")
+nombre = "Robot cirujano"
+vida_max = 200
+descripcion = "Un robot de quirófano sin nadie al mando."
+ataque = 18
+textura = SubResource("AtlasTexture_robot")
+experiencia = 60
+oro = 40
+arma_drop = ExtResource("3_arma")

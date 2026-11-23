@@ -12,3 +12,6 @@ class_name RecursoOpcionDialogo
 @export var perfil_requerido: RecursoPerfilAlineamiento
 @export var distancia_maxima: float = 0.75
 @export var accion_moral: RecursoAccionMoral
+@export var inicia_combate: bool = false
+@export var retira_npc: bool = false
+@export_range(-100.0, 100.0, 1.0) var reputacion_minima: float = -100.0

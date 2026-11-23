@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="RecursoNpc" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_npc.gd" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/alineamiento/recurso_perfil_alineamiento.gd" id="2_perfil"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_enemigo.gd" id="3_enemigo"]
+[ext_resource type="Resource" path="res://scenes/combate/enemigos/jefe_recepcion.tres" id="4_enemigo"]
+[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="5_opcion"]
+
+[sub_resource type="Resource" id="Resource_perfil"]
+script = ExtResource("2_perfil")
+nombre = "Jefe de recepción"
+afinidad_base = 0.0
+peso_ley = 0.0
+peso_bien = 0.0
+
+[sub_resource type="Resource" id="Resource_pelear"]
+script = ExtResource("5_opcion")
+texto = "Pelear"
+respuesta = Array[String](["Entonces lo hacemos por las malas."])
+inicia_combate = true
+
+[sub_resource type="Resource" id="Resource_tarjeta"]
+script = ExtResource("5_opcion")
+texto = "Mostrar la tarjeta de la clínica"
+respuesta = Array[String](["Esa tarjeta abre la salida de la clínica. Pasá por ahí y yo no te vi."])
+flag_requerido = &"tarjeta_clinica"
+retira_npc = true
+
+[sub_resource type="Resource" id="Resource_negociar"]
+script = ExtResource("5_opcion")
+texto = "Negociar"
+respuesta = Array[String](["Tu reputación te precede. Andá, y no hagas ruido."])
+retira_npc = true
+reputacion_minima = 40.0
+
+[resource]
+script = ExtResource("1_npc")
+id = &"jefe_recepcion"
+nombre = "Jefe de recepción"
+perfil = SubResource("Resource_perfil")
+lineas_amistoso = Array[String](["Ah, sos vos. Tu nombre anda dando vueltas por el hospital, y para bien.", "Quizás podamos arreglar esto sin ensuciar la alfombra."])
+lineas_indiferente = Array[String](["Esta zona es solo para personal autorizado.", "Hoy no atiendo visitas. Y menos a vos."])
+lineas_hostil = Array[String](["Sabía que ibas a aparecer. Se terminó el recorrido.", "Seguridad no viene, así que me encargo yo."])
+opciones_amistoso = Array[ExtResource("5_opcion")]([SubResource("Resource_negociar"), SubResource("Resource_tarjeta"), SubResource("Resource_pelear")])
+opciones_indiferente = Array[ExtResource("5_opcion")]([SubResource("Resource_negociar"), SubResource("Resource_tarjeta"), SubResource("Resource_pelear")])
+enemigos = Array[ExtResource("3_enemigo")]([ExtResource("4_enemigo")])
+lineas_por_flag = {
+&"fichas_dobles": "Revisé los archivos. Hay dos fichas a tu nombre. Dos. ¿Cuál de los dos sos?",
+&"impresion_3": "La impresora dejó una hoja con tu letra. Tu clon la leyó antes que vos.",
+&"bolsa_abierta": "Alguien abrió la bolsa del subsuelo. Tu clon no es nada prolijo."
+}

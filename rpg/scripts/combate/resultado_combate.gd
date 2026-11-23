@@ -22,6 +22,8 @@ func mostrar_victoria(recompensa: Dictionary) -> void:
 	var lineas = ["EXP +%d" % recompensa.exp, "Oro +%d" % recompensa.oro]
 	for item in recompensa.items:
 		lineas.append("Obtuviste: " + item.nombre)
+	for arma in recompensa.armas:
+		lineas.append("Arma nueva: " + arma.nombre)
 	for subida in recompensa.subidas:
 		lineas.append("%s subió a nivel %d" % [subida.nombre, subida.nivel])
 	detalle.text = "\n".join(lineas)

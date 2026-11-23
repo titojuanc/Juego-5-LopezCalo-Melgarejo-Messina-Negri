@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RecursoEnemigo" format=3]
+
+[ext_resource type="Script" path="res://scripts/recursos/recurso_enemigo.gd" id="1_enemigo"]
+[ext_resource type="Texture2D" path="res://assets/robot_prueba/Robot_walk.png" id="2_robot"]
+[ext_resource type="Resource" path="res://scenes/combate/items/cafe.tres" id="3_drop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_robot"]
+atlas = ExtResource("2_robot")
+region = Rect2(0, 0, 48, 48)
+
+[resource]
+script = ExtResource("1_enemigo")
+nombre = "Saqueador"
+vida_max = 100
+descripcion = "Vive de lo que deja el hospital."
+ataque = 11
+textura = SubResource("AtlasTexture_robot")
+experiencia = 20
+oro = 25
+item_drop = ExtResource("3_drop")
+probabilidad_drop = 0.5

@@ -5,6 +5,8 @@ class_name PersonajeEnemigo
 
 @export var altura_visual: float = 1.28
 
+var factor: float = 1.0
+
 @onready var visual: Sprite3D = $Visual
 @onready var salud: Salud = $Salud
 @onready var combate: Combate = $Combate
@@ -17,7 +19,8 @@ func _ready() -> void:
 func configurar(nuevos_datos: RecursoEnemigo) -> void:
 	datos = nuevos_datos
 	name = datos.nombre
-	salud.inicializar(datos.vida_max)
+	factor = 1.0 if datos.es_jefe else Encuentros.multiplicador_piso()
+	salud.inicializar(roundi(datos.vida_max * factor))
 	if datos.textura:
 		visual.texture = datos.textura
 		visual.pixel_size = altura_visual / datos.textura.get_height()
@@ -28,4 +31,4 @@ func configurar(nuevos_datos: RecursoEnemigo) -> void:
 func atacar(objetivo: Salud) -> void:
 	if datos == null:
 		return
-	combate.atacar_enemigo(objetivo, datos.ataque)
+	combate.atacar_enemigo(objetivo, roundi(datos.ataque * factor))

@@ -36,6 +36,10 @@ signal combate_terminado(gano: bool)
 var _combatientes: Array = []
 var _turno_actual: int = -1
 var _terminado := false
+var _hay_ayuda := false
+
+const VIDA_DEBILITADO := 0.7
+const CURACION_AYUDA := 8
 
 func _ready() -> void:
 	if not Equipo.miembros.is_empty():
@@ -43,6 +47,7 @@ func _ready() -> void:
 	if not Encuentros.enemigos.is_empty():
 		enemigos = Encuentros.enemigos
 	_generar_equipos()
+	_aplicar_flags()
 	_combatientes = contenedor_equipo.get_children()
 	_combatientes.append_array(contenedor_enemigos.get_children())
 	avanzar_turno.call_deferred()
@@ -69,6 +74,15 @@ func _generar_equipos() -> void:
 			Global.new_enemigo.emit(enemigo)
 
 
+func _aplicar_flags() -> void:
+	for enemigo in contenedor_enemigos.get_children():
+		var debilitado: StringName = enemigo.datos.flag_debilitado
+		if not debilitado.is_empty() and GestorEventos.obtener_flag(debilitado):
+			enemigo.salud.inicializar(enemigo.salud.vida_max, roundi(enemigo.salud.vida_max * VIDA_DEBILITADO))
+		var ayuda: StringName = enemigo.datos.flag_ayuda
+		if not ayuda.is_empty() and GestorEventos.obtener_flag(ayuda):
+			_hay_ayuda = true
+
 func personaje_actual() -> Node3D:
 	if _turno_actual < 0 or _turno_actual >= _combatientes.size():
 		return null
@@ -90,6 +104,8 @@ func avanzar_turno() -> void:
 			break
 		intentos += 1
 	var actor := personaje_actual()
+	if _hay_ayuda and contenedor_equipo.get_children().has(actor):
+		actor.salud.curar(CURACION_AYUDA)
 	turno_cambio.emit(actor)
 	_mover_camara_a(actor)
 	if contenedor_enemigos.get_children().has(actor):

@@ -37,4 +37,8 @@ const OpcionDialogo = preload("res://scripts/recursos/recurso_opcion_dialogo.gd"
 
 @export var sin_mente: bool = false
 
+@export var reputacion_invertida: bool = false
+
+@export var lineas_por_flag: Dictionary = {}
+
 @export var velocidad_persecucion: float = 160.0

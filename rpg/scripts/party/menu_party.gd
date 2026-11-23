@@ -127,7 +127,8 @@ func _refrescar() -> void:
 
 func _crear_tarjeta(miembro: RecursoPersonajeCombate) -> PanelContainer:
 	var progreso = Equipo.progreso_de(miembro)
-	var dano_arma = miembro.arma.daño if miembro.arma else 0
+	var arma = Equipo.arma_de(miembro)
+	var dano_arma = arma.daño if arma else 0
 	var vida = Equipo.vida_actual_de(miembro)
 	var vida_max = Equipo.vida_max_de(miembro)
 	var exp_max = Equipo.exp_para_subir(progreso.nivel)
