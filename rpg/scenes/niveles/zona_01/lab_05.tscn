@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://dpbraaoxwhusc" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="95_linea"]
 [ext_resource type="Script" uid="uid://b8536t7dcpoos" path="res://scripts/recursos/recurso_personaje_combate.gd" id="96_personaje"]
 [ext_resource type="Resource" uid="uid://cbakoopw557hk" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="97_wayne"]
-[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="98_gloria"]
+[ext_resource type="Resource" uid="uid://c7n4r8kw1dj34" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="98_gloria"]
 [ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="99_opcion"]
 [ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_caotica.tres" id="100_caotica"]
 [ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_legal.tres" id="101_legal"]
@@ -5454,6 +5454,9 @@ sources/0 = SubResource("TileSetAtlasSource_uh8tv")
 sources/1 = SubResource("TileSetAtlasSource_p0hxr")
 sources/2 = SubResource("TileSetAtlasSource_ovkyg")
 
+[sub_resource type="RectangleShape2D" id="Forma_cartel_ascensor"]
+size = Vector2(120, 120)
+
 [sub_resource type="Resource" id="Resource_ahvdv"]
 script = ExtResource("8_0anec")
 nombre = "Hostil"
@@ -5544,9 +5547,6 @@ metadata/_custom_type_script = "uid://vfx2vuq5n8y1"
 
 [sub_resource type="RectangleShape2D" id="Forma_charla_ascensor"]
 size = Vector2(400, 50)
-
-[sub_resource type="RectangleShape2D" id="Forma_cartel_ascensor"]
-size = Vector2(120, 120)
 
 [sub_resource type="Resource" id="Linea_wayne_primero_01"]
 script = ExtResource("95_linea")
@@ -5660,33 +5660,25 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAASAAAAAQAWABIAAAASAAEAAQAWABMAAAASAAIAAQAWABIAAAASAAMAAQAWABMAAAATAAAAAQAXABIAAAATAAEAAQAXABMAAAATAAIAAQAXABIAAAATAAMAAQAXABMAAAARAAAAAQAbABIAAAARAAEAAQAbABMAAAARAAIAAQAbABIAAAARAAMAAQAbABMAAAAQAAAAAQAaABIAAAAQAAEAAQAaABMAAAAQAAIAAQAaABIAAAAQAAMAAQAaABMAAAAUAAEAAQAcABQAAAAUAAIAAQAcABUAAAAVAAEAAQAdABQAAAAVAAIAAQAdABUAAAA=")
 tile_set = SubResource("TileSet_paprv")
 
-[node name="CartelAscensor" parent="." instance=ExtResource("13_disparador")]
+[node name="CartelAscensor" parent="." unique_id=260111098 instance=ExtResource("13_disparador")]
 position = Vector2(576, 119)
 identificador = &"cartel_ascensor_lab05"
 solo_una_vez = false
+flag_requerido = &"ascensor"
+valor_flag_requerido = false
 
-[node name="CollisionShape2D" parent="CartelAscensor/Area2D" index="0"]
-position = Vector2(0, 0)
+[node name="CollisionShape2D" parent="CartelAscensor/Area2D" parent_id_path=PackedInt32Array(260111098, 1805804608) index="0" unique_id=1413580006]
 shape = SubResource("Forma_cartel_ascensor")
 
-[node name="SiBloqueado" type="Node" parent="CartelAscensor/Acciones" index="0"]
+[node name="SiBloqueado" type="Node" parent="CartelAscensor/Acciones" parent_id_path=PackedInt32Array(260111098, 1277747786) index="0" unique_id=1403212045]
 script = ExtResource("91_condicion")
 flag_requerido = &"ascensor"
 valor_flag_requerido = false
 
-[node name="Dialogo" type="Node" parent="CartelAscensor/Acciones/SiBloqueado"]
+[node name="Dialogo" type="Node" parent="CartelAscensor/Acciones/SiBloqueado" unique_id=705667822]
 script = ExtResource("4_dialogo")
 nombre = "Ascensor"
 lineas = Array[String](["* La puerta del ascensor está cerrada por el bloqueo", "* Tal vez en algún lado se pueda desactivar el bloqueo..."])
-
-[node name="SiDesbloqueado" type="Node" parent="CartelAscensor/Acciones" index="1"]
-script = ExtResource("91_condicion")
-flag_requerido = &"ascensor"
-
-[node name="Dialogo" type="Node" parent="CartelAscensor/Acciones/SiDesbloqueado"]
-script = ExtResource("4_dialogo")
-nombre = "Ascensor"
-lineas = Array[String](["* El bloqueo está desactivado.", "* La puerta del ascensor está abierta. Podés entrar."])
 
 [node name="Puerta" parent="." unique_id=29171131 instance=ExtResource("5_2ts3w")]
 position = Vector2(969, 632)
@@ -5788,5 +5780,5 @@ flag_requerido = &"panel_ascensor_respetado"
 script = ExtResource("92_conversacion")
 lineas = Array[ExtResource("95_linea")]([SubResource("Linea_respetado_wayne"), SubResource("Linea_respetado_gloria")])
 
-[editable path="CharlaAscensor"]
 [editable path="CartelAscensor"]
+[editable path="CharlaAscensor"]

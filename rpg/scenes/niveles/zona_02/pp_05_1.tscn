@@ -4,22 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://b0vx1te8m326t" path="res://assets/tiles_entorno/props_general.png" id="2_26p4b"]
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_7ria7"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="4_sgey8"]
-[ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="5_qj0x1"]
 [ext_resource type="PackedScene" uid="uid://bdhr47napg8vt" path="res://scenes/niveles/disparador_evento.tscn" id="6_tecla"]
 [ext_resource type="Script" uid="uid://dn6d7ueaoh418" path="res://scripts/niveles/accion_dialogo_evento.gd" id="7_dialogo_tecla"]
 [ext_resource type="Script" uid="uid://shadua1hkcoa" path="res://scripts/niveles/accion_cambiar_flag.gd" id="8_flag_tecla"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
-[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
-[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
-[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_caotica.tres" id="ev_moral_accion_caotica"]
-[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_bondadosa.tres" id="ev_moral_accion_bondadosa"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_item.gd" id="ev_item_script"]
-[ext_resource type="Resource" path="res://scenes/combate/items/coctel_casero.tres" id="ev_item_coctel_casero"]
+[ext_resource type="Script" uid="uid://dcea1btnrlmyy" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
+[ext_resource type="Script" uid="uid://jog4vs2kv0ll" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
+[ext_resource type="Script" uid="uid://b2f0t87dthe3e" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
+[ext_resource type="Resource" uid="uid://c7n4r8kw1dj34" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
 [ext_resource type="Resource" path="res://scenes/combate/items/calmante.tres" id="ev_item_calmante"]
+[ext_resource type="Resource" path="res://scenes/combate/items/coctel_casero.tres" id="ev_item_coctel_casero"]
+[ext_resource type="Script" uid="uid://b8e256pukfayp" path="res://scripts/recursos/recurso_item.gd" id="ev_item_script"]
+[ext_resource type="Script" uid="uid://dpbraaoxwhusc" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_bondadosa.tres" id="ev_moral_accion_bondadosa"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_caotica.tres" id="ev_moral_accion_caotica"]
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
+[ext_resource type="Resource" uid="uid://cbakoopw557hk" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_htaih")
@@ -5455,6 +5454,62 @@ sources/2 = SubResource("TileSetAtlasSource_njd7s")
 [sub_resource type="RectangleShape2D" id="Forma_tecla"]
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="ev_EventoJuguetes_1"]
+size = Vector2(100, 100)
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_2"]
+script = ExtResource("ev_linea")
+hablante = "Cajas"
+texto = "* Muchos libros y juguetes, parecen para niños."
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_3"]
+script = ExtResource("ev_linea")
+hablante = "Cajas"
+texto = "* Entre los juguetes hay un conejo de peluche, gastado de tanto uso."
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_4"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = ". . ."
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_5"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "Mi herm. . . Nada. Es lindo, nada más."
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_6"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_W")
+texto = "¿Desde cuándo te gustan los peluches?"
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_7"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = "Desde nunca. Sigamos."
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_8"]
+script = ExtResource("ev_linea")
+hablante = "Cajas"
+texto = "* ¿Te llevás el peluche?"
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_9"]
+script = ExtResource("ev_opcion")
+id = &"peluche_llevar"
+texto = "Llevarlo."
+respuesta = Array[String](["* Guardás el peluche."])
+flag_al_seleccionar = &"peluche_tomado"
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_10"]
+script = ExtResource("ev_opcion")
+id = &"peluche_dejar"
+texto = "Dejarlo."
+respuesta = Array[String](["* Lo dejás donde estaba."])
+
+[sub_resource type="Resource" id="ev_EventoJuguetes_11"]
+script = ExtResource("ev_linea")
+miembro = ExtResource("ev_G")
+texto = ". . . Gracias."
+
 [sub_resource type="RectangleShape2D" id="ev_EventoMesada_1"]
 size = Vector2(120, 100)
 
@@ -5525,62 +5580,6 @@ script = ExtResource("ev_linea")
 miembro = ExtResource("ev_W")
 texto = "Qué emocionante. Una aspirina."
 
-[sub_resource type="RectangleShape2D" id="ev_EventoJuguetes_1"]
-size = Vector2(100, 100)
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_2"]
-script = ExtResource("ev_linea")
-hablante = "Cajas"
-texto = "* Muchos libros y juguetes, parecen para niños."
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_3"]
-script = ExtResource("ev_linea")
-hablante = "Cajas"
-texto = "* Entre los juguetes hay un conejo de peluche, gastado de tanto uso."
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_4"]
-script = ExtResource("ev_linea")
-miembro = ExtResource("ev_G")
-texto = ". . ."
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_5"]
-script = ExtResource("ev_linea")
-miembro = ExtResource("ev_G")
-texto = "Mi herm. . . Nada. Es lindo, nada más."
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_6"]
-script = ExtResource("ev_linea")
-miembro = ExtResource("ev_W")
-texto = "¿Desde cuándo te gustan los peluches?"
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_7"]
-script = ExtResource("ev_linea")
-miembro = ExtResource("ev_G")
-texto = "Desde nunca. Sigamos."
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_8"]
-script = ExtResource("ev_linea")
-hablante = "Cajas"
-texto = "* ¿Te llevás el peluche?"
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_9"]
-script = ExtResource("ev_opcion")
-id = &"peluche_llevar"
-texto = "Llevarlo."
-respuesta = Array[String](["* Guardás el peluche."])
-flag_al_seleccionar = &"peluche_tomado"
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_10"]
-script = ExtResource("ev_opcion")
-id = &"peluche_dejar"
-texto = "Dejarlo."
-respuesta = Array[String](["* Lo dejás donde estaba."])
-
-[sub_resource type="Resource" id="ev_EventoJuguetes_11"]
-script = ExtResource("ev_linea")
-miembro = ExtResource("ev_G")
-texto = ". . . Gracias."
-
 [node name="PP_01" type="Node2D" unique_id=10267033]
 
 [node name="Paredes" type="TileMapLayer" parent="." unique_id=1949964272]
@@ -5630,108 +5629,102 @@ lineas = Array[String](["* Encontraste la tecla del ascensor marcada \"Subsuelo\
 script = ExtResource("8_flag_tecla")
 nombre_flag = &"ascensor_tecla_subsuelo_encontrada"
 
-[node name="EventoJuguetes" parent="Interactuables" instance=ExtResource("6_tecla")]
+[node name="EventoJuguetes" parent="Interactuables" unique_id=524016030 instance=ExtResource("6_tecla")]
 position = Vector2(701.00006, 160.00002)
 identificador = &"pp_05_1_juguetes"
 solo_una_vez = false
 mostrar_indicador = false
 
-[node name="CollisionShape2D" parent="Interactuables/EventoJuguetes/Area2D" index="0"]
-position = Vector2(0, 0)
+[node name="CollisionShape2D" parent="Interactuables/EventoJuguetes/Area2D" parent_id_path=PackedInt32Array(524016030, 1805804608) index="0" unique_id=1413580006]
 shape = SubResource("ev_EventoJuguetes_1")
 
-[node name="Si" type="Node" parent="Interactuables/EventoJuguetes/Acciones"]
+[node name="Si" type="Node" parent="Interactuables/EventoJuguetes/Acciones" parent_id_path=PackedInt32Array(524016030, 1277747786) index="0" unique_id=978021653]
 script = ExtResource("ev_condicion")
 flag_requerido = &"peluche_tomado"
 
-[node name="Dialogo" type="Node" parent="Interactuables/EventoJuguetes/Acciones/Si"]
+[node name="Dialogo" type="Node" parent="Interactuables/EventoJuguetes/Acciones/Si" unique_id=836371917]
 script = ExtResource("7_dialogo_tecla")
 nombre = "Cajas"
 lineas = Array[String](["* Muchos libros y juguetes, parecen para niños.", "* Falta el peluche que te llevaste."])
 
-[node name="Si2" type="Node" parent="Interactuables/EventoJuguetes/Acciones"]
+[node name="Si2" type="Node" parent="Interactuables/EventoJuguetes/Acciones" parent_id_path=PackedInt32Array(524016030, 1277747786) index="1" unique_id=1083562051]
 script = ExtResource("ev_condicion")
 invertir = true
 flag_requerido = &"peluche_tomado"
 
-[node name="Conversacion" type="Node" parent="Interactuables/EventoJuguetes/Acciones/Si2"]
+[node name="Conversacion" type="Node" parent="Interactuables/EventoJuguetes/Acciones/Si2" unique_id=1433867510]
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoJuguetes_2"), SubResource("ev_EventoJuguetes_3"), SubResource("ev_EventoJuguetes_4"), SubResource("ev_EventoJuguetes_5"), SubResource("ev_EventoJuguetes_6"), SubResource("ev_EventoJuguetes_7"), SubResource("ev_EventoJuguetes_8")])
 opciones = Array[ExtResource("ev_opcion")]([SubResource("ev_EventoJuguetes_9"), SubResource("ev_EventoJuguetes_10")])
 
-[node name="Si" type="Node" parent="Interactuables/EventoJuguetes/Acciones/Si2"]
+[node name="Si" type="Node" parent="Interactuables/EventoJuguetes/Acciones/Si2" unique_id=817288080]
 script = ExtResource("ev_condicion")
 flag_requerido = &"peluche_tomado"
 
-[node name="Conversacion" type="Node" parent="Interactuables/EventoJuguetes/Acciones/Si2/Si"]
+[node name="Conversacion" type="Node" parent="Interactuables/EventoJuguetes/Acciones/Si2/Si" unique_id=1756532368]
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoJuguetes_11")])
 
-
-[node name="EventoMesada" parent="Interactuables" instance=ExtResource("6_tecla")]
+[node name="EventoMesada" parent="Interactuables" unique_id=1435690793 instance=ExtResource("6_tecla")]
 position = Vector2(577, 128)
 identificador = &"pp_05_1_mesada"
 solo_una_vez = false
 mostrar_indicador = false
 
-[node name="CollisionShape2D" parent="Interactuables/EventoMesada/Area2D" index="0"]
-position = Vector2(0, 0)
+[node name="CollisionShape2D" parent="Interactuables/EventoMesada/Area2D" parent_id_path=PackedInt32Array(1435690793, 1805804608) index="0" unique_id=1413580006]
 shape = SubResource("ev_EventoMesada_1")
 
-[node name="Si" type="Node" parent="Interactuables/EventoMesada/Acciones"]
+[node name="Si" type="Node" parent="Interactuables/EventoMesada/Acciones" parent_id_path=PackedInt32Array(1435690793, 1277747786) index="0" unique_id=716558524]
 script = ExtResource("ev_condicion")
 flag_requerido = &"mesada_usada"
 
-[node name="Dialogo" type="Node" parent="Interactuables/EventoMesada/Acciones/Si"]
+[node name="Dialogo" type="Node" parent="Interactuables/EventoMesada/Acciones/Si" unique_id=463263247]
 script = ExtResource("7_dialogo_tecla")
 nombre = "Mesada"
 lineas = Array[String](["* Ya usaste lo que servía de la mesada."])
 
-[node name="Si2" type="Node" parent="Interactuables/EventoMesada/Acciones"]
+[node name="Si2" type="Node" parent="Interactuables/EventoMesada/Acciones" parent_id_path=PackedInt32Array(1435690793, 1277747786) index="1" unique_id=640105728]
 script = ExtResource("ev_condicion")
 invertir = true
 flag_requerido = &"mesada_usada"
 
-[node name="Conversacion" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2"]
+[node name="Conversacion" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2" unique_id=62418599]
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoMesada_2"), SubResource("ev_EventoMesada_3"), SubResource("ev_EventoMesada_4"), SubResource("ev_EventoMesada_5"), SubResource("ev_EventoMesada_6")])
 opciones = Array[ExtResource("ev_opcion")]([SubResource("ev_EventoMesada_7"), SubResource("ev_EventoMesada_8"), SubResource("ev_EventoMesada_9")])
 
-[node name="Si" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2"]
+[node name="Si" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2" unique_id=4189097]
 script = ExtResource("ev_condicion")
 flag_requerido = &"mesada_coctel"
 
-[node name="DarItem" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si"]
+[node name="DarItem" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si" unique_id=365509438]
 script = ExtResource("ev_dar")
 items = Array[ExtResource("ev_item_script")]([ExtResource("ev_item_coctel_casero")])
 
-[node name="Conversacion" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si"]
+[node name="Conversacion" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si" unique_id=1235862340]
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoMesada_10"), SubResource("ev_EventoMesada_11")])
 
-[node name="Flag" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si"]
+[node name="Flag" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si" unique_id=1141255949]
 script = ExtResource("8_flag_tecla")
 nombre_flag = &"mesada_usada"
-valor = true
 
-[node name="Si2" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2"]
+[node name="Si2" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2" unique_id=597963419]
 script = ExtResource("ev_condicion")
 flag_requerido = &"mesada_calmante"
 
-[node name="DarItem" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si2"]
+[node name="DarItem" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si2" unique_id=1202322186]
 script = ExtResource("ev_dar")
 items = Array[ExtResource("ev_item_script")]([ExtResource("ev_item_calmante")])
 
-[node name="Conversacion" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si2"]
+[node name="Conversacion" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si2" unique_id=1316889573]
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoMesada_12"), SubResource("ev_EventoMesada_13")])
 
-[node name="Flag" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si2"]
+[node name="Flag" type="Node" parent="Interactuables/EventoMesada/Acciones/Si2/Si2" unique_id=2049472225]
 script = ExtResource("8_flag_tecla")
 nombre_flag = &"mesada_usada"
-valor = true
-
 
 [editable path="Interactuables/TeclaSubsuelo"]
-[editable path="Interactuables/EventoMesada"]
 [editable path="Interactuables/EventoJuguetes"]
+[editable path="Interactuables/EventoMesada"]
