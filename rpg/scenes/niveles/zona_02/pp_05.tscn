@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bdhr47napg8vt" path="res://scenes/niveles/disparador_evento.tscn" id="9_atajo"]
 [ext_resource type="Script" uid="uid://dn6d7ueaoh418" path="res://scripts/niveles/accion_dialogo_evento.gd" id="10_dialogo"]
 [ext_resource type="Script" uid="uid://shadua1hkcoa" path="res://scripts/niveles/accion_cambiar_flag.gd" id="11_flag"]
-[ext_resource type="PackedScene" uid="uid://ddcrbqx7q3gyc" path="res://scenes/main_character.tscn" id="12_ufwnj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_07kab")
@@ -5551,9 +5550,6 @@ lineas = Array[String](["* Rebuscas entre los armarios buscando algo útil."])
 [node name="DarItem" parent="Interactuables/ItemRecogible/Acciones" parent_id_path=PackedInt32Array(807094237, 1277747786) index="1"]
 items = Array[ExtResource("7_ee7px")]([ExtResource("8_o6ui1"), null])
 oro = 10
-
-[node name="MainCharacter" parent="." unique_id=1843269011 instance=ExtResource("12_ufwnj")]
-position = Vector2(490, 316)
 
 [editable path="AbrirAtajo"]
 [editable path="Interactuables/ItemRecogible"]

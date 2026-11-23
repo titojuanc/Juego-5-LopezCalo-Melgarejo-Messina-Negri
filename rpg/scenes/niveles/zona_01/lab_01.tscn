@@ -5518,14 +5518,14 @@ mostrar_indicador = false
 position = Vector2(321.00003, 298.00003)
 scale = Vector2(5, 5)
 nombre = "PC"
-lineas = Array[String](["* La PC está apagada.", "* Algunos parecen de medición, otros son como frascos.", "* Tranquilamente estarían en un laboratorio."])
+lineas = Array[String](["* La PC está apagada."])
 mostrar_indicador = false
 
 [node name="PC2" parent="Interactuables" unique_id=153353361 instance=ExtResource("5_dmnfp")]
 position = Vector2(961, 252)
 scale = Vector2(4, 4)
 nombre = "PC"
-lineas = Array[String](["* La PC está apagada.", "* Algunos parecen de medición, otros son como frascos.", "* Tranquilamente estarían en un laboratorio."])
+lineas = Array[String](["* La PC está apagada."])
 mostrar_indicador = false
 
 [node name="PC3" parent="Interactuables" unique_id=86283096 instance=ExtResource("5_dmnfp")]

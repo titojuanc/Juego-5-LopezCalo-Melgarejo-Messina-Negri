@@ -12,21 +12,21 @@
 [ext_resource type="Resource" uid="uid://bemw78jdmkxks" path="res://scenes/combate/items/HP_prueba.tres" id="9_g7yb4"]
 [ext_resource type="PackedScene" uid="uid://ddcrbqx7q3gyc" path="res://scenes/main_character.tscn" id="10_g7yb4"]
 [ext_resource type="Resource" uid="uid://bnkujiagopb3y" path="res://scenes/combate/items/BUFF_atk_prueba.tres" id="11_3pkw1"]
-[ext_resource type="PackedScene" path="res://scenes/niveles/disparador_evento.tscn" id="ev_disparador"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_dialogo_evento.gd" id="ev_dialogo"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_cambiar_flag.gd" id="ev_flag"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
-[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
-[ext_resource type="Resource" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
-[ext_resource type="Script" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
-[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_bondadosa.tres" id="ev_moral_accion_bondadosa"]
-[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_cruel.tres" id="ev_moral_accion_cruel"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_quitar_item.gd" id="ev_quitar"]
-[ext_resource type="Script" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
+[ext_resource type="Script" uid="uid://dcea1btnrlmyy" path="res://scripts/niveles/accion_condicion.gd" id="ev_condicion"]
+[ext_resource type="Script" uid="uid://jog4vs2kv0ll" path="res://scripts/niveles/accion_conversacion.gd" id="ev_conversacion"]
+[ext_resource type="Script" uid="uid://b2f0t87dthe3e" path="res://scripts/niveles/accion_dar_item.gd" id="ev_dar"]
+[ext_resource type="Script" uid="uid://dn6d7ueaoh418" path="res://scripts/niveles/accion_dialogo_evento.gd" id="ev_dialogo"]
+[ext_resource type="PackedScene" uid="uid://bdhr47napg8vt" path="res://scenes/niveles/disparador_evento.tscn" id="ev_disparador"]
+[ext_resource type="Script" uid="uid://shadua1hkcoa" path="res://scripts/niveles/accion_cambiar_flag.gd" id="ev_flag"]
+[ext_resource type="Resource" uid="uid://c7n4r8kw1dj34" path="res://scenes/combate/personajes/sidekick_2_recursoPersonajeCombate.tres" id="ev_G"]
 [ext_resource type="Resource" path="res://scenes/combate/items/botiquin.tres" id="ev_item_botiquin"]
 [ext_resource type="Resource" path="res://scenes/combate/items/calmante.tres" id="ev_item_calmante"]
+[ext_resource type="Script" uid="uid://dpbraaoxwhusc" path="res://scripts/recursos/recurso_linea_dialogo.gd" id="ev_linea"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_bondadosa.tres" id="ev_moral_accion_bondadosa"]
+[ext_resource type="Resource" path="res://scenes/alineamiento/acciones/accion_cruel.tres" id="ev_moral_accion_cruel"]
+[ext_resource type="Script" uid="uid://ge22qwf4al28" path="res://scripts/recursos/recurso_opcion_dialogo.gd" id="ev_opcion"]
+[ext_resource type="Script" uid="uid://duttvugfsicho" path="res://scripts/niveles/accion_quitar_item.gd" id="ev_quitar"]
+[ext_resource type="Resource" uid="uid://cbakoopw557hk" path="res://scenes/combate/personajes/sidekick_1_recursoPersonajeCombate.tres" id="ev_W"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_0o5jr")
@@ -7616,17 +7616,8 @@ sources/2 = SubResource("TileSetAtlasSource_njd7s")
 sources/3 = SubResource("TileSetAtlasSource_efu55")
 sources/4 = SubResource("TileSetAtlasSource_dfa0n")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pkw1"]
-resource_local_to_scene = true
-size = Vector2(64, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyxtr"]
-resource_local_to_scene = true
-size = Vector2(103, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih2dh"]
-resource_local_to_scene = true
-size = Vector2(1152, 1920)
+[sub_resource type="RectangleShape2D" id="ev_EventoClinica103_1"]
+size = Vector2(100, 120)
 
 [sub_resource type="RectangleShape2D" id="ev_EventoClinica104_1"]
 size = Vector2(100, 120)
@@ -7719,8 +7710,17 @@ script = ExtResource("ev_linea")
 miembro = ExtResource("ev_G")
 texto = "Eso estuvo muy mal."
 
-[sub_resource type="RectangleShape2D" id="ev_EventoClinica103_1"]
-size = Vector2(100, 120)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0k82o"]
+resource_local_to_scene = true
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67jmg"]
+resource_local_to_scene = true
+size = Vector2(103, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52ehm"]
+resource_local_to_scene = true
+size = Vector2(1152, 1920)
 
 [node name="PP_02" type="Node2D" unique_id=10267033]
 
@@ -7767,20 +7767,6 @@ distancia_llegada = 73.0
 
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
 
-[node name="Biblioteca2" parent="Interactuables" unique_id=1123185042 instance=ExtResource("5_0bgoa")]
-position = Vector2(926.00006, 141.00002)
-scale = Vector2(5, 5)
-nombre = "Biblioteca"
-lineas = Array[String](["* Libros de investigación, histioria y biología.", "* Nada muy útil..."])
-mostrar_indicador = false
-
-[node name="Biblioteca" parent="Interactuables" unique_id=2039235882 instance=ExtResource("5_0bgoa")]
-position = Vector2(802.00006, 143.00002)
-scale = Vector2(5, 5)
-nombre = "Biblioteca"
-lineas = Array[String](["* Libros de investigación, histioria y biología.", "* Nada muy útil..."])
-mostrar_indicador = false
-
 [node name="Puerta101" parent="Interactuables" unique_id=1059382055 instance=ExtResource("5_0bgoa")]
 position = Vector2(52, 404)
 scale = Vector2(5, 6)
@@ -7795,153 +7781,142 @@ nombre = "Puerta"
 lineas = Array[String](["* Clínica 102", "* Por más que intentas, la puerta no cede. . ."])
 mostrar_indicador = false
 
-[node name="EventoClinica103" parent="Interactuables" instance=ExtResource("ev_disparador")]
+[node name="EventoClinica103" parent="Interactuables" unique_id=1081085604 instance=ExtResource("ev_disparador")]
 position = Vector2(35.999992, 918.00006)
 identificador = &"pp_02_clinica_103"
 solo_una_vez = false
 mostrar_indicador = false
 
-[node name="CollisionShape2D" parent="Interactuables/EventoClinica103/Area2D" index="0"]
-position = Vector2(0, 0)
+[node name="CollisionShape2D" parent="Interactuables/EventoClinica103/Area2D" parent_id_path=PackedInt32Array(1081085604, 1805804608) index="0" unique_id=1413580006]
 shape = SubResource("ev_EventoClinica103_1")
 
-[node name="Flag" type="Node" parent="Interactuables/EventoClinica103/Acciones"]
+[node name="Flag" type="Node" parent="Interactuables/EventoClinica103/Acciones" parent_id_path=PackedInt32Array(1081085604, 1277747786) index="0" unique_id=848913908]
 script = ExtResource("ev_flag")
 nombre_flag = &"clinica_103_recien"
 valor = false
 
-[node name="Si" type="Node" parent="Interactuables/EventoClinica103/Acciones"]
+[node name="Si" type="Node" parent="Interactuables/EventoClinica103/Acciones" parent_id_path=PackedInt32Array(1081085604, 1277747786) index="1" unique_id=1743623266]
 script = ExtResource("ev_condicion")
 flag_requerido = &"tarjeta_clinica"
 
-[node name="Si" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si"]
+[node name="Si" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si" unique_id=1489418156]
 script = ExtResource("ev_condicion")
 invertir = true
 flag_requerido = &"clinica_103_abierta"
 
-[node name="Dialogo" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si/Si"]
+[node name="Dialogo" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si/Si" unique_id=936346921]
 script = ExtResource("ev_dialogo")
 nombre = "Puerta"
 lineas = Array[String](["* Clínica 103", "* Pasás la tarjeta de acceso por el lector. La puerta se abre con un chasquido.", "* Adentro hay un botiquín intacto y unas ampollas."])
 
-[node name="DarItem" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si/Si"]
+[node name="DarItem" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si/Si" unique_id=95254364]
 script = ExtResource("ev_dar")
 items = Array[ExtResource("8_f5r8t")]([ExtResource("ev_item_botiquin"), ExtResource("ev_item_calmante")])
 
-[node name="Flag" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si/Si"]
+[node name="Flag" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si/Si" unique_id=425633272]
 script = ExtResource("ev_flag")
 nombre_flag = &"clinica_103_abierta"
-valor = true
 
-[node name="Flag2" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si/Si"]
+[node name="Flag2" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si/Si" unique_id=1607437684]
 script = ExtResource("ev_flag")
 nombre_flag = &"clinica_103_recien"
-valor = true
 
-[node name="Si2" type="Node" parent="Interactuables/EventoClinica103/Acciones"]
+[node name="Si2" type="Node" parent="Interactuables/EventoClinica103/Acciones" parent_id_path=PackedInt32Array(1081085604, 1277747786) index="2" unique_id=153887272]
 script = ExtResource("ev_condicion")
 flag_requerido = &"clinica_103_abierta"
 
-[node name="Si" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si2"]
+[node name="Si" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si2" unique_id=1323827823]
 script = ExtResource("ev_condicion")
 invertir = true
 flag_requerido = &"clinica_103_recien"
 
-[node name="Dialogo" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si2/Si"]
+[node name="Dialogo" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si2/Si" unique_id=1474904801]
 script = ExtResource("ev_dialogo")
 nombre = "Puerta"
 lineas = Array[String](["* Clínica 103", "* Ya revisaste todo lo que había."])
 
-[node name="Si3" type="Node" parent="Interactuables/EventoClinica103/Acciones"]
+[node name="Si3" type="Node" parent="Interactuables/EventoClinica103/Acciones" parent_id_path=PackedInt32Array(1081085604, 1277747786) index="3" unique_id=940794633]
 script = ExtResource("ev_condicion")
 invertir = true
 flag_requerido = &"clinica_103_abierta"
 
-[node name="Dialogo" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si3"]
+[node name="Dialogo" type="Node" parent="Interactuables/EventoClinica103/Acciones/Si3" unique_id=790612709]
 script = ExtResource("ev_dialogo")
 nombre = "Puerta"
 lineas = Array[String](["* Clínica 103", "* Tiene un lector de tarjetas al costado.", "* Por más que intentás, la puerta no cede. . ."])
 
-
-[node name="EventoClinica104" parent="Interactuables" instance=ExtResource("ev_disparador")]
+[node name="EventoClinica104" parent="Interactuables" unique_id=1036026594 instance=ExtResource("ev_disparador")]
 position = Vector2(43, 1621)
 identificador = &"pp_02_clinica_104"
 solo_una_vez = false
 mostrar_indicador = false
 
-[node name="CollisionShape2D" parent="Interactuables/EventoClinica104/Area2D" index="0"]
-position = Vector2(0, 0)
+[node name="CollisionShape2D" parent="Interactuables/EventoClinica104/Area2D" parent_id_path=PackedInt32Array(1036026594, 1805804608) index="0" unique_id=1413580006]
 shape = SubResource("ev_EventoClinica104_1")
 
-[node name="Si" type="Node" parent="Interactuables/EventoClinica104/Acciones"]
+[node name="Si" type="Node" parent="Interactuables/EventoClinica104/Acciones" parent_id_path=PackedInt32Array(1036026594, 1277747786) index="0" unique_id=1734128803]
 script = ExtResource("ev_condicion")
 flag_requerido = &"enfermero_resuelto"
 
-[node name="Dialogo" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si"]
+[node name="Dialogo" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si" unique_id=774654148]
 script = ExtResource("ev_dialogo")
 nombre = "Puerta"
 lineas = Array[String](["* Clínica 104", "* Del otro lado ya no se escucha nada."])
 
-[node name="Si2" type="Node" parent="Interactuables/EventoClinica104/Acciones"]
+[node name="Si2" type="Node" parent="Interactuables/EventoClinica104/Acciones" parent_id_path=PackedInt32Array(1036026594, 1277747786) index="1" unique_id=251262859]
 script = ExtResource("ev_condicion")
 invertir = true
 flag_requerido = &"enfermero_resuelto"
 
-[node name="Flag" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2"]
+[node name="Flag" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2" unique_id=1115363222]
 script = ExtResource("ev_flag")
 nombre_flag = &"tiene_item_vida"
 valor = false
 
-[node name="Si" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2"]
+[node name="Si" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2" unique_id=1369311348]
 script = ExtResource("ev_condicion")
 requiere_tipo = true
-tipo_requerido = 0
 
-[node name="Flag" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si"]
+[node name="Flag" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si" unique_id=993649636]
 script = ExtResource("ev_flag")
 nombre_flag = &"tiene_item_vida"
-valor = true
 
-[node name="Conversacion" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2"]
+[node name="Conversacion" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2" unique_id=997664091]
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoClinica104_2"), SubResource("ev_EventoClinica104_3"), SubResource("ev_EventoClinica104_4"), SubResource("ev_EventoClinica104_5"), SubResource("ev_EventoClinica104_6"), SubResource("ev_EventoClinica104_7"), SubResource("ev_EventoClinica104_8")])
 opciones = Array[ExtResource("ev_opcion")]([SubResource("ev_EventoClinica104_9"), SubResource("ev_EventoClinica104_10"), SubResource("ev_EventoClinica104_11")])
 
-[node name="Si2" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2"]
+[node name="Si2" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2" unique_id=1569191490]
 script = ExtResource("ev_condicion")
 flag_requerido = &"enfermero_ayudado"
 
-[node name="QuitarItem" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si2"]
+[node name="QuitarItem" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si2" unique_id=565986304]
 script = ExtResource("ev_quitar")
 quitar_por_tipo = true
-tipo = 0
 
-[node name="Conversacion" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si2"]
+[node name="Conversacion" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si2" unique_id=525074247]
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoClinica104_12"), SubResource("ev_EventoClinica104_13"), SubResource("ev_EventoClinica104_14")])
 
-[node name="Flag" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si2"]
+[node name="Flag" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si2" unique_id=930863327]
 script = ExtResource("ev_flag")
 nombre_flag = &"enfermero_resuelto"
-valor = true
 
-[node name="Si3" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2"]
+[node name="Si3" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2" unique_id=1771196769]
 script = ExtResource("ev_condicion")
 flag_requerido = &"enfermero_robado"
 
-[node name="DarItem" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si3"]
+[node name="DarItem" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si3" unique_id=46707288]
 script = ExtResource("ev_dar")
 items = Array[ExtResource("8_f5r8t")]([ExtResource("ev_item_botiquin")])
 
-[node name="Conversacion" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si3"]
+[node name="Conversacion" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si3" unique_id=953582516]
 script = ExtResource("ev_conversacion")
 lineas = Array[ExtResource("ev_linea")]([SubResource("ev_EventoClinica104_15"), SubResource("ev_EventoClinica104_16"), SubResource("ev_EventoClinica104_17")])
 
-[node name="Flag" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si3"]
+[node name="Flag" type="Node" parent="Interactuables/EventoClinica104/Acciones/Si2/Si3" unique_id=42684215]
 script = ExtResource("ev_flag")
 nombre_flag = &"enfermero_resuelto"
-valor = true
-
 
 [node name="Puerta105" parent="Interactuables" unique_id=82449699 instance=ExtResource("5_0bgoa")]
 position = Vector2(448.00006, 1917.0001)
@@ -7958,7 +7933,7 @@ identificador = &"pp_02_casillero"
 mostrar_indicador = false
 
 [node name="CollisionShape2D" parent="Interactuables/Estante/Area2D" parent_id_path=PackedInt32Array(456663927, 1805804608) index="0" unique_id=1413580006]
-shape = SubResource("RectangleShape2D_3pkw1")
+shape = SubResource("RectangleShape2D_0k82o")
 
 [node name="Dialogo" parent="Interactuables/Estante/Acciones" parent_id_path=PackedInt32Array(456663927, 1277747786) index="0"]
 nombre = "Estante"
@@ -7966,9 +7941,6 @@ lineas = Array[String](["* Revisas el estante en busca de algo útil . . ."])
 
 [node name="DarItem" parent="Interactuables/Estante/Acciones" parent_id_path=PackedInt32Array(456663927, 1277747786) index="1"]
 items = Array[ExtResource("8_f5r8t")]([ExtResource("9_g7yb4")])
-
-[node name="MainCharacter" parent="Interactuables/Estante/Acciones/DarItem" index="0" unique_id=1843269011 instance=ExtResource("10_g7yb4")]
-position = Vector2(521, 370)
 
 [node name="Mueble" parent="Interactuables" unique_id=1762215148 instance=ExtResource("7_dfa0n")]
 position = Vector2(1099, 1280)
@@ -7978,7 +7950,7 @@ mostrar_indicador = false
 
 [node name="CollisionShape2D" parent="Interactuables/Mueble/Area2D" parent_id_path=PackedInt32Array(1762215148, 1805804608) index="0" unique_id=1413580006]
 position = Vector2(0.5, -2)
-shape = SubResource("RectangleShape2D_eyxtr")
+shape = SubResource("RectangleShape2D_67jmg")
 
 [node name="Dialogo" parent="Interactuables/Mueble/Acciones" parent_id_path=PackedInt32Array(1762215148, 1277747786) index="0"]
 nombre = "Mueble"
@@ -7994,10 +7966,10 @@ visible = false
 position = Vector2(576, 960)
 
 [node name="CollisionShape2D" parent="CamaraNivelLargo/Limites" index="0" unique_id=649505806]
-shape = SubResource("RectangleShape2D_ih2dh")
+shape = SubResource("RectangleShape2D_52ehm")
 
+[editable path="Interactuables/EventoClinica103"]
+[editable path="Interactuables/EventoClinica104"]
 [editable path="Interactuables/Estante"]
 [editable path="Interactuables/Mueble"]
 [editable path="CamaraNivelLargo"]
-[editable path="Interactuables/EventoClinica104"]
-[editable path="Interactuables/EventoClinica103"]

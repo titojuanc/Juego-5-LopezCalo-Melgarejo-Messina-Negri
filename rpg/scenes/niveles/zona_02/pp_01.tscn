@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dhvn5js8nk3v" path="res://assets/tiles_entorno/props_general_2.png" id="3_i5b7w"]
 [ext_resource type="PackedScene" uid="uid://fyx5uuakye7p" path="res://scenes/niveles/puerta.tscn" id="5_nsl5j"]
 [ext_resource type="PackedScene" uid="uid://c5xugg1mb2isb" path="res://scenes/niveles/interactuable.tscn" id="6_aeyoc"]
-[ext_resource type="Script" path="res://scripts/niveles/quitar_si_flag.gd" id="7_atajo"]
+[ext_resource type="Script" uid="uid://cgyxyh1prenkf" path="res://scripts/niveles/quitar_si_flag.gd" id="7_atajo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opupj"]
 texture = ExtResource("1_3ldai")
@@ -5489,7 +5489,7 @@ flag_requerido = &"pp_shortcut"
 
 [node name="Interactuables" type="Node" parent="." unique_id=1951482948]
 
-[node name="QuitarAvisoAtajo" type="Node" parent="Interactuables"]
+[node name="QuitarAvisoAtajo" type="Node" parent="Interactuables" unique_id=1436943947]
 script = ExtResource("7_atajo")
 flag = &"pp_shortcut"
 rutas = Array[NodePath]([NodePath("../Puerta")])
@@ -5516,8 +5516,8 @@ distancia_indicador = 78.0
 [node name="Armarios" parent="Interactuables" unique_id=2144772144 instance=ExtResource("6_aeyoc")]
 position = Vector2(1079, 141)
 scale = Vector2(7, 5)
-nombre = "Puerta "
-lineas = Array[String](["* Una puerta normal", "* Por conveniencia del guión, no se abre de este lado"])
+nombre = "Archivero "
+lineas = Array[String](["* Muchos documentos sobre turnos y consultas.", "* Algunos están vacíos."])
 mostrar_indicador = false
 lado_indicador = 4
 distancia_indicador = 78.0

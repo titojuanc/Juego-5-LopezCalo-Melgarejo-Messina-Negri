@@ -43,7 +43,8 @@ Son escenas aisladas pensadas para testear cada sistema sin recorrer el juego en
 |---|---|---|
 | Juego (contenedor) | `rpg/scenes/game.tscn` | Escena que arma el overworld |
 | Laboratorio 01 | `rpg/scenes/niveles/zona_01/lab_01.tscn` | Primer mapa jugable, TileMap + puertas |
-| Laboratorio 02 | `rpg/scenes/niveles/zona_01/lab_02.tscn` | Segundo mapa, conectado por puertas |
+| Laboratorio 02 | `rpg/scenes/niveles/zona_01/lab_02.tscn` | Segundo mapa, conectado por puertas. Tras el evento de cierre de lab_03 o lab_04, la PC indica que los botones de desbloqueo están disponibles. |
+| Laboratorio 05 | `rpg/scenes/niveles/zona_01/lab_05.tscn` | El cartel interactuable de la puerta norte solo aparece mientras el ascensor está bloqueado. |
 | Ascensor | `rpg/scenes/niveles/ascensor.tscn` | Inicialmente permite Laboratorio y Primer piso. La tecla de `zona_02/pp_05_1.tscn` se recoge una vez y se instala desde el panel para habilitar Subsuelo (`zona_03/pb_01.tscn`). En `zona_03/pb_04.tscn` se obtiene la tecla de Recepción; al instalarla se habilita Recepción (`zona_04/rec_01.tscn`). |
 | Puerta | `rpg/scenes/niveles/puerta.tscn` + `scripts/niveles/puerta.gd` | Transición entre mapas con punto de aparición |
 | Interactuable | `rpg/scenes/niveles/interactuable.tscn` + `scripts/niveles/interactuable.gd` | Clase base de objetos con los que se interactúa (tecla `interactuar` = Z) |

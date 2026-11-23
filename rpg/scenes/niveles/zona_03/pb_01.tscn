@@ -14745,14 +14745,14 @@ distancia_llegada = 73.0
 position = Vector2(529, 152)
 scale = Vector2(10, 3)
 nombre = "Estante."
-lineas = Array[String](["* Vacío", ""])
+lineas = Array[String](["* Vacío"])
 mostrar_indicador = false
 
 [node name="Puerta" parent="Interactuables" unique_id=2039235882 instance=ExtResource("6_bwoo2")]
 position = Vector2(814, 526)
 scale = Vector2(5, 5)
-nombre = "Puerta "
-lineas = Array[String](["* Una puerta normal", "* Por conveniencia del guión, no se abre de este lado"])
+nombre = "Carrito "
+lineas = Array[String](["* Un carrito para mover cosas.", "* . . . está atornillado al suelo????"])
 mostrar_indicador = false
 lado_indicador = 4
 distancia_indicador = 78.0
@@ -14760,8 +14760,8 @@ distancia_indicador = 78.0
 [node name="Armarios" parent="Interactuables" unique_id=2144772144 instance=ExtResource("6_bwoo2")]
 position = Vector2(994, 145)
 scale = Vector2(7, 5)
-nombre = "Puerta "
-lineas = Array[String](["* Una puerta normal", "* Por conveniencia del guión, no se abre de este lado"])
+nombre = "Escritorio "
+lineas = Array[String](["* Arriba del escritorio hay un cuaderno con anotaciones", "* Están medio desprolijas, pero parecen horarios."])
 mostrar_indicador = false
 lado_indicador = 4
 distancia_indicador = 78.0
@@ -14769,6 +14769,6 @@ distancia_indicador = 78.0
 [node name="Tele" parent="Interactuables" unique_id=1219611576 instance=ExtResource("6_bwoo2")]
 position = Vector2(753, 137)
 scale = Vector2(8, 5)
-nombre = "Tele"
-lineas = Array[String](["* La tele está apagada."])
+nombre = "Estante"
+lineas = Array[String](["* Lleno de herramientas de mantenimiento y materiales."])
 mostrar_indicador = false
